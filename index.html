@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POPMART</title>
+    <link rel="stylesheet" href="css/output/styles.css" />
+  </head>
+  <body>
+    <!-- 공통 헤더 -->
+    <header id="header"></header>
+
+    <!-- 네비게이션 바 : 숨겨놓을게요. http://127.0.0.1:60068/#뒤에 page이름 적어서 이동 할 수 있어요. -->
+    <!-- <nav>
+      <ul>
+        <li><a href="#home">메인홈</a></li>
+        <li><a href="#login">로그인</a></li>
+        <li><a href="#register">회원가입</a></li>
+        <li><a href="#productList">상품 목록</a></li>
+        <li><a href="#productDetail">상품 상세</a></li>
+        <li><a href="#cart">장바구니</a></li>
+        <li><a href="#event">이벤트공지</a></li>
+        <li><a href="#shop">매장안내</a></li>
+        <li><a href="#cs">고객센터</a></li>
+        <li><a href="#popStory">팝스토리</a></li>
+      </ul>
+    </nav> -->
+
+    <!-- 동적 컨텐츠 로드 영역 -->
+    <main id="content"></main>
+
+    <!-- 공통 푸터 -->
+    <footer id="footer"></footer>
+
+    <script>
+      // 공통 헤더 & 푸터 불러오기
+      fetch('common/header.html')
+        .then((response) => response.text())
+        .then((data) => (document.getElementById('header').innerHTML = data))
+        .catch((error) => console.error('Error loading header:', error));
+
+      fetch('common/footer.html')
+        .then((response) => response.text())
+        .then((data) => (document.getElementById('footer').innerHTML = data))
+        .catch((error) => console.error('Error loading footer:', error));
+
+      // 라우팅 설정 (각 페이지 매핑)
+      function loadPage() {
+        const route = window.location.hash.substring(1);
+        const routes = {
+          home: 'page/mainPage/home.html',
+          login: 'page/myPage/login.html',
+          register: 'page/myPage/register.html',
+          productList: 'page/productPage/productList.html',
+          productDetail: 'page/productPage/productDetail.html',
+          cart: 'page/cart.html',
+          event: 'page/event.html',
+          shop: 'page/shop.html',
+          cs: 'page/cs.html',
+          popStory: 'page/popStory.html',
+        };
+
+        const pagePath = routes[route] || 'page/mainPage/home.html'; // 기본 페이지는 home.html
+
+        fetch(pagePath)
+          .then((response) => response.text())
+          .then((data) => (document.getElementById('content').innerHTML = data))
+          .catch((error) => console.error('Error loading page:', error));
+      }
+
+      window.addEventListener('hashchange', loadPage);
+      window.addEventListener('load', loadPage);
+    </script>
+  </body>
+</html>
