@@ -18,6 +18,8 @@ main {
   align-items: center;
   box-sizing: border-box;
 }
+
+///////////////////////// 로그인 페이지 /////////////////////////
 .loginLogo {
   padding-bottom: 20px;
 }
@@ -33,7 +35,7 @@ main {
     width: 100%;
     height: 55px;
     border-radius: 16px;
-    border: 4px solid #000;
+    border: 3px solid #000;
     text-align: left;
     padding-left: 15px;
     box-sizing: border-box;
@@ -91,7 +93,7 @@ main {
       background: #000;
       color: #fff;
       border-radius: 16px;
-      border: 4px solid #000;
+      border: 3px solid #000;
       text-align: center;
       cursor: pointer;
       font-size: 18px;
@@ -106,33 +108,245 @@ main {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
-}
-.text {
-  display: flex;
-  align-items: center;
-  color: #000;
-  gap: 10px;
-  a {
-    font-size: 14px;
-    text-decoration: none;
+  .text {
+    display: flex;
+    align-items: center;
     color: #000;
+    gap: 10px;
+    a {
+      font-size: 14px;
+      text-decoration: none;
+      color: #000;
+    }
+    .middle-dot::before {
+      content: '·';
+      line-height: 25px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #121619;
+    }
   }
-  .middle-dot::before {
-    content: '·';
-    line-height: 25px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #121619;
+  .snsBtn {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    a {
+      text-decoration: none;
+    }
   }
 }
-.snsBtn {
-  margin-top: 20px;
+
+///////////////////////// 회원가입 페이지 /////////////////////////
+.registerLogo {
+  padding-bottom: 20px;
+}
+.registerForm {
+  width: 100%;
+  max-width: 504px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  .registerTitBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 504px;
+    height: 55px;
+    border-radius: 16px;
+    border: 3px solid #000;
+    background-color: #fff;
+    text-align: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+    h2 {
+      font-size: 21px;
+      text-align: center;
+    }
+  }
+
+  .check-group {
+    display: flex;
+    gap: 41px;
+    .radioCon {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      .radioBox {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+      }
+    }
+    label {
+      display: flex;
+      align-items: center;
+      user-select: none;
+      font-size: 14px;
+    }
+  }
+  .line {
+    display: block;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: #000;
+      display: block;
+    }
+  }
+  .inputbox {
+    position: relative;
+    .inputShort {
+      display: flex;
+      width: 60%;
+      height: 55px;
+      border-radius: 16px;
+      border: 3px solid #000;
+      text-align: left;
+      padding-left: 15px;
+      box-sizing: border-box;
+    }
+    .input {
+      display: flex;
+      width: 100%;
+      height: 55px;
+      border-radius: 16px;
+      border: 3px solid #000;
+      text-align: left;
+      padding-left: 15px;
+      box-sizing: border-box;
+    }
+    .btnShort {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .birth-container {
+    display: flex;
+    gap: 30px;
+    .birthTit {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .birth-selection {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .calendar-type {
+        display: flex;
+        gap: 30px;
+        label {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .year {
+    width: 80px;
+  }
+  .month,
+  .day {
+    width: 55px;
+  }
+  .date-inputs {
+    height: 55px;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 16px;
+  }
+  span {
+    text-align: center;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    height: auto;
+  }
+  .signupBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+    height: 55px;
+    background: #000;
+    color: #fff;
+    border-radius: 16px;
+    border: 3px solid #000;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+///////// 회원가입 페이지 공통
+.section-title {
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  a {
-    text-decoration: none;
+  margin: 20px 0 10px 0;
+  width: 504px;
+  height: 55px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  background-color: #fff;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+  h2 {
+    font-size: 21px;
+    text-align: center;
+  }
+}
+
+.authBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+.radio {
+  display: none;
+}
+.checkMark {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #555;
+  background: #fff;
+  border-radius: 0.4rem;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+}
+input:checked + .checkMark {
+  background-color: #ff4e4e;
+  border-color: #e02121;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #e02121;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
   }
 }
