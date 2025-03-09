@@ -1,3 +1,145 @@
+@charset "UTF-8";
 body {
   background-color: #f5f5f5;
 }
+
+header {
+  background: #ff6f61;
+  height: 3rem;
+}
+
+main {
+  width: 100%;
+  background: #ffba4a;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.loginLogo {
+  padding-bottom: 20px;
+}
+
+.loginform {
+  width: 100%;
+  max-width: 504px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.loginform .inputbox {
+  display: flex;
+  width: 100%;
+  height: 55px;
+  border-radius: 16px;
+  border: 4px solid #000;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.loginform .checkbox {
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+}
+.loginform .checkbox label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.loginform .checkbox .check {
+  display: none;
+}
+.loginform .checkbox .custom-checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #555;
+  background: #fff;
+  border-radius: 0.4rem;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+}
+.loginform .checkbox .check:checked + .custom-checkbox {
+  background-color: #ff4e4e;
+  border-color: #e02121;
+}
+.loginform .checkbox .check:checked + .custom-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #e02121;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+}
+.loginform .loginBtn {
+  width: 504px;
+}
+.loginform .loginBtn .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  background: #000;
+  color: #fff;
+  border-radius: 16px;
+  border: 4px solid #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  color: #000;
+  gap: 10px;
+}
+.text a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #000;
+}
+.text .middle-dot::before {
+  content: "·";
+  line-height: 25px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #121619;
+}
+
+.snsBtn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.snsBtn a {
+  text-decoration: none;
+}/*# sourceMappingURL=styles.css.map */

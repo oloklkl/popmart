@@ -1,0 +1,138 @@
+header {
+  background: #ff6f61;
+  height: 3rem;
+}
+
+main {
+  width: 100%;
+  background: #ffba4a;
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.loginLogo {
+  padding-bottom: 20px;
+}
+.loginform {
+  width: 100%;
+  max-width: 504px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  .inputbox {
+    display: flex;
+    width: 100%;
+    height: 55px;
+    border-radius: 16px;
+    border: 4px solid #000;
+    text-align: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  .checkbox {
+    display: flex;
+    font-size: 14px;
+    gap: 10px;
+
+    label {
+      user-select: none;
+    }
+    .check {
+      display: none;
+    }
+    .custom-checkbox {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 3px solid #555;
+      background: #fff;
+      border-radius: 0.4rem;
+      margin-right: 5px;
+      vertical-align: middle;
+      position: relative;
+    }
+
+    // 체크되었을 때 스타일
+    .check:checked + .custom-checkbox {
+      background-color: #ff4e4e;
+      border-color: #e02121;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        background-color: #e02121;
+        transform: translate(-50%, -50%);
+        border-radius: 2px;
+      }
+    }
+  }
+  .loginBtn {
+    width: 504px;
+    .login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 55px;
+      background: #000;
+      color: #fff;
+      border-radius: 16px;
+      border: 4px solid #000;
+      text-align: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  }
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.text {
+  display: flex;
+  align-items: center;
+  color: #000;
+  gap: 10px;
+  a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+  }
+  .middle-dot::before {
+    content: '·';
+    line-height: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #121619;
+  }
+}
+.snsBtn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  a {
+    text-decoration: none;
+  }
+}
