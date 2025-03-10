@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         import('./productPageItems.js')
             .then((itemsModule) => {
                 const items = itemsModule.default;
-                import('./productPageSwiper.js')
+                import('./productListSwiper.js')
                     .then((swiperModule) => {
                         initGridWithItems(items, swiperModule.initSwiper);
                     })
