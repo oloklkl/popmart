@@ -16,64 +16,6 @@ footer {
   background-color: lightblue;
 }
 
-body,
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-pre,
-code,
-form,
-fieldset,
-legend,
-textarea,
-p,
-blockquote,
-th,
-td,
-input,
-select,
-button,
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-fieldset,
-img {
-  border: 0 none;
-}
-
-body {
-  position: relative;
-  height: 100vh;
-  -webkit-text-size-adjust: none;
-}
-
-.inner {
-  position: relative;
-  max-width: 1340px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-@media (min-width: 768px) {
-  .inner {
-    padding: 0 24px;
-  }
-}
-
 .content-wrapper {
   display: flex;
   flex-direction: column;
