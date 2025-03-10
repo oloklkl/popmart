@@ -899,4 +899,9 @@ table {
   max-width: 1520px;
   margin: 0 auto;
   padding: 0;
+}
+
+.event_list {
+  display: flex;
+  flex-direction: row;
 }/*# sourceMappingURL=styles.css.map */
