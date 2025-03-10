@@ -1,0 +1,151 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const gridContainer = document.querySelector('.grid-container');
+
+  if (!gridContainer) {
+    console.error('Grid container not found');
+    return;
+  }
+
+  const loadScript = (url, callback) => {
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = url;
+    script.onload = callback;
+    document.head.appendChild(script);
+  };
+
+  const loadModule = async (path) => {
+    try {
+      return await import(path);
+    } catch (err) {
+      console.error(`Error loading module ${path}:`, err);
+      throw err;
+    }
+  };
+
+  const initGrid = async (items, initSwiperFunc) => {
+    console.log('Items data:', items);
+
+    const itemsPerPage = 9;
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+
+    gridContainer.innerHTML = '';
+    gridContainer.classList.add('swiper');
+
+    const paginationDiv = document.createElement('div');
+    paginationDiv.className = 'swiper-pagination';
+
+    const nextButton = document.createElement('div');
+    nextButton.className = 'swiper-button-next';
+
+    const prevButton = document.createElement('div');
+    prevButton.className = 'swiper-button-prev';
+
+    const wrapperDiv = document.createElement('div');
+    wrapperDiv.className = 'grid-wrapper-inner swiper-wrapper';
+
+    for (let page = 0; page < totalPages; page++) {
+      const pageDiv = document.createElement('div');
+      pageDiv.className = 'grid-page swiper-slide';
+
+      const startIndex = page * itemsPerPage;
+      const endIndex = Math.min(startIndex + itemsPerPage, items.length);
+
+      for (let i = startIndex; i < endIndex; i++) {
+        const item = items[i];
+        const gridItem = document.createElement('div');
+        gridItem.className = 'grid-item';
+
+        const imgElement = document.createElement('img');
+        imgElement.src = item.imgSrc;
+        imgElement.alt = item.title;
+        imgElement.onerror = function () {
+          this.onerror = null;
+          this.src = '/images/placeholder.png';
+        };
+
+        const titleElement = document.createElement('h3');
+        titleElement.textContent = item.title;
+
+        const priceElement = document.createElement('p');
+        priceElement.textContent = item.price;
+
+        const detailsDiv = document.createElement('div');
+        detailsDiv.appendChild(titleElement);
+        detailsDiv.appendChild(priceElement);
+
+        gridItem.appendChild(imgElement);
+        gridItem.appendChild(detailsDiv);
+
+        gridItem.addEventListener('mouseenter', handleItemHover);
+        gridItem.addEventListener('mouseleave', handleItemLeave);
+        pageDiv.appendChild(gridItem);
+      }
+      wrapperDiv.appendChild(pageDiv);
+    }
+
+    gridContainer.appendChild(wrapperDiv);
+    gridContainer.appendChild(paginationDiv);
+    gridContainer.appendChild(nextButton);
+    gridContainer.appendChild(prevButton);
+
+    initSwiperFunc();
+  };
+
+  const initializeModules = async (itemsPath, swiperPath) => {
+    try {
+      console.log('코드 실행 중...');
+      const itemsModule = await loadModule(itemsPath);
+      const swiperModule = await loadModule(swiperPath);
+
+      initGrid(itemsModule.default, swiperModule.initSwiper);
+    } catch (error) {
+      console.error('오류 발생:', error);
+    }
+  };
+
+  const isHashRoute = window.location.hash === '#productList';
+
+  if (isHashRoute) {
+    loadScript('/js/productListItems.js', () => {
+      loadScript('/js/productListSwiper.js', () => {
+        initializeModules('/productListItems.js', '/js/productListSwiper.js');
+      });
+    });
+  } else {
+    initializeModules('./productListItems.js', './productListSwiper.js');
+  }
+
+  function handleMouseMove(e) {
+    const circle = document.getElementById('circle');
+    if (circle) {
+      circle.style.left = e.clientX + 'px';
+      circle.style.top = e.clientY + 'px';
+    }
+  }
+
+  function handleItemHover(e) {
+    const circle = document.getElementById('circle');
+    if (circle) {
+      circle.classList.add('hovered');
+      circle.style.opacity = '1';
+    }
+  }
+
+  function handleItemLeave(e) {
+    const circle = document.getElementById('circle');
+    if (circle) {
+      circle.classList.remove('hovered');
+      circle.style.opacity = '0';
+    }
+  }
+
+  document.addEventListener('mousemove', handleMouseMove);
+
+  console.log('DOMContentLoaded event listener executed.');
+});
+
+// a링크 스크립트 위로 튕기는 형상 제거
+$(document).on('click', 'a[href="#"]', function (e) {
+  e.preventDefault();
+});
