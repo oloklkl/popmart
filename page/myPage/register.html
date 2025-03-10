@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/output/styles.css" />
+    <script src="../../js/register.js" defer></script>
     <title>회원가입 페이지</title>
   </head>
   <body>
-    <header>header</header>
     <main>
       <div class="container">
         <div class="registerLogo">
@@ -16,7 +17,7 @@
               alt="로그인" />
           </a>
         </div>
-        <form action="/index.html" method="POST">
+        <form action="../../page/myPage/login.html" method="POST">
           <div class="registerForm">
             <div class="register-title">
               <h2>회원 인증</h2>
@@ -173,6 +174,23 @@
         </form>
       </div>
     </main>
-    <footer>footer</footer>
+    <div id="phoneModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>휴대폰 인증</h2>
+        <label for="phone">휴대폰 번호:</label>
+        <input type="text" id="phone" name="phone" placeholder="휴대폰 번호" />
+        <br /><br />
+        <label for="phone_code">인증 코드:</label>
+        <input
+          type="text"
+          id="phone_code"
+          name="phone_code"
+          placeholder="인증 코드" />
+        <br /><br />
+        <button id="send_code" type="button">인증 코드 발송</button>
+        <button id="verify_code" type="button">인증 코드 확인</button>
+      </div>
+    </div>
   </body>
 </html>

@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/output/styles.css" />
+    <script src="/js/login.js"></script>
     <title>로그인 페이지</title>
   </head>
   <body>
-    <!-- <header>header</header> -->
     <main>
       <div class="container">
         <div class="loginLogo">
@@ -16,18 +17,23 @@
               alt="로그인" />
           </a>
         </div>
-        <form action="/index.html" method="POST">
+        <form
+          onsubmit="return validateLoginForm(event)"
+          action="/index.html"
+          method="POST">
           <div class="loginform">
             <input
               class="inputbox"
               type="text"
               id="userId"
               placeholder="아이디" />
+            <span class="error-message" id="userIdError"></span>
             <input
               class="inputbox"
               type="password"
               id="password"
               placeholder="비밀번호" />
+            <span class="error-message" id="passwordError"></span>
 
             <div class="checkbox">
               <label>
@@ -74,6 +80,5 @@
         </div>
       </div>
     </main>
-    <!-- <footer>footer</footer> -->
   </body>
 </html>
