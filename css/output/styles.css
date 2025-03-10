@@ -1,3 +1,357 @@
+@charset "UTF-8";
 body {
   background-color: #f5f5f5;
 }
+
+header {
+  background: #ff6f61;
+  height: 3rem;
+}
+
+main {
+  width: 100%;
+  background: #ffba4a;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.loginLogo {
+  padding-bottom: 20px;
+}
+
+.loginform {
+  width: 100%;
+  max-width: 504px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.loginform .inputbox {
+  display: flex;
+  width: 100%;
+  height: 55px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.loginform .checkbox {
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+}
+.loginform .checkbox label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.loginform .checkbox .check {
+  display: none;
+}
+.loginform .checkbox .custom-checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #555;
+  background: #fff;
+  border-radius: 0.4rem;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+}
+.loginform .checkbox .check:checked + .custom-checkbox {
+  background-color: #ff4e4e;
+  border-color: #e02121;
+}
+.loginform .checkbox .check:checked + .custom-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #e02121;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+}
+.loginform .loginBtn {
+  width: 504px;
+}
+.loginform .loginBtn .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  background: #000;
+  color: #fff;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.login-options .text {
+  display: flex;
+  align-items: center;
+  color: #000;
+  gap: 10px;
+}
+.login-options .text a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #000;
+}
+.login-options .text .middle-dot::before {
+  content: "·";
+  line-height: 25px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #121619;
+}
+.login-options .snsBtn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.login-options .snsBtn a {
+  text-decoration: none;
+}
+
+.registerLogo {
+  padding-bottom: 20px;
+}
+
+.registerForm {
+  width: 100%;
+  max-width: 504px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.registerForm .register-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 504px;
+  height: 55px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  background-color: #dde1e6;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.registerForm .register-title h2 {
+  font-size: 21px;
+  text-align: center;
+}
+.registerForm .check-group {
+  display: flex;
+  gap: 41px;
+}
+.registerForm .check-group .radioCon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.registerForm .check-group .radioCon .radioBox {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+.registerForm .check-group label {
+  display: flex;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: 14px;
+}
+.registerForm .line {
+  display: block;
+}
+.registerForm .line::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  display: block;
+}
+.registerForm .inputbox {
+  position: relative;
+}
+.registerForm .inputbox .inputShort {
+  display: flex;
+  width: 60%;
+  height: 55px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.registerForm .inputbox .input {
+  display: flex;
+  width: 100%;
+  height: 55px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.registerForm .inputbox .btnShort {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.registerForm .birth-container {
+  display: flex;
+  gap: 30px;
+}
+.registerForm .birth-container .birthTit {
+  font-weight: bold;
+  font-size: 20px;
+}
+.registerForm .birth-container .birth-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.registerForm .birth-container .birth-selection .calendar-type {
+  display: flex;
+  gap: 30px;
+}
+.registerForm .birth-container .birth-selection .calendar-type label {
+  font-size: 14px;
+}
+.registerForm .year {
+  width: 80px;
+}
+.registerForm .month,
+.registerForm .day {
+  width: 55px;
+}
+.registerForm .date-inputs {
+  height: 55px;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 16px;
+}
+.registerForm span {
+  text-align: center;
+}
+.registerForm p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  height: auto;
+}
+.registerForm .signupBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 100%;
+  height: 55px;
+  background: #000;
+  color: #fff;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: center;
+  font-size: 18px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 10px 0;
+  width: 504px;
+  height: 55px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  background-color: #dde1e6;
+  text-align: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.section-title h2 {
+  font-size: 21px;
+  text-align: center;
+}
+
+.authBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.radio {
+  display: none;
+}
+
+.checkMark {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #555;
+  background: #fff;
+  border-radius: 0.4rem;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+}
+
+input:checked + .checkMark {
+  background-color: #ff4e4e;
+  border-color: #e02121;
+}
+input:checked + .checkMark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #e02121;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+}/*# sourceMappingURL=styles.css.map */
