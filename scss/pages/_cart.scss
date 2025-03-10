@@ -1,0 +1,336 @@
+// Cart Styles
+// 장바구니 스타일 파일
+
+// Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+// Variables
+$primary-color: #ff6b6b;
+$text-color: #333;
+$border-color: #eee;
+$light-gray: #f9f9f9;
+$gray: #888;
+
+// Breakpoints
+$tablet-width: 1024px;
+$mobile-width: 390px;
+
+// Header
+.header {
+    width: 100%;
+    height: 145px;
+    background-color: $primary-color;
+}
+
+// Container
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+// Cart title
+.cart-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 40px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .select-all {
+        display: flex;
+        align-items: center;
+    }
+}
+
+// 체크박스 공통 스타일
+.checkbox-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-svg {
+    transition: all 0.2s ease;
+}
+
+// 체크박스 상태별 SVG 표시
+.checked-svg,
+.unchecked-svg {
+    transition: all 0.2s ease;
+}
+
+// 체크박스 컨테이너 스타일
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .checkbox-label {
+        margin-right: 10px;
+
+        .checkbox-svg {
+            margin-right: 8px;
+        }
+    }
+
+    // 기존 체크박스 스타일은 사용하지 않음
+    .checkbox {
+        display: none;
+    }
+}
+
+// Cart items
+.cart-items {
+    width: 100%;
+}
+
+.cart-item {
+    display: flex;
+    padding: 20px;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+
+    .item-checkbox {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        position: relative;
+    }
+
+    .item-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-right: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .item-info {
+        flex: 1;
+
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .item-category {
+            color: $gray;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .item-price {
+            font-weight: bold;
+        }
+    }
+
+    .item-quantity {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 20px;
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            border: 1px solid #ddd;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .confirm-btn {
+            width: 40px;
+            height: 30px;
+            background: $text-color;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    }
+
+    .item-total {
+        text-align: right;
+        font-weight: bold;
+        margin-left: 20px;
+        align-self: center;
+    }
+}
+
+// Action buttons
+.action-buttons {
+    display: flex;
+    margin-left: auto;
+
+    .action-btn {
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        background: #f5f5f5;
+        margin-left: 5px;
+        cursor: pointer;
+
+        &.delete {
+            background-color: $primary-color;
+            color: white;
+            border: none;
+        }
+    }
+}
+
+// Selected items
+.selected-items {
+    display: flex;
+    margin: 20px 0;
+    padding: 10px;
+    background: $light-gray;
+    border-radius: 5px;
+
+    .selected-item {
+        margin-right: 10px;
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+    }
+
+    .selected-count {
+        margin-left: auto;
+        align-self: center;
+    }
+}
+
+// Order summary
+.order-summary {
+    background: $light-gray;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid $border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: $text-color;
+        }
+
+        .summary-value {
+            font-weight: bold;
+        }
+    }
+
+    .summary-total {
+        font-size: 20px;
+        color: $text-color;
+    }
+
+    .summary-total-value {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+// Responsive design
+@media (max-width: $tablet-width) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+
+        .item-quantity {
+            margin-left: 0;
+            margin-top: 15px;
+        }
+
+        .item-total {
+            width: 100%;
+            text-align: right;
+            margin-top: 15px;
+        }
+    }
+}
+
+@media (max-width: $mobile-width) {
+    .cart-title {
+        font-size: 24px;
+    }
+
+    .cart-item {
+        .item-image {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .action-buttons {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 15px;
+    }
+
+    .selected-items {
+        flex-wrap: wrap;
+    }
+
+    .order-summary {
+        .summary-row {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .summary-value {
+                margin-top: 5px;
+                align-self: flex-end;
+            }
+        }
+    }
+}

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>장바구니</title>
+        <link rel="stylesheet" href="/css/styles.css" />
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header"></div>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Cart Title -->
+            <div class="cart-title">
+                <span>CART</span>
+                <div class="select-all">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="select-all" class="checkbox-input" />
+                        <label for="select-all" class="checkbox-label">
+                            <!-- 체크된 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg checked-svg"
+                            >
+                                <rect
+                                    class="checkbox-outer"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    fill="#FF4E4E"
+                                    fill-opacity="0.65"
+                                />
+                                <rect
+                                    class="checkbox-border"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#E02121"
+                                    stroke-width="3"
+                                />
+                                <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
+                            </svg>
+                            <!-- 미체크 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg unchecked-svg"
+                            >
+                                <rect
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#4D5053"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                            <span id="select-all-text">전체선택</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <!-- Item 1 -->
+                <div class="cart-item">
+                    <div class="item-checkbox">
+                        <input type="checkbox" id="checkbox1" class="checkbox-input item-checkbox-input" checked />
+                        <label for="checkbox1" class="checkbox-label">
+                            <!-- 체크된 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg checked-svg"
+                            >
+                                <rect
+                                    class="checkbox-outer"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    fill="#FF4E4E"
+                                    fill-opacity="0.65"
+                                />
+                                <rect
+                                    class="checkbox-border"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#E02121"
+                                    stroke-width="3"
+                                />
+                                <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
+                            </svg>
+                            <!-- 미체크 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg unchecked-svg"
+                            >
+                                <rect
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#4D5053"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="item-image">
+                        <img src="https://via.placeholder.com/80" alt="퍼플 핑크 타입세서 시리즈" />
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">퍼플 핑크 타입세서 시리즈</div>
+                        <div class="item-category">배송: [무료] / 기본배송</div>
+                        <div class="item-price">15,000 원</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="1" class="quantity-input" />
+                        <button class="quantity-btn">+</button>
+                        <button class="confirm-btn">변경</button>
+                    </div>
+                    <div class="item-total">합계: 15,000 원</div>
+                    <div class="action-buttons">
+                        <button class="action-btn">삭제하기</button>
+                        <button class="action-btn delete">주문하기</button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="cart-item">
+                    <div class="item-checkbox">
+                        <input type="checkbox" id="checkbox2" class="checkbox-input item-checkbox-input" checked />
+                        <label for="checkbox2" class="checkbox-label">
+                            <!-- 체크된 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg checked-svg"
+                            >
+                                <rect
+                                    class="checkbox-outer"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    fill="#FF4E4E"
+                                    fill-opacity="0.65"
+                                />
+                                <rect
+                                    class="checkbox-border"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#E02121"
+                                    stroke-width="3"
+                                />
+                                <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
+                            </svg>
+                            <!-- 미체크 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg unchecked-svg"
+                            >
+                                <rect
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#4D5053"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="item-image">
+                        <img src="https://via.placeholder.com/80" alt="지지 경계선 위의 우리 시리즈" />
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">지지 경계선 위의 우리 시리즈</div>
+                        <div class="item-category">배송: [무료] / 기본배송</div>
+                        <div class="item-price">15,000 원</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="1" class="quantity-input" />
+                        <button class="quantity-btn">+</button>
+                        <button class="confirm-btn">변경</button>
+                    </div>
+                    <div class="item-total">합계: 15,000 원</div>
+                    <div class="action-buttons">
+                        <button class="action-btn">삭제하기</button>
+                        <button class="action-btn delete">주문하기</button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="cart-item">
+                    <div class="item-checkbox">
+                        <input type="checkbox" id="checkbox3" class="checkbox-input item-checkbox-input" checked />
+                        <label for="checkbox3" class="checkbox-label">
+                            <!-- 체크된 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg checked-svg"
+                            >
+                                <rect
+                                    class="checkbox-outer"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    fill="#FF4E4E"
+                                    fill-opacity="0.65"
+                                />
+                                <rect
+                                    class="checkbox-border"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#E02121"
+                                    stroke-width="3"
+                                />
+                                <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
+                            </svg>
+                            <!-- 미체크 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg unchecked-svg"
+                            >
+                                <rect
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#4D5053"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="item-image">
+                        <img src="https://via.placeholder.com/80" alt="바비 스타일 아이콘 시리즈" />
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">바비 스타일 아이콘 시리즈</div>
+                        <div class="item-category">배송: [무료] / 기본배송</div>
+                        <div class="item-price">15,000 원</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="2" class="quantity-input" />
+                        <button class="quantity-btn">+</button>
+                        <button class="confirm-btn">변경</button>
+                    </div>
+                    <div class="item-total">합계: 30,000 원</div>
+                    <div class="action-buttons">
+                        <button class="action-btn">삭제하기</button>
+                        <button class="action-btn delete">주문하기</button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="cart-item">
+                    <div class="item-checkbox">
+                        <input type="checkbox" id="checkbox4" class="checkbox-input item-checkbox-input" />
+                        <label for="checkbox4" class="checkbox-label">
+                            <!-- 체크된 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg checked-svg"
+                            >
+                                <rect
+                                    class="checkbox-outer"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    fill="#FF4E4E"
+                                    fill-opacity="0.65"
+                                />
+                                <rect
+                                    class="checkbox-border"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#E02121"
+                                    stroke-width="3"
+                                />
+                                <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
+                            </svg>
+                            <!-- 미체크 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg unchecked-svg"
+                            >
+                                <rect
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#4D5053"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="item-image">
+                        <img src="https://via.placeholder.com/80" alt="귀염의 칼날 탄생화 시리즈" />
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">귀염의 칼날 탄생화 시리즈</div>
+                        <div class="item-category">배송: [무료] / 기본배송</div>
+                        <div class="item-price">15,000 원</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="1" class="quantity-input" />
+                        <button class="quantity-btn">+</button>
+                        <button class="confirm-btn">변경</button>
+                    </div>
+                    <div class="item-total">합계: 15,000 원</div>
+                    <div class="action-buttons">
+                        <button class="action-btn">삭제하기</button>
+                        <button class="action-btn delete">주문하기</button>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="cart-item">
+                    <div class="item-checkbox">
+                        <input type="checkbox" id="checkbox5" class="checkbox-input item-checkbox-input" checked />
+                        <label for="checkbox5" class="checkbox-label">
+                            <!-- 체크된 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg checked-svg"
+                            >
+                                <rect
+                                    class="checkbox-outer"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    fill="#FF4E4E"
+                                    fill-opacity="0.65"
+                                />
+                                <rect
+                                    class="checkbox-border"
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#E02121"
+                                    stroke-width="3"
+                                />
+                                <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
+                            </svg>
+                            <!-- 미체크 상태 SVG -->
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 31 31"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="checkbox-svg unchecked-svg"
+                            >
+                                <rect
+                                    x="1.5"
+                                    y="1.5"
+                                    width="28"
+                                    height="28"
+                                    rx="5.5"
+                                    stroke="#4D5053"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="item-image">
+                        <img src="https://via.placeholder.com/80" alt="레인보우 블록 컬렉션" />
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">레인보우 블록 컬렉션</div>
+                        <div class="item-category">배송: [무료] / 기본배송</div>
+                        <div class="item-price">18,000 원</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="1" class="quantity-input" />
+                        <button class="quantity-btn">+</button>
+                        <button class="confirm-btn">변경</button>
+                    </div>
+                    <div class="item-total">합계: 18,000 원</div>
+                    <div class="action-buttons">
+                        <button class="action-btn">삭제하기</button>
+                        <button class="action-btn delete">주문하기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected Items -->
+            <div class="selected-items">
+                <div class="selected-count">
+                    3 개 상품이 선택 되었습니다.
+                    <div class="action-buttons">
+                        <button class="action-btn">선택상품 주문</button>
+                        <button class="action-btn delete">전체상품 주문</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span class="summary-label">결제 예정금액</span>
+                    <span class="summary-value">78,000 원</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">총 상품금액</span>
+                    <span class="summary-value">78,000 원</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">총 배송비</span>
+                    <span class="summary-value">0 원</span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 체크박스 상태에 따라 SVG 표시 업데이트
+            function updateCheckboxVisibility() {
+                var checkboxes = document.querySelectorAll('.checkbox-input');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    var checkbox = checkboxes[i];
+                    var checkedSvg = checkbox.nextElementSibling.querySelector('.checked-svg');
+                    var uncheckedSvg = checkbox.nextElementSibling.querySelector('.unchecked-svg');
+
+                    if (checkbox.checked) {
+                        checkedSvg.style.display = 'block';
+                        uncheckedSvg.style.display = 'none';
+                    } else {
+                        checkedSvg.style.display = 'none';
+                        uncheckedSvg.style.display = 'block';
+                    }
+                }
+            }
+
+            // 가격 형식화 함수 (숫자를 "15,000 원" 형식으로 변환)
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' 원';
+            }
+
+            // 숫자만 추출하는 함수 ("15,000 원" 형식에서 15000 숫자 추출)
+            function extractPrice(priceStr) {
+                return parseInt(priceStr.replace(/[^\d]/g, ''));
+            }
+
+            // 총 가격 계산 및 업데이트
+            function updateTotalPrice() {
+                var selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
+                var totalPrice = 0;
+
+                for (var i = 0; i < selectedCheckboxes.length; i++) {
+                    var cartItem = selectedCheckboxes[i].closest('.cart-item');
+                    var itemTotal = cartItem.querySelector('.item-total').textContent;
+                    totalPrice += extractPrice(itemTotal);
+                }
+
+                // 결제 예정금액 업데이트
+                document.querySelector('.summary-row:first-child .summary-value').textContent = formatPrice(totalPrice);
+
+                // 총 상품금액 업데이트
+                document.querySelector('.summary-row:nth-child(2) .summary-value').textContent =
+                    formatPrice(totalPrice);
+            }
+
+            // 상품 삭제 함수
+            function removeCartItem(button) {
+                var cartItem = button.closest('.cart-item');
+                cartItem.parentNode.removeChild(cartItem);
+                updateTotalCount();
+                updateTotalPrice();
+            }
+
+            // 선택한 상품 개수 업데이트
+            function updateTotalCount() {
+                var selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
+                var countElement = document.querySelector('.selected-count');
+
+                // 선택된 상품 개수 텍스트 업데이트
+                var countText = selectedCheckboxes.length + ' 개 상품이 선택 되었습니다.';
+
+                // 선택된 상품들의 작은 이미지 업데이트
+                var selectedItemsContainer = document.querySelector('.selected-items');
+                var existingItems = selectedItemsContainer.querySelectorAll('.selected-item');
+
+                // 기존 selected-item 제거
+                for (var i = existingItems.length - 1; i >= 0; i--) {
+                    selectedItemsContainer.removeChild(existingItems[i]);
+                }
+
+                // 선택된 상품 개수 요소 보존
+                var selectedCountElement = selectedItemsContainer.querySelector('.selected-count');
+
+                // 새로운 selected-item 추가
+                for (var i = 0; i < selectedCheckboxes.length; i++) {
+                    var cartItem = selectedCheckboxes[i].closest('.cart-item');
+                    var imgSrc = cartItem.querySelector('.item-image img').src;
+                    var imgAlt = cartItem.querySelector('.item-image img').alt;
+
+                    var selectedItem = document.createElement('div');
+                    selectedItem.className = 'selected-item';
+
+                    var img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = imgAlt;
+
+                    selectedItem.appendChild(img);
+                    selectedItemsContainer.insertBefore(selectedItem, selectedCountElement);
+                }
+
+                // 텍스트와 버튼 업데이트
+                var htmlContent = countText;
+                htmlContent += '<div class="action-buttons">';
+                htmlContent += '<button class="action-btn">선택상품 주문</button>';
+                htmlContent += '<button class="action-btn delete">전체상품 주문</button>';
+                htmlContent += '</div>';
+
+                selectedCountElement.innerHTML = htmlContent;
+            }
+
+            // 페이지 로드 시 체크박스 상태에 따른 SVG 표시
+            window.onload = function () {
+                // 초기 SVG 표시 업데이트
+                updateCheckboxVisibility();
+
+                // 초기 선택된 상품 개수 업데이트
+                updateTotalCount();
+
+                // 초기 가격 업데이트
+                updateTotalPrice();
+
+                // 체크박스 변경 이벤트 리스너
+                var checkboxes = document.querySelectorAll('.checkbox-input');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].onchange = function () {
+                        updateCheckboxVisibility();
+                        updateTotalCount();
+                        updateTotalPrice();
+
+                        // 모든 상품 체크박스가 체크되었는지 확인
+                        var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
+                        var allChecked = true;
+                        for (var j = 0; j < itemCheckboxes.length; j++) {
+                            if (!itemCheckboxes[j].checked) {
+                                allChecked = false;
+                                break;
+                            }
+                        }
+
+                        // 전체선택 체크박스 상태 업데이트
+                        var selectAllCheckbox = document.getElementById('select-all');
+                        if (this !== selectAllCheckbox) {
+                            selectAllCheckbox.checked = allChecked;
+                        }
+
+                        // 전체선택 텍스트 업데이트
+                        var selectAllText = document.getElementById('select-all-text');
+                        if (selectAllCheckbox.checked) {
+                            selectAllText.textContent = '전체 선택 삭제';
+                        } else {
+                            selectAllText.textContent = '전체선택';
+                        }
+                    };
+                }
+
+                // 전체선택 체크박스 기능
+                var selectAllCheckbox = document.getElementById('select-all');
+                selectAllCheckbox.onchange = function () {
+                    var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
+                    for (var i = 0; i < itemCheckboxes.length; i++) {
+                        itemCheckboxes[i].checked = this.checked;
+                    }
+
+                    // 전체선택 텍스트 업데이트
+                    var selectAllText = document.getElementById('select-all-text');
+                    if (this.checked) {
+                        selectAllText.textContent = '전체 선택 삭제';
+                    } else {
+                        selectAllText.textContent = '전체선택';
+                    }
+
+                    updateCheckboxVisibility();
+                    updateTotalCount();
+                    updateTotalPrice();
+                };
+
+                // 삭제하기 버튼 이벤트 리스너
+                var deleteButtons = document.querySelectorAll('.action-btn:not(.delete)');
+                for (var i = 0; i < deleteButtons.length; i++) {
+                    if (deleteButtons[i].textContent === '삭제하기') {
+                        deleteButtons[i].onclick = function () {
+                            removeCartItem(this);
+                        };
+                    }
+                }
+
+                // 수량 버튼 이벤트 리스너
+                var quantityBtns = document.querySelectorAll('.quantity-btn');
+                for (var i = 0; i < quantityBtns.length; i++) {
+                    quantityBtns[i].onclick = function () {
+                        var input = this.parentNode.querySelector('.quantity-input');
+                        var currentValue = parseInt(input.value);
+
+                        if (this.textContent === '+') {
+                            input.value = currentValue + 1;
+                        } else if (this.textContent === '-' && currentValue > 1) {
+                            input.value = currentValue - 1;
+                        }
+                    };
+                }
+
+                // 변경 버튼 이벤트 리스너
+                var confirmBtns = document.querySelectorAll('.confirm-btn');
+                for (var i = 0; i < confirmBtns.length; i++) {
+                    confirmBtns[i].onclick = function () {
+                        var cartItem = this.closest('.cart-item');
+                        var quantity = parseInt(cartItem.querySelector('.quantity-input').value);
+                        var unitPrice = extractPrice(cartItem.querySelector('.item-price').textContent);
+                        var totalPrice = unitPrice * quantity;
+
+                        cartItem.querySelector('.item-total').textContent = formatPrice(totalPrice);
+                        updateTotalPrice();
+                    };
+                }
+            };
+        </script>
+    </body>
+</html>
