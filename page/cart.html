@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>장바구니</title>
-        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/output/styles.css" />
     </head>
     <body>
         <!-- Header -->
@@ -16,6 +16,7 @@
             <div class="cart-title">
                 <span>CART</span>
                 <div class="select-all">
+                    <!-- 전체선택 체크박스 부분만 수정 -->
                     <div class="checkbox-wrapper">
                         <input type="checkbox" id="select-all" class="checkbox-input" />
                         <label for="select-all" class="checkbox-label">
@@ -50,7 +51,7 @@
                                 />
                                 <rect class="checkbox-inner" x="7" y="7" width="17" height="17" rx="4" fill="#E02121" />
                             </svg>
-                            <!-- 미체크 상태 SVG -->
+                            <!-- 미체크 상태 SVG - 변경됨 -->
                             <svg
                                 width="20"
                                 height="20"
@@ -65,7 +66,7 @@
                                     width="28"
                                     height="28"
                                     rx="5.5"
-                                    stroke="#4D5053"
+                                    stroke="#E02121"
                                     stroke-width="3"
                                 />
                             </svg>
@@ -143,15 +144,15 @@
                         <div class="item-price">15,000 원</div>
                     </div>
                     <div class="item-quantity">
-                        <button class="quantity-btn">-</button>
+                        <button type="button" class="quantity-btn">-</button>
                         <input type="text" value="1" class="quantity-input" />
-                        <button class="quantity-btn">+</button>
-                        <button class="confirm-btn">변경</button>
+                        <button type="button" class="quantity-btn">+</button>
+                        <button type="button" class="confirm-btn">변경</button>
                     </div>
                     <div class="item-total">합계: 15,000 원</div>
                     <div class="action-buttons">
-                        <button class="action-btn">삭제하기</button>
-                        <button class="action-btn delete">주문하기</button>
+                        <button type="button" class="action-btn">삭제하기</button>
+                        <button type="button" class="action-btn delete">주문하기</button>
                     </div>
                 </div>
 
@@ -221,15 +222,15 @@
                         <div class="item-price">15,000 원</div>
                     </div>
                     <div class="item-quantity">
-                        <button class="quantity-btn">-</button>
+                        <button type="button" class="quantity-btn">-</button>
                         <input type="text" value="1" class="quantity-input" />
-                        <button class="quantity-btn">+</button>
-                        <button class="confirm-btn">변경</button>
+                        <button type="button" class="quantity-btn">+</button>
+                        <button type="button" class="confirm-btn">변경</button>
                     </div>
                     <div class="item-total">합계: 15,000 원</div>
                     <div class="action-buttons">
-                        <button class="action-btn">삭제하기</button>
-                        <button class="action-btn delete">주문하기</button>
+                        <button type="button" class="action-btn">삭제하기</button>
+                        <button type="button" class="action-btn delete">주문하기</button>
                     </div>
                 </div>
 
@@ -299,15 +300,15 @@
                         <div class="item-price">15,000 원</div>
                     </div>
                     <div class="item-quantity">
-                        <button class="quantity-btn">-</button>
-                        <input type="text" value="2" class="quantity-input" />
-                        <button class="quantity-btn">+</button>
-                        <button class="confirm-btn">변경</button>
+                        <button type="button" class="quantity-btn">-</button>
+                        <input type="text" value="1" class="quantity-input" />
+                        <button type="button" class="quantity-btn">+</button>
+                        <button type="button" class="confirm-btn">변경</button>
                     </div>
                     <div class="item-total">합계: 30,000 원</div>
                     <div class="action-buttons">
-                        <button class="action-btn">삭제하기</button>
-                        <button class="action-btn delete">주문하기</button>
+                        <button type="button" class="action-btn">삭제하기</button>
+                        <button type="button" class="action-btn delete">주문하기</button>
                     </div>
                 </div>
 
@@ -377,15 +378,15 @@
                         <div class="item-price">15,000 원</div>
                     </div>
                     <div class="item-quantity">
-                        <button class="quantity-btn">-</button>
+                        <button type="button" class="quantity-btn">-</button>
                         <input type="text" value="1" class="quantity-input" />
-                        <button class="quantity-btn">+</button>
-                        <button class="confirm-btn">변경</button>
+                        <button type="button" class="quantity-btn">+</button>
+                        <button type="button" class="confirm-btn">변경</button>
                     </div>
                     <div class="item-total">합계: 15,000 원</div>
                     <div class="action-buttons">
-                        <button class="action-btn">삭제하기</button>
-                        <button class="action-btn delete">주문하기</button>
+                        <button type="button" class="action-btn">삭제하기</button>
+                        <button type="button" class="action-btn delete">주문하기</button>
                     </div>
                 </div>
 
@@ -455,15 +456,15 @@
                         <div class="item-price">18,000 원</div>
                     </div>
                     <div class="item-quantity">
-                        <button class="quantity-btn">-</button>
+                        <button type="button" class="quantity-btn">-</button>
                         <input type="text" value="1" class="quantity-input" />
-                        <button class="quantity-btn">+</button>
-                        <button class="confirm-btn">변경</button>
+                        <button type="button" class="quantity-btn">+</button>
+                        <button type="button" class="confirm-btn">변경</button>
                     </div>
                     <div class="item-total">합계: 18,000 원</div>
                     <div class="action-buttons">
-                        <button class="action-btn">삭제하기</button>
-                        <button class="action-btn delete">주문하기</button>
+                        <button type="button" class="action-btn">삭제하기</button>
+                        <button type="button" class="action-btn delete">주문하기</button>
                     </div>
                 </div>
             </div>
@@ -473,8 +474,8 @@
                 <div class="selected-count">
                     3 개 상품이 선택 되었습니다.
                     <div class="action-buttons">
-                        <button class="action-btn">선택상품 주문</button>
-                        <button class="action-btn delete">전체상품 주문</button>
+                        <button type="button" class="action-btn">선택상품 주문</button>
+                        <button type="button" class="action-btn delete">전체상품 주문</button>
                     </div>
                 </div>
             </div>
@@ -495,15 +496,314 @@
                 </div>
             </div>
         </div>
-
         <script>
-            // 체크박스 상태에 따라 SVG 표시 업데이트
+            // 페이지가 완전히 로드된 후 실행
+            window.onload = function () {
+                // 수량 입력 필드 참조
+                var quantityInputs = document.querySelectorAll('.quantity-input');
+
+                // 바비 스타일 아이콘 수량 변경 및 초기 합계 계산
+                var cartItems = document.querySelectorAll('.cart-item');
+                for (var i = 0; i < cartItems.length; i++) {
+                    var itemName = cartItems[i].querySelector('.item-name');
+                    if (itemName && itemName.textContent.includes('바비 스타일 아이콘')) {
+                        var quantityInput = cartItems[i].querySelector('.quantity-input');
+                        if (quantityInput && quantityInput.value === '2') {
+                            quantityInput.value = '1';
+                        }
+                    }
+
+                    // 모든 상품 합계 계산
+                    calculateItemTotal(cartItems[i]);
+                }
+
+                // 초기 총 가격 및 선택된 상품 업데이트
+                updateTotalPrice();
+                updateCheckboxStatus();
+                updateSelectedItems();
+
+                // 체크박스 이벤트 설정
+                setupCheckboxes();
+
+                // 수량 버튼 이벤트 설정
+                setupQuantityButtons();
+
+                // 변경 버튼 이벤트 설정
+                setupConfirmButtons();
+
+                // 수량 입력 필드 이벤트 설정
+                setupQuantityInputs();
+
+                // 삭제 버튼 이벤트 설정
+                setupDeleteButtons();
+            };
+
+            // 체크박스 설정
+            function setupCheckboxes() {
+                // 개별 체크박스
+                var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
+                for (var i = 0; i < itemCheckboxes.length; i++) {
+                    itemCheckboxes[i].addEventListener('change', function () {
+                        updateCheckboxStatus();
+                        updateSelectedItems();
+                        updateTotalPrice();
+                    });
+                }
+
+                // 전체 선택 체크박스
+                var selectAllCheckbox = document.getElementById('select-all');
+                if (selectAllCheckbox) {
+                    selectAllCheckbox.addEventListener('change', function () {
+                        var isChecked = this.checked;
+
+                        // 모든 상품 체크박스에 적용
+                        var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
+                        for (var i = 0; i < itemCheckboxes.length; i++) {
+                            itemCheckboxes[i].checked = isChecked;
+                        }
+
+                        // 전체선택 텍스트 업데이트
+                        var selectAllText = document.getElementById('select-all-text');
+                        if (selectAllText) {
+                            selectAllText.textContent = isChecked ? '전체 선택 삭제' : '전체선택';
+                        }
+
+                        // 체크박스 SVG 상태, 선택된 상품, 가격 업데이트
+                        updateCheckboxVisibility();
+                        updateSelectedItems();
+                        updateTotalPrice();
+                    });
+                }
+            }
+
+            // 수량 버튼 설정
+            function setupQuantityButtons() {
+                var quantityBtns = document.querySelectorAll('.quantity-btn');
+
+                for (var i = 0; i < quantityBtns.length; i++) {
+                    quantityBtns[i].onclick = function (e) {
+                        if (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+
+                        // 플러스/마이너스 버튼 판별
+                        var isPlus = this.textContent === '+';
+                        var input = isPlus ? this.previousElementSibling : this.nextElementSibling;
+
+                        if (!input) return false;
+
+                        // 수량 변경
+                        var currentValue = parseInt(input.value) || 1;
+                        if (isPlus) {
+                            input.value = currentValue + 1;
+                        } else if (currentValue > 1) {
+                            input.value = currentValue - 1;
+                        }
+
+                        // 상품 합계 및 총액 업데이트
+                        var cartItem = this.closest('.cart-item');
+                        if (cartItem) {
+                            calculateItemTotal(cartItem);
+                            updateTotalPrice();
+                            // 선택된 상품 목록도 업데이트
+                            updateSelectedItems();
+                        }
+
+                        return false;
+                    };
+                }
+            }
+
+            // 변경 버튼 설정
+            function setupConfirmButtons() {
+                var confirmBtns = document.querySelectorAll('.confirm-btn');
+
+                for (var i = 0; i < confirmBtns.length; i++) {
+                    confirmBtns[i].onclick = function (e) {
+                        if (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+
+                        var cartItem = this.closest('.cart-item');
+                        if (cartItem) {
+                            calculateItemTotal(cartItem);
+                            updateTotalPrice();
+                            updateSelectedItems();
+                        }
+
+                        return false;
+                    };
+                }
+            }
+
+            // 수량 입력 필드 설정
+            function setupQuantityInputs() {
+                var quantityInputs = document.querySelectorAll('.quantity-input');
+
+                for (var i = 0; i < quantityInputs.length; i++) {
+                    // 값 변경 이벤트
+                    quantityInputs[i].onchange = function () {
+                        var value = parseInt(this.value) || 1;
+                        if (value < 1) value = 1;
+                        this.value = value;
+
+                        var cartItem = this.closest('.cart-item');
+                        if (cartItem) {
+                            calculateItemTotal(cartItem);
+                            updateTotalPrice();
+                            updateSelectedItems();
+                        }
+                    };
+
+                    // 엔터 키 처리
+                    quantityInputs[i].onkeydown = function (e) {
+                        if (e && e.key === 'Enter') {
+                            e.preventDefault();
+                            this.blur();
+                            return false;
+                        }
+                    };
+                }
+            }
+
+            // 삭제 버튼 설정
+            function setupDeleteButtons() {
+                var deleteButtons = document.querySelectorAll('.action-btn');
+
+                for (var i = 0; i < deleteButtons.length; i++) {
+                    if (deleteButtons[i].textContent === '삭제하기') {
+                        deleteButtons[i].onclick = function (e) {
+                            if (e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }
+
+                            var cartItem = this.closest('.cart-item');
+                            if (cartItem && cartItem.parentNode) {
+                                cartItem.parentNode.removeChild(cartItem);
+                                updateSelectedItems();
+                                updateTotalPrice();
+                                updateCheckboxStatus();
+                            }
+
+                            return false;
+                        };
+                    }
+                }
+            }
+
+            // 개별 상품 합계 계산
+            function calculateItemTotal(cartItem) {
+                if (!cartItem) return 0;
+
+                var quantityInput = cartItem.querySelector('.quantity-input');
+                var priceElement = cartItem.querySelector('.item-price');
+                var totalElement = cartItem.querySelector('.item-total');
+
+                if (!quantityInput || !priceElement || !totalElement) return 0;
+
+                var quantity = parseInt(quantityInput.value) || 1;
+                var unitPrice = extractNumbers(priceElement.textContent);
+                var total = quantity * unitPrice;
+
+                totalElement.textContent = '합계: ' + formatPrice(total);
+
+                return total;
+            }
+
+            // 총 가격 계산 및 업데이트
+            function updateTotalPrice() {
+                var selectedItems = document.querySelectorAll('.item-checkbox-input:checked');
+                var totalPrice = 0;
+
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var cartItem = selectedItems[i].closest('.cart-item');
+                    if (cartItem) {
+                        var totalElement = cartItem.querySelector('.item-total');
+                        if (totalElement) {
+                            totalPrice += extractNumbers(totalElement.textContent);
+                        }
+                    }
+                }
+
+                // 결제 예정금액 업데이트
+                var summaryElements = document.querySelectorAll('.summary-row .summary-value');
+                if (summaryElements.length >= 2) {
+                    summaryElements[0].textContent = formatPrice(totalPrice);
+                    summaryElements[1].textContent = formatPrice(totalPrice);
+                }
+            }
+
+            // 체크박스 상태 업데이트
+            function updateCheckboxStatus() {
+                // 체크박스 SVG 상태 업데이트
+                updateCheckboxVisibility();
+
+                // 전체선택 체크박스 상태 업데이트
+                var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
+                var selectAllCheckbox = document.getElementById('select-all');
+                var selectAllText = document.getElementById('select-all-text');
+
+                if (!selectAllCheckbox || !selectAllText || itemCheckboxes.length === 0) return;
+
+                var allChecked = true;
+                var anyChecked = false;
+
+                for (var i = 0; i < itemCheckboxes.length; i++) {
+                    if (!itemCheckboxes[i].checked) {
+                        allChecked = false;
+                    } else {
+                        anyChecked = true;
+                    }
+                }
+
+                // 체크박스가 없는 경우도 처리
+                if (itemCheckboxes.length === 0) {
+                    allChecked = false;
+                }
+
+                // 이전 상태와 다를 때만 업데이트하여 무한 루프 방지
+                if (selectAllCheckbox.checked !== allChecked) {
+                    selectAllCheckbox.checked = allChecked;
+
+                    // SVG 상태도 수동으로 업데이트
+                    var label = selectAllCheckbox.nextElementSibling;
+                    if (label) {
+                        var checkedSvg = label.querySelector('.checked-svg');
+                        var uncheckedSvg = label.querySelector('.unchecked-svg');
+
+                        if (checkedSvg && uncheckedSvg) {
+                            if (allChecked) {
+                                checkedSvg.style.display = 'block';
+                                uncheckedSvg.style.display = 'none';
+                            } else {
+                                checkedSvg.style.display = 'none';
+                                uncheckedSvg.style.display = 'block';
+                            }
+                        }
+                    }
+                }
+
+                // 텍스트 업데이트
+                selectAllText.textContent = allChecked ? '전체 선택 삭제' : '전체선택';
+            }
+
+            // 체크박스 SVG 상태 업데이트
             function updateCheckboxVisibility() {
                 var checkboxes = document.querySelectorAll('.checkbox-input');
+
                 for (var i = 0; i < checkboxes.length; i++) {
                     var checkbox = checkboxes[i];
-                    var checkedSvg = checkbox.nextElementSibling.querySelector('.checked-svg');
-                    var uncheckedSvg = checkbox.nextElementSibling.querySelector('.unchecked-svg');
+                    var label = checkbox.nextElementSibling;
+
+                    if (!label) continue;
+
+                    var checkedSvg = label.querySelector('.checked-svg');
+                    var uncheckedSvg = label.querySelector('.unchecked-svg');
+
+                    if (!checkedSvg || !uncheckedSvg) continue;
 
                     if (checkbox.checked) {
                         checkedSvg.style.display = 'block';
@@ -515,195 +815,97 @@
                 }
             }
 
-            // 가격 형식화 함수 (숫자를 "15,000 원" 형식으로 변환)
-            function formatPrice(price) {
-                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' 원';
-            }
-
-            // 숫자만 추출하는 함수 ("15,000 원" 형식에서 15000 숫자 추출)
-            function extractPrice(priceStr) {
-                return parseInt(priceStr.replace(/[^\d]/g, ''));
-            }
-
-            // 총 가격 계산 및 업데이트
-            function updateTotalPrice() {
+            // 선택된 상품 목록 업데이트
+            function updateSelectedItems() {
                 var selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
-                var totalPrice = 0;
-
-                for (var i = 0; i < selectedCheckboxes.length; i++) {
-                    var cartItem = selectedCheckboxes[i].closest('.cart-item');
-                    var itemTotal = cartItem.querySelector('.item-total').textContent;
-                    totalPrice += extractPrice(itemTotal);
-                }
-
-                // 결제 예정금액 업데이트
-                document.querySelector('.summary-row:first-child .summary-value').textContent = formatPrice(totalPrice);
-
-                // 총 상품금액 업데이트
-                document.querySelector('.summary-row:nth-child(2) .summary-value').textContent =
-                    formatPrice(totalPrice);
-            }
-
-            // 상품 삭제 함수
-            function removeCartItem(button) {
-                var cartItem = button.closest('.cart-item');
-                cartItem.parentNode.removeChild(cartItem);
-                updateTotalCount();
-                updateTotalPrice();
-            }
-
-            // 선택한 상품 개수 업데이트
-            function updateTotalCount() {
-                var selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
-                var countElement = document.querySelector('.selected-count');
-
-                // 선택된 상품 개수 텍스트 업데이트
-                var countText = selectedCheckboxes.length + ' 개 상품이 선택 되었습니다.';
-
-                // 선택된 상품들의 작은 이미지 업데이트
                 var selectedItemsContainer = document.querySelector('.selected-items');
-                var existingItems = selectedItemsContainer.querySelectorAll('.selected-item');
 
-                // 기존 selected-item 제거
-                for (var i = existingItems.length - 1; i >= 0; i--) {
-                    selectedItemsContainer.removeChild(existingItems[i]);
-                }
+                if (!selectedItemsContainer) return;
 
-                // 선택된 상품 개수 요소 보존
-                var selectedCountElement = selectedItemsContainer.querySelector('.selected-count');
+                // 컨테이너 비우기
+                selectedItemsContainer.innerHTML = '';
 
-                // 새로운 selected-item 추가
+                // 선택된 상품 이미지 추가
                 for (var i = 0; i < selectedCheckboxes.length; i++) {
                     var cartItem = selectedCheckboxes[i].closest('.cart-item');
-                    var imgSrc = cartItem.querySelector('.item-image img').src;
-                    var imgAlt = cartItem.querySelector('.item-image img').alt;
+                    if (!cartItem) continue;
+
+                    var imgElement = cartItem.querySelector('.item-image img');
+                    if (!imgElement) continue;
 
                     var selectedItem = document.createElement('div');
                     selectedItem.className = 'selected-item';
 
                     var img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.alt = imgAlt;
+                    img.src = imgElement.src;
+                    img.alt = imgElement.alt;
 
                     selectedItem.appendChild(img);
-                    selectedItemsContainer.insertBefore(selectedItem, selectedCountElement);
+                    selectedItemsContainer.appendChild(selectedItem);
                 }
 
-                // 텍스트와 버튼 업데이트
-                var htmlContent = countText;
-                htmlContent += '<div class="action-buttons">';
-                htmlContent += '<button class="action-btn">선택상품 주문</button>';
-                htmlContent += '<button class="action-btn delete">전체상품 주문</button>';
-                htmlContent += '</div>';
+                // 선택된 상품 개수 요소 추가
+                var countElement = document.createElement('div');
+                countElement.className = 'selected-count';
 
-                selectedCountElement.innerHTML = htmlContent;
+                var countText = selectedCheckboxes.length + ' 개 상품이 선택 되었습니다.';
+
+                countElement.innerHTML =
+                    countText +
+                    '<div class="action-buttons">' +
+                    '<button type="button" class="action-btn">선택상품 주문</button>' +
+                    '<button type="button" class="action-btn delete">전체상품 주문</button>' +
+                    '</div>';
+
+                selectedItemsContainer.appendChild(countElement);
             }
 
-            // 페이지 로드 시 체크박스 상태에 따른 SVG 표시
-            window.onload = function () {
-                // 초기 SVG 표시 업데이트
-                updateCheckboxVisibility();
+            // 숫자 추출 함수
+            function extractNumbers(str) {
+                if (!str) return 0;
 
-                // 초기 선택된 상품 개수 업데이트
-                updateTotalCount();
+                var match = str.match(/\d+/g);
+                if (!match) return 0;
 
-                // 초기 가격 업데이트
-                updateTotalPrice();
+                return parseInt(match.join(''));
+            }
 
-                // 체크박스 변경 이벤트 리스너
-                var checkboxes = document.querySelectorAll('.checkbox-input');
-                for (var i = 0; i < checkboxes.length; i++) {
-                    checkboxes[i].onchange = function () {
-                        updateCheckboxVisibility();
-                        updateTotalCount();
-                        updateTotalPrice();
+            // 가격 포맷 함수
+            function formatPrice(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' 원';
+            }
+            // TOP 버튼 기능 추가
+            // 스크롤 상단으로 이동 함수
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
 
-                        // 모든 상품 체크박스가 체크되었는지 확인
-                        var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
-                        var allChecked = true;
-                        for (var j = 0; j < itemCheckboxes.length; j++) {
-                            if (!itemCheckboxes[j].checked) {
-                                allChecked = false;
-                                break;
-                            }
-                        }
-
-                        // 전체선택 체크박스 상태 업데이트
-                        var selectAllCheckbox = document.getElementById('select-all');
-                        if (this !== selectAllCheckbox) {
-                            selectAllCheckbox.checked = allChecked;
-                        }
-
-                        // 전체선택 텍스트 업데이트
-                        var selectAllText = document.getElementById('select-all-text');
-                        if (selectAllCheckbox.checked) {
-                            selectAllText.textContent = '전체 선택 삭제';
-                        } else {
-                            selectAllText.textContent = '전체선택';
-                        }
-                    };
-                }
-
-                // 전체선택 체크박스 기능
-                var selectAllCheckbox = document.getElementById('select-all');
-                selectAllCheckbox.onchange = function () {
-                    var itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
-                    for (var i = 0; i < itemCheckboxes.length; i++) {
-                        itemCheckboxes[i].checked = this.checked;
-                    }
-
-                    // 전체선택 텍스트 업데이트
-                    var selectAllText = document.getElementById('select-all-text');
-                    if (this.checked) {
-                        selectAllText.textContent = '전체 선택 삭제';
+            // 스크롤 위치에 따라 TOP 버튼 표시/숨김
+            function handleScroll() {
+                var topButton = document.getElementById('top-button');
+                if (topButton) {
+                    if (window.pageYOffset > 300) {
+                        topButton.style.opacity = '1';
+                        topButton.style.visibility = 'visible';
                     } else {
-                        selectAllText.textContent = '전체선택';
-                    }
-
-                    updateCheckboxVisibility();
-                    updateTotalCount();
-                    updateTotalPrice();
-                };
-
-                // 삭제하기 버튼 이벤트 리스너
-                var deleteButtons = document.querySelectorAll('.action-btn:not(.delete)');
-                for (var i = 0; i < deleteButtons.length; i++) {
-                    if (deleteButtons[i].textContent === '삭제하기') {
-                        deleteButtons[i].onclick = function () {
-                            removeCartItem(this);
-                        };
+                        topButton.style.opacity = '0';
+                        topButton.style.visibility = 'hidden';
                     }
                 }
+            }
 
-                // 수량 버튼 이벤트 리스너
-                var quantityBtns = document.querySelectorAll('.quantity-btn');
-                for (var i = 0; i < quantityBtns.length; i++) {
-                    quantityBtns[i].onclick = function () {
-                        var input = this.parentNode.querySelector('.quantity-input');
-                        var currentValue = parseInt(input.value);
-
-                        if (this.textContent === '+') {
-                            input.value = currentValue + 1;
-                        } else if (this.textContent === '-' && currentValue > 1) {
-                            input.value = currentValue - 1;
-                        }
-                    };
-                }
-
-                // 변경 버튼 이벤트 리스너
-                var confirmBtns = document.querySelectorAll('.confirm-btn');
-                for (var i = 0; i < confirmBtns.length; i++) {
-                    confirmBtns[i].onclick = function () {
-                        var cartItem = this.closest('.cart-item');
-                        var quantity = parseInt(cartItem.querySelector('.quantity-input').value);
-                        var unitPrice = extractPrice(cartItem.querySelector('.item-price').textContent);
-                        var totalPrice = unitPrice * quantity;
-
-                        cartItem.querySelector('.item-total').textContent = formatPrice(totalPrice);
-                        updateTotalPrice();
-                    };
-                }
-            };
+            // 초기 TOP 버튼 상태 설정 및 이벤트 리스너 추가
+            window.addEventListener('scroll', handleScroll);
+            document.addEventListener('DOMContentLoaded', function () {
+                handleScroll(); // 초기 상태 설정
+            });
         </script>
+        <!-- TOP 버튼 추가 -->
+        <div id="top-button">
+            <button type="button" onclick="scrollToTop()" title="맨 위로 이동">TOP</button>
+        </div>
     </body>
 </html>
