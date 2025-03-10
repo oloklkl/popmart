@@ -1,14 +1,6 @@
-header {
-  background: #ff6f61;
-  height: 3rem;
-}
-
-main {
-  width: 100%;
-  background: #ffba4a;
-}
 .container {
   width: 100%;
+  background: #ffba4a;
   margin: 0 auto;
   padding: 80px 0;
   position: relative;
@@ -54,8 +46,8 @@ main {
     }
     .custom-checkbox {
       display: inline-block;
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       border: 3px solid #555;
       background: #fff;
       border-radius: 0.4rem;
@@ -325,9 +317,9 @@ main {
 }
 .checkMark {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #555;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #555;
   background: #fff;
   border-radius: 0.4rem;
   margin-right: 5px;
