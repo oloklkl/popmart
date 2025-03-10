@@ -1,5 +1,9 @@
 @import '../base/include';
 
+body {
+    background-color: var(--white);
+}
+
 .inner {
     position: relative;
     width: 100%;
@@ -22,10 +26,10 @@ footer {
     background-color: lightblue;
 }
 
+// productList.html 시작
 .content-wrapper {
     display: flex;
-
-    flex-direction: column;
+    // flex-direction: column;
 
     @media (min-width: 1024px) {
         flex-direction: row;
@@ -38,7 +42,6 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    // width: 100%;
     margin-bottom: 40px;
 
     @media (min-width: 1024px) {
@@ -68,16 +71,17 @@ footer {
         background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking2.png?raw=true);
         color: white;
     }
-    .physique {
+    .molly {
         background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking3.png?raw=true);
         color: white;
     }
     .pinogelly {
         background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking4.png?raw=true);
     }
-    .but {
+    .add-category {
         background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMaskingPlus-btn.png?raw=true);
-        width: 93px;
+        width: 80px;
+        height: auto;
     }
 }
 
@@ -85,6 +89,7 @@ footer {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
 
     .grid-header {
@@ -147,7 +152,7 @@ footer {
             display: grid !important;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, auto);
-            gap: 20px;
+            // gap: 20px;
             width: 100%;
         }
 
@@ -187,21 +192,98 @@ footer {
             }
         }
 
-        // .circle {
-        //     display: block;
-        //     width: 200px;
-        //     height: 200px;
-        //     position: absolute;
-        //     border-radius: 50%;
-        //     pointer-events: none;
-        //     mix-blend-mode: difference;
-        //     transform: translate(-50%, -50%);
-        //     opacity: 0;
-        //     transition: opacity 0.2s ease-in-out;
-        // }
-
-        // .circle.hovered {
-        //     background-color: yellow;
-        // }
+        .circle {
+            display: block;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
     }
 }
+// productList.html 끝
+
+//productDetail.html 시작
+.slider {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+
+    .box {
+        position: relative;
+        display: flex;
+        transform-style: preserve-3d;
+        perspective: 500px;
+
+        .item {
+            position: absolute;
+            top: calc(50% - 350px);
+            left: calc(100% - 600px);
+            width: 500px;
+            height: 500px;
+            padding: 60px 40px 25px;
+            border: 5px solid black;
+            border-radius: 30px;
+            background: #fff;
+            transition: 0.5s;
+            transform-style: preserve-3d;
+            transform-origin: bottom;
+            user-select: none;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            -webkit-showcase-reflect: below 1px linear-gradient(transparent, transparent, #0002);
+        }
+
+        .item:nth-child(1) {
+            transform: translate3d(-250px, 0, 0) scale(0.8);
+            z-index: 2;
+            width: 250px;
+            height: 250px;
+        }
+        .item:nth-child(2) {
+            transform: translate3d(-150px, 0, 0) scale(0.9);
+            z-index: 3;
+            width: 300px;
+            height: 300px;
+        }
+        .item:nth-child(3) {
+            transform: translate3d(0px, 0, 0) scale(1);
+            z-index: 4;
+        }
+        .item:nth-child(4) {
+            transform: translate3d(350px, 0, 0) scale(0.9);
+            z-index: 3;
+            width: 300px;
+            height: 300px;
+        }
+        .item:nth-child(5) {
+            transform: translate3d(500px, 0, 0) scale(0.8);
+            z-index: 2;
+            width: 250px;
+            height: 250px;
+        }
+    }
+}
+.related-products {
+    .related-products {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    .swiper-pagination {
+        position: relative;
+        margin-top: 10px;
+    }
+}
+
+//productDetail.html 끝
