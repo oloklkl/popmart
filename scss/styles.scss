@@ -1,7 +1,7 @@
-@use './base/reset';
-@use './base/variables';
-@use './components/header';
-@use './components/footer';
-@use './pages/home';
-@use './pages/mypage';
-@use './pages/product';
+@import './base/include';
+@import './components/header';
+@import './components/footer';
+@import './pages/home';
+@import './pages/mypage';
+@import './pages/product';
+@import './pages/event';
