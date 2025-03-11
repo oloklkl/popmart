@@ -1,14 +1,111 @@
 @import '../base/include';
 
+.header {
+  width: 100%;
+  height: 145px;
+  background-color: $primary;
+}
+
 .inner {
   position: relative;
   width: 100%;
   max-width: $grid;
   margin: 0 auto;
   padding: 0;
+  .title {
+    font-size: 64px;
+    margin-top: 108px;
+    margin-bottom: 40px;
+  }
+  .detail_title {
+    font-size: 64px;
+  }
+  .title_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    margin-top: 111px;
+  }
 }
 
 .event_list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  .event_item {
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    .event_item_name {
+      font-size: 32px;
+    }
+    .event_item_Enname {
+      font-size: 20px;
+    }
+    .event_item_date {
+      font-size: 16px;
+    }
+    .event_item_state {
+      font-size: 16px;
+      border: 1px solid #000;
+      padding: 10px 28px;
+      border-radius: 30px;
+    }
+  }
+}
+
+#item_first:hover {
+  background-color: #ddff47;
+}
+#item_second:hover {
+  background-color: #5bfff1;
+}
+#item_third:hover {
+  background-color: #ff2e2e;
+}
+#item_fourth:hover {
+  background-color: #9c40ff;
+}
+#item_fiveth:hover {
+  background-color: #ffe23a;
+}
+#item_sixth:hover {
+  background-color: #83ffa4;
+}
+#item_seventh:hover {
+  background-color: #f985ff;
+}
+
+.event_detail_main {
+  position: relative;
+  .text_area {
+    position: absolute;
+    left: 210px;
+    top: 410px;
+    .text_area_big {
+      font-size: 96px;
+      display: block;
+    }
+    .text_area_label {
+      font-size: 48px;
+      display: block;
+    }
+  }
+}
+
+.event_detail {
+  .event_detail_first {
+    display: flex;
+    .image_area {
+      width: 747px;
+      height: 507px;
+      img {
+        width: 747px;
+        height: 507px;
+      }
+    }
+  }
 }
