@@ -4,23 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/output/styles.css" />
-    <script src="/js/login.js"></script>
     <title>로그인 페이지</title>
+    <script src="/js/login.js" defer></script>
   </head>
   <body>
     <main>
       <div class="container">
         <div class="loginLogo">
-          <a href="./login.html">
+          <a href="#login">
             <img
               src="https://raw.githubusercontent.com/hyeonky/dp-static/7f866ab3fe2902079230309d3fb84ccb342b5cd6/popmart/mypage/loginLogo.svg"
               alt="로그인" />
           </a>
         </div>
-        <form
-          onsubmit="return validateLoginForm(event)"
-          action="/index.html"
-          method="POST">
+        <form id="loginForm">
           <div class="loginform">
             <input
               class="inputbox"
@@ -54,9 +51,9 @@
         </form>
         <div class="login-options">
           <div class="text">
-            <a href="#">아이디 찾기</a>
+            <a href="#login">아이디 찾기</a>
             <span class="middle-dot"></span>
-            <a href="#">비밀번호 찾기</a>
+            <a href="#login">비밀번호 찾기</a>
             <span class="middle-dot"></span>
             <a href="/page/myPage/register.html">회원가입</a>
           </div>

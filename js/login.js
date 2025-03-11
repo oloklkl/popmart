@@ -1,157 +1,154 @@
+// login.js - 디버깅 버전
+
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('로그인페이지 로드완료')
+  console.log('DOM 로드됨 - 로그인 스크립트 시작')
 
-  const loginButton = document.querySelector('.loginBtn button')
-  const form = document.querySelector('form')
+  // 요소 참조 가져오기
+  const loginForm = document.getElementById('loginForm')
+  const userId = document.getElementById('userId')
+  const password = document.getElementById('password')
+  const userIdError = document.getElementById('userIdError')
+  const passwordError = document.getElementById('passwordError')
+  const saveId = document.getElementById('saveId')
+  const autoLogin = document.getElementById('autoLogin')
 
-  if (form) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault() // 기본 폼 제출 방지
-      validateLoginForm()
-    })
+  // 요소 존재 확인
+  console.log('폼 요소 확인:', {
+    loginForm: !!loginForm,
+    userId: !!userId,
+    password: !!password,
+    userIdError: !!userIdError,
+    passwordError: !!passwordError,
+    saveId: !!saveId,
+    autoLogin: !!autoLogin,
+  })
+
+  // 요소가 존재하지 않으면 오류 메시지 표시
+  if (!loginForm) {
+    console.error(
+      '🚨 로그인 폼을 찾을 수 없음! HTML의 ID가 loginForm인지 확인하세요.'
+    )
+    return
   }
 
-  function validateLoginForm() {
-    // 입력 값 가져오기
-    const userId = document.getElementById('userId').value
-    const password = document.getElementById('password').value
-
-    // 오류 메시지 초기화
-    let errorMessage = ''
-
-    // 아이디가 비어 있으면 오류 메시지
-    if (!userId) {
-      errorMessage += '아이디를 입력해주세요.\n'
+  // 해시 변경 감지 및 처리 함수
+  function handleHash() {
+    console.log('현재 해시:', window.location.hash)
+    if (window.location.hash === '#login') {
+      console.log('로그인 페이지로 이동함 (해시 변경 감지)')
+      if (userId) userId.focus()
     }
+  }
 
-    // 비밀번호가 비어 있으면 오류 메시지
-    if (!password) {
-      errorMessage += '비밀번호를 입력해주세요.\n'
+  // 초기 로드 시 해시 확인
+  handleHash()
+
+  // 해시 변경 이벤트 리스너 추가
+  window.addEventListener('hashchange', function () {
+    console.log('해시 변경 감지됨:', window.location.hash)
+    handleHash()
+  })
+
+  // 저장된 정보 불러오기
+  console.log('저장된 아이디:', localStorage.getItem('savedUserId'))
+  console.log('자동 로그인 설정:', localStorage.getItem('autoLogin'))
+
+  if (localStorage.getItem('savedUserId') && userId) {
+    userId.value = localStorage.getItem('savedUserId')
+    if (saveId) saveId.checked = true
+  }
+
+  if (localStorage.getItem('autoLogin') === 'true' && autoLogin) {
+    autoLogin.checked = true
+    if (password) password.focus()
+  } else {
+    if (!localStorage.getItem('savedUserId') && userId) {
+      userId.focus()
     }
+  }
 
-    if (errorMessage) {
-      alert(errorMessage)
-      return
-    }
+  // 로그인 폼 제출 이벤트 리스너
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (event) {
+      event.preventDefault()
+      console.log('로그인 폼 제출됨')
 
-    console.log('아이디:', userId, '비밀번호:', password)
+      if (!userId || !password) {
+        console.error('🚨 아이디 또는 비밀번호 입력 필드를 찾을 수 없음!')
+        return
+      }
 
-    fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, password }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('서버 응답 오류')
-        }
-        return response.json()
-      })
-      .then((data) => {
-        if (data.success) {
+      const userIdValue = userId.value.trim()
+      const passwordValue = password.value.trim()
+
+      console.log('입력값:', { userIdValue, passwordValue: '***' })
+
+      let isValid = true
+
+      // 유효성 검사
+      if (!userIdValue) {
+        if (userIdError) userIdError.textContent = '아이디를 입력해주세요.'
+        console.log('아이디 누락')
+        isValid = false
+      } else {
+        if (userIdError) userIdError.textContent = ''
+      }
+
+      if (!passwordValue) {
+        if (passwordError)
+          passwordError.textContent = '비밀번호를 입력해주세요.'
+        console.log('비밀번호 누락')
+        isValid = false
+      } else {
+        if (passwordError) passwordError.textContent = ''
+      }
+
+      if (isValid) {
+        console.log('유효성 검사 통과')
+        // 예시: 하드코딩된 로그인 정보
+        const correctUserId = 'test'
+        const correctPassword = '1234'
+
+        if (
+          userIdValue === correctUserId &&
+          passwordValue === correctPassword
+        ) {
+          console.log('✅ 로그인 성공!')
           alert('로그인 성공!')
-          window.location.href = '/index.html'
+
+          // 아이디 저장 옵션 처리
+          if (saveId && saveId.checked) {
+            localStorage.setItem('savedUserId', userIdValue)
+            console.log('아이디 저장됨:', userIdValue)
+          } else {
+            localStorage.removeItem('savedUserId')
+            console.log('저장된 아이디 삭제됨')
+          }
+
+          // 자동 로그인 옵션 처리
+          if (autoLogin && autoLogin.checked) {
+            localStorage.setItem('autoLogin', 'true')
+            console.log('자동 로그인 설정됨')
+          } else {
+            localStorage.removeItem('autoLogin')
+            console.log('자동 로그인 해제됨')
+          }
+
+          // 리디렉션
+          console.log('메인 페이지로 리디렉션합니다...')
+          setTimeout(function () {
+            window.location.href = '/page/mainPage/home.html'
+          }, 500) // 로그 확인을 위해 약간의 지연 추가
         } else {
-          alert('로그인 실패: ' + data.message)
+          console.log('❌ 로그인 실패! 잘못된 아이디 또는 비밀번호')
+          alert('아이디 또는 비밀번호가 틀립니다.')
+          if (passwordError)
+            passwordError.textContent =
+              '아이디 또는 비밀번호가 올바르지 않습니다.'
         }
-      })
-      .catch((error) => {
-        console.error('로그인 요청 중 오류 발생:', error)
-        alert('서버 오류가 발생했습니다.')
-      })
+      }
+    })
+
+    console.log('로그인 폼에 이벤트 리스너 등록 완료')
   }
 })
-
-// -----------------------------------------
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('로그인페이지 로드완료')
-
-//   const loginButton = document.querySelector('.loginBtn button')
-//   if (loginButton) {
-//     loginButton.addEventListener('click', function (event) {
-//       alert('로그인 버튼이 클릭되었습니다.')
-//       event.preventDefault() // 기본 폼 제출 방지
-//       validateLoginForm()
-//     })
-//   }
-
-//   function validateLoginForm() {
-//     // 입력 값 가져오기
-//     const userId = document.getElementById('userId').value
-//     const password = document.getElementById('password').value
-
-//     // 오류 메시지 초기화
-//     let errorMessage = ''
-
-//     // 아이디가 비어 있으면 오류 메시지
-//     if (!userId) {
-//       errorMessage += '아이디를 입력해주세요.\n'
-//     }
-
-//     // 비밀번호가 비어 있으면 오류 메시지
-//     if (!password) {
-//       errorMessage += '비밀번호를 입력해주세요.\n'
-//     }
-//     if (errorMessage) {
-//       alert(errorMessage)
-//       return
-//     }
-
-//     console.log('아이디:', userId, '비밀번호:', password)
-
-//     fetch('/login', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ userId, password }),
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('서버 응답 오류')
-//         }
-//         return response.json()
-//       })
-//       .then((data) => {
-//         if (data.success) {
-//           alert('로그인 성공!')
-//           window.location.href = '/index.html'
-//         } else {
-//           alert('로그인 실패: ' + data.message)
-//         }
-//       })
-//       .catch((error) => {
-//         console.error('로그인 요청 중 오류 발생:', error)
-//         alert('서버 오류가 발생했습니다.')
-//       })
-//   }
-// })
-// -------------------
-
-// 만약 아이디나 비밀번호가 비어 있지 않다면, 아이디와 비밀번호 확인
-// if (userId && password) {
-//   // 아이디와 비밀번호 검증 (예시: 아이디는 "test", 비밀번호는 "1234")
-//   if (userId !== 'test' || password !== '1234') {
-//     errorMessage += '아이디나 비밀번호가 틀렸습니다. 다시 입력해주세요.\n'
-//   }
-// }
-
-// // 오류 메시지가 있다면 alert로 표시하고 폼 제출을 막음
-// if (errorMessage) {
-//   alert(errorMessage)
-// } else {
-//   // 유효한 입력일 경우 폼 제출 (여기서는 /index.html로 이동)
-//   window.location.href = '/index.html'
-// }
-
-// return false
-
-// 이벤트 리스너 등록
-// const form = document.querySelector('form')
-// form.addEventListener('submit', validateLoginForm)
-// const form = document.querySelector('form')
-// if (form) {
-//   form.addEventListener('submit', function (event) {
-//     event.preventDefault()
-//     validateLoginForm()
-//   })
-// }
