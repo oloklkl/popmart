@@ -146,7 +146,20 @@
                             </label>
                         </div>
                         <div class="item-image">
-                            <img src="https://via.placeholder.com/80" alt="퍼플 핑크 타입세서 시리즈" />
+                            <img
+                                src="https://via.placeholder.com/80"
+                                alt="퍼플 핑크 타입세서 시리즈"
+                                style="
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    max-width: 90%;
+                                    max-height: 90%;
+                                    width: auto;
+                                    height: auto;
+                                "
+                            />
                         </div>
                         <div class="item-info">
                             <div class="item-name">퍼플 핑크 타입세서 시리즈</div>
@@ -161,11 +174,18 @@
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
-
-                    <!-- 버튼 영역 (구분선 포함) -->
+                    <hr
+                        style="
+                            width: calc(100% - 200px);
+                            height: 1px;
+                            background-color: #000;
+                            border: none;
+                            margin: 15px 0;
+                            margin-left: 200px;
+                        "
+                    />
+                    <!-- 버튼 영역 -->
                     <div class="action-wrapper">
-                        <!-- 구분선 (세로선으로 변경) -->
-                        <div class="cart-item-divider-vertical"></div>
                         <div class="action-buttons">
                             <button type="button" class="action-btn">삭제하기</button>
                             <button type="button" class="action-btn delete">주문하기</button>
@@ -256,11 +276,18 @@
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
-
-                    <!-- 버튼 영역 (구분선 포함) -->
+                    <hr
+                        style="
+                            width: calc(100% - 200px);
+                            height: 1px;
+                            background-color: #000;
+                            border: none;
+                            margin: 15px 0;
+                            margin-left: 200px;
+                        "
+                    />
+                    <!-- 버튼 영역  -->
                     <div class="action-wrapper">
-                        <!-- 구분선 (세로선으로 변경) -->
-                        <div class="cart-item-divider-vertical"></div>
                         <div class="action-buttons">
                             <button type="button" class="action-btn">삭제하기</button>
                             <button type="button" class="action-btn delete">주문하기</button>
@@ -351,11 +378,18 @@
                         </div>
                         <div class="item-total">합계: 30,000 원</div>
                     </div>
-
-                    <!-- 버튼 영역 (구분선 포함) -->
+                    <hr
+                        style="
+                            width: calc(100% - 200px);
+                            height: 1px;
+                            background-color: #000;
+                            border: none;
+                            margin: 15px 0;
+                            margin-left: 200px;
+                        "
+                    />
+                    <!-- 버튼 영역  -->
                     <div class="action-wrapper">
-                        <!-- 구분선 (세로선으로 변경) -->
-                        <div class="cart-item-divider-vertical"></div>
                         <div class="action-buttons">
                             <button type="button" class="action-btn">삭제하기</button>
                             <button type="button" class="action-btn delete">주문하기</button>
@@ -446,11 +480,18 @@
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
-
-                    <!-- 버튼 영역 (구분선 포함) -->
+                    <hr
+                        style="
+                            width: calc(100% - 200px);
+                            height: 1px;
+                            background-color: #000;
+                            border: none;
+                            margin: 15px 0;
+                            margin-left: 200px;
+                        "
+                    />
+                    <!-- 버튼 영역  -->
                     <div class="action-wrapper">
-                        <!-- 구분선 (세로선으로 변경) -->
-                        <div class="cart-item-divider-vertical"></div>
                         <div class="action-buttons">
                             <button type="button" class="action-btn">삭제하기</button>
                             <button type="button" class="action-btn delete">주문하기</button>
@@ -541,11 +582,18 @@
                         </div>
                         <div class="item-total">합계: 18,000 원</div>
                     </div>
-
-                    <!-- 버튼 영역 (구분선 포함) -->
+                    <hr
+                        style="
+                            width: calc(100% - 200px);
+                            height: 1px;
+                            background-color: #000;
+                            border: none;
+                            margin: 15px 0;
+                            margin-left: 200px;
+                        "
+                    />
+                    <!-- 버튼 영역 -->
                     <div class="action-wrapper">
-                        <!-- 구분선 (세로선으로 변경) -->
-                        <div class="cart-item-divider-vertical"></div>
                         <div class="action-buttons">
                             <button type="button" class="action-btn">삭제하기</button>
                             <button type="button" class="action-btn delete">주문하기</button>
@@ -1052,6 +1100,36 @@
             document.addEventListener('DOMContentLoaded', function () {
                 handleScroll(); // 초기 상태 설정
             });
+            // 스크롤 효과를 위한 JavaScript
+            function setupBottomScrollEffect() {
+                const container = document.querySelector('.container');
+                const orderSummary = document.querySelector('.order-summary');
+                const selectedItems = document.querySelector('.selected-items');
+
+                // 스크롤 이벤트 리스너 추가
+                window.addEventListener('scroll', () => {
+                    // 페이지 전체 높이
+                    const scrollHeight = document.documentElement.scrollHeight;
+                    // 현재 스크롤 위치
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    // 뷰포트 높이
+                    const clientHeight = document.documentElement.clientHeight;
+
+                    // 스크롤이 페이지 맨 아래에 도달했는지 확인
+                    if (scrollHeight - scrollTop <= clientHeight + 10) {
+                        // 주문 요약 섹션을 선택된 상품 위로 올리기
+                        orderSummary.classList.add('scroll-bottom');
+                        selectedItems.classList.add('scroll-bottom');
+                    } else {
+                        // 원래 위치로 되돌리기
+                        orderSummary.classList.remove('scroll-bottom');
+                        selectedItems.classList.remove('scroll-bottom');
+                    }
+                });
+            }
+
+            // 페이지 로드 시 이벤트 설정
+            window.addEventListener('load', setupBottomScrollEffect);
         </script>
         <!-- TOP 버튼 추가 -->
         <!-- TOP 버튼 추가 -->
