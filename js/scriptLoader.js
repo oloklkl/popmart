@@ -11,7 +11,7 @@ function executePageScript() {
   console.log(`#${route}`);
 
   const scriptMap = {
-    home: 'homeScript.js',
+    home: '/mainPage/homeScript.js',
     login: 'loginScript.js',
     register: 'registerScript.js',
     productList: 'productListScript.js',
