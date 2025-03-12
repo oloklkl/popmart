@@ -147,8 +147,8 @@
                         </div>
                         <div class="item-image">
                             <img
-                                src="https://via.placeholder.com/80"
-                                alt="퍼플 핑크 타입세서 시리즈"
+                                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail8.png?raw=true"
+                                alt="피노젤리 탄생석 시리즈"
                                 style="
                                     position: absolute;
                                     top: 50%;
@@ -162,7 +162,7 @@
                             />
                         </div>
                         <div class="item-info">
-                            <div class="item-name">퍼플 핑크 타입세서 시리즈</div>
+                            <div class="item-name">피노젤리 탄생석 시리즈</div>
                             <div class="item-category">배송: [무료] / 기본배송</div>
                             <div class="item-price">15,000 원</div>
                         </div>
@@ -261,10 +261,13 @@
                             </label>
                         </div>
                         <div class="item-image">
-                            <img src="https://via.placeholder.com/80" alt="지지 경계선 위의 우리 시리즈" />
+                            <img
+                                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail15.png?raw=true"
+                                alt="지거 경계선 위의 우리 시리즈"
+                            />
                         </div>
                         <div class="item-info">
-                            <div class="item-name">지지 경계선 위의 우리 시리즈</div>
+                            <div class="item-name">지거 경계선 위의 우리 시리즈</div>
                             <div class="item-category">배송: [무료] / 기본배송</div>
                             <div class="item-price">15,000 원</div>
                         </div>
@@ -363,7 +366,10 @@
                             </label>
                         </div>
                         <div class="item-image">
-                            <img src="https://via.placeholder.com/80" alt="바비 스타일 아이콘 시리즈" />
+                            <img
+                                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail2.png?raw=true"
+                                alt="바비 스타일 아이콘 시리즈"
+                            />
                         </div>
                         <div class="item-info">
                             <div class="item-name">바비 스타일 아이콘 시리즈</div>
@@ -465,10 +471,13 @@
                             </label>
                         </div>
                         <div class="item-image">
-                            <img src="https://via.placeholder.com/80" alt="귀염의 칼날 탄생화 시리즈" />
+                            <img
+                                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail6.png?raw=true"
+                                alt="귀멸의 칼날 탄생화 시리즈"
+                            />
                         </div>
                         <div class="item-info">
-                            <div class="item-name">귀염의 칼날 탄생화 시리즈</div>
+                            <div class="item-name">귀멸의 칼날 탄생화 시리즈</div>
                             <div class="item-category">배송: [무료] / 기본배송</div>
                             <div class="item-price">15,000 원</div>
                         </div>
@@ -567,12 +576,15 @@
                             </label>
                         </div>
                         <div class="item-image">
-                            <img src="https://via.placeholder.com/80" alt="레인보우 블록 컬렉션" />
+                            <img
+                                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail6.png?raw=true"
+                                alt="귀멸의 칼날 탄생화 시리즈"
+                            />
                         </div>
                         <div class="item-info">
-                            <div class="item-name">레인보우 블록 컬렉션</div>
+                            <div class="item-name">귀멸의 칼날 탄생화 시리즈</div>
                             <div class="item-category">배송: [무료] / 기본배송</div>
-                            <div class="item-price">18,000 원</div>
+                            <div class="item-price">15,000 원</div>
                         </div>
                         <div class="item-quantity">
                             <button type="button" class="quantity-btn">-</button>
@@ -580,7 +592,7 @@
                             <button type="button" class="quantity-btn">+</button>
                             <button type="button" class="confirm-btn">변경</button>
                         </div>
-                        <div class="item-total">합계: 18,000 원</div>
+                        <div class="item-total">합계: 15,000 원</div>
                     </div>
                     <hr
                         style="
@@ -635,6 +647,19 @@
                 // 수량 입력 필드 참조
                 var quantityInputs = document.querySelectorAll('.quantity-input');
 
+                // 이미지 중앙 정렬
+                var images = document.querySelectorAll('.item-image img');
+                for (var i = 0; i < images.length; i++) {
+                    images[i].style.position = 'absolute';
+                    images[i].style.top = '50%';
+                    images[i].style.left = '50%';
+                    images[i].style.transform = 'translate(-50%, -50%)';
+                    images[i].style.maxWidth = '90%';
+                    images[i].style.maxHeight = '90%';
+                    images[i].style.width = 'auto';
+                    images[i].style.height = 'auto';
+                }
+
                 // 바비 스타일 아이콘 수량 변경 및 초기 합계 계산
                 var cartItems = document.querySelectorAll('.cart-item');
                 for (var i = 0; i < cartItems.length; i++) {
@@ -672,8 +697,63 @@
 
                 // 버튼 이벤트 설정 (SVG 교체 후에 설정)
                 setupButtons();
-            };
 
+                // 하단 고정 패널 설정
+                setupBottomScrollEffect();
+            };
+            // 하단 고정 패널 설정 (스크롤 효과)
+            function setupBottomScrollEffect() {
+                // 스크롤 이벤트 리스너
+                window.addEventListener('scroll', function () {
+                    // 페이지 전체 높이와 현재 스크롤 위치 계산
+                    const scrollHeight = document.documentElement.scrollHeight;
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const clientHeight = document.documentElement.clientHeight;
+
+                    // 선택된 요소들
+                    const selectedItems = document.querySelector('.selected-items');
+                    const orderSummary = document.querySelector('.order-summary');
+
+                    if (!selectedItems || !orderSummary) return;
+
+                    // 페이지 하단에 도달했는지 확인 (여백 100px 추가)
+                    if (scrollHeight - scrollTop <= clientHeight + 100) {
+                        // 맨 아래에 도달하면 두 요소 합치기
+
+                        // OrderSummary 스타일 변경
+                        orderSummary.style.marginBottom = '0';
+                        orderSummary.style.paddingBottom = '155px'; // Selected Items 높이만큼 패딩 추가
+                        orderSummary.style.borderBottomLeftRadius = '0';
+                        orderSummary.style.borderBottomRightRadius = '0';
+                        orderSummary.style.borderBottom = 'none';
+
+                        // SelectedItems 스타일 변경
+                        selectedItems.style.borderTopLeftRadius = '0';
+                        selectedItems.style.borderTopRightRadius = '0';
+                        selectedItems.style.borderTop = 'none';
+
+                        // 테두리가 겹치지 않도록 약간 위로 이동
+                        selectedItems.style.marginTop = '-3px';
+                    } else {
+                        // 다시 위로 스크롤 했을 때 원래 상태로 복원
+                        orderSummary.style.marginBottom = '200px';
+                        orderSummary.style.paddingBottom = '20px';
+                        orderSummary.style.borderBottomLeftRadius = '30px';
+                        orderSummary.style.borderBottomRightRadius = '30px';
+                        orderSummary.style.borderBottom = '3px solid #000';
+
+                        selectedItems.style.borderTopLeftRadius = '30px';
+                        selectedItems.style.borderTopRightRadius = '30px';
+                        selectedItems.style.borderTop = '3px solid #000';
+                        selectedItems.style.marginTop = '0';
+                    }
+                });
+
+                // 초기 스크롤 이벤트 발생
+                setTimeout(function () {
+                    window.dispatchEvent(new Event('scroll'));
+                }, 100);
+            }
             // 모든 삭제하기 및 주문하기 버튼을 SVG로 교체하는 함수
             function replaceAllButtons() {
                 var buttons = document.querySelectorAll('.action-btn');
@@ -1072,7 +1152,6 @@
                 return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' 원';
             }
 
-            // TOP 버튼 기능 추가
             // 스크롤 상단으로 이동 함수
             function scrollToTop() {
                 window.scrollTo({
@@ -1100,38 +1179,7 @@
             document.addEventListener('DOMContentLoaded', function () {
                 handleScroll(); // 초기 상태 설정
             });
-            // 스크롤 효과를 위한 JavaScript
-            function setupBottomScrollEffect() {
-                const container = document.querySelector('.container');
-                const orderSummary = document.querySelector('.order-summary');
-                const selectedItems = document.querySelector('.selected-items');
-
-                // 스크롤 이벤트 리스너 추가
-                window.addEventListener('scroll', () => {
-                    // 페이지 전체 높이
-                    const scrollHeight = document.documentElement.scrollHeight;
-                    // 현재 스크롤 위치
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    // 뷰포트 높이
-                    const clientHeight = document.documentElement.clientHeight;
-
-                    // 스크롤이 페이지 맨 아래에 도달했는지 확인
-                    if (scrollHeight - scrollTop <= clientHeight + 10) {
-                        // 주문 요약 섹션을 선택된 상품 위로 올리기
-                        orderSummary.classList.add('scroll-bottom');
-                        selectedItems.classList.add('scroll-bottom');
-                    } else {
-                        // 원래 위치로 되돌리기
-                        orderSummary.classList.remove('scroll-bottom');
-                        selectedItems.classList.remove('scroll-bottom');
-                    }
-                });
-            }
-
-            // 페이지 로드 시 이벤트 설정
-            window.addEventListener('load', setupBottomScrollEffect);
         </script>
-        <!-- TOP 버튼 추가 -->
         <!-- TOP 버튼 추가 -->
         <div id="top-button">
             <button type="button" onclick="scrollToTop()" title="맨 위로 이동">
