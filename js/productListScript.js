@@ -1,6 +1,7 @@
 import items from './productListItems.js';
 import { initSwiper } from './productListSwiper.js';
 
+// 페이지 초기화
 export function initializePage() {
     setTimeout(() => {
         if (typeof Swiper === 'undefined') {
@@ -11,23 +12,32 @@ export function initializePage() {
     }, 500);
 }
 
-document.addEventListener('mousemove', handleMouseMove);
-
 // 마우스 움직임
-function handleMouseMove(e) {
+document.addEventListener('DOMContentLoaded', () => {
     const circle = document.getElementById('circle');
-    if (circle) {
-        circle.style.left = e.clientX + 'px';
-        circle.style.top = e.clientY + 'px';
+    if (!circle) {
+        console.error('❌ Circle element not found');
+        return;
     }
-}
+
+    document.addEventListener('mousemove', (e) => {
+        requestAnimationFrame(() => {
+            circle.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        });
+    });
+});
 
 // 아이템 호버
 function handleItemHover(e) {
+    console.log('Hovered over item:', e.currentTarget);
     const circle = document.getElementById('circle');
+    const gridItem = e.currentTarget;
+
     if (circle) {
+        const bgColor = gridItem.getAttribute('data-bg-color');
+        console.log('Applying background color to circle:', bgColor); // 디버깅 로그
+        circle.style.backgroundColor = bgColor; // 백그라운드 색상 적용
         circle.classList.add('hovered');
-        circle.style.opacity = '1';
     }
 }
 
@@ -35,8 +45,9 @@ function handleItemHover(e) {
 function handleItemLeave(e) {
     const circle = document.getElementById('circle');
     if (circle) {
+        console.log('Resetting circle background color to white.'); // 디버깅 로그
         circle.classList.remove('hovered');
-        circle.style.opacity = '0';
+        circle.style.backgroundColor = 'white'; // 기본 색상으로 리셋
     }
 }
 
@@ -50,27 +61,13 @@ function runProductListScripts() {
     const itemsPerPage = 9;
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
-    const circleElement = document.getElementById('circle');
-    gridContainer.innerHTML = '';
-
+    gridContainer.innerHTML = ''; // 컨테이너 내용 초기화
     gridContainer.classList.add('swiper');
-
-    // 컨트롤 컨테이너 생성
-    const controlsDiv = document.createElement('div');
-    controlsDiv.className = 'swiper-controls';
-
-    // Swiper 컴포넌트 생성
-    const paginationDiv = document.createElement('div');
-    paginationDiv.className = 'swiper-pagination';
-
-    const nextButton = document.createElement('div');
-    nextButton.className = 'swiper-button-next';
-
-    const prevButton = document.createElement('div');
-    prevButton.className = 'swiper-button-prev';
 
     const wrapperDiv = document.createElement('div');
     wrapperDiv.className = 'grid-wrapper-inner swiper-wrapper';
+
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33C4', '#33FFF5']; // 색상 배열
 
     for (let page = 0; page < totalPages; page++) {
         const pageDiv = document.createElement('div');
@@ -104,56 +101,51 @@ function runProductListScripts() {
 
             gridItem.appendChild(imgElement);
             gridItem.appendChild(detailsDiv);
+
+            // 각 grid-item에 데이터 속성(data-bg-color) 추가
+            const bgColor = colors[i % colors.length]; // 색상 순환
+            gridItem.setAttribute('data-bg-color', bgColor);
+
+            // 호버 이벤트 추가
             gridItem.addEventListener('mouseenter', handleItemHover);
             gridItem.addEventListener('mouseleave', handleItemLeave);
+
             pageDiv.appendChild(gridItem);
         }
         wrapperDiv.appendChild(pageDiv);
     }
 
-    // 그리드 컨테이너에 스와이퍼 래퍼 추가
+    // 스와이퍼 래퍼 추가
     gridContainer.appendChild(wrapperDiv);
 
-    // 컨트롤 요소를 컨트롤 컨테이너에 추가 (순서: 이전 버튼, 페이지네이션, 다음 버튼)
+    // 컨트롤 요소 생성 및 추가
+    const controlsDiv = document.createElement('div');
+    controlsDiv.className = 'swiper-controls';
+
+    const paginationDiv = document.createElement('div');
+    paginationDiv.className = 'swiper-pagination';
+
+    const nextButton = document.createElement('div');
+    nextButton.className = 'swiper-button-next';
+
+    const prevButton = document.createElement('div');
+    prevButton.className = 'swiper-button-prev';
+
     controlsDiv.appendChild(prevButton);
     controlsDiv.appendChild(paginationDiv);
     controlsDiv.appendChild(nextButton);
 
-    // 그리드 컨테이너에 컨트롤 컨테이너 추가
     gridContainer.appendChild(controlsDiv);
 
     // Swiper 초기화
     initSwiper();
 
-    // Swiper 초기화 후 요소 위치 재조정 (필요한 경우)
     setTimeout(() => {
-        const controls = document.querySelector('.swiper-controls');
-        const pagination = document.querySelector('.swiper-pagination');
-        const prevBtn = document.querySelector('.swiper-button-prev');
-        const nextBtn = document.querySelector('.swiper-button-next');
-
-        // 컨트롤 컨테이너가 없거나 Swiper가 요소를 재배치한 경우 다시 조정
-        if (!controls || !controls.contains(pagination) || !controls.contains(prevBtn) || !controls.contains(nextBtn)) {
-            const newControlsDiv = document.createElement('div');
-            newControlsDiv.className = 'swiper-controls';
-
-            // 기존 요소가 있다면 제거하고 새 컨테이너에 추가
-            if (prevBtn && prevBtn.parentNode) {
-                prevBtn.parentNode.removeChild(prevBtn);
-                newControlsDiv.appendChild(prevBtn);
-            }
-
-            if (pagination && pagination.parentNode) {
-                pagination.parentNode.removeChild(pagination);
-                newControlsDiv.appendChild(pagination);
-            }
-
-            if (nextBtn && nextBtn.parentNode) {
-                nextBtn.parentNode.removeChild(nextBtn);
-                newControlsDiv.appendChild(nextBtn);
-            }
-
-            gridContainer.appendChild(newControlsDiv);
-        }
-    }, 100);
+        const gridItems = document.querySelectorAll('.grid-item');
+        gridItems.forEach((item) => {
+            item.addEventListener('mouseenter', handleItemHover);
+            item.addEventListener('mouseleave', handleItemLeave);
+            console.log('Event listener added to:', item); // 이벤트 연결 확인
+        });
+    }, 500); // Swiper 초기화 후 딜레이를 추가하여 실행
 }
