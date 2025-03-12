@@ -30,6 +30,7 @@
 }
 
 .event_list {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -38,15 +39,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #000;
+    position: relative;
     .event_item_name {
       font-size: 32px;
+      width: 40%;
     }
     .event_item_Enname {
       font-size: 20px;
+      width: 35%;
     }
     .event_item_date {
       font-size: 16px;
+      width: 20%;
     }
     .event_item_state {
       font-size: 16px;
@@ -56,26 +60,37 @@
     }
   }
 }
+.event_item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw; /* ✅ 화면 전체 너비 적용 */
+  height: 1px;
+  background-color: #000; /* ✅ border 색상 유지 */
+  transform: translateX(-50%);
+  left: 50%;
+}
 
-#item_first:hover {
+#item_1:hover {
   background-color: #ddff47;
 }
-#item_second:hover {
+#item_2:hover {
   background-color: #5bfff1;
 }
-#item_third:hover {
+#item_3:hover {
   background-color: #ff2e2e;
 }
-#item_fourth:hover {
+#item_4:hover {
   background-color: #9c40ff;
 }
-#item_fiveth:hover {
+#item_5:hover {
   background-color: #ffe23a;
 }
-#item_sixth:hover {
+#item_6:hover {
   background-color: #83ffa4;
 }
-#item_seventh:hover {
+#item_7:hover {
   background-color: #f985ff;
 }
 
@@ -97,14 +112,68 @@
 }
 
 .event_detail {
+  margin-top: 288px;
+  img {
+    width: 747px;
+    height: 507px;
+    border-radius: 20px;
+  }
   .event_detail_first {
     display: flex;
-    .image_area {
-      width: 747px;
-      height: 507px;
-      img {
-        width: 747px;
-        height: 507px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 95px;
+    .text_area {
+      font-size: 64px;
+      text-align: right;
+      span {
+        font-size: 32px;
+        display: block;
+      }
+    }
+  }
+  .event_detail_second {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 95px;
+    margin-top: 245px;
+    .text_area {
+      font-size: 64px;
+      text-align: left;
+      span {
+        font-size: 32px;
+        display: block;
+      }
+    }
+  }
+  .event_detail_third {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 95px;
+    margin-top: 245px;
+    .text_area {
+      font-size: 64px;
+      text-align: right;
+      span {
+        font-size: 32px;
+        display: block;
+      }
+    }
+  }
+  .event_detail_fourth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 95px;
+    margin-top: 245px;
+    .text_area {
+      font-size: 64px;
+      text-align: left;
+      span {
+        font-size: 32px;
+        display: block;
       }
     }
   }
