@@ -1,99 +1,137 @@
+@import '../base/include';
 .container {
   width: 100%;
+  height: 100%;
   background: #ffba4a;
-  margin: 0 auto;
-  padding: 80px 0;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
 }
 
-///////////////////////// 로그인 페이지 /////////////////////////
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: $grid;
+  margin: 0 auto;
+  padding: 0;
+}
 .loginLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 20px;
+  width: 100%;
 }
 
-.loginContainer {
+.loginWrap {
   width: 100%;
   max-width: 504px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  .inputbox {
-    display: flex;
-    width: 100%;
+  justify-content: center;
+  gap: 16px;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.inputBox {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: left;
+  padding-left: 15px;
+  font-size: 14px;
+  @include mobileMore {
     height: 55px;
-    border-radius: 16px;
-    border: 3px solid #000;
-    text-align: left;
-    padding-left: 15px;
-    box-sizing: border-box;
-    margin-top: 0;
-    margin-bottom: 0;
+    font-size: 16px;
   }
+}
 
-  .checkbox {
+// checkBox style
+.checkbox {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  font-size: 12px;
+  gap: 16px;
+  @include mobileMore {
+    font-size: 16px;
+  }
+  label {
     display: flex;
-    font-size: 14px;
-    gap: 16px;
-    label {
-      user-select: none;
+    align-items: center;
+    user-select: none;
+    @include mobileMore {
+      gap: 5px;
     }
-    .check {
-      display: none;
-    }
-    .custom-checkbox {
-      display: inline-block;
+  }
+  .check {
+    display: none;
+  }
+  .custom-checkbox {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid #555;
+    background: $white;
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+    position: relative;
+    @include mobileMore {
       width: 20px;
       height: 20px;
-      border: 3px solid #555;
-      background: #fff;
-      border-radius: 0.4rem;
-      margin-right: 5px;
-      vertical-align: middle;
-      position: relative;
     }
+  }
 
-    // 체크되었을 때 스타일
-    .check:checked + .custom-checkbox {
-      background-color: #ff4e4e;
-      border-color: #e02121;
+  // 체크되었을 때 스타일
+  .check:checked + .custom-checkbox {
+    background-color: #ff4e4e;
+    border-color: $point;
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      background-color: $point;
+      transform: translate(-50%, -50%);
+      border-radius: 3px;
+      @include mobileMore {
         width: 10px;
         height: 10px;
-        background-color: #e02121;
-        transform: translate(-50%, -50%);
-        border-radius: 2px;
       }
     }
   }
-  .loginBtn {
-    width: 504px;
-    .login {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 55px;
-      background: #000;
-      color: #fff;
-      border-radius: 16px;
-      border: 3px solid #000;
-      text-align: center;
-      cursor: pointer;
-      font-size: 18px;
-      &:hover {
-        background: #333;
-      }
-    }
+}
+
+.loginBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: #000;
+  color: #fff;
+  border-radius: 16px;
+  border: 3px solid #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  @include mobileMore {
+    height: 55px;
+    font-size: 20px;
+  }
+  &:hover {
+    background: #333;
   }
 }
 
@@ -102,66 +140,74 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+}
+.findInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $black;
   gap: 10px;
-  margin-top: 10px;
-  .text {
-    display: flex;
-    align-items: center;
-    line-height: 1.5;
-    color: #000;
-    gap: 10px;
-    a {
-      font-size: 14px;
-      text-decoration: none;
-      color: #000;
-    }
-    .middle-dot::before {
-      content: '·';
-      line-height: 25px;
-      font-size: 30px;
-      font-weight: bold;
-      color: #121619;
+  a {
+    font-size: 14px;
+    text-decoration: none;
+    color: $black;
+    @include mobileMore {
+      font-size: 16px;
     }
   }
-  .snsBtn {
-    margin-top: 20px;
+  .middle-dot::before {
+    content: '·';
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #121619;
+  }
+}
+.snsBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  @include mobileMore {
     gap: 34px;
-    a {
-      text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+    img {
+      width: 60px;
+      @include mobileMore {
+        width: 70px;
+      }
     }
   }
 }
 
-/* 오류 메시지 스타일 */
+// 오류 메세지
 .error-message {
-  color: #e71825;
-  display: none;
+  display: block;
+  visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
   font-size: 14px;
   font-weight: bold;
+  color: $point;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out,
+    visibility 0s 0.4s;
+  @include mobileMore {
+    font-size: 16px;
+  }
 }
 
-/* 오류 메시지가 보일 때 */
+// 오류 메세지 등장
 .error-message.visible {
-  display: block;
-  text-align: left;
-  padding-left: 10px;
+  visibility: visible;
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s all, transform 0.5s all, visibility 0s 0s;
-}
-
-.inputbox,
-.loginBtn {
-  transition: margin-top 0.3s ease-in-out;
-}
-
-.error-message.visible + .inputbox,
-.error-message.visible + .inputbox + .loginBtn {
-  margin-top: 5px;
+  padding-left: 10px;
+  transform: translateY(3px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0s;
 }

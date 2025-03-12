@@ -1,185 +1,230 @@
+@import '../base/include';
 .container {
   width: 100%;
+  height: 100%;
   background: #ffba4a;
-  margin: 0 auto;
-  padding: 80px 0;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: $grid;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .registerLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 20px;
+  width: 100%;
 }
-.registerContainer {
+
+.registerWrap {
   width: 100%;
   max-width: 504px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 16px;
-  .register-title {
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 38px;
+  font-size: 14px;
+  .authCont {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    .authBox {
+      display: flex;
+      gap: 25px;
+    }
+  }
+  label {
+    display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    width: 504px;
-    height: 55px;
+    user-select: none;
+    font-size: 14px;
+    gap: 3px;
+    @include mobileMore {
+      font-size: 16px;
+    }
+  }
+}
+
+.line {
+  display: block;
+  &::after {
+    content: '';
+    margin: 10px 0;
+    width: 100%;
+    height: 2px;
+    background-color: $black;
+    display: block;
+    @include mobileMore {
+      height: 3px;
+    }
+  }
+}
+
+.inputCont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  .normalBox {
+    display: flex;
+    width: 100%;
+    height: 50px;
     border-radius: 16px;
-    border: 3px solid #000;
-    background-color: #dde1e6;
+    border: 3px solid $black;
     text-align: left;
     padding-left: 15px;
-    box-sizing: border-box;
-    h2 {
-      font-size: 21px;
-      text-align: center;
+    font-size: 14px;
+    @include mobileMore {
+      height: 55px;
+      font-size: 16px;
     }
   }
-
-  .check-group {
-    display: flex;
-    gap: 38px;
-    .radioCon {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      .radioBox {
-        display: flex;
-        flex-direction: row;
-        gap: 25px;
-      }
-    }
-    label {
-      display: flex;
-      align-items: center;
-      user-select: none;
-      font-size: 14px;
-    }
-  }
-  .line {
-    display: block;
-    &::after {
-      content: '';
-      width: 100%;
-      height: 3px;
-      background-color: #000;
-      display: block;
-    }
-  }
-  .inputbox {
+  .shortBoxCont {
     position: relative;
-    .inputShort {
-      display: flex;
-      width: 60%;
-      height: 55px;
-      border-radius: 16px;
-      border: 3px solid #000;
-      text-align: left;
-      padding-left: 15px;
-      box-sizing: border-box;
-    }
-    .input {
-      position: relative;
-      display: flex;
-      width: 100%;
-      height: 55px;
-      border-radius: 16px;
-      border: 3px solid #000;
-      text-align: left;
-      padding-left: 15px;
-      box-sizing: border-box;
-    }
-    .btnShort {
-      position: absolute;
-      top: 50%;
-      left: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .shortBox {
+    display: flex;
+    width: 60%;
+  }
+  .btnShort {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -50%);
+    @include mobileMore {
       transform: translate(-50%, -50%);
     }
   }
-  .birth-container {
-    display: flex;
-    gap: 30px;
-    .birthTit {
-      font-weight: bold;
+}
+.birthWrap {
+  display: flex;
+  gap: 30px;
+  .birthTit {
+    font-size: 18px;
+    font-weight: bold;
+    @include mobileMore {
       font-size: 20px;
     }
-    .birth-selection {
+  }
+  .birthCont {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .calendar-group {
+    display: flex;
+    gap: 30px;
+  }
+  label {
+    display: flex;
+    gap: 5px;
+    font-size: 14px;
+    @include mobileMore {
+      font-size: 16px;
+    }
+    span {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      .calendar-type {
-        display: flex;
-        gap: 30px;
-        label {
-          font-size: 14px;
-        }
-      }
+      line-height: 1.3;
+    }
+  }
+}
+
+.birthDateCont {
+  .inputDate {
+    width: 55px;
+    height: 50px;
+    background: $white;
+    border: 3px solid $black;
+    border-radius: 16px;
+    padding-left: 10px;
+    @include mobileMore {
+      height: 55px;
     }
   }
   .year {
     width: 80px;
   }
-  .month,
-  .day {
-    width: 55px;
-  }
-  .date-inputs {
-    height: 55px;
-    background: #fff;
-    border: 3px solid #000;
-    border-radius: 16px;
-    padding-left: 10px;
-  }
   span {
-    text-align: center;
-  }
-  p {
-    margin: 0;
-    padding: 0;
     font-size: 14px;
-    height: auto;
-  }
-  .signupBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    width: 100%;
-    height: 55px;
-    background: #000;
-    color: #fff;
-    border-radius: 16px;
-    border: 3px solid #000;
     text-align: center;
-    font-size: 18px;
-    &:hover {
-      background: #333;
+    @include mobileMore {
+      font-size: 16px;
     }
   }
 }
-
-///////// 회원가입 페이지 공통
-.section-title {
+p {
+  font-size: 14px;
+  @include mobileMore {
+    font-size: 16px;
+  }
+}
+.registerBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0 10px 0;
-  width: 504px;
-  height: 55px;
+  margin: 30px 0;
+  width: 100%;
+  height: 50px;
+  background: $black;
+  color: $white;
   border-radius: 16px;
-  border: 3px solid #000;
+  border: 3px solid $black;
+  text-align: center;
+  font-size: 18px;
+  @include mobileMore {
+    height: 55px;
+  }
+  &:hover {
+    background: #333;
+  }
+}
+
+// 공통 스타일
+.contTit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 16px;
+  border: 3px solid $black;
   background-color: #dde1e6;
-  text-align: left;
   padding-left: 15px;
-  box-sizing: border-box;
+  @include mobileMore {
+    height: 55px;
+  }
   h2 {
-    font-size: 21px;
+    font-size: 18px;
     text-align: center;
+    @include mobileMore {
+      font-size: 20px;
+    }
   }
 }
 
@@ -191,10 +236,13 @@
   background: #000;
   color: #fff;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 12px;
   padding: 8px;
   border: none;
   cursor: pointer;
+  @include mobileMore {
+    font-size: 14px;
+  }
   &:hover {
     background: #333;
   }
@@ -204,48 +252,63 @@
   display: none;
 }
 .checkMark {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
+  display: block;
+  margin-left: 5px;
+  width: 18px;
+  height: 18px;
   border: 3px solid #555;
-  background: #fff;
-  border-radius: 0.4rem;
+  background: $white;
+  border-radius: 3px;
   margin-right: 5px;
   vertical-align: middle;
   position: relative;
+  @include mobileMore {
+    width: 20px;
+    height: 20px;
+  }
 }
 input:checked + .checkMark {
   background-color: #ff4e4e;
-  border-color: #e02121;
+  border-color: $point;
 
   &::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 10px;
-    height: 10px;
-    background-color: #e02121;
+    width: 9px;
+    height: 9px;
+    background-color: $point;
     transform: translate(-50%, -50%);
     border-radius: 3px;
+    @include mobileMore {
+      width: 10px;
+      height: 10px;
+    }
   }
 }
 
+// 오류 메세지
 .error-message-register {
-  color: #e71825;
-  display: none;
+  color: $point;
+  visibility: hidden;
+  display: block;
   opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out,
-    visibility 0s 0.6s;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out,
+    visibility 0s 0.5s;
   font-size: 14px;
   font-weight: bold;
+  @include mobileMore {
+    font-size: 16px;
+  }
 }
 
-/* 오류 메시지가 보일 때 */
+// 오류 메세지 등장
 .error-message-register.visible {
-  display: block;
-  text-align: left;
+  visibility: visible;
+  padding-left: 10px;
   opacity: 1;
   transform: translateY(-8px);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0s;
 }
