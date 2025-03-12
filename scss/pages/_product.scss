@@ -29,25 +29,31 @@ footer {
 // productList.html 시작
 .content-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
 
-    @include desktop {
-        flex-direction: row;
+    @include tablet {
+        flex-direction: column;
     }
 
     .brand-list {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 10px;
         margin-bottom: 40px;
+        margin-right: 60px;
 
         @include desktop {
-            flex-direction: column;
-            margin-right: 60px;
             transform: translateY(-370px);
+        }
+
+        @include tablet {
+            flex-direction: row;
+        }
+
+        @include mobile {
         }
 
         span {
@@ -59,6 +65,16 @@ footer {
             line-height: 85px;
             background-size: cover;
             background-position: center;
+
+            @include tablet {
+                width: 120px;
+                height: 60px;
+                font-size: 17px;
+                line-height: 55px;
+            }
+
+            @include mobile {
+            }
         }
 
         .labubu {
@@ -82,6 +98,31 @@ footer {
             background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMaskingPlus-btn.png?raw=true);
             width: 80px;
             height: auto;
+
+            @include tablet {
+                width: 50px;
+            }
+
+            i {
+                font-size: 5rem;
+            }
+        }
+        .dimoo {
+            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true);
+        }
+        .azura {
+            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true);
+        }
+        .hirono {
+            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking2.png?raw=true);
+            color: white;
+        }
+        .hacipupu {
+            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking3.png?raw=true);
+            color: white;
+        }
+        .barbie {
+            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking4.png?raw=true);
         }
     }
 
@@ -115,7 +156,7 @@ footer {
             height: 100%;
             position: relative;
             overflow: visible !important;
-            border: 5px solid $gray-30;
+            // border: 5px solid $gray-30;
 
             &.swiper {
                 overflow: hidden;
@@ -183,8 +224,28 @@ footer {
             .grid-item {
                 display: flex;
                 flex-direction: column;
+                position: relative;
                 transition: transform 0.3s ease;
-                border: 1px solid $gray-30;
+
+                overflow: hidden;
+
+                // 각 아이템에 배경색 추가 (평소에는 안 보임)
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    background-color: var(--bg-color); // 배경색 추가
+                    opacity: 0; // 기본적으로 보이지 않음
+                    transition: opacity 0.3s;
+                }
+
+                .grid-item:hover::before {
+                    opacity: 1; /* 호버 시 활성화 */
+                }
 
                 // &:hover {
                 //     transform: translateY(-10px);
@@ -192,22 +253,26 @@ footer {
 
                 img {
                     width: 100%;
-                    height: auto;
-                    object-fit: cover;
+                    object-fit: fill;
+                    position: relative;
+                    z-index: 2;
+                    border: 1px solid $gray-30;
                 }
 
                 div {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    border-top: 1px solid $gray-30;
+                    border: 1px solid $gray-30;
                     padding: 25px 20px 20px;
-                    // height: 100%;
+                    position: relative;
+                    z-index: 2;
+                    background-color: white;
+                    height: 100%;
 
                     h3 {
                         font-size: 16px;
                         margin: 0 0 10px;
-
                         font-weight: normal;
                     }
 
@@ -217,23 +282,21 @@ footer {
                     }
                 }
             }
+
             .circle {
-                display: block;
+                position: absolute;
                 width: 200px;
                 height: 200px;
-                position: absolute;
+                background-color: blue; /* 테스트용 색상 */
                 border-radius: 50%;
                 pointer-events: none;
-                mix-blend-mode: difference;
-                transform: translate(-50%, -50%);
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out;
-                background-color: white;
-                z-index: 1000;
+                opacity: 1; /* 항상 보이게 */
+                z-index: 10000; /* 최상단 */
+                transition: opacity 0.3s ease, background-color 0.3s ease;
             }
 
             .circle.hovered {
-                opacity: 1;
+                opacity: 1; // 호버 시 보이도록 변경
             }
         }
     }
@@ -242,75 +305,59 @@ footer {
 // productList.html 끝
 
 //productDetail.html 시작
-.slider {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
 
-    .box {
-        position: relative;
+.product-detail-section {
+    h2 {
+        font-size: 5.4rem;
+        margin-bottom: 40px;
+    }
+    .detail-img {
         display: flex;
-        transform-style: preserve-3d;
-        perspective: 500px;
-
-        .item {
-            position: absolute;
-            top: calc(50% - 350px);
-            left: calc(100% - 600px);
-            width: 500px;
-            height: 500px;
-            padding: 60px 40px 25px;
-            border: 5px solid black;
-            border-radius: 30px;
-            background: #fff;
-            transition: 0.5s;
-            transform-style: preserve-3d;
-            transform-origin: bottom;
-            user-select: none;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            -webkit-showcase-reflect: below 1px linear-gradient(transparent, transparent, #0002);
-        }
-
-        .item:nth-child(1) {
-            transform: translate3d(-250px, 0, 0) scale(0.8);
-            z-index: 2;
-            width: 250px;
-            height: 250px;
-        }
-        .item:nth-child(2) {
-            transform: translate3d(-150px, 0, 0) scale(0.9);
-            z-index: 3;
-            width: 300px;
-            height: 300px;
-        }
-        .item:nth-child(3) {
-            transform: translate3d(0px, 0, 0) scale(1);
-            z-index: 4;
-        }
-        .item:nth-child(4) {
-            transform: translate3d(350px, 0, 0) scale(0.9);
-            z-index: 3;
-            width: 300px;
-            height: 300px;
-        }
-        .item:nth-child(5) {
-            transform: translate3d(500px, 0, 0) scale(0.8);
-            z-index: 2;
-            width: 250px;
-            height: 250px;
-        }
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
     }
 }
-.related-products {
-    .related-products {
-        width: 80%;
-        margin: 0 auto;
-        padding: 20px 0;
+
+.product-info-section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+    h3 {
+        font-size: 5.4rem;
+        margin-bottom: 40px;
+    }
+    table {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+    tr {
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+        border-bottom: 0.5px solid $gray-30;
+        margin-bottom: 20px;
+        padding: 5px;
+    }
+}
+
+.related-products-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    h3 {
+        font-size: 3.2rem;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .swiper-pagination {
