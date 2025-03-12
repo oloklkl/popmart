@@ -15,12 +15,13 @@ function executePageScript() {
     login: 'loginScript.js',
     register: 'registerScript.js',
     productList: 'productListScript.js',
-    productDetail: 'roductDetailScript.js',
+    productDetail: 'productDetailScript.js',
     cart: 'cartScript.js',
     event: 'eventScript.js',
     shop: 'shopScript.js',
     cs: 'csScript.js',
     popStory: 'popStoryScript.js',
+    popStoryList: 'popStoryListScript.js',
   }
 
   const scriptPath = scriptMap[route]
