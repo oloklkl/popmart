@@ -305,6 +305,119 @@ footer {
 // productList.html 끝
 
 //productDetail.html 시작
+.product-slider-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+
+    .swiper-container {
+        width: 500px;
+        height: 350px;
+        overflow: hidden;
+        position: relative;
+
+        .swiper-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 15px;
+            }
+        }
+
+        // 네비게이션 버튼 위치 조정
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: black;
+            background: rgba(255, 255, 255, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-button-prev {
+            left: 50%;
+            transform: translateX(-150%);
+        }
+
+        .swiper-button-next {
+            right: 50%;
+            transform: translateX(150%);
+        }
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background: rgba(255, 255, 255, 1);
+            color: red;
+        }
+    }
+
+    .product-info {
+        width: 250px;
+        padding: 20px;
+        border: 2px solid #000;
+        border-radius: 15px;
+
+        .price {
+            color: red;
+            font-weight: bold;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            button {
+                padding: 5px;
+                border: 1px solid #000;
+                cursor: pointer;
+            }
+        }
+
+        .shipping span {
+            color: red;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+
+            .cart {
+                background: gray;
+                padding: 10px;
+            }
+
+            .buy {
+                background: red;
+                padding: 10px;
+                color: white;
+            }
+            .cart:hover {
+                background: lightgray;
+            }
+
+            .buy:hover {
+                background: darkred;
+            }
+        }
+    }
+}
 
 .product-detail-section {
     h2 {
@@ -325,7 +438,7 @@ footer {
     align-content: center;
     align-items: center;
 
-    h3 {
+    h2 {
         font-size: 5.4rem;
         margin-bottom: 40px;
     }
@@ -347,17 +460,25 @@ footer {
 
 .related-products-section {
     width: 100%;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 20px 0;
 
-    h3 {
+    h2 {
         font-size: 3.2rem;
+        display: flex;
+        justify-content: center;
     }
 
     .swiper-slide {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+
+        h3 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.7rem;
+        }
     }
 
     .swiper-pagination {
