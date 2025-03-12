@@ -7,14 +7,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.inner {
-  position: relative;
-  width: 100%;
-  max-width: $grid;
-  margin: 0 auto;
-  padding: 0;
+  padding: 80px 18px;
+  @include mobileMore {
+    padding: 80px;
+  }
 }
 
 .registerLogo {

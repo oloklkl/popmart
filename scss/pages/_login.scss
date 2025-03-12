@@ -7,15 +7,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  @include mobileMore {
+    padding: 80px;
+  }
 }
 
-.inner {
-  position: relative;
-  width: 100%;
-  max-width: $grid;
-  margin: 0 auto;
-  padding: 0;
-}
 .loginLogo {
   display: flex;
   justify-content: center;
