@@ -1,1 +1,228 @@
 @import '../base/include';
+
+.popStoryListContainer {
+  width: 100%;
+  height: 100%;
+}
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: calc(100% - 200px);
+  margin: 0 auto;
+  padding: 0;
+  @include tablet {
+    max-width: calc(100% - $p-tablet);
+  }
+  @include mobile {
+    max-width: calc(100% - $p-mobile);
+  }
+}
+.popStoryListTit {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  @include tabletMore {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 100px;
+  }
+  h3 {
+    font-weight: lighter;
+    font-size: 18px;
+    @include tablet {
+      font-size: 20px;
+    }
+    @include tabletMore {
+      font-size: 40px;
+    }
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    @include tablet {
+      font-size: 32px;
+    }
+    @include tabletMore {
+      font-size: 69px;
+    }
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1);
+  padding: 18px 0;
+  @include mobileMore {
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 40px;
+  }
+}
+
+.grid-item {
+  overflow: hidden;
+  border: 1px solid black;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease-in-out;
+  @include tablet {
+    height: 500px;
+    padding: 40px;
+  }
+  @include tabletMore {
+    height: 800px;
+    padding: 100px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    @include tablet {
+      max-width: 300px;
+      max-height: 340px;
+    }
+    @include tabletMore {
+      max-width: 400px;
+      max-height: 700px;
+    }
+  }
+  .textarea {
+    margin-bottom: 5px;
+    text-align: center;
+    @include mobileMore {
+      margin-bottom: 10px;
+    }
+  }
+  & h3 {
+    font-weight: normal;
+    font-size: 24px;
+    @include tablet {
+      font-size: 28px;
+    }
+    @include tabletMore {
+      font-size: 40px;
+    }
+  }
+  & p {
+    font-weight: lighter;
+    font-size: 14px;
+    @include mobileMore {
+      font-size: 16px;
+    }
+    @include tabletMore {
+      font-size: 20px;
+    }
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: top 0.5s ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover::after {
+    top: 0;
+  }
+
+  &:not(:hover)::after {
+    top: -100%;
+    transition: top 0.5s ease-in-out;
+  }
+  h3,
+  p {
+    position: relative; // hover 배경 위로 보이게 설정
+    z-index: 1;
+  }
+}
+
+.cartPreview {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -170%);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include tablet {
+    transform: translate(-50%, -170%);
+    width: 70px;
+    height: 70px;
+  }
+  @include tabletMore {
+    transform: translate(-50%, -170%);
+    width: 90px;
+    height: 90px;
+  }
+}
+.scroll-up {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include tablet {
+    width: 70px;
+    height: 70px;
+  }
+  @include tabletMore {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+// hover시 배경
+.grid-item:nth-child(1):hover {
+  background-color: #ffe23a;
+}
+.grid-item:nth-child(2):hover {
+  background-color: #a7a4ff;
+}
+.grid-item:nth-child(3):hover {
+  background-color: #5bfff1;
+}
+.grid-item:nth-child(4):hover {
+  background-color: #ddff47;
+}
+.grid-item:nth-child(5):hover {
+  background-color: #83ffa4;
+}
+.grid-item:nth-child(6):hover {
+  background-color: #ffa1a1;
+}
+
+// after
+.grid-item:nth-child(1)::after {
+  background-color: #ffe23a;
+}
+.grid-item:nth-child(2)::after {
+  background-color: #a7a4ff;
+}
+.grid-item:nth-child(3)::after {
+  background-color: #5bfff1;
+}
+.grid-item:nth-child(4)::after {
+  background-color: #ddff47;
+}
+.grid-item:nth-child(5)::after {
+  background-color: #83ffa4;
+}
+.grid-item:nth-child(6)::after {
+  background-color: #ffa1a1;
+}
