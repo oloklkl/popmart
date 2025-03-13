@@ -27,15 +27,31 @@ function executePageScript() {
     if (scriptPath) {
         console.log(`실행 : ${scriptPath}`);
 
-        import(`./${scriptPath}`)
-            .then((module) => {
-                if (module.initializePage) {
-                    module.initializePage();
-                } else {
-                    console.error();
-                }
-            })
-            .catch((error) => console.error(`${route} JS 로드 실패:`, error));
+        if (route === 'productDetail') {
+            // productDetail 페이지인 경우, 기존 Swiper 인스턴스 파괴
+            import('./productDetailScript.js')
+                .then((module) => {
+                    if (module.destroyPage) {
+                        module.destroyPage(); // 파괴 함수 호출
+                    }
+                    if (module.initializePage) {
+                        module.initializePage(); // 초기화 함수 호출
+                    } else {
+                        console.error();
+                    }
+                })
+                .catch((error) => console.error(`${route} JS 로드 실패:`, error));
+        } else {
+            import(`./${scriptPath}`)
+                .then((module) => {
+                    if (module.initializePage) {
+                        module.initializePage();
+                    } else {
+                        console.error();
+                    }
+                })
+                .catch((error) => console.error(`${route} JS 로드 실패:`, error));
+        }
     } else {
         console.error(`${route} script not found`);
     }
