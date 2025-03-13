@@ -1,6 +1,7 @@
 @import '../base/include';
 
 .popStoryListContainer {
+  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -53,16 +54,55 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(1);
-  padding: 18px 0;
+  padding: 18px 0 120px 0;
+
   @include mobileMore {
     grid-template-columns: repeat(2, 1fr);
-    padding-bottom: 40px;
+    padding-bottom: 150px;
+  }
+  @include tabletMore {
+    padding-bottom: 200px;
   }
 }
-a {
-  display: block; /* a 태그가 블록 요소가 되어 grid-item을 감싸도록 설정 */
-  text-decoration: none; /* 기본 밑줄 제거 */
+.moreBtn {
+  position: relative;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  width: 120px;
+  margin: 0 auto;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  background-color: #ff8c8c;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  @include tablet {
+    width: 150px;
+    font-size: 16px;
+    padding: 10px 10px;
+    border-radius: 16px;
+    transform: translate(-50%, -100%);
+  }
+  @include tabletMore {
+    width: 180px;
+    border-radius: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    transform: translate(-50%, -180%);
+  }
 }
+.link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .grid-item {
   overflow: hidden;
   border: 1px solid black;
@@ -74,24 +114,25 @@ a {
   align-items: center;
   gap: 5px;
   transition: background-color 0.3s ease-in-out;
+
   @include tablet {
     height: 500px;
     padding: 40px;
   }
   @include tabletMore {
-    height: 800px;
+    height: 700px;
     padding: 100px;
   }
   img {
     width: 100%;
     height: 100%;
     @include tablet {
-      max-width: 300px;
-      max-height: 340px;
+      max-width: 240px;
+      max-height: 350px;
     }
     @include tabletMore {
-      max-width: 400px;
-      max-height: 700px;
+      max-width: 330px;
+      max-height: 650px;
     }
   }
   .textarea {
@@ -121,101 +162,87 @@ a {
       font-size: 20px;
     }
   }
-  &::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: top 0.5s ease-in-out;
-    z-index: -1;
-  }
-
-  &:hover::after {
-    top: 0;
-  }
-}
-
-.cartPreview {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  transform: translate(-50%, -170%);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  @include tablet {
-    transform: translate(-50%, -170%);
-    width: 70px;
-    height: 70px;
-  }
   @include tabletMore {
+    &::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--hover-bg);
+      transition: top 0.5s ease-in-out;
+      z-index: -1;
+    }
+    &.hover-effect::after {
+      top: 0;
+    }
+
+    &.remove-effect::after {
+      top: -100%;
+    }
+    &.hover-effect img {
+      // translate(0, -10%)
+      transform: scale(1.1) scaleX(1.3);
+      transition: ease-in-out 0.5s;
+    }
+
+    &.hover-effect .textarea {
+      position: absolute;
+      z-index: 1;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(255, 0, 0, 1);
+      transform: scale(1.5);
+      transition: opacity 0.3s ease, color 0.3s ease, border 0.3s ease;
+      p {
+        display: none;
+      }
+    }
+  }
+
+  .cartPreview {
+    position: fixed;
+    bottom: 0;
+    right: 0;
     transform: translate(-50%, -170%);
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @include tablet {
+      transform: translate(-50%, -170%);
+      width: 70px;
+      height: 70px;
+    }
+    @include tabletMore {
+      transform: translate(-50%, -170%);
+      width: 90px;
+      height: 90px;
+    }
   }
-}
-.scroll-up {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  @include tablet {
-    width: 70px;
-    height: 70px;
+  .scroll-up {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @include tablet {
+      width: 70px;
+      height: 70px;
+    }
+    @include tabletMore {
+      width: 90px;
+      height: 90px;
+    }
   }
-  @include tabletMore {
-    width: 90px;
-    height: 90px;
-  }
-}
-
-// hover시 배경
-.grid-item:nth-child(1):hover {
-  background-color: #ffe23a;
-}
-.grid-item:nth-child(2):hover {
-  background-color: #a7a4ff;
-}
-.grid-item:nth-child(3):hover {
-  background-color: #5bfff1;
-}
-.grid-item:nth-child(4):hover {
-  background-color: #ddff47;
-}
-.grid-item:nth-child(5):hover {
-  background-color: #83ffa4;
-}
-.grid-item:nth-child(6):hover {
-  background-color: #ffa1a1;
-}
-
-// after
-.grid-item:nth-child(1)::after {
-  background-color: #ffe23a;
-}
-.grid-item:nth-child(2)::after {
-  background-color: #a7a4ff;
-}
-.grid-item:nth-child(3)::after {
-  background-color: #5bfff1;
-}
-.grid-item:nth-child(4)::after {
-  background-color: #ddff47;
-}
-.grid-item:nth-child(5)::after {
-  background-color: #83ffa4;
-}
-.grid-item:nth-child(6)::after {
-  background-color: #ffa1a1;
 }
