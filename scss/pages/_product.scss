@@ -310,9 +310,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 10px;
     padding: 20px;
-    height: 100vh;
+    height: auto;
 
     /* 화면 크기가 작아질 경우 세로로 배치 */
     @media (max-width: 768px) {
@@ -321,66 +321,78 @@
 
     .product-slider {
         width: 50%;
-        height: 300px;
+        height: 500px;
         padding-top: 20px;
         padding-bottom: 20px;
-        position: relative; /* Add this line */
+        position: relative;
 
         .swiper-wrapper {
             display: flex;
             align-items: center;
+            height: 500px;
         }
 
         .swiper-slide {
             width: 200px; /* 기본 너비 */
-            height: 200px; /* 기본 높이 */
-            transition: all 0.3s; /* 부드러운 전환 효과 */
-            opacity: 0.4; /* 기본 투명도 */
-            transform: scale(0.8); /* 기본 크기 */
+            height: auto;
+            opacity: 0.4;
+            transition: all 0.3s;
+            transform: scale(0.8);
             position: relative;
+            overflow: hidden; /* 이미지 넘침 방지 */
 
             img {
-                object-fit: contain;
-                border-radius: 15px;
+                max-width: 100%;
+                height: auto;
+                object-fit: cover; /* 이미지 비율 유지 */
             }
-        }
 
-        .swiper-slide.active {
-            width: 500px; /* 활성 슬라이드 너비 */
-            height: 500px; /* 활성 슬라이드 높이 */
-            opacity: 1; /* 활성 슬라이드 투명도 */
-            transform: scale(1); /* 활성 슬라이드 크기 */
-            z-index: 10; /* 활성 슬라이드가 다른 슬라이드 위에 표시 */
+            &.prev,
+            &.next {
+                width: 250px; /* 양옆 슬라이드 너비 */
+                opacity: 0.7;
+                transform: scale(0.9);
+            }
+
+            &.active {
+                width: 500px; /* 활성 슬라이드 너비 */
+                opacity: 1;
+                transform: scale(1);
+                z-index: 10;
+            }
+
+            &.far-prev,
+            &.far-next {
+                opacity: 0.2;
+                transform: scale(0.6);
+            }
         }
 
         /* 네비게이션 버튼 위치 조정 */
         .swiper-button-prev,
         .swiper-button-next {
-            color: black;
-            background: rgba(255, 255, 255, 0.7);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+            color: $black;
+            width: 50px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: absolute; /* absolute로 변경 */
+            position: absolute;
             top: 50%; /* 상단 중앙에 배치 */
             transform: translateY(-50%); /* 수직 중앙 정렬 */
             z-index: 20; /* 네비게이션 버튼이 슬라이드 위에 표시 */
         }
 
         .swiper-button-prev {
-            left: 10px; /* 슬라이더 왼쪽에 배치 */
+            left: 20%; /* 슬라이더 왼쪽에 배치 */
         }
 
         .swiper-button-next {
-            right: 10px; /* 슬라이더 오른쪽에 배치 */
+            right: 20%; /* 슬라이더 오른쪽에 배치 */
         }
 
         .swiper-button-prev:hover,
         .swiper-button-next:hover {
-            background: rgba(255, 255, 255, 1);
             color: #e02121;
         }
 
@@ -403,9 +415,11 @@
         padding: 40px;
         border: 5px solid $black;
         border-radius: 75px;
+        overflow: hidden;
 
         h2 {
             font-size: 3.2rem;
+            color: #333333;
         }
         p {
             font-size: 2.4rem;
@@ -419,24 +433,22 @@
         .product-details {
             margin-top: 30px;
 
-            span {
-                font-size: 2rem;
-                font-weight: bold;
-            }
-
             .quantity-control {
                 display: flex;
                 align-items: center;
                 gap: 10px;
 
                 p {
+                    font-size: 2rem;
                     margin-right: 50px;
+                    font-weight: bold;
                 }
 
                 span {
                     width: 50px;
                     height: 40px;
                     border: 2px solid $black;
+                    color: #777777;
                     border-radius: 13px;
                     text-align: center;
                 }
@@ -453,6 +465,8 @@
                 .minus,
                 .plus {
                     color: $black;
+                    font-weight: bold;
+                    font-size: 2rem;
                 }
             }
 
@@ -460,10 +474,12 @@
                 display: flex;
                 align-items: center;
                 margin-top: 30px;
-                padding-bottom: 100px;
+                padding-bottom: 70px;
 
                 span {
                     margin-right: 30px;
+                    font-size: 2rem;
+                    font-weight: bold;
                 }
             }
 
@@ -479,21 +495,24 @@
 
         .buttons {
             width: 100%;
+            height: 70px;
             position: absolute;
-            left: 50%;
+            bottom: 0;
+            right: 0;
             display: flex;
             margin-top: 20px;
-            border-top: 3px solid $black;
 
             .cart {
                 width: 100%;
-                background: gray;
+                background: #d2d2d2;
                 padding: 10px;
+                color: $black;
                 flex: 1;
                 border-radius: 0 0 0 75px;
 
                 &:hover {
-                    background: lightgray;
+                    background: $gray-70;
+                    color: $white;
                 }
             }
 
@@ -501,12 +520,13 @@
                 width: 100%;
                 background: #e02121;
                 padding: 10px;
-                color: white;
+                color: $black;
                 flex: 1;
                 border-radius: 0 0 75px 0;
 
                 &:hover {
                     background: darkred;
+                    color: $white;
                 }
             }
         }
@@ -570,7 +590,7 @@
         position: relative;
 
         .swiper-slide {
-            width: auto;
+            width: auto; /* 슬라이드 너비 자동 조정 */
 
             .product-item {
                 text-align: center;
@@ -581,11 +601,12 @@
                 }
 
                 h3 {
-                    font-size: 1.5rem;
+                    font-size: 1.8rem;
+                    margin: 10px 0;
                 }
 
                 p {
-                    font-size: 1.2rem;
+                    font-size: 1.8rem;
                 }
             }
         }
@@ -612,4 +633,5 @@
         right: 10px;
     }
 }
+
 //productDetail.html 끝
