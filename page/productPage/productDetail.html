@@ -3,45 +3,45 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>POPMART - Product Detail</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <link rel="stylesheet" href="../../css/output/styles.css" />
+        <title>POPMART - Product Detail</title>
     </head>
     <body>
         <!-- 제품 상세 페이지 -->
         <main>
             <div class="inner">
                 <section class="product-slider-section">
-                    <div class="swiper">
+                    <div class="swiper product-slider">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-4.jpg?raw=true"
-                                    alt="Product 1"
+                                    alt="Produc1"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-5.jpg?raw=true"
-                                    alt="Product 2"
+                                    alt="Product2"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-2.jpg?raw=true"
-                                    alt="Product 3"
+                                    alt="Product3"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-3.jpg?raw=true"
-                                    alt="Product 4"
+                                    alt="Product4"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-6.jpg?raw=true"
-                                    alt="Product 5"
+                                    alt="Product5"
                                 />
                             </div>
                         </div>
@@ -49,17 +49,25 @@
                         <!-- 네비게이션 버튼 -->
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
+                        <!-- 페이지네이션 -->
+                        <div class="swiper-pagination"></div>
                     </div>
 
                     <div class="product-info">
                         <h2>라부부 코카콜라 시리즈</h2>
                         <p class="price">15,000 원</p>
-                        <div class="quantity-control">
-                            <button class="minus">-</button>
-                            <span>1</span>
-                            <button class="plus">+</button>
+                        <div class="product-details">
+                            <div class="quantity-control">
+                                <p>수량</p>
+                                <button class="minus">-</button>
+                                <span>1</span>
+                                <button class="plus">+</button>
+                            </div>
+                            <div class="shipping-info">
+                                <span>배송혜택</span>
+                                <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
+                            </div>
                         </div>
-                        <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
                         <div class="buttons">
                             <button class="cart">장바구니</button>
                             <button class="buy">구매하기</button>
@@ -120,90 +128,105 @@
                     <div class="swiper related-products">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail18.png?raw=true"
-                                    alt="라부부 리듬 체조 블리스터"
-                                />
-                                <h3>라부부 리듬 체조 블리스터</h3>
-                                <p>40,000원</p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail18.png?raw=true"
+                                        alt="라부부 리듬 체조 블리스터"
+                                    />
+                                    <h3>라부부 리듬 체조 블리스터</h3>
+                                    <p>40,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail4.png?raw=true"
-                                    alt="스컬판다 소리 시리즈"
-                                />
-                                <h3>스컬판다 소리 시리즈</h3>
-                                <p>15,000원</p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail4.png?raw=true"
+                                        alt="스컬판다 소리 시리즈"
+                                    />
+                                    <h3>스컬판다 소리 시리즈</h3>
+                                    <p>15,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/oloklkl/dp-static/blob/main/popmart/thumbnail/thumbnail25.png?raw=true"
-                                    alt="디무 동물의 왕국 시리즈"
-                                />
-                                <h3>디무 동물의 왕국 시리즈</h3>
-                                <p>15,000원</p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail25.png?raw=true"
+                                        alt="디무 동물의 왕국 시리즈"
+                                    />
+                                    <h3>디무 동물의 왕국 시리즈</h3>
+                                    <p>15,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail26.png?raw=true"
-                                    alt="관련 상품 2"
-                                />
-                                <h3></h3>
-                                <p></p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail18.png?raw=true"
+                                        alt="라부부 리듬 체조 블리스터"
+                                    />
+                                    <h3>라부부 리듬 체조 블리스터</h3>
+                                    <p>40,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail26.png?raw=true"
-                                    alt="관련 상품 2"
-                                />
-                                <h3></h3>
-                                <p></p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail4.png?raw=true"
+                                        alt="스컬판다 소리 시리즈"
+                                    />
+                                    <h3>스컬판다 소리 시리즈</h3>
+                                    <p>15,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail26.png?raw=true"
-                                    alt="관련 상품 2"
-                                />
-                                <h3></h3>
-                                <p></p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail25.png?raw=true"
+                                        alt="디무 동물의 왕국 시리즈"
+                                    />
+                                    <h3>디무 동물의 왕국 시리즈</h3>
+                                    <p>15,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail7.png?raw=true"
-                                    alt="관련 상품 4"
-                                />
-                                <h3></h3>
-                                <p></p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail18.png?raw=true"
+                                        alt="라부부 리듬 체조 블리스터"
+                                    />
+                                    <h3>라부부 리듬 체조 블리스터</h3>
+                                    <p>40,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail7.png?raw=true"
-                                    alt="관련 상품 4"
-                                />
-                                <h3></h3>
-                                <p></p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail4.png?raw=true"
+                                        alt="스컬판다 소리 시리즈"
+                                    />
+                                    <h3>스컬판다 소리 시리즈</h3>
+                                    <p>15,000원</p>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail7.png?raw=true"
-                                    alt="관련 상품 4"
-                                />
-                                <h3></h3>
-                                <p></p>
+                                <div class="product-item">
+                                    <img
+                                        src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail25.png?raw=true"
+                                        alt="디무 동물의 왕국 시리즈"
+                                    />
+                                    <h3>디무 동물의 왕국 시리즈</h3>
+                                    <p>15,000원</p>
+                                </div>
                             </div>
                         </div>
                         <!-- 좌우 네비게이션 -->
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
-                        <!-- 페이지네이션 -->
-                        <div class="swiper-pagination"></div>
                     </div>
                 </section>
             </div>
-
-            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-            <script src="../../js/productDetailSwiper.js"></script>
-            <script src="../../js/productDetailScript.js"></script>
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="../../js/productDetailSwiper.js"></script>
+        <script src="../../js/productDetailScript.js"></script>
     </body>
 </html>
