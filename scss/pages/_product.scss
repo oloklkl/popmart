@@ -1,36 +1,38 @@
 @import '../base/include';
 
-body {
-    background-color: var(--white);
-}
+// body {
+//     background-color: var(--white);
+// }
+
+// .inner {
+//     position: relative;
+//     width: 100%;
+//     max-width: $grid;
+//     margin: 0 auto;
+//     padding: 0;
+// }
 
 .inner {
     position: relative;
     width: 100%;
-    max-width: $grid;
+    max-width: calc(100% - 200px);
     margin: 0 auto;
     padding: 0;
-}
-
-header {
-    width: 100%;
-    height: 100px;
-    background-color: pink;
-    margin-bottom: 4rem;
-}
-
-footer {
-    width: 100%;
-    height: 240px;
-    margin-top: 80px;
-    background-color: lightblue;
+    @include tablet {
+        max-width: calc(100% - $p-tablet);
+    }
+    @include mobile {
+        max-width: calc(100% - $p-mobile);
+    }
 }
 
 // productList.html 시작
 .content-wrapper {
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
 
     @include tablet {
         flex-direction: column;
@@ -54,6 +56,7 @@ footer {
         }
 
         @include mobile {
+            flex-direction: row;
         }
 
         span {
@@ -74,6 +77,10 @@ footer {
             }
 
             @include mobile {
+                width: 120px;
+                height: 60px;
+                font-size: 17px;
+                line-height: 55px;
             }
         }
 
@@ -101,10 +108,6 @@ footer {
 
             @include tablet {
                 width: 50px;
-            }
-
-            i {
-                font-size: 5rem;
             }
         }
         .dimoo {
@@ -302,21 +305,26 @@ footer {
     }
 }
 
-// productList.html 끝
-
-//productDetail.html 시작
+/* productDetail.html */
 .product-slider-section {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 40px;
-    padding: 50px;
+    padding: 20px;
+    height: 100vh;
 
-    .swiper-container {
-        width: 500px;
-        height: 350px;
-        overflow: hidden;
-        position: relative;
+    /* 화면 크기가 작아질 경우 세로로 배치 */
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    .product-slider {
+        width: 50%;
+        height: 300px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        position: relative; /* Add this line */
 
         .swiper-wrapper {
             display: flex;
@@ -324,102 +332,190 @@ footer {
         }
 
         .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 300px;
-            height: 300px;
+            width: 200px; /* 기본 너비 */
+            height: 200px; /* 기본 높이 */
+            transition: all 0.3s; /* 부드러운 전환 효과 */
+            opacity: 0.4; /* 기본 투명도 */
+            transform: scale(0.8); /* 기본 크기 */
+            position: relative;
 
             img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+                object-fit: contain;
                 border-radius: 15px;
             }
         }
 
-        // 네비게이션 버튼 위치 조정
+        .swiper-slide.active {
+            width: 500px; /* 활성 슬라이드 너비 */
+            height: 500px; /* 활성 슬라이드 높이 */
+            opacity: 1; /* 활성 슬라이드 투명도 */
+            transform: scale(1); /* 활성 슬라이드 크기 */
+            z-index: 10; /* 활성 슬라이드가 다른 슬라이드 위에 표시 */
+        }
+
+        /* 네비게이션 버튼 위치 조정 */
         .swiper-button-prev,
         .swiper-button-next {
             color: black;
             background: rgba(255, 255, 255, 0.7);
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: absolute; /* absolute로 변경 */
+            top: 50%; /* 상단 중앙에 배치 */
+            transform: translateY(-50%); /* 수직 중앙 정렬 */
+            z-index: 20; /* 네비게이션 버튼이 슬라이드 위에 표시 */
         }
 
         .swiper-button-prev {
-            left: 50%;
-            transform: translateX(-150%);
+            left: 10px; /* 슬라이더 왼쪽에 배치 */
         }
 
         .swiper-button-next {
-            right: 50%;
-            transform: translateX(150%);
+            right: 10px; /* 슬라이더 오른쪽에 배치 */
         }
+
         .swiper-button-prev:hover,
         .swiper-button-next:hover {
             background: rgba(255, 255, 255, 1);
-            color: red;
+            color: #e02121;
+        }
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #e02121;
         }
     }
 
     .product-info {
-        width: 250px;
-        padding: 20px;
-        border: 2px solid #000;
-        border-radius: 15px;
+        position: relative;
+        width: auto;
+        height: auto;
+        padding: 40px;
+        border: 5px solid $black;
+        border-radius: 75px;
+
+        h2 {
+            font-size: 3.2rem;
+        }
+        p {
+            font-size: 2.4rem;
+        }
 
         .price {
-            color: red;
+            color: #e02121;
             font-weight: bold;
         }
 
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .product-details {
+            margin-top: 30px;
 
-            button {
-                padding: 5px;
-                border: 1px solid #000;
-                cursor: pointer;
+            span {
+                font-size: 2rem;
+                font-weight: bold;
             }
-        }
 
-        .shipping span {
-            color: red;
+            .quantity-control {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                p {
+                    margin-right: 50px;
+                }
+
+                span {
+                    width: 50px;
+                    height: 40px;
+                    border: 2px solid $black;
+                    border-radius: 13px;
+                    text-align: center;
+                }
+
+                button {
+                    width: 40px;
+                    padding: 5px;
+                    border: 2px solid $black;
+                    border-radius: 13px;
+                    background-color: $white;
+                    cursor: pointer;
+                }
+
+                .minus,
+                .plus {
+                    color: $black;
+                }
+            }
+
+            .shipping-info {
+                display: flex;
+                align-items: center;
+                margin-top: 30px;
+                padding-bottom: 100px;
+
+                span {
+                    margin-right: 30px;
+                }
+            }
+
+            .shipping {
+                font-size: 1.3rem;
+            }
+
+            .shipping span {
+                color: #e02121;
+                font-size: 1.5rem;
+            }
         }
 
         .buttons {
+            width: 100%;
+            position: absolute;
+            left: 50%;
             display: flex;
-            gap: 10px;
+            margin-top: 20px;
+            border-top: 3px solid $black;
 
             .cart {
+                width: 100%;
                 background: gray;
                 padding: 10px;
+                flex: 1;
+                border-radius: 0 0 0 75px;
+
+                &:hover {
+                    background: lightgray;
+                }
             }
 
             .buy {
-                background: red;
+                width: 100%;
+                background: #e02121;
                 padding: 10px;
                 color: white;
-            }
-            .cart:hover {
-                background: lightgray;
-            }
+                flex: 1;
+                border-radius: 0 0 75px 0;
 
-            .buy:hover {
-                background: darkred;
+                &:hover {
+                    background: darkred;
+                }
             }
         }
     }
 }
 
 .product-detail-section {
+    padding: 20px; /* 패딩 추가 */
+
     h2 {
         font-size: 5.4rem;
         margin-bottom: 40px;
@@ -437,6 +533,7 @@ footer {
     flex-direction: column;
     align-content: center;
     align-items: center;
+    padding: 20px; /* 패딩 추가 */
 
     h2 {
         font-size: 5.4rem;
@@ -460,8 +557,8 @@ footer {
 
 .related-products-section {
     width: 100%;
-    margin: 40px auto;
-    padding: 20px 0;
+    margin: 20px 0;
+    padding: 20px;
 
     h2 {
         font-size: 3.2rem;
@@ -469,22 +566,50 @@ footer {
         justify-content: center;
     }
 
-    .swiper-slide {
-        display: flex;
-        flex-direction: column;
+    .related-products {
+        position: relative;
 
-        h3 {
-            font-size: 2rem;
-        }
-        p {
-            font-size: 1.7rem;
+        .swiper-slide {
+            width: auto;
+
+            .product-item {
+                text-align: center;
+
+                img {
+                    max-width: 100%; /* 최대 너비 제한 */
+                    height: auto;
+                }
+
+                h3 {
+                    font-size: 1.5rem;
+                }
+
+                p {
+                    font-size: 1.2rem;
+                }
+            }
         }
     }
 
-    .swiper-pagination {
-        position: relative;
-        margin-top: 10px;
+    .related-products .swiper-button-next,
+    .related-products .swiper-button-prev {
+        color: black;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .related-products .swiper-button-next:hover,
+    .related-products .swiper-button-prev:hover {
+        color: #e02121;
+    }
+
+    .related-products .swiper-button-prev {
+        left: 10px;
+    }
+
+    .related-products .swiper-button-next {
+        right: 10px;
     }
 }
-
 //productDetail.html 끝
