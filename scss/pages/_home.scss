@@ -45,8 +45,21 @@
   }
 }
 
-.section2-back {
-  width: 100vw;
-  height: 1000px;
+.section01 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   background-color: #ffba4a;
+  overflow: hidden;
+  position: relative;
+
+  h1 {
+    font-family: anton;
+    font-weight: 100;
+
+    color: #d40000;
+    font-size: 360px;
+    letter-spacing: -25px;
+  }
 }

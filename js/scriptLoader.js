@@ -12,10 +12,10 @@ function executePageScript() {
 
   const scriptMap = {
     home: '/mainPage/homeScript.js',
-    login: 'loginScript.js',
+    login: 'login.js',
     register: 'registerScript.js',
     productList: 'productListScript.js',
-    productDetail: 'roductDetailScript.js',
+    productDetail: 'productDetailScript.js',
     cart: 'cartScript.js',
     event: 'eventScript.js',
     shop: 'shopScript.js',
