@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POPMART</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="css/output/styles.css" />
   </head>
   <body>
@@ -36,42 +42,43 @@
 
     <script>
       // 공통 헤더 & 푸터 불러오기
-      fetch('common/header.html')
+      fetch("common/header.html")
         .then((response) => response.text())
-        .then((data) => (document.getElementById('header').innerHTML = data))
-        .catch((error) => console.error('Error loading header:', error));
+        .then((data) => (document.getElementById("header").innerHTML = data))
+        .catch((error) => console.error("Error loading header:", error));
 
-      fetch('common/footer.html')
+      fetch("common/footer.html")
         .then((response) => response.text())
-        .then((data) => (document.getElementById('footer').innerHTML = data))
-        .catch((error) => console.error('Error loading footer:', error));
+        .then((data) => (document.getElementById("footer").innerHTML = data))
+        .catch((error) => console.error("Error loading footer:", error));
 
       // 라우팅 설정 (각 페이지 매핑)
       function loadPage() {
         const route = window.location.hash.substring(1);
         const routes = {
-          home: 'page/mainPage/home.html',
-          login: 'page/myPage/login.html',
-          register: 'page/myPage/register.html',
-          productList: 'page/productPage/productList.html',
-          productDetail: 'page/productPage/productDetail.html',
-          cart: 'page/cart.html',
-          event: 'page/event.html',
-          shop: 'page/shop.html',
-          cs: 'page/cs.html',
-          popStory: 'page/popStory.html',
+          home: "page/mainPage/home.html",
+          login: "page/myPage/login.html",
+          register: "page/myPage/register.html",
+          productList: "page/productPage/productList.html",
+          productDetail: "page/productPage/productDetail.html",
+          cart: "page/cart.html",
+          event: "page/event.html",
+          shop: "page/shop.html",
+          cs: "page/cs.html",
+          popStory: "page/popStory.html",
+          test: "page/test.html",
         };
 
-        const pagePath = routes[route] || 'page/mainPage/home.html'; // 기본 페이지는 home.html
+        const pagePath = routes[route] || "page/mainPage/home.html"; // 기본 페이지는 home.html
 
         fetch(pagePath)
           .then((response) => response.text())
-          .then((data) => (document.getElementById('content').innerHTML = data))
-          .catch((error) => console.error('Error loading page:', error));
+          .then((data) => (document.getElementById("content").innerHTML = data))
+          .catch((error) => console.error("Error loading page:", error));
       }
 
-      window.addEventListener('hashchange', loadPage);
-      window.addEventListener('load', loadPage);
+      window.addEventListener("hashchange", loadPage);
+      window.addEventListener("load", loadPage);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="js/scriptLoader.js"></script>
