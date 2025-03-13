@@ -22,6 +22,8 @@ function executePageScript() {
     cs: 'csScript.js',
     popStory: 'popStoryScript.js',
     popStoryList: 'popStoryListScript.js',
+    myPageDrawer: 'myPageDrawerScript.js',
+    searchDrawer: 'searchDrawerScript.js',
   }
 
   const scriptPath = scriptMap[route]

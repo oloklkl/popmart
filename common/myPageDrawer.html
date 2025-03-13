@@ -3,9 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myPageDrawer</title>
+    <link rel="stylesheet" href="../../css/output/styles.css" />
+    <title>myPageDrawer 페이지</title>
   </head>
   <body>
-    <header></header>
+    <!-- test 헤더 -->
+    <header>
+      <button id="mypage-btn">마이페이지</button>
+    </header>
+
+    <div id="modal-overlay" class="modal hidden"></div>
+    <div id="mypage-menu" class="mypageMenu hidden">
+      <!-- 로그인 X -->
+      <div id="logged-out" class="loggedOut">
+        <div class="btn">
+          <button class="singBtn login" onclick="location.href='#login'">
+            로그인
+          </button>
+          <button class="singBtn register" onclick="location.href='#register'">
+            회원가입
+          </button>
+        </div>
+        <button class="textBtn" onclick="location.href='#cart'">
+          <span>장바구니</span>
+        </button>
+        <button class="textBtn" onclick="location.href='#login'">
+          <span>적립금</span>
+        </button>
+        <button class="textBtn" onclick="location.href='#login'">
+          <span>쿠폰</span>
+        </button>
+        <button class="textBtn" onclick="location.href='#cs'">
+          <span>고객센터</span>
+        </button>
+        <button class="textBtn" onclick="location.href='#login'">
+          <span>배송 주소록 관리</span>
+        </button>
+      </div>
+
+      <!-- 로그인 O -->
+      <div id="logged-in" class="loggedIn">
+        <button class="textBtn">관심상품</button>
+        <button class="textBtn">장바구니</button>
+        <button class="textBtn">적립금</button>
+        <button class="textBtn">쿠폰</button>
+        <button class="textBtn">고객센터</button>
+        <button class="textBtn">배송 주소록 관리</button>
+        <button onclick="logout()">로그아웃</button>
+      </div>
+    </div>
+    <script src="../js/myPageDrawerScript.js"></script>
   </body>
 </html>

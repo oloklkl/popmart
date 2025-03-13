@@ -8,7 +8,7 @@ loadMoreBtn.classList.add('moreBtn')
 loadMoreBtn.textContent = '더보기'
 document.querySelector('.popStoryListContainer').appendChild(loadMoreBtn)
 
-let currentIndex = 0
+let currentIndex = 6
 const itemsPerPage = 6
 const allStories = [...popStoryListItems, ...addPopStoryListItems]
 

@@ -1,0 +1,122 @@
+@import '../base/include';
+
+.hidden {
+  display: none;
+}
+
+.mypageMenu {
+  width: 390px;
+  height: 500px;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  // transform: translateX(100%);
+  background: #dfdfdf;
+  border: 3px solid black;
+  z-index: 100;
+  transition: transform 0.3s ease-in-out;
+  @include mobileMore {
+    width: 260px;
+    right: 20px;
+    border-radius: 17px;
+  }
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.loggedOut {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  .btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 20px;
+    padding-top: 15px;
+    .login {
+      width: 45%;
+    }
+    .register {
+      width: 55%;
+    }
+  }
+  .singBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 14px 12px;
+    border-radius: 17px;
+    font-weight: bold;
+    font-size: 20px;
+    @include mobileMore {
+      height: 48px;
+      padding: 14px 12px;
+      border-radius: 17px;
+      font-size: 18px;
+    }
+  }
+  .textBtn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    padding-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      height: 100%;
+      transition: all 0.5s;
+      background-color: white;
+    }
+
+    &::before {
+      content: '>';
+      position: absolute;
+      bottom: 4px;
+      left: 20px;
+      font-size: 32px;
+      font-weight: normal;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 80%;
+      height: 2px;
+      background-color: black;
+      transform: translateX(-50%);
+    }
+  }
+  span {
+    padding-left: 30px;
+  }
+}
+.loggedIn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; // 버튼 간 간격 조절
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
