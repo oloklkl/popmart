@@ -1,0 +1,446 @@
+// Cart Styles
+// 장바구니 스타일 파일
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+
+// Variables
+$primary-color: #ff6b6b;
+$text-color: #333;
+$border-color: #eee;
+$light-gray: #f9f9f9;
+$gray: #888;
+
+// Breakpoints
+$tablet-width: 1024px;
+$mobile-width: 390px;
+
+// Container
+.container {
+  // max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Cart title
+.cart-title {
+  width: 1520px;
+  font-size: 64px;
+  font-weight: 600;
+  margin: 40px auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .select-all {
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+}
+
+// 체크박스 공통 스타일
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-svg {
+  transition: all 0.2s ease;
+}
+
+// 체크박스 상태별 SVG 표시
+.checked-svg,
+.unchecked-svg {
+  transition: all 0.2s ease;
+}
+
+// 체크박스 컨테이너 스타일
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .checkbox-label {
+    .checkbox-svg {
+      margin-right: 12px;
+    }
+  }
+
+  // 기존 체크박스 스타일은 사용하지 않음
+  .checkbox {
+    display: none;
+  }
+}
+
+// Cart items
+.cart-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  flex-wrap: wrap; // 요소들이 여러 줄로 배치될 수 있도록
+  width: 1520px;
+  height: auto; // 자동 높이로 변경
+  padding: 20px;
+  border: 3px solid #000;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  position: relative;
+  box-sizing: border-box;
+
+  .cart-item-main {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .item-checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    position: relative;
+  }
+
+  .item-image {
+    width: 154px;
+    height: 154px;
+    position: relative;
+    box-shadow: inset 0 0 0 4px #000;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .item-info {
+    flex: 1;
+
+    .item-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .item-category {
+      color: $gray;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      font-weight: bold;
+    }
+  }
+
+  // 수량 관련 스타일 수정 - 레이아웃 고정을 위한 스타일
+  .item-quantity {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
+    width: 120px; // 고정 너비 지정
+    flex-shrink: 0; // 너비 축소 방지
+
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0; // 버튼 크기 고정
+      padding: 0; // 패딩 제거
+      min-width: 30px; // 최소 너비 지정
+    }
+
+    .quantity-input {
+      width: 40px;
+      height: 30px;
+      border: 1px solid #ddd;
+      text-align: center;
+      margin: 0 5px;
+      flex-shrink: 0; // 입력 필드 크기 고정
+    }
+
+    .confirm-btn {
+      width: 40px;
+      height: 30px;
+      background: $text-color;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      margin-left: 5px;
+      cursor: pointer;
+      flex-shrink: 0; // 버튼 크기 고정
+      padding: 0; // 패딩 제거
+      min-width: 40px; // 최소 너비 지정
+    }
+  }
+
+  .item-total {
+    text-align: right;
+    font-weight: bold;
+    margin-left: auto;
+    align-self: center;
+    width: 120px; // 고정 너비 추가
+    flex-shrink: 0; // 너비 축소 방지
+  }
+
+  // 구분선 추가 - 이미지를 침범하지 않도록 수정
+  .cart-item-divider {
+    width: calc(100% - 174px); // 이미지 너비(154px) + 우측 마진(20px)만큼 제외
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+    margin-left: 174px; // 이미지 너비 + 마진만큼 오른쪽으로 이동
+  }
+}
+
+/* 삭제하기 버튼 SVG 스타일 */
+
+/* SVG 버튼 공통 스타일 */
+.action-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  margin-top: 10px;
+}
+
+.action-buttons .action-btn {
+  padding: 0; /* 패딩 제거 */
+  border: none; /* 테두리 제거 */
+  background: transparent; /* 배경 투명하게 */
+  margin-left: 10px; /* 버튼 간격 조정 */
+  cursor: pointer;
+  display: flex; /* SVG 중앙 정렬 */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 삭제된 버튼 스타일 - 기존 CSS 충돌 방지 */
+.action-buttons .action-btn.delete {
+  /* 클래스는 유지하되 스타일 재정의 */
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+}
+
+/* SVG 사이즈 유지 */
+.action-buttons .action-btn svg {
+  width: 79px;
+  height: 39px;
+}
+
+// Selected items
+.selected-items {
+  display: flex;
+  margin: 20px 0;
+  padding: 10px;
+  background: $light-gray;
+  border-radius: 5px;
+  flex-wrap: wrap; // 작은 화면에서 항목 줄바꿈 허용
+
+  .selected-item {
+    margin-right: 10px;
+    margin-bottom: 5px; // 줄바꿈 시 여백 추가
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+    }
+  }
+
+  .selected-count {
+    margin-left: auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column; // 모바일에서 더 나은 레이아웃을 위해 세로 방향 배치
+  }
+}
+
+// Order summary
+.order-summary {
+  background: $light-gray;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .summary-label {
+      color: $text-color;
+    }
+
+    .summary-value {
+      font-weight: bold;
+    }
+  }
+
+  .summary-total {
+    font-size: 20px;
+    color: $text-color;
+  }
+
+  .summary-total-value {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+// Responsive design
+@media (max-width: $tablet-width) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+
+    .item-quantity {
+      margin-left: 0;
+      margin-top: 15px;
+    }
+
+    .item-total {
+      width: 100%;
+      text-align: right;
+      margin-top: 15px;
+    }
+
+    // 반응형에서 구분선 조정
+    .cart-item-divider {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .cart-title {
+    font-size: 24px;
+  }
+
+  .cart-item {
+    .item-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    // 모바일에서 구분선 조정
+    .cart-item-divider {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  .action-buttons {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+
+  .selected-items {
+    flex-wrap: wrap;
+  }
+
+  .order-summary {
+    .summary-row {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .summary-value {
+        margin-top: 5px;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+/* TOP 버튼 스타일 */
+#top-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+}
+
+#top-button button {
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#top-button button:hover {
+  transform: translateY(-5px);
+}
+
+#top-button svg {
+  width: 50px;
+  height: 50px;
+}
+
+/* 반응형 스타일 */
+@media (max-width: $mobile-width) {
+  #top-button {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  #top-button button {
+    width: 40px;
+    height: 40px;
+  }
+
+  #top-button svg {
+    width: 40px;
+    height: 40px;
+  }
+}
