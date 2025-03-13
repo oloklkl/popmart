@@ -1,289 +1,284 @@
-@import '../base/include';
+@import "../base/include";
 
 body {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 .inner {
-    position: relative;
-    width: 100%;
-    max-width: $grid;
-    margin: 0 auto;
-    padding: 0;
+  position: relative;
+  width: 100%;
+  max-width: $grid;
+  margin: 0 auto;
+  padding: 0;
 }
 
 header {
-    width: 100%;
-    height: 100px;
-    background-color: pink;
-    margin-bottom: 4rem;
+  width: 100%;
 }
 
 footer {
-    width: 100%;
-    height: 240px;
-    margin-top: 80px;
-    background-color: lightblue;
+  width: 100%;
 }
 
 // productList.html 시작
 .content-wrapper {
-    display: flex;
-    // flex-direction: column;
+  display: flex;
+  // flex-direction: column;
 
-    @media (min-width: 1024px) {
-        flex-direction: row;
-    }
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 }
 
 .brand-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
 
-    @media (min-width: 1024px) {
-        width: 240px;
-        margin-right: 60px;
-        transform: translateY(-220px);
-    }
+  @media (min-width: 1024px) {
+    width: 240px;
+    margin-right: 60px;
+    transform: translateY(-220px);
+  }
 
-    span {
-        display: inline-block;
-        width: 240px;
-        height: 85px;
-        font-size: 20px;
-        text-align: center;
-        line-height: 85px;
-        background-size: cover;
-        background-position: center;
-    }
+  span {
+    display: inline-block;
+    width: 240px;
+    height: 85px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 85px;
+    background-size: cover;
+    background-position: center;
+  }
 
-    .labubu {
-        background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true);
-    }
-    .crybaby {
-        background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true);
-    }
-    .skullpanda {
-        background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking2.png?raw=true);
-        color: white;
-    }
-    .molly {
-        background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking3.png?raw=true);
-        color: white;
-    }
-    .pinogelly {
-        background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking4.png?raw=true);
-    }
-    .add-category {
-        background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMaskingPlus-btn.png?raw=true);
-        width: 80px;
-        height: auto;
-    }
+  .labubu {
+    background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true);
+  }
+  .crybaby {
+    background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true);
+  }
+  .skullpanda {
+    background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking2.png?raw=true);
+    color: white;
+  }
+  .molly {
+    background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking3.png?raw=true);
+    color: white;
+  }
+  .pinogelly {
+    background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking4.png?raw=true);
+  }
+  .add-category {
+    background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMaskingPlus-btn.png?raw=true);
+    width: 80px;
+    height: auto;
+  }
 }
 
 .grid-wrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  .grid-header {
+    h2 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    h2:nth-of-type(1) {
+      margin-top: 20px;
+    }
+
+    h2:nth-of-type(2) {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .grid-container {
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    position: relative;
+    overflow: visible !important;
 
-    .grid-header {
-        h2 {
-            font-size: 40px;
-            margin: 0;
-        }
-
-        h2:nth-of-type(1) {
-            margin-top: 20px;
-        }
-
-        h2:nth-of-type(2) {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
+    &.swiper {
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 50px;
     }
 
-    .grid-container {
+    .swiper-pagination {
+      position: relative;
+      margin-top: 30px;
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background-color: #ddd;
+        opacity: 1;
+
+        &-active {
+          background-color: #000;
+        }
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #000;
+
+      &:after {
+        font-size: 24px;
+      }
+    }
+
+    .grid-wrapper-inner {
+      width: 100%;
+    }
+
+    .grid-page {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, auto);
+      // gap: 20px;
+      width: 100%;
+    }
+
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+
+      justify-content: space-between;
+      padding: 15px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+
+      img {
         width: 100%;
-        position: relative;
-        overflow: visible !important;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: 15px;
+      }
 
-        &.swiper {
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 50px;
+      div {
+        h3 {
+          font-size: 16px;
+          margin: 0 0 8px 0;
+
+          font-weight: normal;
         }
 
-        .swiper-pagination {
-            position: relative;
-            margin-top: 30px;
-
-            .swiper-pagination-bullet {
-                width: 12px;
-                height: 12px;
-                background-color: #ddd;
-                opacity: 1;
-
-                &-active {
-                    background-color: #000;
-                }
-            }
+        p {
+          font-size: 14px;
+          color: #666;
+          margin: 0;
         }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #000;
-
-            &:after {
-                font-size: 24px;
-            }
-        }
-
-        .grid-wrapper-inner {
-            width: 100%;
-        }
-
-        .grid-page {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, auto);
-            // gap: 20px;
-            width: 100%;
-        }
-
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            height: auto;
-
-            justify-content: space-between;
-            padding: 15px;
-            transition: transform 0.3s ease;
-
-            &:hover {
-                transform: translateY(-10px);
-            }
-
-            img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-                margin-bottom: 15px;
-            }
-
-            div {
-                h3 {
-                    font-size: 16px;
-                    margin: 0 0 8px 0;
-
-                    font-weight: normal;
-                }
-
-                p {
-                    font-size: 14px;
-                    color: #666;
-                    margin: 0;
-                }
-            }
-        }
-
-        .circle {
-            display: block;
-            width: 200px;
-            height: 200px;
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-        }
+      }
     }
+
+    .circle {
+      display: block;
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
 }
 // productList.html 끝
 
 //productDetail.html 시작
 .slider {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+
+  .box {
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     transform-style: preserve-3d;
+    perspective: 500px;
 
-    .box {
-        position: relative;
-        display: flex;
-        transform-style: preserve-3d;
-        perspective: 500px;
-
-        .item {
-            position: absolute;
-            top: calc(50% - 350px);
-            left: calc(100% - 600px);
-            width: 500px;
-            height: 500px;
-            padding: 60px 40px 25px;
-            border: 5px solid black;
-            border-radius: 30px;
-            background: #fff;
-            transition: 0.5s;
-            transform-style: preserve-3d;
-            transform-origin: bottom;
-            user-select: none;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            -webkit-showcase-reflect: below 1px linear-gradient(transparent, transparent, #0002);
-        }
-
-        .item:nth-child(1) {
-            transform: translate3d(-250px, 0, 0) scale(0.8);
-            z-index: 2;
-            width: 250px;
-            height: 250px;
-        }
-        .item:nth-child(2) {
-            transform: translate3d(-150px, 0, 0) scale(0.9);
-            z-index: 3;
-            width: 300px;
-            height: 300px;
-        }
-        .item:nth-child(3) {
-            transform: translate3d(0px, 0, 0) scale(1);
-            z-index: 4;
-        }
-        .item:nth-child(4) {
-            transform: translate3d(350px, 0, 0) scale(0.9);
-            z-index: 3;
-            width: 300px;
-            height: 300px;
-        }
-        .item:nth-child(5) {
-            transform: translate3d(500px, 0, 0) scale(0.8);
-            z-index: 2;
-            width: 250px;
-            height: 250px;
-        }
+    .item {
+      position: absolute;
+      top: calc(50% - 350px);
+      left: calc(100% - 600px);
+      width: 500px;
+      height: 500px;
+      padding: 60px 40px 25px;
+      border: 5px solid black;
+      border-radius: 30px;
+      background: #fff;
+      transition: 0.5s;
+      transform-style: preserve-3d;
+      transform-origin: bottom;
+      user-select: none;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      -webkit-showcase-reflect: below 1px
+        linear-gradient(transparent, transparent, #0002);
     }
+
+    .item:nth-child(1) {
+      transform: translate3d(-250px, 0, 0) scale(0.8);
+      z-index: 2;
+      width: 250px;
+      height: 250px;
+    }
+    .item:nth-child(2) {
+      transform: translate3d(-150px, 0, 0) scale(0.9);
+      z-index: 3;
+      width: 300px;
+      height: 300px;
+    }
+    .item:nth-child(3) {
+      transform: translate3d(0px, 0, 0) scale(1);
+      z-index: 4;
+    }
+    .item:nth-child(4) {
+      transform: translate3d(350px, 0, 0) scale(0.9);
+      z-index: 3;
+      width: 300px;
+      height: 300px;
+    }
+    .item:nth-child(5) {
+      transform: translate3d(500px, 0, 0) scale(0.8);
+      z-index: 2;
+      width: 250px;
+      height: 250px;
+    }
+  }
 }
 .related-products {
-    .related-products {
-        width: 80%;
-        margin: 0 auto;
-        padding: 20px 0;
-    }
+  .related-products {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
 
-    .swiper-pagination {
-        position: relative;
-        margin-top: 10px;
-    }
+  .swiper-pagination {
+    position: relative;
+    margin-top: 10px;
+  }
 }
 
 //productDetail.html 끝

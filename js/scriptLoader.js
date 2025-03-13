@@ -1,8 +1,8 @@
-window.addEventListener('hashchange', () => {
+window.addEventListener("hashchange", () => {
   executePageScript();
 });
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   executePageScript();
 });
 
@@ -11,16 +11,17 @@ function executePageScript() {
   console.log(`#${route}`);
 
   const scriptMap = {
-    home: '/mainPage/homeScript.js',
-    login: 'login.js',
-    register: 'registerScript.js',
-    productList: 'productListScript.js',
-    productDetail: 'productDetailScript.js',
-    cart: 'cartScript.js',
-    event: 'eventScript.js',
-    shop: 'shopScript.js',
-    cs: 'csScript.js',
-    popStory: 'popStoryScript.js',
+    home: "/mainPage/homeScript.js",
+    login: "loginScript.js",
+    register: "registerScript.js",
+    productList: "productListScript.js",
+    productDetail: "roductDetailScript.js",
+    cart: "cartScript.js",
+    event: "eventScript.js",
+    shop: "shopScript.js",
+    cs: "csScript.js",
+    popStory: "popStoryScript.js",
+    test: "testScript.js",
   };
 
   const scriptPath = scriptMap[route];

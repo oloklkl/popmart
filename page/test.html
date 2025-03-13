@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POPMART</title>
+  </head>
+  <body>
+    <header id="header"></header>
+    <main id="content">본문 내용 입력</main>
+    <footer id="footer"></footer>
+
+    <script type="module">
+      import { headerContent } from "./common/header.js";
+      import { footerContent } from "./common/footer.js";
+
+      document.getElementById("header").innerHTML = headerContent;
+      document.getElementById("footer").innerHTML = footerContent;
+    </script>
+  </body>
+</html>

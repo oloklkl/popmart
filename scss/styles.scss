@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @use './base/reset';
 @use './base/variables';
 @use './components/header';
@@ -9,3 +10,14 @@
 @use './pages/login';
 @use './pages/register';
 
+=======
+@use "./base/reset";
+@use "./base/variables";
+@use "./components/header";
+@use "./components/footer";
+@use "./pages/home";
+@use "./pages/mypage";
+@use "./pages/product";
+@use "./pages/cart";
+@use "./pages/event";
+>>>>>>> 90377814d4fcfc3c7c148e45f90bee78cd0281a8
