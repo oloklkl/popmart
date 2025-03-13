@@ -55,7 +55,7 @@ export const popStoryListItems = [
   },
 ]
 
-export const additionalStories = [
+export const addPopStoryListItems = [
   {
     id: 7,
     title: 'DIMOO',

@@ -1,4 +1,4 @@
-import { popStoryListItems, additionalStories } from './popStoryListItems.js'
+import { popStoryListItems, addPopStoryListItems } from './popStoryItems.js'
 
 const gridContainer = document.querySelector('.grid')
 
@@ -10,7 +10,7 @@ document.querySelector('.popStoryListContainer').appendChild(loadMoreBtn)
 
 let currentIndex = 0
 const itemsPerPage = 6
-const allStories = [...popStoryListItems, ...additionalStories]
+const allStories = [...popStoryListItems, ...addPopStoryListItems]
 
 // HTML 요소 생성 함수
 const createGridItem = ({ title, subtitle, imgSrc, alt, bgColor }) => {
