@@ -7,43 +7,108 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 1920px; // 컨텐츠 영역 최대 너비 지정
-    margin: 50px auto; // 가운데 정렬
+.popstory-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #FFBA4A;
+    width: 100vw;
+    height: 150vh;
+}
+.popstory-inner {
+    width: 100vw;
+    margin: 50px auto;
+    height: 100vh;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    position: absolute;
+    z-index: 0;
+    .textbox {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        .title
+         {
+            font-size: 128px; // 제목 크기 설정
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 32px; // 부제목 크기 설정
+            font-weight: normal;
+            color: #444;
+        }
+        
+    }
+  
+    .content-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 30;
+        z-index: 0;
+        width: 100vw;
+        height: 100vh;
+        
+        
+        
+        
+        
+    }
 }
 
-// 제목 영역 스타일
-.textbox {
+
+.main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    align-items: center;
+  
     width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-    
-    h1 {
-        font-size: 128px; // 제목 크기 설정
-        font-weight: bold;
-        margin-bottom: 20px;
+    z-index: 10;
+    .product-image {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 3;
+        width: 70%;
+        transform: translate(-50%, -50%);
+        .frame-image {
+            width: 35%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        
+        .character-image {
+            position: absolute;
+            top: 0;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            width: 20%;
+            z-index: 3;
+        }
     }
-    
-    h2 {
-        font-size: 32px; // 부제목 크기 설정
-        font-weight: normal;
-        color: #444;
-    }
+
 }
+// 제목 영역 스타일
 
 // 메인 콘텐츠 영역 스타일
-.main-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-}
 
 // 프레임 이미지 스타일
 .frame-container {
@@ -53,20 +118,7 @@ body {
     margin-right: 20px; // 간격을 주기 위해 설정
 }
 
-.frame-image {
-    width: 100%;
-    position: relative;
-    z-index: 1; // 다른 요소보다 위에 보이도록 설정
-}
 
-.character-image {
-    position: relative;
-    top: 50%; // 프레임 중앙 정렬
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    z-index: 1;
-}
 
 // 태그 스타일링
 .tag-container {
