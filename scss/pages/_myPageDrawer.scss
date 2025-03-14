@@ -1,122 +1,158 @@
 @import '../base/include';
 
-.hidden {
+#modal-overlay {
   display: none;
-}
-
-.mypageMenu {
-  width: 390px;
-  height: 500px;
-  position: fixed;
-  top: 100px;
-  right: 0;
-  // transform: translateX(100%);
-  background: #dfdfdf;
-  border: 3px solid black;
-  z-index: 100;
-  transition: transform 0.3s ease-in-out;
-  @include mobileMore {
-    width: 260px;
-    right: 20px;
-    border-radius: 17px;
-  }
-  &.active {
-    transform: translateX(0);
-  }
-}
-
-.loggedOut {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  .btn {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    padding: 20px;
-    padding-top: 15px;
-    .login {
-      width: 45%;
-    }
-    .register {
-      width: 55%;
-    }
-  }
-  .singBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background: black;
-    color: white;
-    padding: 14px 12px;
-    border-radius: 17px;
-    font-weight: bold;
-    font-size: 20px;
-    @include mobileMore {
-      height: 48px;
-      padding: 14px 12px;
-      border-radius: 17px;
-      font-size: 18px;
-    }
-  }
-  .textBtn {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    padding-top: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    &:hover {
-      height: 100%;
-      transition: all 0.5s;
-      background-color: white;
-    }
-
-    &::before {
-      content: '>';
-      position: absolute;
-      bottom: 4px;
-      left: 20px;
-      font-size: 32px;
-      font-weight: normal;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 80%;
-      height: 2px;
-      background-color: black;
-      transform: translateX(-50%);
-    }
-  }
-  span {
-    padding-left: 30px;
-  }
-}
-.loggedIn {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px; // 버튼 간 간격 조절
-}
-.modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+#modal-overlay.active {
+  display: block;
   opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease;
+}
+
+// menu bar 스타일링 시작
+.mypageMenu,
+.member-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 390px;
+  height: 500px;
+  position: fixed;
+  top: 100px;
+  // right: 0;
+  right: -390px;
+  background: #dfdfdf;
+  border: 3px solid black;
+  z-index: 10;
+  transition: transform 0.3s ease;
+  @include mobileMore {
+    max-width: 260px;
+    border-radius: 17px;
+  }
+}
+
+.mypageMenu.open {
+  right: 0;
+  transform: translateX(-390px); /* 메뉴가 오른쪽에서 나오는 효과 */
+}
+
+.nonMember,
+.member-login {
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    height: 460px;
+    li {
+      position: relative;
+      padding: 0 20px;
+      width: 254px;
+      height: 60px;
+      display: flex;
+      align-items: flex-start;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+
+      &:not(.singBtnCont, .logoutCont):hover {
+        background-color: #f0f0f0;
+      }
+
+      &:not(.singBtnCont, .logoutCont)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 80%;
+        height: 2px;
+        background-color: black;
+        transform: translateX(-50%);
+      }
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding-top: 25px;
+      &:hover {
+        background-color: transparent;
+      }
+
+      span {
+        height: 100%;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// 로그인 시 ul만 따로 적용
+.member-login ul {
+  margin-top: 10px;
+  margin: 0 auto;
+}
+
+// 로그인, 회원가입 버튼
+.singBtnCont {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 8px;
+  .login {
+    width: 45%;
+  }
+  .register {
+    width: 55%;
+  }
+}
+.singBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 14px 12px;
+  border-radius: 17px;
+  font-weight: bold;
+  font-size: 20px;
+
+  @include mobileMore {
+    height: 48px;
+    padding: 14px 12px;
+    border-radius: 17px;
+    font-size: 18px;
+  }
+}
+
+// 로그아웃 버튼
+.logoutCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+}
+.logoutBtn {
+  width: 45%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 3px solid black;
+  font-size: 16px;
+  font-weight: bold;
+  &:hover {
+    background: $point;
+    color: white;
+  }
 }

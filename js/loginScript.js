@@ -1,3 +1,4 @@
+// 로그인 버튼 클릭 시
 loginForm.addEventListener('submit', function (e) {
   e.preventDefault()
   console.log('✅ 로그인 버튼 클릭됨')
@@ -12,10 +13,10 @@ loginForm.addEventListener('submit', function (e) {
   document.getElementById('userIdError').classList.remove('visible')
   document.getElementById('passwordError').classList.remove('visible')
 
-  // 오류 메시지를 초기화한 후 visibility와 opacity를 다시 숨김 상태로 설정
   document.getElementById('userIdError').textContent = ''
   document.getElementById('passwordError').textContent = ''
 
+  // 아이디 및 비밀번호 필드 유효성 검사
   if (!userId) {
     document.getElementById('userIdError').textContent = '아이디를 입력하세요.'
     document.getElementById('userIdError').classList.add('visible')
@@ -28,19 +29,21 @@ loginForm.addEventListener('submit', function (e) {
     return
   }
 
+  // 로그인 성공 처리
   if (userId === 'popmart' && password === 'p1234!') {
     alert('로그인 성공!')
     console.log('✅ 로그인 성공')
+
+    // 로그인 정보 로컬 스토리지에 저장
+    localStorage.setItem('isLoggedIn', 'true')
+    localStorage.setItem('userId', userId)
+
+    // 로그인 후 페이지 이동
     window.location.hash = '#home'
   } else {
-    if (userId === 'test' && password !== '1234') {
-      document.getElementById('passwordError').textContent =
-        '비밀번호를 다시 입력해 주세요.'
-      document.getElementById('passwordError').classList.add('visible')
-    } else {
-      document.getElementById('passwordError').textContent =
-        '아이디 또는 비밀번호가 올바르지 않습니다.'
-      document.getElementById('passwordError').classList.add('visible')
-    }
+    // 로그인 실패 처리
+    document.getElementById('passwordError').textContent =
+      '아이디 또는 비밀번호가 올바르지 않습니다.'
+    document.getElementById('passwordError').classList.add('visible')
   }
 })

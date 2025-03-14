@@ -12,44 +12,121 @@
       <button id="mypage-btn">마이페이지</button>
     </header>
 
-    <div id="modal-overlay" class="modal hidden"></div>
-    <div id="mypage-menu" class="mypageMenu hidden">
-      <!-- 로그인 X -->
-      <div id="logged-out" class="loggedOut">
-        <div class="btn">
-          <button class="singBtn login" onclick="location.href='#login'">
-            로그인
-          </button>
-          <button class="singBtn register" onclick="location.href='#register'">
-            회원가입
-          </button>
-        </div>
-        <button class="textBtn" onclick="location.href='#cart'">
-          <span>장바구니</span>
-        </button>
-        <button class="textBtn" onclick="location.href='#login'">
-          <span>적립금</span>
-        </button>
-        <button class="textBtn" onclick="location.href='#login'">
-          <span>쿠폰</span>
-        </button>
-        <button class="textBtn" onclick="location.href='#cs'">
-          <span>고객센터</span>
-        </button>
-        <button class="textBtn" onclick="location.href='#login'">
-          <span>배송 주소록 관리</span>
-        </button>
+    <div id="modal-overlay" class="modal"></div>
+
+    <!-- mypage menu -->
+    <div id="mypage-menu" class="mypageMenu">
+      <!-- 비회원 -->
+      <div id="non-member" class="nonMember">
+        <ul>
+          <li class="singBtnCont">
+            <button class="singBtn login" onclick="location.href='#login'">
+              로그인
+            </button>
+            <button
+              class="singBtn register"
+              onclick="location.href='#register'">
+              회원가입
+            </button>
+          </li>
+          <li>
+            <a href="#cart">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>장바구니</span>
+            </a>
+          </li>
+          <li>
+            <a href="#login">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>적립금</span></a
+            >
+          </li>
+          <li>
+            <a href="#login"
+              ><img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>쿠폰</span></a
+            >
+          </li>
+          <li>
+            <a href="#login">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>고객센터</span></a
+            >
+          </li>
+          <li>
+            <a href="#login"
+              ><img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>배송 주소록 관리</span></a
+            >
+          </li>
+        </ul>
       </div>
 
-      <!-- 로그인 O -->
-      <div id="logged-in" class="loggedIn">
-        <button class="textBtn">관심상품</button>
-        <button class="textBtn">장바구니</button>
-        <button class="textBtn">적립금</button>
-        <button class="textBtn">쿠폰</button>
-        <button class="textBtn">고객센터</button>
-        <button class="textBtn">배송 주소록 관리</button>
-        <button onclick="logout()">로그아웃</button>
+      <!-- 회원 -->
+      <div id="member" class="member-login">
+        <ul>
+          <li>
+            <a href="#cart">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>관심상품</span></a
+            >
+          </li>
+          <li>
+            <a href="#cart">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>장바구니</span></a
+            >
+          </li>
+          <li>
+            <a href="#login">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>적립금</span></a
+            >
+          </li>
+          <li>
+            <a href="#login"
+              ><img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>쿠폰</span></a
+            >
+          </li>
+          <li>
+            <a href="#login">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>고객센터</span></a
+            >
+          </li>
+          <li>
+            <a href="#login"
+              ><img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+                alt="chevron-right" />
+              <span>배송 주소록 관리</span></a
+            >
+          </li>
+          <li class="logoutCont">
+            <button class="logoutBtn" onclick="logout()">로그아웃</button>
+          </li>
+        </ul>
       </div>
     </div>
     <script src="../js/myPageDrawerScript.js"></script>

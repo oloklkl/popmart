@@ -50,6 +50,13 @@
         .then((data) => (document.getElementById('footer').innerHTML = data))
         .catch((error) => console.error('Error loading footer:', error))
 
+      // fetch('common/myPageDrawer.html')
+      //   .then((response) => response.text())
+      //   .then(
+      //     (data) => (document.getElementById('myPageDrawer').innerHTML = data)
+      //   )
+      //   .catch((error) => console.error('Error loading myPageDrawer:', error))
+
       // 라우팅 설정 (각 페이지 매핑)
       function loadPage() {
         const route = window.location.hash.substring(1)
