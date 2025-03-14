@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 window.addEventListener('hashchange', () => {
   executePageScript()
 })
@@ -6,15 +5,6 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('load', () => {
   executePageScript()
 })
-=======
-window.addEventListener("hashchange", () => {
-  executePageScript();
-});
-
-window.addEventListener("load", () => {
-  executePageScript();
-});
->>>>>>> cc58c1cbc90a721ddd2b2ecc4be64d174903877b
 
 function executePageScript() {
   const route = window.location.hash.substring(1)
