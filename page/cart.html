@@ -5,6 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>장바구니</title>
         <link rel="stylesheet" href="/css/output/styles.css" />
+        <style>
+            .quantity-input-container {
+                position: relative;
+                display: inline-block;
+            }
+
+            .quantity-input-container svg {
+                display: block;
+            }
+
+            .quantity-input-container::after {
+                content: attr(data-value);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 16px;
+                color: #777777;
+                pointer-events: none;
+            }
+        </style>
     </head>
     <body>
         <!-- Header -->
@@ -167,10 +188,89 @@
                             <div class="item-price">15,000 원</div>
                         </div>
                         <div class="item-quantity">
-                            <button type="button" class="quantity-btn">-</button>
-                            <input type="text" value="1" class="quantity-input" />
-                            <button type="button" class="quantity-btn">+</button>
-                            <button type="button" class="confirm-btn">변경</button>
+                            <button type="button" class="quantity-btn minus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <div class="quantity-input-container" data-value="1">
+                                <svg
+                                    width="56"
+                                    height="39"
+                                    viewBox="0 0 56 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
+                                        fill="#777777"
+                                    />
+                                </svg>
+                                <input
+                                    type="text"
+                                    value="1"
+                                    class="quantity-input"
+                                    style="position: absolute; opacity: 0; width: 100%; height: 100%"
+                                />
+                            </div>
+                            <button type="button" class="quantity-btn plus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M20 13V27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <button type="button" class="confirm-btn">
+                                <svg
+                                    width="55"
+                                    height="39"
+                                    viewBox="0 0 55 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="53" height="37" rx="12" fill="black" />
+                                    <rect x="1" y="1" width="53" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
@@ -272,10 +372,89 @@
                             <div class="item-price">15,000 원</div>
                         </div>
                         <div class="item-quantity">
-                            <button type="button" class="quantity-btn">-</button>
-                            <input type="text" value="1" class="quantity-input" />
-                            <button type="button" class="quantity-btn">+</button>
-                            <button type="button" class="confirm-btn">변경</button>
+                            <button type="button" class="quantity-btn minus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <div class="quantity-input-container" data-value="1">
+                                <svg
+                                    width="56"
+                                    height="39"
+                                    viewBox="0 0 56 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
+                                        fill="#777777"
+                                    />
+                                </svg>
+                                <input
+                                    type="text"
+                                    value="1"
+                                    class="quantity-input"
+                                    style="position: absolute; opacity: 0; width: 100%; height: 100%"
+                                />
+                            </div>
+                            <button type="button" class="quantity-btn plus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M20 13V27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <button type="button" class="confirm-btn">
+                                <svg
+                                    width="55"
+                                    height="39"
+                                    viewBox="0 0 55 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="53" height="37" rx="12" fill="black" />
+                                    <rect x="1" y="1" width="53" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
@@ -377,10 +556,89 @@
                             <div class="item-price">15,000 원</div>
                         </div>
                         <div class="item-quantity">
-                            <button type="button" class="quantity-btn">-</button>
-                            <input type="text" value="1" class="quantity-input" />
-                            <button type="button" class="quantity-btn">+</button>
-                            <button type="button" class="confirm-btn">변경</button>
+                            <button type="button" class="quantity-btn minus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <div class="quantity-input-container" data-value="1">
+                                <svg
+                                    width="56"
+                                    height="39"
+                                    viewBox="0 0 56 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
+                                        fill="#777777"
+                                    />
+                                </svg>
+                                <input
+                                    type="text"
+                                    value="1"
+                                    class="quantity-input"
+                                    style="position: absolute; opacity: 0; width: 100%; height: 100%"
+                                />
+                            </div>
+                            <button type="button" class="quantity-btn plus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M20 13V27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <button type="button" class="confirm-btn">
+                                <svg
+                                    width="55"
+                                    height="39"
+                                    viewBox="0 0 55 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="53" height="37" rx="12" fill="black" />
+                                    <rect x="1" y="1" width="53" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                         <div class="item-total">합계: 30,000 원</div>
                     </div>
@@ -482,10 +740,89 @@
                             <div class="item-price">15,000 원</div>
                         </div>
                         <div class="item-quantity">
-                            <button type="button" class="quantity-btn">-</button>
-                            <input type="text" value="1" class="quantity-input" />
-                            <button type="button" class="quantity-btn">+</button>
-                            <button type="button" class="confirm-btn">변경</button>
+                            <button type="button" class="quantity-btn minus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <div class="quantity-input-container" data-value="1">
+                                <svg
+                                    width="56"
+                                    height="39"
+                                    viewBox="0 0 56 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
+                                        fill="#777777"
+                                    />
+                                </svg>
+                                <input
+                                    type="text"
+                                    value="1"
+                                    class="quantity-input"
+                                    style="position: absolute; opacity: 0; width: 100%; height: 100%"
+                                />
+                            </div>
+                            <button type="button" class="quantity-btn plus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M20 13V27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <button type="button" class="confirm-btn">
+                                <svg
+                                    width="55"
+                                    height="39"
+                                    viewBox="0 0 55 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="53" height="37" rx="12" fill="black" />
+                                    <rect x="1" y="1" width="53" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
@@ -587,10 +924,89 @@
                             <div class="item-price">15,000 원</div>
                         </div>
                         <div class="item-quantity">
-                            <button type="button" class="quantity-btn">-</button>
-                            <input type="text" value="1" class="quantity-input" />
-                            <button type="button" class="quantity-btn">+</button>
-                            <button type="button" class="confirm-btn">변경</button>
+                            <button type="button" class="quantity-btn minus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <div class="quantity-input-container" data-value="1">
+                                <svg
+                                    width="56"
+                                    height="39"
+                                    viewBox="0 0 56 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
+                                        fill="#777777"
+                                    />
+                                </svg>
+                                <input
+                                    type="text"
+                                    value="1"
+                                    class="quantity-input"
+                                    style="position: absolute; opacity: 0; width: 100%; height: 100%"
+                                />
+                            </div>
+                            <button type="button" class="quantity-btn plus-btn">
+                                <svg
+                                    width="39"
+                                    height="39"
+                                    viewBox="0 0 39 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="37" height="37" rx="12" fill="white" />
+                                    <rect x="1" y="1" width="37" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M20 13V27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M13 20H27"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <button type="button" class="confirm-btn">
+                                <svg
+                                    width="55"
+                                    height="39"
+                                    viewBox="0 0 55 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect x="1" y="1" width="53" height="37" rx="12" fill="black" />
+                                    <rect x="1" y="1" width="53" height="37" rx="12" stroke="black" stroke-width="2" />
+                                    <path
+                                        d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                         <div class="item-total">합계: 15,000 원</div>
                     </div>
@@ -644,6 +1060,14 @@
         <script>
             // 페이지가 완전히 로드된 후 실행
             window.onload = function () {
+                // 수량 입력 컨테이너 초기화
+                var containers = document.querySelectorAll('.quantity-input-container');
+                for (var i = 0; i < containers.length; i++) {
+                    var input = containers[i].querySelector('.quantity-input');
+                    if (input) {
+                        containers[i].setAttribute('data-value', input.value);
+                    }
+                }
                 // 수량 입력 필드 참조
                 var quantityInputs = document.querySelectorAll('.quantity-input');
 
@@ -720,32 +1144,48 @@
                     if (scrollHeight - scrollTop <= clientHeight + 100) {
                         // 맨 아래에 도달하면 두 요소 합치기
 
-                        // OrderSummary 스타일 변경
-                        orderSummary.style.marginBottom = '0';
-                        orderSummary.style.paddingBottom = '155px'; // Selected Items 높이만큼 패딩 추가
-                        orderSummary.style.borderBottomLeftRadius = '0';
-                        orderSummary.style.borderBottomRightRadius = '0';
-                        orderSummary.style.borderBottom = 'none';
+                        // 선택된 아이템 컨테이너에 주문 요약 정보 복사
+                        if (!selectedItems.querySelector('.summary-content')) {
+                            const summaryContent = orderSummary.innerHTML;
+                            const summaryWrapper = document.createElement('div');
+                            summaryWrapper.className = 'summary-content';
+                            summaryWrapper.innerHTML = summaryContent;
+
+                            // 선택된 아이템 컨테이너 앞부분에 추가
+                            selectedItems.insertBefore(summaryWrapper, selectedItems.firstChild);
+                        }
+
+                        // OrderSummary 숨기기
+                        orderSummary.style.display = 'none';
 
                         // SelectedItems 스타일 변경
-                        selectedItems.style.borderTopLeftRadius = '0';
-                        selectedItems.style.borderTopRightRadius = '0';
-                        selectedItems.style.borderTop = 'none';
-
-                        // 테두리가 겹치지 않도록 약간 위로 이동
-                        selectedItems.style.marginTop = '-3px';
+                        selectedItems.style.position = 'relative';
+                        selectedItems.style.bottom = 'auto';
+                        selectedItems.style.left = 'auto';
+                        selectedItems.style.transform = 'none';
+                        selectedItems.style.width = '1520px';
+                        selectedItems.style.margin = '0 auto';
+                        selectedItems.style.height = 'auto';
+                        selectedItems.style.paddingTop = '20px';
+                        selectedItems.style.paddingBottom = '20px';
                     } else {
                         // 다시 위로 스크롤 했을 때 원래 상태로 복원
-                        orderSummary.style.marginBottom = '200px';
-                        orderSummary.style.paddingBottom = '20px';
-                        orderSummary.style.borderBottomLeftRadius = '30px';
-                        orderSummary.style.borderBottomRightRadius = '30px';
-                        orderSummary.style.borderBottom = '3px solid #000';
+                        orderSummary.style.display = 'block';
 
-                        selectedItems.style.borderTopLeftRadius = '30px';
-                        selectedItems.style.borderTopRightRadius = '30px';
-                        selectedItems.style.borderTop = '3px solid #000';
-                        selectedItems.style.marginTop = '0';
+                        // 복사된 주문 요약 정보 제거
+                        const summaryContent = selectedItems.querySelector('.summary-content');
+                        if (summaryContent) {
+                            summaryContent.remove();
+                        }
+
+                        // SelectedItems 스타일 원복
+                        selectedItems.style.position = 'fixed';
+                        selectedItems.style.bottom = '0';
+                        selectedItems.style.left = '50%';
+                        selectedItems.style.transform = 'translateX(-50%)';
+                        selectedItems.style.width = '1520px';
+                        selectedItems.style.margin = '0';
+                        selectedItems.style.height = '155px';
                     }
                 });
 
@@ -877,27 +1317,26 @@
 
             // 수량 버튼 설정
             function setupQuantityButtons() {
-                var quantityBtns = document.querySelectorAll('.quantity-btn');
+                var minusButtons = document.querySelectorAll('.quantity-btn.minus-btn');
+                var plusButtons = document.querySelectorAll('.quantity-btn.plus-btn');
 
-                for (var i = 0; i < quantityBtns.length; i++) {
-                    quantityBtns[i].onclick = function (e) {
+                // 마이너스 버튼
+                for (var i = 0; i < minusButtons.length; i++) {
+                    minusButtons[i].onclick = function (e) {
                         if (e) {
                             e.preventDefault();
                             e.stopPropagation();
                         }
 
-                        // 플러스/마이너스 버튼 판별
-                        var isPlus = this.textContent === '+';
-                        var input = isPlus ? this.previousElementSibling : this.nextElementSibling;
+                        var container = this.nextElementSibling;
+                        var input = container.querySelector('.quantity-input');
 
                         if (!input) return false;
 
-                        // 수량 변경
                         var currentValue = parseInt(input.value) || 1;
-                        if (isPlus) {
-                            input.value = currentValue + 1;
-                        } else if (currentValue > 1) {
+                        if (currentValue > 1) {
                             input.value = currentValue - 1;
+                            container.setAttribute('data-value', input.value);
                         }
 
                         // 상품 합계 및 총액 업데이트
@@ -905,7 +1344,35 @@
                         if (cartItem) {
                             calculateItemTotal(cartItem);
                             updateTotalPrice();
-                            // 선택된 상품 목록도 업데이트
+                            updateSelectedItems();
+                        }
+
+                        return false;
+                    };
+                }
+
+                // 플러스 버튼
+                for (var i = 0; i < plusButtons.length; i++) {
+                    plusButtons[i].onclick = function (e) {
+                        if (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+
+                        var container = this.previousElementSibling;
+                        var input = container.querySelector('.quantity-input');
+
+                        if (!input) return false;
+
+                        var currentValue = parseInt(input.value) || 1;
+                        input.value = currentValue + 1;
+                        container.setAttribute('data-value', input.value);
+
+                        // 상품 합계 및 총액 업데이트
+                        var cartItem = this.closest('.cart-item');
+                        if (cartItem) {
+                            calculateItemTotal(cartItem);
+                            updateTotalPrice();
                             updateSelectedItems();
                         }
 
