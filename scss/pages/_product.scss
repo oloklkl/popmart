@@ -310,61 +310,67 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
     padding: 20px;
-    height: auto;
+    height: 100vh;
 
-    /* 화면 크기가 작아질 경우 세로로 배치 */
     @media (max-width: 768px) {
         flex-direction: column;
     }
 
     .product-slider {
-        width: 50%;
-        height: 500px;
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
         padding-top: 20px;
         padding-bottom: 20px;
         position: relative;
+        overflow: visible;
 
         .swiper-wrapper {
             display: flex;
-            align-items: center;
-            height: 500px;
+            width: 100%;
+            height: auto;
         }
 
         .swiper-slide {
-            width: 200px; /* 기본 너비 */
+            width: 100%;
             height: auto;
             opacity: 0.4;
             transition: all 0.3s;
-            transform: scale(0.8);
+            transform: scale(0.7);
             position: relative;
-            overflow: hidden; /* 이미지 넘침 방지 */
+            overflow: hidden;
+            border-radius: 75px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, opacity 0.3s ease;
 
             img {
-                max-width: 100%;
+                width: 100%;
                 height: auto;
-                object-fit: cover; /* 이미지 비율 유지 */
+                object-fit: cover;
+                border-radius: 75px;
+                border: 5px solid $black;
+            }
+
+            &.active {
+                opacity: 1;
+                transform: scale(1.4);
+                z-index: 10;
             }
 
             &.prev,
             &.next {
-                width: 250px; /* 양옆 슬라이드 너비 */
                 opacity: 0.7;
-                transform: scale(0.9);
-            }
-
-            &.active {
-                width: 500px; /* 활성 슬라이드 너비 */
-                opacity: 1;
                 transform: scale(1);
-                z-index: 10;
+                z-index: 5;
             }
 
             &.far-prev,
             &.far-next {
-                opacity: 0.2;
-                transform: scale(0.6);
+                opacity: 0.5;
+                transform: scale(0.7);
+                z-index: 1;
             }
         }
 
@@ -373,38 +379,47 @@
         .swiper-button-next {
             color: $black;
             width: 50px;
-            height: 100px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: absolute;
-            top: 50%; /* 상단 중앙에 배치 */
-            transform: translateY(-50%); /* 수직 중앙 정렬 */
-            z-index: 20; /* 네비게이션 버튼이 슬라이드 위에 표시 */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            border-radius: 50%;
+
+            &:after {
+                font-size: 6rem;
+            }
+
+            &:hover {
+                color: #e02121;
+            }
         }
 
         .swiper-button-prev {
-            left: 20%; /* 슬라이더 왼쪽에 배치 */
+            left: 50px; // 버튼 위치 조정
         }
 
         .swiper-button-next {
-            right: 20%; /* 슬라이더 오른쪽에 배치 */
+            right: 50px; // 버튼 위치 조정
         }
 
-        .swiper-button-prev:hover,
-        .swiper-button-next:hover {
-            color: #e02121;
-        }
+        .swiper-pagination {
+            position: relative;
+            transform: translateY(120px);
 
-        .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            background: #ccc;
-            opacity: 1;
-        }
+            .swiper-pagination-bullet {
+                width: 20px;
+                height: 20px;
+                background: #ccc;
+                opacity: 1;
 
-        .swiper-pagination-bullet-active {
-            background: #e02121;
+                &-active {
+                    background: #e02121;
+                }
+            }
         }
     }
 
@@ -420,6 +435,7 @@
         h2 {
             font-size: 3.2rem;
             color: #333333;
+            margin-bottom: 20px;
         }
         p {
             font-size: 2.4rem;
@@ -445,12 +461,14 @@
                 }
 
                 span {
-                    width: 50px;
+                    width: 60px;
                     height: 40px;
                     border: 2px solid $black;
                     color: #777777;
                     border-radius: 13px;
-                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 button {
@@ -482,14 +500,35 @@
                     font-weight: bold;
                 }
             }
+            .shipping-progress-container {
+                .shipping {
+                    font-size: 1.3rem;
+                }
 
-            .shipping {
-                font-size: 1.3rem;
-            }
+                .shipping span {
+                    color: #e02121;
+                    font-size: 1.5rem;
+                }
 
-            .shipping span {
-                color: #e02121;
-                font-size: 1.5rem;
+                .progress-bar {
+                    width: 100%;
+                    height: 10px;
+                    background-color: $gray-40;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    margin-bottom: 5px;
+
+                    .progress {
+                        height: 100%;
+                        width: 50%; /* 현재 진행률, 필요에 따라 조정 */
+                        background-color: #e4393c;
+                        transition: width 0.3s ease;
+                    }
+                }
+
+                .free-shipping-condition {
+                    font-size: 1.3rem;
+                }
             }
         }
 
@@ -501,6 +540,7 @@
             right: 0;
             display: flex;
             margin-top: 20px;
+            border-top: 3px solid $black;
 
             .cart {
                 width: 100%;
@@ -518,18 +558,22 @@
 
             .buy {
                 width: 100%;
-                background: #e02121;
+                background: #ff8c8c;
                 padding: 10px;
                 color: $black;
                 flex: 1;
                 border-radius: 0 0 75px 0;
 
                 &:hover {
-                    background: darkred;
+                    background: #e02121;
                     color: $white;
                 }
             }
         }
+    }
+    .down-btn-wrapper {
+        display: block;
+        width: 100%;
     }
 }
 
@@ -584,6 +628,7 @@
         font-size: 3.2rem;
         display: flex;
         justify-content: center;
+        margin-bottom: 20px;
     }
 
     .related-products {
