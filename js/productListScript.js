@@ -10,6 +10,20 @@ export function initializePage() {
         }
         runProductListScripts();
     }, 500);
+
+    // "+" 버튼 클릭 이벤트 핸들러 추가
+    const addCategoryButton = document.querySelector('.add-category');
+    const additionalBrands = document.querySelector('.additional-brands');
+
+    if (addCategoryButton && additionalBrands) {
+        addCategoryButton.addEventListener('click', () => {
+            if (additionalBrands.style.display === 'none') {
+                additionalBrands.style.display = 'flex'; // 보이도록 설정
+            } else {
+                additionalBrands.style.display = 'none'; // 숨기도록 설정
+            }
+        });
+    }
 }
 
 // 마우스 움직임
@@ -78,7 +92,9 @@ function runProductListScripts() {
 
         for (let i = startIndex; i < endIndex; i++) {
             const item = items[i];
-            const gridItem = document.createElement('div');
+            // a 태그로 변경
+            const gridItem = document.createElement('a');
+            gridItem.href = `productDetail.html?id=${item.id}`; // 링크 설정
             gridItem.className = 'grid-item';
 
             const imgElement = document.createElement('img');
