@@ -214,7 +214,7 @@
 
             h2:nth-of-type(2) {
                 font-size: 6.4rem;
-                font-weight: bold;
+                font-weight: $font-bold;
                 margin-bottom: 20px;
 
                 @include tablet {
@@ -384,10 +384,11 @@
     justify-content: center;
     gap: 30px;
     padding: 20px;
-    height: 100vh;
+    height: 80vh;
 
-    @include tablet {
+    @include tabletLess {
         flex-direction: column;
+        height: 100vh;
     }
 
     .product-slider {
@@ -495,6 +496,10 @@
                 transform: translateY(30px);
             }
 
+            @include mobile {
+                transform: translateY(55px);
+            }
+
             .swiper-pagination-bullet {
                 width: 20px;
                 height: 20px;
@@ -508,6 +513,13 @@
         }
     }
 
+    .menu {
+        display: none;
+    }
+    .menu.active {
+        display: block;
+    }
+
     .product-info {
         position: relative;
         width: auto;
@@ -518,17 +530,33 @@
         overflow: hidden;
 
         h2 {
-            font-size: 3.2rem;
+            font-size: $font-size-title-xxlg;
             color: #333333;
             margin-bottom: 20px;
+
+            @include tablet {
+                font-size: $font-size-title-xlg;
+            }
+
+            @include mobile {
+                font-size: $font-size-title-lg;
+            }
         }
         p {
-            font-size: 2.4rem;
+            font-size: $font-size-title-xlg;
+
+            @include tablet {
+                font-size: $font-size-title-lg;
+            }
+
+            @include mobile {
+                font-size: $font-size-title-md;
+            }
         }
 
         .price {
             color: #e02121;
-            font-weight: bold;
+            font-weight: $font-bold;
         }
 
         .product-details {
@@ -540,9 +568,17 @@
                 gap: 10px;
 
                 p {
-                    font-size: 2rem;
+                    font-size: $font-size-body-lg;
                     margin-right: 50px;
-                    font-weight: bold;
+                    font-weight: $font-bold;
+
+                    @include tablet {
+                        font-size: $font-size-body-md;
+                    }
+
+                    @include mobile {
+                        font-size: $font-size-body-sm;
+                    }
                 }
 
                 span {
@@ -568,7 +604,7 @@
                 .minus,
                 .plus {
                     color: $black;
-                    font-weight: bold;
+                    font-weight: $font-bold;
                     font-size: 2rem;
                 }
             }
@@ -581,18 +617,26 @@
 
                 span {
                     margin-right: 30px;
-                    font-size: 2rem;
-                    font-weight: bold;
+                    font-size: $font-size-body-lg;
+                    font-weight: $font-bold;
+
+                    @include tablet {
+                        font-size: $font-size-body-md;
+                    }
+
+                    @include mobile {
+                        font-size: $font-size-body-sm;
+                    }
                 }
             }
             .shipping-progress-container {
                 .shipping {
-                    font-size: 1.3rem;
+                    font-size: $font-size-detail-sm;
                 }
 
                 .shipping span {
                     color: #e02121;
-                    font-size: 1.5rem;
+                    font-size: $font-size-detail-md;
                 }
 
                 .progress-bar {
@@ -612,7 +656,7 @@
                 }
 
                 .free-shipping-condition {
-                    font-size: 1.3rem;
+                    font-size: $font-size-detail-sm;
                 }
             }
         }
@@ -632,8 +676,18 @@
                 background: #d2d2d2;
                 padding: 10px;
                 color: $black;
+                font-size: $font-size-body-lg;
+                font-weight: $font-bold;
                 flex: 1;
                 border-radius: 0 0 0 75px;
+
+                @include tablet {
+                    font-size: $font-size-body-md;
+                }
+
+                @include mobile {
+                    font-size: $font-size-body-sm;
+                }
 
                 &:hover {
                     background: $gray-70;
@@ -646,8 +700,18 @@
                 background: #ff8c8c;
                 padding: 10px;
                 color: $black;
+                font-size: $font-size-body-lg;
+                font-weight: $font-bold;
                 flex: 1;
                 border-radius: 0 0 75px 0;
+
+                @include tablet {
+                    font-size: $font-size-body-md;
+                }
+
+                @include mobile {
+                    font-size: $font-size-body-sm;
+                }
 
                 &:hover {
                     background: #e02121;
@@ -662,12 +726,29 @@
     }
 }
 
+.down-btn-wrapper {
+    display: flex;
+    justify-content: center;
+
+    @include tabletLess {
+        display: none;
+    }
+}
+
 .product-detail-section {
     padding: 20px; /* 패딩 추가 */
 
     h2 {
         font-size: 5.4rem;
         margin-bottom: 40px;
+
+        @include tablet {
+            font-size: $font-size-heading-md;
+        }
+
+        @include mobile {
+            font-size: $font-size-heading-sm;
+        }
     }
     .detail-img {
         display: flex;
@@ -687,6 +768,14 @@
     h2 {
         font-size: 5.4rem;
         margin-bottom: 40px;
+
+        @include tablet {
+            font-size: $font-size-heading-md;
+        }
+
+        @include mobile {
+            font-size: $font-size-heading-sm;
+        }
     }
     table {
         display: flex;
@@ -701,6 +790,30 @@
         border-bottom: 0.5px solid $gray-30;
         margin-bottom: 20px;
         padding: 5px;
+
+        th {
+            font-size: $font-size-title-xlg;
+            font-weight: $font-bold;
+
+            @include tablet {
+                font-size: $font-size-title-lg;
+            }
+
+            @include mobile {
+                font-size: $font-size-title-md;
+            }
+        }
+        td {
+            font-size: $font-size-title-lg;
+
+            @include tablet {
+                font-size: $font-size-title-md;
+            }
+
+            @include mobile {
+                font-size: $font-size-title-sm;
+            }
+        }
     }
 }
 
@@ -710,10 +823,18 @@
     padding: 20px;
 
     h2 {
-        font-size: 3.2rem;
+        font-size: $font-size-title-xxlg;
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
+
+        @include tablet {
+            font-size: $font-size-title-xlg;
+        }
+
+        @include mobile {
+            font-size: $font-size-title-lg;
+        }
     }
 
     .related-products {
@@ -730,13 +851,21 @@
                     height: auto;
                 }
 
-                h3 {
-                    font-size: 1.8rem;
-                    margin: 10px 0;
+                h3,
+                p {
+                    font-size: $font-size-body-lg;
+
+                    @include tablet {
+                        font-size: $font-size-body-md;
+                    }
+
+                    @include mobile {
+                        font-size: $font-size-body-sm;
+                    }
                 }
 
-                p {
-                    font-size: 1.8rem;
+                h3 {
+                    margin: 10px 0;
                 }
             }
         }
@@ -761,6 +890,60 @@
 
     .related-products .swiper-button-next {
         right: 10px;
+    }
+}
+
+/* Top 버튼 */
+.top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 136px;
+    height: 136px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* 기본적으로 숨김 */
+
+    &:hover {
+        background: none;
+        transform: scale(1.1);
+    }
+}
+
+/* 장바구니 버튼 */
+.cart-btn {
+    position: fixed;
+    bottom: 150px; /* Top 버튼 위에 위치 */
+    right: 20px;
+    width: 130px;
+    height: 130px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* 기본적으로 숨김 */
+
+    &:hover {
+        background: none;
+        transform: scale(1.1);
+    }
+}
+
+/* 토글 버튼 */
+.toggle-btn {
+    position: fixed;
+    bottom: 20px; /* Top 버튼 위에 위치 */
+    right: 150px;
+    width: 136px;
+    height: 136px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* 기본적으로 숨김 */
+
+    &:hover {
+        background: none;
+        transform: scale(1.1);
     }
 }
 
