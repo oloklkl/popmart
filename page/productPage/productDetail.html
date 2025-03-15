@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <link rel="stylesheet" href="../../css/output/styles.css" />
         <title>POPMART - Product Detail</title>
     </head>
@@ -17,31 +16,31 @@
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-4.jpg?raw=true"
-                                    alt="Produc1"
+                                    alt="produc1"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-5.jpg?raw=true"
-                                    alt="Product2"
+                                    alt="product2"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-2.jpg?raw=true"
-                                    alt="Product3"
+                                    alt="product3"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-3.jpg?raw=true"
-                                    alt="Product4"
+                                    alt="product4"
                                 />
                             </div>
                             <div class="swiper-slide">
                                 <img
                                     src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-6.jpg?raw=true"
-                                    alt="Product5"
+                                    alt="product5"
                                 />
                             </div>
                         </div>
@@ -54,8 +53,8 @@
                     </div>
 
                     <div class="product-info">
-                        <h2>라부부 코카콜라 시리즈</h2>
-                        <p class="price">15,000 원</p>
+                        <h2 class="product-title">라부부 코카콜라 시리즈</h2>
+                        <p class="price product-price">15,000 원</p>
                         <div class="product-details">
                             <div class="quantity-control">
                                 <p>수량</p>
@@ -65,7 +64,13 @@
                             </div>
                             <div class="shipping-info">
                                 <span>배송혜택</span>
-                                <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
+                                <div class="shipping-progress-container">
+                                    <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
+                                    <div class="progress-bar">
+                                        <div class="progress"></div>
+                                    </div>
+                                    <p class="free-shipping-condition">3만원 이상 무료 배송됩니다!</p>
+                                </div>
                             </div>
                         </div>
                         <div class="buttons">
@@ -73,6 +78,12 @@
                             <button class="buy">구매하기</button>
                         </div>
                     </div>
+                    <!-- <div class="down-btn-wrapper">
+                        <img
+                            src="https://github.com/hyeonky/dp-static/blob/main/popmart/btnIcon/chevrons-down.png?raw=true"
+                            alt="down-btn"
+                        />
+                    </div> -->
                 </section>
 
                 <!-- DETAIL -->
@@ -105,7 +116,7 @@
                         </tr>
                         <tr>
                             <th>브랜드</th>
-                            <td>POPMART</td>
+                            <td>POP MART</td>
                         </tr>
                         <tr>
                             <th>사용연령</th>
@@ -226,7 +237,7 @@
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="../../js/productDetailSwiper.js"></script>
-        <script src="../../js/productDetailScript.js"></script>
+        <script type="module" src="../../js/productDetailSwiper.js"></script>
+        <script type="module" src="../../js/productDetailScript.js"></script>
     </body>
 </html>
