@@ -12,19 +12,27 @@
         <main>
             <div class="inner">
                 <div class="content-wrapper">
-                    <div class="brand-list">
-                        <span class="labubu"><a href="#" data-category="labubu">라부부</a></span>
-                        <span class="crybaby"><a href="#" data-category="crybaby">크라이베이비</a></span>
-                        <span class="skullpanda"><a href="#" data-category="skullpanda">스컬판다</a></span>
-                        <span class="molly"><a href="#" data-category="molly">물리</a></span>
-                        <span class="pinogelly"><a href="#" data-category="pinogelly">피노젤리</a></span>
-                        <span class="add-category">+</span>
-                        <span class="dimoo"><a href="#" data-category="dimoo">디무</a></span>
-                        <span class="azura"><a href="#" data-category="azura">아주라</a></span>
-                        <span class="hirono"><a href="#" data-category="hirono">히로노</a></span>
-                        <span class="hacipupu"><a href="#" data-category="hacipupu">하치푸푸</a></span>
-                        <span class="barbie"><a href="#" data-category="barbie">바비</a></span>
+                    <div class="brand-container">
+                        <div class="brand-list">
+                            <span class="labubu"><a href="#" data-category="labubu">라부부</a></span>
+                            <span class="crybaby"><a href="#" data-category="crybaby">크라이베이비</a></span>
+                            <span class="skullpanda"><a href="#" data-category="skullpanda">스컬판다</a></span>
+                            <span class="molly"><a href="#" data-category="molly">물리</a></span>
+                            <span class="pinogelly"><a href="#" data-category="pinogelly">피노젤리</a></span>
+                            <span class="add-category">+</span>
+                        </div>
+
+                        <!-- 추가 브랜드 목록 (초기에는 숨겨짐) -->
+                        <div class="additional-brands" style="display: none">
+                            <span class="dimoo"><a href="#" data-category="dimoo">디무</a></span>
+                            <span class="azura"><a href="#" data-category="azura">아주라</a></span>
+                            <span class="hirono"><a href="#" data-category="hirono">히로노</a></span>
+                            <span class="hacipupu"><a href="#" data-category="hacipupu">하치푸푸</a></span>
+                            <span class="barbie"><a href="#" data-category="barbie">바비</a></span>
+                        </div>
+                        <!-- 추가 브랜드 목록 끝 -->
                     </div>
+
                     <div class="grid-wrapper">
                         <div class="grid-header">
                             <h2>POPMART</h2>
@@ -32,6 +40,19 @@
                         </div>
                         <div class="grid-container">
                             <div class="circle" id="circle"></div>
+
+                            <div class="swiper product-swiper">
+                                <div class="grid-wrapper-inner swiper-wrapper">
+                                    <!-- 상품 아이템들이 여기에 동적으로 추가됩니다 -->
+                                </div>
+
+                                <!-- 컨트롤 요소 -->
+                                <div class="swiper-controls">
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
