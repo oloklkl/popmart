@@ -1,85 +1,85 @@
-// productDetailScript.js
-let productSliderSwiper;
-let relatedProductsSwiper;
+import productDetailItem from './productDetailItem.js';
+import { initializeProductSwipers } from './productDetailSwiper.js';
 
-function initializeProductSwipers() {
-    const productSlider = document.querySelector('.product-slider');
-    const relatedProducts = document.querySelector('.related-products');
+// URLSearchParams를 사용하여 상품 ID 추출
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
 
-    if (productSlider) {
-        productSliderSwiper = new Swiper(productSlider, {
-            slidesPerView: 5, // 한 번에 5개의 슬라이드가 보이게 설정
-            centeredSlides: true,
-            loop: true,
-            spaceBetween: -150, // 마이너스 값으로 설정하여 슬라이드가 겹치게 함
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            on: {
-                slideChange: function () {
-                    const activeIndex = this.activeIndex;
-                    const slides = this.slides;
+function updateProductInfo(productId) {
+    const product = productDetailItem.find((item) => item.id === parseInt(productId));
 
-                    // 모든 슬라이드에서 클래스 제거
-                    slides.forEach((slide) => {
-                        slide.classList.remove('active', 'next', 'prev', 'far-next', 'far-prev');
-                    });
-
-                    // 활성 슬라이드에 active 클래스 추가
-                    slides[activeIndex].classList.add('active');
-
-                    // 주변 슬라이드에 클래스 추가
-                    const nextIndex = (activeIndex + 1) % slides.length;
-                    const prevIndex = (activeIndex - 1 + slides.length) % slides.length;
-                    const farNextIndex = (activeIndex + 2) % slides.length;
-                    const farPrevIndex = (activeIndex - 2 + slides.length) % slides.length;
-
-                    slides[nextIndex].classList.add('next');
-                    slides[prevIndex].classList.add('prev');
-                    slides[farNextIndex].classList.add('far-next');
-                    slides[farPrevIndex].classList.add('far-prev');
-                },
-                init: function () {
-                    // 초기 로드 시 활성 슬라이드 및 주변 슬라이드 설정
-                    this.emit('slideChange');
-                },
-            },
-            // coverflow 효과 제거하고 대신 크기와 투명도를 클래스로 조절
+    if (product) {
+        // 메인 이미지 변경
+        const swiperSlides = document.querySelectorAll('.product-slider .swiper-slide img');
+        swiperSlides.forEach((slide, index) => {
+            slide.src = product.mainImages[index % product.mainImages.length];
+            slide.alt = product.title;
         });
-    }
 
-    if (relatedProducts) {
-        relatedProductsSwiper = new Swiper(relatedProducts, {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        // 상품 정보 변경
+        document.querySelector('.product-info h2').textContent = product.title;
+        document.querySelector('.product-info .price').textContent = product.price;
+
+        // 상세 이미지 변경
+        const detailImages = document.querySelectorAll('.product-detail-section .detail-img img');
+        detailImages.forEach((img, index) => {
+            img.src = product.detailImages[index % product.detailImages.length];
+            img.alt = product.title + ' 상세 이미지';
         });
+
+        // 상품 정보 테이블 변경
+        const infoTable = document.querySelector('.product-info-section table');
+        let tableHTML = '';
+        for (const key in product.information) {
+            tableHTML += `
+                <tr>
+                    <th>${key}</th>
+                    <td>${product.information[key]}</td>
+                </tr>
+            `;
+        }
+        infoTable.innerHTML = tableHTML;
+    } else {
+        console.error('해당 ID의 상품을 찾을 수 없습니다.');
+        // 상품 정보를 표시할 HTML 요소들을 초기화하거나, 오류 메시지를 표시할 수 있습니다.
     }
 }
 
-function destroyProductSwipers() {
-    if (productSliderSwiper) {
-        productSliderSwiper.destroy(true, true);
-        productSliderSwiper = null;
-    }
-    if (relatedProductsSwiper) {
-        relatedProductsSwiper.destroy(true, true);
-        relatedProductsSwiper = null;
-    }
+function updateRelatedProducts() {
+    const relatedProducts = document.querySelectorAll('.related-products-section .swiper-slide');
+
+    relatedProducts.forEach((slide, index) => {
+        const randomIndex = Math.floor(Math.random() * productDetailItem.length);
+        const randomProduct = productDetailItem[randomIndex];
+
+        const imgElement = slide.querySelector('img');
+        const titleElement = slide.querySelector('h3');
+        const priceElement = slide.querySelector('p');
+
+        // 이미지 인덱스 번갈아 가져오기
+        const imageIndexes = [0, 2, 4]; // 가져올 이미지 인덱스
+        const imageIndex = imageIndexes[index % imageIndexes.length]; // 0, 2, 4 반복
+        const imageUrl = randomProduct.mainImages[imageIndex]; // 선택된 인덱스의 이미지 URL 가져오기
+
+        imgElement.src = imageUrl;
+        imgElement.alt = randomProduct.title;
+        titleElement.textContent = randomProduct.title;
+        priceElement.textContent = randomProduct.price;
+    });
 }
 
 export function initializePage() {
     console.log('productDetailScript.js 실행됨');
-    initializeProductSwipers();
+
+    // 상품 ID가 있는지 확인
+    if (productId) {
+        updateProductInfo(productId);
+    } else {
+        console.error('상품 ID가 없습니다.');
+    }
+
+    initializeProductSwipers(); // 스와이퍼 초기화
+    updateRelatedProducts();
 
     // 수량 버튼 이벤트 핸들러 추가
     const minusBtn = document.querySelector('.minus');
@@ -99,8 +99,4 @@ export function initializePage() {
             quantitySpan.textContent = quantity + 1;
         });
     }
-}
-
-export function destroyPage() {
-    destroyProductSwipers();
 }
