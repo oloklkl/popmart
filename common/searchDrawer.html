@@ -11,10 +11,53 @@
       <button id="search-btn">검색</button>
     </header>
 
+    <div id="modal-overlay" class="modal"></div>
     <div id="search-box" class="hidden">
-      <input type="text" placeholder="검색어를 입력하세요" />
-      <button>검색</button>
-      <button onclick="closeSearch()">닫기</button>
+      <ul>
+        <li class="searchCont">
+          <input
+            class="search-bar"
+            type="text"
+            placeholder="검색어를 입력하세요" />
+          <button id="searchBtn">
+            <img
+              src="https://raw.githubusercontent.com/hyeonky/dp-static/3f3ffa72cba4a8c68d31add7e181d4ebc77272f6/popmart/btnIcon/search.svg"
+              alt="검색" />
+          </button>
+        </li>
+        <li>
+          <div class="search-word">
+            <img
+              src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+              alt="chevron-right" />
+            <span>최근 검색어</span>
+          </div>
+        </li>
+        <li>
+          <div class="search-word">
+            <img
+              src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
+              alt="chevron-right" />
+            <span>인기 검색어</span>
+          </div>
+        </li>
+        <li class="popularCont">
+          <div class="popular-word">
+            <a href="#"><span>원피스</span></a>
+            <a href="#"><span>스폰지밥</span> </a>
+            <a href="#"><span>라부부</span></a>
+            <a href="#"><span>스컬판다</span></a>
+            <a href="#"><span>크라이 베이비</span></a>
+          </div>
+        </li>
+      </ul>
+      <div class="closeBtn">
+        <button id="close" onclick="closeSearch()">
+          <img
+            src="https://raw.githubusercontent.com/hyeonky/dp-static/3f3ffa72cba4a8c68d31add7e181d4ebc77272f6/popmart/btnIcon/x.svg"
+            alt="닫기" />
+        </button>
+      </div>
     </div>
     <script src="../js/searchDrawerScript.js"></script>
   </body>
