@@ -99,4 +99,78 @@ export function initializePage() {
             quantitySpan.textContent = quantity + 1;
         });
     }
+
+    // 📌 [추가] 다운 버튼 클릭 시 특정 섹션으로 스크롤 이동
+    const downBtn = document.querySelector('.down-btn-wrapper');
+    const targetSection = document.querySelector('.product-detail-section');
+
+    if (downBtn && targetSection) {
+        downBtn.addEventListener('click', () => {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    // 📌 [추가] 스크롤 위치에 따라 Top, Toggle, Cart 버튼 보이기/숨기기
+    window.addEventListener('scroll', () => {
+        const topBtn = document.querySelector('.top-btn');
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const cartBtn = document.querySelector('.cart-btn');
+        const card = document.querySelector('.product-card'); // 카드가 들어있는 요소
+
+        // 600px 이상 스크롤되면 버튼들이 보이기
+        if (window.scrollY > 600) {
+            if (topBtn) topBtn.style.display = 'block'; // Top 버튼
+            if (toggleBtn) toggleBtn.style.display = 'block'; // 토글 버튼
+            if (cartBtn) cartBtn.style.display = 'block'; // 장바구니 버튼
+
+            // 카드 내려가기 (transform을 이용해 부드럽게 내려가게 함)
+            if (card) card.style.transform = 'translateY(100px)'; // 100px 내려가기
+        } else {
+            if (topBtn) topBtn.style.display = 'none'; // Top 버튼 숨기기
+            if (toggleBtn) toggleBtn.style.display = 'none'; // 토글 버튼 숨기기
+            if (cartBtn) cartBtn.style.display = 'none'; // 장바구니 버튼 숨기기
+
+            // 카드 원래 위치로 돌아오기
+            if (card) card.style.transform = 'translateY(0)'; // 원위치로 돌아가기
+        }
+    });
+
+    // 📌 [추가] Top 버튼 클릭 시 부드럽게 스크롤 이동
+    const topBtn = document.querySelector('.top-btn');
+    if (topBtn) {
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 📌 [추가] 장바구니 버튼 클릭 이벤트
+    const cartBtn = document.querySelector('.cart-btn');
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            alert('장바구니에 추가되었습니다!'); // 필요하면 장바구니 기능 연결
+        });
+    }
+
+    // 📌 [추가] 토글 버튼 기능 (예: 메뉴 열기/닫기)
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const menu = document.querySelector('.menu'); // 메뉴가 존재한다고 가정
+    if (toggleBtn && menu) {
+        toggleBtn.addEventListener('click', () => {
+            menu.classList.toggle('active'); // active 클래스로 열고 닫기
+        });
+    }
+
+    // 📌 [추가] 카드 숨기기/보이기 버튼 (토글 버튼 클릭 시)
+    const toggleCardBtn = document.querySelector('.toggle-card-btn');
+    const cardElement = document.querySelector('.card'); // 카드 요소
+
+    if (toggleCardBtn && cardElement) {
+        toggleCardBtn.addEventListener('click', () => {
+            // 카드가 보이면 숨기고, 숨겨지면 보이게 설정
+            if (cardElement.style.transform === 'translateY(100px)') {
+                cardElement.style.transform = 'translateY(0)';
+            } else {
+                cardElement.style.transform = 'translateY(100px)';
+            }
+        });
+    }
 }
