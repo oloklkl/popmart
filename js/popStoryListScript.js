@@ -1,5 +1,7 @@
 import { popStoryListItems, addPopStoryListItems } from './popStoryItems.js'
-
+document.addEventListener('DOMContentLoaded', () => {
+  // 여기에 스크립트 코드 넣기
+})
 const gridContainer = document.querySelector('.grid')
 
 // '더보기' 버튼
