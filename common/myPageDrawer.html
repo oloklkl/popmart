@@ -9,7 +9,7 @@
   <body>
     <!-- test 헤더 -->
     <header>
-      <button id="mypage-btn">마이페이지</button>
+      <button id="user-icon">마이페이지</button>
     </header>
 
     <div id="modal-overlay" class="modal"></div>
@@ -17,7 +17,7 @@
     <!-- mypage menu -->
     <div id="mypage-menu" class="mypageMenu">
       <!-- 비회원 -->
-      <div id="non-member" class="nonMember">
+      <div id="non-member" class="nonMember" style="display: none">
         <ul>
           <li class="singBtnCont">
             <button class="singBtn login" onclick="location.href='#login'">
@@ -34,7 +34,7 @@
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>장바구니</span>
+              <span>장바구니<span id="cart-count">(0)</span></span>
             </a>
           </li>
           <li>
@@ -73,14 +73,14 @@
       </div>
 
       <!-- 회원 -->
-      <div id="member" class="member-login">
+      <div id="member" class="member-login" style="display: none">
         <ul>
           <li>
             <a href="#cart">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>관심상품</span></a
+              <span>관심상품<span id="cart-count"> (0)</span></span></a
             >
           </li>
           <li>
@@ -88,7 +88,7 @@
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>장바구니</span></a
+              <span>장바구니<span id="cart-count"> (0)</span></span></a
             >
           </li>
           <li>
@@ -104,7 +104,7 @@
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>쿠폰</span></a
+              <span>쿠폰<span id="cupoon-count"> (0)</span></span></a
             >
           </li>
           <li>
@@ -124,11 +124,12 @@
             >
           </li>
           <li class="logoutCont">
-            <button class="logoutBtn" onclick="logout()">로그아웃</button>
+            <button id="logoutBtn" onclick="logout()">로그아웃</button>
           </li>
         </ul>
       </div>
     </div>
     <script src="../js/myPageDrawerScript.js"></script>
+    <script src="../js/auth.js"></script>
   </body>
 </html>
