@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POPMART</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="css/output/styles.css" />
   </head>
   <body>
@@ -45,30 +43,26 @@
       fetch('common/header.html')
         .then((response) => response.text())
         .then((data) => (document.getElementById('header').innerHTML = data))
-        .catch((error) => console.error('Error loading header:', error))
+        .catch((error) => console.error('Error loading header:', error));
 
       fetch('common/footer.html')
         .then((response) => response.text())
         .then((data) => (document.getElementById('footer').innerHTML = data))
-        .catch((error) => console.error('Error loading footer:', error))
+        .catch((error) => console.error('Error loading footer:', error));
 
       fetch('/common/myPageDrawer.html')
         .then((response) => response.text())
-        .then(
-          (data) => (document.getElementById('myPageDrawer').innerHTML = data)
-        )
-        .catch((error) => console.error('Error loading myPageDrawer:', error))
+        .then((data) => (document.getElementById('myPageDrawer').innerHTML = data))
+        .catch((error) => console.error('Error loading myPageDrawer:', error));
 
       fetch('/common/searchDrawer.html')
         .then((response) => response.text())
-        .then(
-          (data) => (document.getElementById('searchDrawer').innerHTML = data)
-        )
-        .catch((error) => console.error('Error loading searchDrawer:', error))
+        .then((data) => (document.getElementById('searchDrawer').innerHTML = data))
+        .catch((error) => console.error('Error loading searchDrawer:', error));
 
       // 라우팅 설정 (각 페이지 매핑)
       function loadPage() {
-        const route = window.location.hash.substring(1)
+        const route = window.location.hash.substring(1);
         const routes = {
           home: 'page/mainPage/home.html',
           login: 'page/myPage/login.html',
@@ -83,18 +77,18 @@
           popStoryList: 'page/popStoryList.html',
           // myPageDrawer: 'common/myPageDrawer.html',
           // searchDrawer: 'common/searchDrawer.html',
-        }
+        };
 
-        const pagePath = routes[route] || 'page/mainPage/home.html' // 기본 페이지는 home.html
+        const pagePath = routes[route] || 'page/mainPage/home.html'; // 기본 페이지는 home.html
 
         fetch(pagePath)
           .then((response) => response.text())
           .then((data) => (document.getElementById('content').innerHTML = data))
-          .catch((error) => console.error('Error loading page:', error))
+          .catch((error) => console.error('Error loading page:', error));
       }
 
-      window.addEventListener('hashchange', loadPage)
-      window.addEventListener('load', loadPage)
+      window.addEventListener('hashchange', loadPage);
+      window.addEventListener('load', loadPage);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="js/scriptLoader.js"></script>
