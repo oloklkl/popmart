@@ -1,3 +1,5 @@
+@import '../base/include';
+
 #modal-overlay {
   display: none;
   position: fixed;
@@ -25,7 +27,7 @@
   top: 100px;
   right: -100%;
   background: white;
-  background: rgb(223, 223, 223, 0.75);
+  background: rgb(223, 223, 223, 0.9);
   padding: 10px;
   border: 3px solid black;
   border-radius: 17px;
@@ -45,7 +47,12 @@
       display: flex;
       align-items: flex-end;
       height: 40px;
-      &:not(.searchCont, .popularCont)::after {
+      &:not(
+          .searchCont,
+          .popularCont,
+          #recent-search-container,
+          #recent-searches li
+        )::after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -131,4 +138,30 @@
     width: 32px;
     height: 32px;
   }
+}
+
+// 최근 검색어
+#recent-search-container {
+  display: block; /* 혹은 flex, 상위 컨테이너의 상황에 맞게 설정 */
+  width: 100%;
+  overflow-x: auto; /* 가로 스크롤을 활성화 */
+  white-space: nowrap; /* 한 줄로 표시되도록 */
+}
+
+#recent-searches {
+  display: flex; /* 가로로 나열 */
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  flex-wrap: nowrap; /* 항목들이 한 줄에 가로로만 배치되도록 */
+}
+
+#recent-searches li {
+  display: inline-block; /* 항목을 인라인으로 설정 */
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background: #f8f8f8;
+  white-space: nowrap; /* 텍스트가 한 줄로 유지되도록 설정 */
 }
