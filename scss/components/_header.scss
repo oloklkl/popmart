@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 200px;
+
+  &__logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-right: 20px;
+
+    li {
+      margin-right: 65px;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+  }
+}
