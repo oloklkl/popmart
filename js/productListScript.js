@@ -43,25 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 아이템 호버
 function handleItemHover(e) {
-    console.log('Hovered over item:', e.currentTarget);
     const circle = document.getElementById('circle');
     const gridItem = e.currentTarget;
 
     if (circle) {
         const bgColor = gridItem.getAttribute('data-bg-color');
-        console.log('Applying background color to circle:', bgColor); // 디버깅 로그
-        circle.style.backgroundColor = bgColor; // 백그라운드 색상 적용
+        circle.style.backgroundColor = bgColor;
         circle.classList.add('hovered');
     }
 }
 
 // 아이템 호버 해제
-function handleItemLeave(e) {
+function handleItemLeave() {
     const circle = document.getElementById('circle');
     if (circle) {
-        console.log('Resetting circle background color to white.'); // 디버깅 로그
         circle.classList.remove('hovered');
-        circle.style.backgroundColor = 'white'; // 기본 색상으로 리셋
+        circle.style.backgroundColor = 'white';
     }
 }
 
@@ -72,7 +69,10 @@ function runProductListScripts() {
         return;
     }
 
-    const itemsPerPage = 9;
+    // ✅ 화면 너비에 따라 아이템 개수 설정
+    const isMobile = window.innerWidth <= 768;
+    const itemsPerPage = isMobile ? 6 : 9; // 모바일 6개, 데스크탑 9개
+
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
     gridContainer.innerHTML = ''; // 컨테이너 내용 초기화
@@ -81,7 +81,7 @@ function runProductListScripts() {
     const wrapperDiv = document.createElement('div');
     wrapperDiv.className = 'grid-wrapper-inner swiper-wrapper';
 
-    const colors = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33C4', '#33FFF5']; // 색상 배열
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33C4', '#33FFF5'];
 
     for (let page = 0; page < totalPages; page++) {
         const pageDiv = document.createElement('div');
@@ -92,9 +92,8 @@ function runProductListScripts() {
 
         for (let i = startIndex; i < endIndex; i++) {
             const item = items[i];
-            // a 태그로 변경
             const gridItem = document.createElement('a');
-            gridItem.href = `productDetail.html?id=${item.id}`; // 링크 설정
+            gridItem.href = `productDetail.html?id=${item.id}`;
             gridItem.className = 'grid-item';
 
             const imgElement = document.createElement('img');
@@ -118,11 +117,9 @@ function runProductListScripts() {
             gridItem.appendChild(imgElement);
             gridItem.appendChild(detailsDiv);
 
-            // 각 grid-item에 데이터 속성(data-bg-color) 추가
-            const bgColor = colors[i % colors.length]; // 색상 순환
+            const bgColor = colors[i % colors.length];
             gridItem.setAttribute('data-bg-color', bgColor);
 
-            // 호버 이벤트 추가
             gridItem.addEventListener('mouseenter', handleItemHover);
             gridItem.addEventListener('mouseleave', handleItemLeave);
 
@@ -131,10 +128,8 @@ function runProductListScripts() {
         wrapperDiv.appendChild(pageDiv);
     }
 
-    // 스와이퍼 래퍼 추가
     gridContainer.appendChild(wrapperDiv);
 
-    // 컨트롤 요소 생성 및 추가
     const controlsDiv = document.createElement('div');
     controlsDiv.className = 'swiper-controls';
 
@@ -161,7 +156,15 @@ function runProductListScripts() {
         gridItems.forEach((item) => {
             item.addEventListener('mouseenter', handleItemHover);
             item.addEventListener('mouseleave', handleItemLeave);
-            console.log('Event listener added to:', item); // 이벤트 연결 확인
         });
-    }, 500); // Swiper 초기화 후 딜레이를 추가하여 실행
+    }, 500);
 }
+
+let resizeTimer;
+
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer); // 기존 타이머 제거
+    resizeTimer = setTimeout(() => {
+        runProductListScripts();
+    }, 500); // 500ms 동안 크기 변경이 없으면 실행
+});
