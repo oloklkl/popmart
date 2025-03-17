@@ -59,3 +59,40 @@ function executePageScript() {
     console.error(`${route} script not found`)
   }
 }
+
+// window.addEventListener('load', () => {
+//   executePageScript();
+// });
+
+// function executePageScript() {
+//   const route = window.location.hash.substring(1);
+//   console.log(`#${route}`);
+
+//   const scriptMap = {
+//     home: '/mainPage/homeScript.js',
+//     login: 'loginScript.js',
+//     register: 'registerScript.js',
+//     productList: 'productListScript.js',
+//     productDetail: 'productDetailScript.js',
+//     cart: 'cartScript.js',
+//     event: 'eventScript.js',
+//     shop: 'shopScript.js',
+//     cs: 'csScript.js',
+//     popStory: 'popStoryScript.js',
+//   };
+// 특정 페이지(home.html)에서만 숨기기
+function toggleVisibility() {
+  const route = window.location.hash.substring(1)
+  const hiddenRoutes = ['home'] // Drawer >> 여기에 숨길 페이지 추가 가능
+
+  if (hiddenRoutes.includes(route)) {
+    document.getElementById('myPageDrawer').style.display = 'none'
+    document.getElementById('searchDrawer').style.display = 'none'
+  } else {
+    document.getElementById('myPageDrawer').style.display = 'block'
+    document.getElementById('searchDrawer').style.display = 'block'
+  }
+}
+
+window.addEventListener('hashchange', toggleVisibility)
+window.addEventListener('load', toggleVisibility)
