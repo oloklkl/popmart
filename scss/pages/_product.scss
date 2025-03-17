@@ -1,10 +1,6 @@
 @import '../base/include';
 
-// body {
-//     background-color: var(--white);
-// }
-
-// .inner {
+// .product-inner {
 //     position: relative;
 //     width: 100%;
 //     max-width: $grid;
@@ -12,7 +8,7 @@
 //     padding: 0;
 // }
 
-.inner {
+.product-inner {
     position: relative;
     width: 100%;
     max-width: calc(100% - 200px);
@@ -430,7 +426,6 @@
             opacity: 0.4;
             transition: all 0.3s;
             position: relative;
-            overflow: hidden;
             border-radius: 75px;
             box-sizing: border-box;
 
@@ -1135,10 +1130,22 @@
     border: none;
     cursor: pointer;
     display: none; /* 기본적으로 숨김 */
+    z-index: 1001;
 
     &:hover {
         background: none;
         transform: scale(1.1);
+    }
+
+    @include tablet {
+        width: 106px;
+        height: 106px;
+    }
+
+    @include mobile {
+        right: 10px;
+        width: 76px;
+        height: 76px;
     }
 }
 
@@ -1153,10 +1160,23 @@
     border: none;
     cursor: pointer;
     display: none; /* 기본적으로 숨김 */
+    z-index: 1001;
 
     &:hover {
         background: none;
         transform: scale(1.1);
+    }
+
+    @include tablet {
+        width: 100px;
+        height: 100px;
+    }
+
+    @include mobile {
+        bottom: 110px;
+        right: 8px;
+        width: 80px;
+        height: 80px;
     }
 }
 
@@ -1164,7 +1184,7 @@
 .toggle-btn {
     position: fixed;
     bottom: 20px; /* Top 버튼 위에 위치 */
-    right: 150px;
+    right: 170px;
     width: 136px;
     height: 136px;
     background: none;
@@ -1176,6 +1196,18 @@
     &:hover {
         background: none;
         transform: scale(1.1);
+    }
+
+    @include tablet {
+        right: 140px;
+        width: 106px;
+        height: 106px;
+    }
+
+    @include mobile {
+        right: 90px;
+        width: 76px;
+        height: 76px;
     }
 }
 
