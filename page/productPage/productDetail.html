@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../../css/output/styles.css" />
         <title>POPMART - Product Detail</title>
     </head>
+
     <body>
         <!-- 제품 상세 페이지 -->
         <main>
@@ -79,6 +80,35 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- 카드 형태 UI (초기에는 숨김) -->
+                <div class="product-card" style="display: none">
+                    <h2 class="product-title"></h2>
+                    <p class="price product-price"></p>
+                    <div class="product-details">
+                        <div class="quantity-control">
+                            <p>수량</p>
+                            <button class="minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="plus">+</button>
+                        </div>
+                        <div class="shipping-info">
+                            <span>배송혜택</span>
+                            <div class="shipping-progress-container">
+                                <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <p class="free-shipping-condition">3만원 이상 무료 배송됩니다!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="cart">장바구니</button>
+                        <button class="buy">구매하기</button>
+                    </div>
+                </div>
+
                 <div class="down-btn-wrapper">
                     <img
                         src="https://github.com/hyeonky/dp-static/blob/main/popmart/btnIcon/chevrons-down.png?raw=true"
@@ -220,7 +250,8 @@
         </button>
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
         <script type="module" src="../../js/productDetailSwiper.js"></script>
         <script type="module" src="../../js/productDetailScript.js"></script>
     </body>
