@@ -966,6 +966,7 @@
 
     h2 {
         font-size: 5.4rem;
+        font-weight: $font-bold;
         margin-bottom: 40px;
 
         @include tablet {
@@ -993,6 +994,7 @@
 
     h2 {
         font-size: 5.4rem;
+        font-weight: $font-bold;
         margin-bottom: 40px;
 
         @include tablet {
@@ -1043,6 +1045,7 @@
     }
 }
 
+// 관련 상품
 .related-products-section {
     width: 100%;
     margin: 20px 0;
@@ -1050,6 +1053,7 @@
 
     h2 {
         font-size: $font-size-title-xxlg;
+        font-weight: $font-bold;
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
@@ -1059,7 +1063,7 @@
         }
 
         @include mobile {
-            font-size: $font-size-title-lg;
+            font-size: $font-size-title-xlg;
         }
     }
 
@@ -1124,8 +1128,8 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 136px;
-    height: 136px;
+    width: 120px;
+    height: 120px;
     background: none;
     border: none;
     cursor: pointer;
@@ -1153,7 +1157,7 @@
 .cart-btn {
     position: fixed;
     bottom: 150px; /* Top 버튼 위에 위치 */
-    right: 20px;
+    right: 15px;
     width: 130px;
     height: 130px;
     background: none;
@@ -1185,8 +1189,8 @@
     position: fixed;
     bottom: 20px; /* Top 버튼 위에 위치 */
     right: 170px;
-    width: 136px;
-    height: 136px;
+    width: 120px;
+    height: 120px;
     background: none;
     border: none;
     cursor: pointer;
