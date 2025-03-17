@@ -236,7 +236,7 @@ $mobile-width: 390px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: -120px;
+    margin-bottom: -110px;
     margin-right: 15px;
     position: relative;
 }
@@ -248,7 +248,7 @@ $mobile-width: 390px;
     box-shadow: inset 0 0 0 4px #000;
     border-radius: 7px;
     overflow: hidden;
-    margin-bottom: -110px;
+    margin-bottom: -100px;
     margin-right: 20px;
     display: flex;
     align-items: center;
@@ -311,38 +311,36 @@ $mobile-width: 390px;
     flex-shrink: 0;
 }
 
-        .confirm-btn {
-            width: 40px;
-            height: 30px;
-            background: $text-color;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            margin-left: 5px;
-            cursor: pointer;
-            flex-shrink: 0; // 버튼 크기 고정
-            padding: 0; // 패딩 제거
-            min-width: 40px; // 최소 너비 지정
-        }
-    }
+.confirm-btn {
+    width: 40px;
+    height: 30px;
+    background: $text-color;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin-left: 5px;
+    cursor: pointer;
+    flex-shrink: 0; // 버튼 크기 고정
+    padding: 0; // 패딩 제거
+    min-width: 40px; // 최소 너비 지정
+}
 
-    .item-total {
-        text-align: right;
-        font-weight: bold;
-        margin-left: auto;
-        align-self: center;
-        width: 120px; // 고정 너비 추가
-        flex-shrink: 0; // 너비 축소 방지
-    }
+.item-total {
+    text-align: right;
+    font-weight: bold;
+    margin-left: auto;
+    align-self: center;
+    width: 120px; // 고정 너비 추가
+    flex-shrink: 0; // 너비 축소 방지
+}
 
-    // 구분선 추가 - 이미지를 침범하지 않도록 수정
-    .cart-item-divider {
-        width: calc(100% - 174px); // 이미지 너비(154px) + 우측 마진(20px)만큼 제외
-        height: 1px;
-        background-color: #ddd;
-        margin: 10px 0;
-        margin-left: 174px; // 이미지 너비 + 마진만큼 오른쪽으로 이동
-    }
+// 구분선 추가 - 이미지를 침범하지 않도록 수정
+.cart-item-divider {
+    width: calc(100% - 174px); // 이미지 너비(154px) + 우측 마진(20px)만큼 제외
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+    margin-left: 174px; // 이미지 너비 + 마진만큼 오른쪽으로 이동
 }
 
 // SVG 버튼 공통 스타일
@@ -383,7 +381,7 @@ $mobile-width: 390px;
     margin: 20px 0;
     padding: 10px;
     background: $light-gray;
-    border-radius: 5px;
+    border-radius: 30px;
     flex-wrap: wrap; // 작은 화면에서 항목 줄바꿈 허용
 
     .selected-item {
@@ -409,7 +407,7 @@ $mobile-width: 390px;
 .order-summary {
     background: $light-gray;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-top: 20px;
 
     .summary-row {
