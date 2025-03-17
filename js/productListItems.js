@@ -16,7 +16,7 @@ const items = [
   },
   {
     id: 3,
-    imgSrc: 'https://github.com/oloklkl/dp-static/blob/main/popmart/thumbnail/thumbnail25.png?raw=true',
+    imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail25.png?raw=true',
     title: '디무 동물의 왕국 시리즈',
     price: '15,000원',
     category: 'pucky',
