@@ -235,6 +235,8 @@ $mobile-width: 390px;
 .item-checkbox {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-bottom: -120px;
     margin-right: 15px;
     position: relative;
 }
@@ -291,7 +293,6 @@ $mobile-width: 390px;
 .quantity-btn {
     width: 30px;
     height: 30px;
-    border: 1px solid #ddd;
     background: white;
     display: flex;
     align-items: center;
@@ -305,7 +306,6 @@ $mobile-width: 390px;
 .quantity-input {
     width: 40px;
     height: 30px;
-    border: 1px solid #ddd;
     text-align: center;
     margin: 0 5px;
     flex-shrink: 0;
@@ -314,8 +314,6 @@ $mobile-width: 390px;
 .confirm-btn {
     width: 40px;
     height: 30px;
-    background: #000;
-    color: white;
     border: none;
     border-radius: 3px;
     margin-left: 5px;

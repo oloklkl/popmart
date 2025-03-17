@@ -25,6 +25,42 @@
                 color: #777777;
                 pointer-events: none;
             }
+            .selected-item {
+                position: relative;
+                display: inline-block;
+                margin: 5px;
+                cursor: pointer;
+            }
+
+            .selected-item img {
+                width: 80px;
+                height: 80px;
+                object-fit: contain;
+                transition: opacity 0.3s ease;
+            }
+
+            .selected-item:hover img {
+                opacity: 0.5;
+            }
+
+            .selected-item .delete-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 24px;
+                height: 24px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: 2;
+            }
+
+            .selected-item:hover .delete-icon {
+                opacity: 1;
+            }
+            .checkbox-input:focus {
+                outline: none;
+            }
         </style>
     </head>
     <body>
@@ -217,10 +253,7 @@
                                 >
                                     <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
                                     <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
-                                    <path
-                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
-                                        fill="#777777"
-                                    />
+                                    <!-- 숫자 path 제거 -->
                                 </svg>
                                 <input
                                     type="text"
@@ -401,10 +434,7 @@
                                 >
                                     <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
                                     <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
-                                    <path
-                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
-                                        fill="#777777"
-                                    />
+                                    <!-- 숫자 path 제거 -->
                                 </svg>
                                 <input
                                     type="text"
@@ -585,10 +615,7 @@
                                 >
                                     <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
                                     <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
-                                    <path
-                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
-                                        fill="#777777"
-                                    />
+                                    <!-- 숫자 path 제거 -->
                                 </svg>
                                 <input
                                     type="text"
@@ -769,10 +796,7 @@
                                 >
                                     <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
                                     <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
-                                    <path
-                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
-                                        fill="#777777"
-                                    />
+                                    <!-- 숫자 path 제거 -->
                                 </svg>
                                 <input
                                     type="text"
@@ -953,10 +977,7 @@
                                 >
                                     <rect x="1" y="1" width="54" height="37" rx="12" fill="white" />
                                     <rect x="1" y="1" width="54" height="37" rx="12" stroke="black" stroke-width="2" />
-                                    <path
-                                        d="M32.858 25.358H31.836V15.418L29.022 17.7L28.434 16.958L31.962 14.102H32.858V25.358Z"
-                                        fill="#777777"
-                                    />
+                                    <!-- 숫자 path 제거 -->
                                 </svg>
                                 <input
                                     type="text"
@@ -1555,7 +1576,25 @@
                 }
             }
 
-            // 선택된 상품 목록 업데이트
+            // 선택된 항목을 삭제하는 함수
+            function removeSelectedItem(checkboxId) {
+                // 체크박스 찾기
+                var checkbox = document.getElementById(checkboxId);
+                if (checkbox) {
+                    // 체크 해제
+                    checkbox.checked = false;
+
+                    // 체크박스 SVG 상태 업데이트
+                    updateCheckboxVisibility();
+
+                    // 선택된 상품 목록 및 가격 업데이트
+                    updateSelectedItems();
+                    updateTotalPrice();
+                }
+            }
+            // 새 함수 추가 끝
+
+            // 선택된 상품 목록 업데이트 - 기존 함수를 아래 코드로 완전히 대체
             function updateSelectedItems() {
                 var selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
                 var selectedItemsContainer = document.querySelector('.selected-items');
@@ -1573,14 +1612,37 @@
                     var imgElement = cartItem.querySelector('.item-image img');
                     if (!imgElement) continue;
 
+                    var checkboxId = selectedCheckboxes[i].getAttribute('id');
+
                     var selectedItem = document.createElement('div');
                     selectedItem.className = 'selected-item';
+                    selectedItem.setAttribute('data-id', checkboxId);
 
                     var img = document.createElement('img');
                     img.src = imgElement.src;
                     img.alt = imgElement.alt;
 
+                    // X 아이콘 추가
+                    var deleteIcon = document.createElement('div');
+                    deleteIcon.className = 'delete-icon';
+                    deleteIcon.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" fill="#FF4E4E" stroke="black" stroke-width="1"/>
+                <path d="M7 7L17 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M17 7L7 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        `;
+
+                    // 삭제 이벤트 추가
+                    deleteIcon.onclick = function (e) {
+                        e.stopPropagation();
+                        var parentItem = this.parentElement;
+                        var itemId = parentItem.getAttribute('data-id');
+                        removeSelectedItem(itemId);
+                    };
+
                     selectedItem.appendChild(img);
+                    selectedItem.appendChild(deleteIcon);
                     selectedItemsContainer.appendChild(selectedItem);
                 }
 
