@@ -1,16 +1,16 @@
 import items from '../productListItems.js';
 
 export async function initializePage() {
-  console.log('✅ 홈 페이지 GSAP 실행됨!');
-  console.log('🚀 [초기화] homeScript.js 실행 시작!');
+  console.log('home-GSAP 실행');
+  console.log('homeScript.js 실행');
 
   if (typeof ScrollTrigger === 'undefined') {
-    console.warn('❌ ScrollTrigger 로드되지 않음!');
+    console.warn('ScrollTrigger 로드되지 않음');
     await import('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js');
   }
 
   gsap.registerPlugin(ScrollTrigger);
-  console.log('✅ ScrollTrigger 정상 로드됨');
+  console.log('ScrollTrigger 정상 로드');
 
   gsap.set('.circle-container', {
     position: 'fixed',
@@ -49,7 +49,7 @@ export async function initializePage() {
   gsap.utils.toArray('.letter-img').forEach((img) => {
     let speed = parseFloat(img.dataset.speed) || 1;
     let fixedPoint = img.dataset.fixed ? parseFloat(img.dataset.fixed) : null;
-    console.log(`🎯 이미지: ${img.src}, speed: ${speed}`);
+    console.log(`🎯${img.src}`);
 
     gsap.fromTo(
       img,
@@ -80,11 +80,9 @@ export async function initializePage() {
     },
   });
 
-  console.log('📌 `initializePage()` 실행 완료!');
-
   const prevWrap = document.querySelector('.prev-wrap');
   if (!prevWrap) {
-    console.error('❌ prev-wrap 요소를 찾을 수 없습니다. HTML 확인 필요!');
+    console.error('prev-wrap not found. HTML Check');
     return;
   }
 
@@ -100,25 +98,19 @@ export async function initializePage() {
     },
   });
 
-  // ✅ `runhomeScripts()` 실행 후 `addHoverEffectToItems()` 실행
   runhomeScripts();
   setTimeout(addHoverEffectToItems, 500);
 }
 
-// ✅ home grid 실행
 function runhomeScripts() {
-  console.log('🚀 [runhomeScripts] 실행됨!');
-
   const gridContainer = document.querySelector('.homeGrid-container');
   const wrapperDiv = document.querySelector('.homeGrid-wrapper-inner');
 
   if (!gridContainer || !wrapperDiv) {
-    console.error('❌ [homeGrid-container 오류] homeGrid-container를 찾을 수 없습니다. HTML 확인 필요!');
     return;
   }
 
   if (!items || items.length === 0) {
-    console.error('❌ [items 오류] items 배열이 비어 있음! productListItems.js 확인 필요!');
     return;
   }
 
@@ -131,8 +123,6 @@ function runhomeScripts() {
   const endIndex = Math.min(startIndex + itemsPerPage, items.length);
 
   for (let i = startIndex; i < endIndex; i++) {
-    console.log(`🛠️ [추가 중] ${i + 1}번째 아이템:`, items[i]);
-
     const gridItem = document.createElement('div');
     gridItem.className = 'homeGrid-item';
 
@@ -161,29 +151,29 @@ function runhomeScripts() {
   }
 
   gridContainer.appendChild(wrapperDiv);
-  console.log('✅ [완료] homeGrid-container에 데이터 추가 완료!');
 }
 
-// ✅ 마우스 커서 초기화
+// 마우스 커서 초기화
 setTimeout(() => {
-  console.log('🚀 [circle-cursor] 강제 초기화');
+  console.log('[circle-cursor]초기화');
 
   let cursor = document.querySelector('.circle-cursor');
   if (!cursor) {
     cursor = document.createElement('div');
     cursor.classList.add('circle-cursor');
     document.body.appendChild(cursor);
-    console.log('✅ .circle-cursor 강제 추가됨!');
+    console.log('.circle-cursor 추가');
   } else {
-    console.log('✅ .circle-cursor 이미 존재함');
+    console.log('.circle-cursor 존재');
   }
   gsap.set(cursor, {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
+    opacity: 1,
   });
-}, 500);
+});
 
-// ✅ 마우스 이동 이벤트
+// 마우스 이동 이벤트
 document.addEventListener('mousemove', (e) => {
   const cursor = document.querySelector('.circle-cursor');
   if (cursor) {
@@ -196,21 +186,18 @@ document.addEventListener('mousemove', (e) => {
   }
 });
 
-// ✅ hover 효과 추가 함수
+// hover 효과 추가 함수
 function addHoverEffectToItems() {
-  console.log('🚀 [hover 이벤트 추가] 실행됨!');
-
   document.querySelectorAll('.homeGrid-item').forEach((item) => {
     const randomColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     item.setAttribute('data-color', randomColor);
 
     item.addEventListener('mouseenter', () => {
-      console.log(`🎨 [mouseenter] ${item.innerText} → 색상 변경!`);
       const cursor = document.querySelector('.circle-cursor');
       if (cursor) {
         const color = item.getAttribute('data-color');
         gsap.to(cursor, {
-          background: color, // ✅ 색상만 변경
+          background: color,
         });
       }
     });
