@@ -10,7 +10,7 @@ const items = [
         id: 1,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail2.png?raw=true',
         title: '라부부 코카콜라 시리즈',
-        price: '15,000',
+        price: '15,000원',
         category: 'labubu',
     },
     {
@@ -171,7 +171,7 @@ const items = [
         id: 24,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail3.png?raw=true',
         title: '크라이베이비 사랑의 눈물 시리즈 인형',
-        price: '40,000',
+        price: '40,000원',
         category: 'crybaby',
     },
     {
@@ -236,6 +236,20 @@ const items = [
         title: '피노젤리 탄생석 시리즈',
         price: '15,000원',
         category: 'pinogelly',
+    },
+    {
+        id: 35,
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail35.png?raw=true',
+        title: '몰리 팔각형 친친 피규어',
+        price: '40,000원',
+        category: 'molly',
+    },
+    {
+        id: 36,
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail36.png?raw=true',
+        title: '아주라 봄 판타지 시리즈',
+        price: '15,000원',
+        category: 'azura',
     },
 ];
 
