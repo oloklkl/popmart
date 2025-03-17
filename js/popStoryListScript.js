@@ -1,7 +1,9 @@
 import { popStoryItems, addPopStoryItems } from './popStoryItems.js'
+
 document.addEventListener('DOMContentLoaded', () => {
   // 여기에 스크립트 코드 넣기
 })
+
 const gridContainer = document.querySelector('.grid')
 
 // '더보기' 버튼
@@ -20,6 +22,9 @@ const createGridItem = ({ title, byArtist, imgSrc, subtitle, bgColor }) => {
   link.href = '#'
   link.classList.add('link')
 
+  const popStoryGirdItemCont = document.createElement('div')
+  popStoryGirdItemCont.classList.add('grid-item-wrapper') // 새로 추가된 wrapper div
+
   const gridItem = document.createElement('div')
   gridItem.classList.add('grid-item')
   gridItem.setAttribute('data-bg', bgColor)
@@ -36,7 +41,9 @@ const createGridItem = ({ title, byArtist, imgSrc, subtitle, bgColor }) => {
   gridItem.appendChild(img)
   link.appendChild(gridItem)
 
-  return link
+  popStoryGirdItemCont.appendChild(link) // wrapper div에 링크 추가
+
+  return popStoryGirdItemCont // wrapper div 반환
 }
 
 // "더보기" 버튼 클릭 렌더링
