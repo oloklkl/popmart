@@ -170,6 +170,14 @@ setTimeout(() => {
     width: 200,
     height: 200,
     opacity: 1,
+    position: 'fixed',
+    left: '0',
+    top: '0',
+    zIndex: 9999,
+    pointerEvents: 'none',
+    background: 'black',
+    borderRadius: '50%',
+    mixBlendMode: 'difference',
   });
 });
 
