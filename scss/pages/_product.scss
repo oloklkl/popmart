@@ -115,9 +115,11 @@
 
             @include tablet {
                 width: 50px;
+                font-size: 4rem;
             }
             @include mobile {
                 width: 50px;
+                font-size: 3.6rem;
             }
         }
     }
@@ -173,7 +175,7 @@
             background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true);
         }
         .hirono {
-            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking2.png?raw=true);
+            background-image: url(https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking55.png?raw=true);
             color: white;
         }
         .hacipupu {
@@ -232,7 +234,6 @@
             height: 100%;
             position: relative;
             overflow: visible !important;
-            // border: 5px solid $gray-30;
 
             &.swiper {
                 overflow: hidden;
@@ -295,6 +296,13 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-auto-rows: auto;
                 width: 100%;
+                border: 5px solid $gray-30;
+
+                @include mobile {
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(3, auto);
+                    grid-auto-flow: row dense;
+                }
             }
 
             .grid-item {
@@ -345,14 +353,25 @@
                     background-color: white;
                     height: 100%;
 
+                    h3,
+                    p {
+                        font-size: $font-size-body-lg;
+
+                        @include tablet {
+                            font-size: $font-size-body-md;
+                        }
+
+                        @include mobile {
+                            font-size: $font-size-body-sm;
+                        }
+                    }
+
                     h3 {
-                        font-size: 16px;
+                        font-weight: $font-bold;
                         margin: 0 0 10px;
-                        font-weight: normal;
                     }
 
                     p {
-                        font-size: 14px;
                         color: $gray-70;
                     }
                 }
@@ -528,6 +547,7 @@
         border: 5px solid $black;
         border-radius: 75px;
         overflow: hidden;
+        transition: transform 0.3s ease;
 
         h2 {
             font-size: $font-size-title-xxlg;
@@ -720,6 +740,217 @@
             }
         }
     }
+
+    .product-card {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        z-index: 1000;
+        /* 다른 요소들보다 위에 표시 */
+        border: 5px solid $black;
+        border-radius: 75px;
+        /* product-info와 동일한 스타일 */
+        overflow: hidden;
+
+        h2 {
+            font-size: $font-size-title-xxlg;
+            color: #333333;
+            margin-bottom: 20px;
+
+            @include tablet {
+                font-size: $font-size-title-xlg;
+            }
+
+            @include mobile {
+                font-size: $font-size-title-lg;
+            }
+        }
+
+        p {
+            font-size: $font-size-title-xlg;
+
+            @include tablet {
+                font-size: $font-size-title-lg;
+            }
+
+            @include mobile {
+                font-size: $font-size-title-md;
+            }
+        }
+
+        .price {
+            color: #e02121;
+            font-weight: $font-bold;
+        }
+
+        .product-details {
+            margin-top: 30px;
+
+            .quantity-control {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                p {
+                    font-size: $font-size-body-lg;
+                    margin-right: 50px;
+                    font-weight: $font-bold;
+
+                    @include tablet {
+                        font-size: $font-size-body-md;
+                    }
+
+                    @include mobile {
+                        font-size: $font-size-body-sm;
+                    }
+                }
+
+                span {
+                    width: 60px;
+                    height: 40px;
+                    border: 2px solid $black;
+                    color: #777777;
+                    border-radius: 13px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                button {
+                    width: 40px;
+                    padding: 5px;
+                    border: 2px solid $black;
+                    border-radius: 13px;
+                    background-color: $white;
+                    cursor: pointer;
+                }
+
+                .minus,
+                .plus {
+                    color: $black;
+                    font-weight: $font-bold;
+                    font-size: 2rem;
+                }
+            }
+
+            .shipping-info {
+                display: flex;
+                align-items: center;
+                margin-top: 30px;
+                padding-bottom: 70px;
+
+                span {
+                    margin-right: 30px;
+                    font-size: $font-size-body-lg;
+                    font-weight: $font-bold;
+
+                    @include tablet {
+                        font-size: $font-size-body-md;
+                    }
+
+                    @include mobile {
+                        font-size: $font-size-body-sm;
+                    }
+                }
+            }
+
+            .shipping-progress-container {
+                .shipping {
+                    font-size: $font-size-detail-sm;
+                }
+
+                .shipping span {
+                    color: #e02121;
+                    font-size: $font-size-detail-md;
+                }
+
+                .progress-bar {
+                    width: 100%;
+                    height: 10px;
+                    background-color: $gray-40;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    margin-bottom: 5px;
+
+                    .progress {
+                        height: 100%;
+                        width: 50%;
+                        /* 현재 진행률, 필요에 따라 조정 */
+                        background-color: #e4393c;
+                        transition: width 0.3s ease;
+                    }
+                }
+
+                .free-shipping-condition {
+                    font-size: $font-size-detail-sm;
+                }
+            }
+        }
+
+        .buttons {
+            width: 100%;
+            height: 70px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            margin-top: 20px;
+            border-top: 3px solid $black;
+
+            .cart {
+                width: 100%;
+                background: #d2d2d2;
+                padding: 10px;
+                color: $black;
+                font-size: $font-size-body-lg;
+                font-weight: $font-bold;
+                flex: 1;
+                border-radius: 0 0 0 75px;
+
+                @include tablet {
+                    font-size: $font-size-body-md;
+                }
+
+                @include mobile {
+                    font-size: $font-size-body-sm;
+                }
+
+                &:hover {
+                    background: $gray-70;
+                    color: $white;
+                }
+            }
+
+            .buy {
+                width: 100%;
+                background: #ff8c8c;
+                padding: 10px;
+                color: $black;
+                font-size: $font-size-body-lg;
+                font-weight: $font-bold;
+                flex: 1;
+                border-radius: 0 0 75px 0;
+
+                @include tablet {
+                    font-size: $font-size-body-md;
+                }
+
+                @include mobile {
+                    font-size: $font-size-body-sm;
+                }
+
+                &:hover {
+                    background: #e02121;
+                    color: $white;
+                }
+            }
+        }
+    }
+
     .down-btn-wrapper {
         display: block;
         width: 100%;
@@ -940,6 +1171,7 @@
     border: none;
     cursor: pointer;
     display: none; /* 기본적으로 숨김 */
+    z-index: 1001;
 
     &:hover {
         background: none;
