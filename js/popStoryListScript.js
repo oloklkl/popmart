@@ -1,4 +1,4 @@
-import { popStoryListItems, addPopStoryListItems } from './popStoryItems.js'
+import { popStoryItems, addPopStoryItems } from './popStoryItems.js'
 document.addEventListener('DOMContentLoaded', () => {
   // 여기에 스크립트 코드 넣기
 })
@@ -10,12 +10,12 @@ loadMoreBtn.classList.add('moreBtn')
 loadMoreBtn.textContent = '더보기'
 document.querySelector('.popStoryListContainer').appendChild(loadMoreBtn)
 
-let currentIndex = 6
+let currentIndex = 0
 const itemsPerPage = 6
-const allStories = [...popStoryListItems, ...addPopStoryListItems]
+const allStories = [...popStoryItems, ...addPopStoryItems]
 
 // HTML 요소 생성 함수
-const createGridItem = ({ title, subtitle, imgSrc, alt, bgColor }) => {
+const createGridItem = ({ title, byArtist, imgSrc, subtitle, bgColor }) => {
   const link = document.createElement('a')
   link.href = '#'
   link.classList.add('link')
@@ -26,11 +26,11 @@ const createGridItem = ({ title, subtitle, imgSrc, alt, bgColor }) => {
 
   const textArea = document.createElement('div')
   textArea.classList.add('textarea')
-  textArea.innerHTML = `<h3>${title}</h3><p>${subtitle}</p>`
+  textArea.innerHTML = `<h3>${title}</h3><p>${byArtist}</p>`
 
   const img = document.createElement('img')
   img.src = imgSrc
-  img.alt = alt
+  img.alt = subtitle
 
   gridItem.appendChild(textArea)
   gridItem.appendChild(img)
