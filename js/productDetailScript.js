@@ -3,7 +3,8 @@ import { productDetailItem } from './productDetailItem.js'; // 상품 데이터 
 import { initializeProductSwipers } from './productDetailSwiper.js';
 
 // localStorage에서 상품 ID를 가져옴
-const productId = localStorage.getItem('productId');
+const pathSegments = window.location.pathname.split('/');
+const productId = pathSegments[pathSegments.length - 1]; // 마지막 경로가 상품 ID
 
 function updateProductInfo(productId) {
     const product = productDetailItem.find((item) => item.id === parseInt(productId));

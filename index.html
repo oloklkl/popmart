@@ -62,8 +62,9 @@
 
       // 라우팅 설정 (각 페이지 매핑)
       function loadPage() {
-        const route = window.location.hash.substring(1);
+        const path = window.location.pathname.replace('/', '');
         const routes = {
+          '': 'page/mainPage/home.html',
           home: 'page/mainPage/home.html',
           login: 'page/myPage/login.html',
           register: 'page/myPage/register.html',
@@ -87,7 +88,7 @@
           .catch((error) => console.error('Error loading page:', error));
       }
 
-      window.addEventListener('hashchange', loadPage);
+      window.addEventListener('popstate', loadPage); // 브라우저 히스토리 감지
       window.addEventListener('load', loadPage);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

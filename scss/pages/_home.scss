@@ -226,6 +226,41 @@
   left: 0;
   background-color: #ffba4a;
   z-index: 11;
+
+  .prev-product-container {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .prev-product {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .info-btn {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      border: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      pointer-events: all;
+    }
+  }
 }
 
 .prev-wrap {
@@ -242,32 +277,53 @@
     font-weight: 900;
     font-size: 100px;
     position: absolute;
-    top: 50%;
+    top: 50%; /* 🔥 이미지와 간격 조정 */
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
     color: white;
-  }
-  .prev-product {
-    width: 30%;
-    height: auto;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
   }
 }
 
-// // 호버효과
-// .circle-cursor {
-//   position: fixed;
-//   background: black;
-//   border-radius: 50%;
-//   pointer-events: none;
-//   mix-blend-mode: difference;
-//   z-index: 9999;
-//   transform: translate(-50%, -50%);
-//   transition: background 0.3s ease, width 0.2s ease, height 0.2s ease;
-//   // opacity: 1 !important;
-//   // display: block !important;
-// }
+// 호버효과
+.circle-cursor {
+  // transform: translate(-50%, -50%);
+  opacity: 1;
+  display: block;
+  // background-color: black;
+}
+.prev-product-container:hover .prev-product {
+  transform: scale(1.7);
+}
+.info-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.info-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  visibility: hidden; /* 기본적으로 숨김 */
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+.info-box.show {
+  visibility: visible; /* 🔹 visibility 속성 추가 */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.info-wrapper {
+  position: relative; /* 🔥 relative를 적용할 새로운 부모 요소 */
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
