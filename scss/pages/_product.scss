@@ -338,10 +338,9 @@
                     border: 1px solid $gray-30;
                 }
 
-                div {
+                .grid-item-details {
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
+                    justify-content: space-between;
                     border: 1px solid $gray-30;
                     padding: 25px 20px 20px;
                     position: relative;
@@ -349,47 +348,59 @@
                     background-color: white;
                     height: 100%;
 
-                    h3,
-                    p {
-                        font-size: $font-size-body-lg;
+                    .grid-item-info {
+                        h3,
+                        p {
+                            font-size: $font-size-body-lg;
 
-                        @include tablet {
-                            font-size: $font-size-body-md;
+                            @include tablet {
+                                font-size: $font-size-body-md;
+                            }
+
+                            @include mobile {
+                                font-size: $font-size-body-sm;
+                            }
                         }
 
-                        @include mobile {
-                            font-size: $font-size-body-sm;
+                        h3 {
+                            font-weight: $font-bold;
+                            margin: 0 0 10px;
+                        }
+
+                        p {
+                            color: $gray-70;
                         }
                     }
+                    .grid-item-arrow {
+                        display: flex;
+                        justify-content: center;
 
-                    h3 {
-                        font-weight: $font-bold;
-                        margin: 0 0 10px;
-                    }
-
-                    p {
-                        color: $gray-70;
+                        .arrow-icon {
+                            width: 40px;
+                            border: none;
+                            transition: transform 0.2s ease;
+                        }
+                        .arrow-icon:hover {
+                            transform: scale(1.2);
+                        }
                     }
                 }
             }
-
-            .circle {
-                position: absolute;
-                width: 200px;
-                height: 200px;
-                background-color: blue; /* 테스트용 색상 */
-                border-radius: 50%;
-                pointer-events: none;
-                opacity: 1; /* 항상 보이게 */
-                z-index: 10000; /* 최상단 */
-                transition: opacity 0.3s ease, background-color 0.3s ease;
-            }
-
-            .circle.hovered {
-                opacity: 1; // 호버 시 보이도록 변경
-            }
         }
     }
+}
+
+#circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #333;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease;
+    z-index: 10; /* 서클이 다른 요소 위로 오도록 설정 */
 }
 
 /* productDetail.html */
