@@ -61,11 +61,7 @@ body {
         z-index: 0;
         width: 100vw;
         height: 100vh;
-        
-        
-        
-        
-        
+  
     }
 }
 
@@ -150,6 +146,29 @@ body {
     display: flex;
     justify-content: center;
     gap: 8px;
+    opacity: 0;
+
+        //hover했을때 나타나는 효과
+        &:hover .product-description {
+            display: block;
+            opacity: 1;
+        }
+
+
+    //button 태그가 없지만 형태는 유지하게
+    &::before {
+        content: ""; // 가상요소 추가
+        position: absolute;
+        right: -9%;
+        bottom:-25%;
+        background-color: #000000;
+        width: 59px;
+        height: 59px;
+        border-radius: 50%;
+        z-index: 30;
+        display: block;
+        opacity: 1;  // 항상 보이게 설정
+    }
 }
 
 .tags {
@@ -177,16 +196,6 @@ gap: 14px;
     text-align: center;
 }
 
-.popstory-btn {
-    position: absolute;
-    right: -8%;
-    bottom: 64%;
-    background-color: #000000;
-    width: 59px;
-    height: 59px;
-    border-radius: 50%;
-
-}
 
 
 // 아티스트 정보 박스 스타일
@@ -213,32 +222,60 @@ gap: 14px;
 }
 
 .popstory-pwrap {
-    z-index: 15;
+    z-index: 10;
     position: absolute;  // 위치 조정 가능하게 변경
     top: 35%;
-    left: 48%;
+    left: 62%;
     transform: translate(-50%, -50%);
-    width: 100%;  // 가로 너비 설정
+    width: 30%;  // 가로 너비 설정
     height: 400px;//높이를 주어야만 그 안에서 버같은 부수요소에 설정할수있다
+
+
+    //hover했을때 나타나는 효과
+    &:hover .product-description {
+        display: block;
+        opacity: 1;
+    }
 }
 
 .product-description {    
     position: absolute;
     left: 70%;
-
     font-size: 15px;
     border: 3px solid #000000;
     background-color: #FFFFFF;
-    margin-right: 20%;
     padding: 20px;
     border-radius: 10px;
     max-width: 400px;
     width: 100%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     text-align: center;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    &.show {
+        display: block;
+        opacity: 1;
+    }
+
+    &::before {
+        content: ""; // 가상요소 추가
+        position: absolute;
+        right: 90%;
+        bottom:-10%;
+        background-color: #000000;
+        width: 59px;
+        height: 59px;
+        border-radius: 50%;
+        z-index: 30;
+        display: block;
+        opacity: 1;  // 항상 보이게 설정
+    }
 }
 
 .story-itembtn {
+    z-index: 30;
     position: absolute;
     right: 28%;
     bottom: 10%;
