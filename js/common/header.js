@@ -12,9 +12,9 @@ function toggleSearch() {
   searchModal.classList.toggle("hidden");
 
   if (!searchModal.classList.contains("hidden")) {
-    searchModal.style.display = "flex"; // 모달을 보이게 함
+    searchModal.style.display = "flex";
   } else {
-    searchModal.style.display = "none"; // 모달을 숨김
+    searchModal.style.display = "none";
   }
 
   console.log(
@@ -63,3 +63,5 @@ window.closeSearch = closeSearch;
 window.toggleUserMenu = toggleUserMenu;
 window.login = login;
 window.logout = logout;
+
+//현경님 추가 필요
