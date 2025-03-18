@@ -90,6 +90,14 @@
     gap: 15px;
     font-size: 20px;
   }
+
+  .header__icons {
+    display: flex;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    margin: 20px;
+  }
 }
 
 .hidden {
