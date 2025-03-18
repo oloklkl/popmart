@@ -87,8 +87,13 @@ function runProductListScripts() {
         for (let i = startIndex; i < endIndex; i++) {
             const item = items[i];
             const gridItem = document.createElement('a');
-            gridItem.href = `productDetail.html?id=${item.id}`;
+            gridItem.href = '#productDetail'; // #productDetail 링크로 설정
             gridItem.className = 'grid-item';
+
+            // 클릭 시 id를 sessionStorage에 저장
+            gridItem.addEventListener('click', (e) => {
+                sessionStorage.setItem('productId', item.id);
+            });
 
             const imgElement = document.createElement('img');
             imgElement.src = item.imgSrc;
@@ -162,32 +167,3 @@ function runProductListScripts() {
 
     initSwiper();
 }
-
-// 📌 화면 크기 변경 감지 및 최적화된 실행
-let resizeTimer;
-let currentDevice = getDeviceType();
-
-function getDeviceType() {
-    const width = window.innerWidth;
-    if (width <= 599) return 'mobile';
-    if (width >= 600 && width <= 1024) return 'tablet';
-    return 'desktop';
-}
-
-function checkDeviceChange() {
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(() => {
-        const newDevice = getDeviceType();
-        if (newDevice !== currentDevice) {
-            currentDevice = newDevice;
-            console.log(`📢 디바이스 변경됨: ${currentDevice}`);
-            runProductListScripts();
-        }
-    }, 500);
-}
-
-// 초기 실행
-checkDeviceChange();
-
-window.addEventListener('resize', checkDeviceChange);
