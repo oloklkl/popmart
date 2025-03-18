@@ -1,27 +1,32 @@
 // 로그인 상태 체크
 let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
 
-// 검색 버튼 클릭 이벤트
+// 검색창 열기
 document.getElementById('search-btn').addEventListener('click', function () {
-  document.getElementById('search-box').classList.toggle('open')
-  document.getElementById('modal-overlay').classList.toggle('open')
+  document.getElementById('search-box').style.display = 'block'
+  document.getElementById('modal-overlay').style.display = 'block'
   document.getElementById('recent-search-container').style.display = 'block'
 })
 
-// 모달 오버레이 클릭 시 검색창 닫기
+// 검색창 닫기 함수
 function closeSearch() {
-  document.getElementById('search-box').classList.remove('open')
-  document.getElementById('modal-overlay').classList.remove('open')
+  document.getElementById('search-box').style.display = 'none'
+  document.getElementById('modal-overlay').style.display = 'none'
   document.getElementById('recent-search-container').style.display = 'none'
 }
 
-// 오버레이 클릭 또는 닫기 버튼 클릭 시 검색창 닫기
-document.getElementById('modal-overlay').addEventListener('click', closeSearch)
+// 닫기 버튼 및 오버레이 클릭 시 검색창 닫기
 document.getElementById('close').addEventListener('click', closeSearch)
+document.getElementById('modal-overlay').addEventListener('click', closeSearch)
 
 // 검색어 입력창
 const searchInput = document.querySelector('.search-bar')
 const recentSearches = document.getElementById('recent-searches')
+
+// 검색 버튼 클릭 이벤트
+document.getElementById('searchBtn').addEventListener('click', function () {
+  performSearch(searchInput.value)
+})
 
 // 검색 시 Enter 키 이벤트
 searchInput.addEventListener('keypress', function (event) {
@@ -30,12 +35,7 @@ searchInput.addEventListener('keypress', function (event) {
   }
 })
 
-// 검색 버튼 클릭 이벤트
-document.getElementById('search-btn').addEventListener('click', function () {
-  performSearch(searchInput.value)
-})
-
-// 검색 수행
+// 검색 실행
 function performSearch(query) {
   if (!query.trim()) return
 
@@ -101,18 +101,13 @@ function renderRecentSearches() {
 // 로그인 상태일 때만 최근 검색어 렌더링
 if (isLoggedIn) renderRecentSearches()
 
-// 로그아웃 시 최근 검색어 삭제
-document.getElementById('logoutBtn').addEventListener('click', function () {
+// 로그아웃 버튼 클릭 시 최근 검색어 삭제
+document.getElementById('logoutBtn')?.addEventListener('click', function () {
   logoutUser()
 })
 
 function logoutUser() {
-  // 로그아웃 처리
   localStorage.setItem('isLoggedIn', 'false')
-
-  // 최근 검색어 삭제
   localStorage.removeItem('recentSearches')
-
-  // 최근 검색어 목록 초기화
   renderRecentSearches()
 }

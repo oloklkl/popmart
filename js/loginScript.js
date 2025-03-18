@@ -1,5 +1,4 @@
-// 로그인 버튼 클릭 시
-loginForm.addEventListener('submit', function (e) {
+document.addEventListener('submit', function (e) {
   e.preventDefault()
 
   const userId = document.getElementById('userId')?.value
@@ -42,15 +41,5 @@ loginForm.addEventListener('submit', function (e) {
     document.getElementById('passwordError').textContent =
       '아이디 또는 비밀번호가 올바르지 않습니다.'
     document.getElementById('passwordError').classList.add('visible')
-  }
-})
-
-// 로그인 상태 확인 및 처리
-window.addEventListener('load', function () {
-  const isLoggedIn = localStorage.getItem('isLoggedIn')
-  if (isLoggedIn === 'true') {
-    // 로그인 상태인 경우
-    alert('이미 로그인 되어 있습니다.')
-    window.location.hash = '#home'
   }
 })
