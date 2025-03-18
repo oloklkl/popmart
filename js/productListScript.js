@@ -17,11 +17,7 @@ export function initializePage() {
 
     if (addCategoryButton && additionalBrands) {
         addCategoryButton.addEventListener('click', () => {
-            if (additionalBrands.style.display === 'none') {
-                additionalBrands.style.display = 'flex'; // 보이도록 설정
-            } else {
-                additionalBrands.style.display = 'none'; // 숨기도록 설정
-            }
+            additionalBrands.style.display = additionalBrands.style.display === 'none' ? 'flex' : 'none';
         });
     }
 }
@@ -41,11 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 아이템 호버
+// 아이템 호버 이벤트 핸들러
 function handleItemHover(e) {
     const circle = document.getElementById('circle');
     const gridItem = e.currentTarget;
-
     if (circle) {
         const bgColor = gridItem.getAttribute('data-bg-color');
         circle.style.backgroundColor = bgColor;
@@ -53,7 +48,6 @@ function handleItemHover(e) {
     }
 }
 
-// 아이템 호버 해제
 function handleItemLeave() {
     const circle = document.getElementById('circle');
     if (circle) {
@@ -62,6 +56,7 @@ function handleItemLeave() {
     }
 }
 
+// 제품 리스트 렌더링
 function runProductListScripts() {
     const gridContainer = document.querySelector('.grid-container');
     if (!gridContainer) {
@@ -69,13 +64,12 @@ function runProductListScripts() {
         return;
     }
 
-    // ✅ 화면 너비에 따라 아이템 개수 설정
-    const isMobile = window.innerWidth <= 768;
-    const itemsPerPage = isMobile ? 6 : 9; // 모바일 6개, 데스크탑 9개
-
+    const isMobile = window.innerWidth <= 599;
+    const isTablet = window.innerWidth >= 600 && window.innerWidth <= 1024;
+    const itemsPerPage = isMobile ? 6 : 9;
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
-    gridContainer.innerHTML = ''; // 컨테이너 내용 초기화
+    gridContainer.innerHTML = '';
     gridContainer.classList.add('swiper');
 
     const wrapperDiv = document.createElement('div');
@@ -148,23 +142,34 @@ function runProductListScripts() {
 
     gridContainer.appendChild(controlsDiv);
 
-    // Swiper 초기화
     initSwiper();
+}
 
-    setTimeout(() => {
-        const gridItems = document.querySelectorAll('.grid-item');
-        gridItems.forEach((item) => {
-            item.addEventListener('mouseenter', handleItemHover);
-            item.addEventListener('mouseleave', handleItemLeave);
-        });
+// 📌 화면 크기 변경 감지 및 최적화된 실행
+let resizeTimer;
+let currentDevice = getDeviceType();
+
+function getDeviceType() {
+    const width = window.innerWidth;
+    if (width <= 599) return 'mobile';
+    if (width >= 600 && width <= 1024) return 'tablet';
+    return 'desktop';
+}
+
+function checkDeviceChange() {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(() => {
+        const newDevice = getDeviceType();
+        if (newDevice !== currentDevice) {
+            currentDevice = newDevice;
+            console.log(`📢 디바이스 변경됨: ${currentDevice}`);
+            runProductListScripts();
+        }
     }, 500);
 }
 
-let resizeTimer;
+// 초기 실행
+checkDeviceChange();
 
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer); // 기존 타이머 제거
-    resizeTimer = setTimeout(() => {
-        runProductListScripts();
-    }, 500); // 500ms 동안 크기 변경이 없으면 실행
-});
+window.addEventListener('resize', checkDeviceChange);
