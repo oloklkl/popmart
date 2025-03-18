@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POPMART</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="css/output/styles.css" />
   </head>
   <body>
@@ -28,7 +29,9 @@
         <li><a href="#popStory">팝스토리</a></li>
       </ul>
     </nav> -->
-
+    <!-- 마이페이지 -->
+    <div id="myPageDrawer"></div>
+    <div id="searchDrawer"></div>
     <!-- 동적 컨텐츠 로드 영역 -->
     <main id="content"></main>
 
@@ -47,6 +50,16 @@
         .then((data) => (document.getElementById('footer').innerHTML = data))
         .catch((error) => console.error('Error loading footer:', error));
 
+      fetch('/common/myPageDrawer.html')
+        .then((response) => response.text())
+        .then((data) => (document.getElementById('myPageDrawer').innerHTML = data))
+        .catch((error) => console.error('Error loading myPageDrawer:', error));
+
+      fetch('/common/searchDrawer.html')
+        .then((response) => response.text())
+        .then((data) => (document.getElementById('searchDrawer').innerHTML = data))
+        .catch((error) => console.error('Error loading searchDrawer:', error));
+
       // 라우팅 설정 (각 페이지 매핑)
       function loadPage() {
         const route = window.location.hash.substring(1);
@@ -61,7 +74,9 @@
           shop: 'page/shop.html',
           cs: 'page/cs.html',
           popStory: 'page/popStory.html',
-          test: 'page/test.html',
+          popStoryList: 'page/popStoryList.html',
+          // myPageDrawer: 'common/myPageDrawer.html',
+          // searchDrawer: 'common/searchDrawer.html',
         };
 
         const pagePath = routes[route] || 'page/mainPage/home.html'; // 기본 페이지는 home.html
