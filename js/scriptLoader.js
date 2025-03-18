@@ -1,5 +1,7 @@
-window.addEventListener('hashchange', () => {
+window.addEventListener('popstate', () => {
+  console.log('🔄 popstate 감지됨! 페이지 스크립트 실행')
   executePageScript()
+  initSwiper()
 })
 
 window.addEventListener('load', () => {
@@ -7,8 +9,8 @@ window.addEventListener('load', () => {
 })
 
 function executePageScript() {
-  const route = window.location.hash.substring(1)
-  console.log(`#${route}`)
+  const route = window.location.pathname.replace('/', '')
+  console.log(`${route}`)
 
   const scriptMap = {
     home: '/mainPage/homeScript.js',
@@ -94,5 +96,5 @@ function toggleVisibility() {
   }
 }
 
-window.addEventListener('hashchange', toggleVisibility)
+// window.addEventListener('hashchange', toggleVisibility);
 window.addEventListener('load', toggleVisibility)
