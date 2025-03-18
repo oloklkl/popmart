@@ -22,11 +22,11 @@
   right: 0;
   transform: translateX(0);
   @include mobileMore {
-    right: 20px;
-    transform: translateX(-20px);
+    // transform: translateX(0px);
   }
 }
 #search-box {
+  display: block;
   position: fixed;
   top: 0;
   right: 0;
@@ -38,8 +38,9 @@
   padding-top: 200px;
   z-index: 10;
   transition: transform 0.5s ease;
+  transform: translateX(100%);
   @include mobileMore {
-    top: 100px;
+    top: 50px;
     right: -100%;
     max-width: 465px;
     height: 500px;
@@ -144,6 +145,11 @@
   bottom: 0;
   right: 0;
   transform: translate(-70%, -70%);
+  @include mobile {
+    top: 0;
+    right: 0;
+    transform: translate(-90%, -45%);
+  }
   img {
     width: 32px;
     height: 32px;
@@ -152,26 +158,26 @@
 
 // 최근 검색어
 #recent-search-container {
-  display: block; /* 혹은 flex, 상위 컨테이너의 상황에 맞게 설정 */
+  display: block;
   width: 100%;
-  overflow-x: auto; /* 가로 스크롤을 활성화 */
-  white-space: nowrap; /* 한 줄로 표시되도록 */
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 #recent-searches {
-  display: flex; /* 가로로 나열 */
+  display: flex;
   gap: 10px;
   padding: 0;
   margin: 0;
-  flex-wrap: nowrap; /* 항목들이 한 줄에 가로로만 배치되도록 */
+  flex-wrap: nowrap;
 }
 
 #recent-searches li {
-  display: inline-block; /* 항목을 인라인으로 설정 */
+  display: inline-block;
   padding: 8px 12px;
   cursor: pointer;
   border: 1px solid #eee;
   border-radius: 5px;
   background: #f8f8f8;
-  white-space: nowrap; /* 텍스트가 한 줄로 유지되도록 설정 */
+  white-space: nowrap;
 }
