@@ -98,15 +98,33 @@ function runProductListScripts() {
                 this.src = '/images/placeholder.png';
             };
 
+            const detailsDiv = document.createElement('div');
+            detailsDiv.className = 'grid-item-details';
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'grid-item-info';
+
             const titleElement = document.createElement('h3');
+            titleElement.className = 'grid-item-title';
             titleElement.textContent = item.title;
 
             const priceElement = document.createElement('p');
+            priceElement.className = 'grid-item-price';
             priceElement.textContent = item.price;
 
-            const detailsDiv = document.createElement('div');
-            detailsDiv.appendChild(titleElement);
-            detailsDiv.appendChild(priceElement);
+            const arrowDiv = document.createElement('div');
+            arrowDiv.className = 'grid-item-arrow';
+            const arrowIcon = document.createElement('img');
+            arrowIcon.src =
+                'https://raw.githubusercontent.com/hyeonky/dp-static/6743f0a47b707ff3cdd7b475a5b1748dc2ce163e/popmart/btnIcon/arrow-right.svg';
+            arrowIcon.alt = 'Arrow Icon';
+            arrowIcon.className = 'arrow-icon';
+            arrowDiv.appendChild(arrowIcon);
+
+            infoDiv.appendChild(titleElement);
+            infoDiv.appendChild(priceElement);
+            detailsDiv.appendChild(infoDiv);
+            detailsDiv.appendChild(arrowDiv);
 
             gridItem.appendChild(imgElement);
             gridItem.appendChild(detailsDiv);
