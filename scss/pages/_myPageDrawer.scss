@@ -34,7 +34,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  background: rgb(223, 223, 223, 0.9);
+  background: rgba(201, 201, 201, 0.9);
   z-index: 10;
   transition: transform 0.3s ease;
   transform: translateX(100%);
@@ -42,15 +42,13 @@
   @include mobileMore {
     height: 500px;
     top: 50px;
-    right: -100%;
     max-width: 260px;
     border-radius: 17px;
     border: 3px solid black;
+    background: rgb(223, 223, 223, 0.8);
   }
   @include tabletMore {
     height: 500px;
-    top: 100px;
-    right: -390px;
   }
 }
 
@@ -58,9 +56,6 @@
   right: 0;
   transform: translateX(0);
   @include mobileMore {
-    transform: translateX(-10%);
-  }
-  @include tabletMore {
     transform: translateX(-20px);
   }
 }
@@ -75,7 +70,7 @@
     height: 100%;
     margin: 0 auto;
     margin-top: 10px;
-    padding-top: 10px;
+    padding-top: 60px;
     @include mobileMore {
       align-items: center;
       padding: 0 20px;
@@ -194,5 +189,27 @@
   &:hover {
     background: $point;
     color: white;
+  }
+}
+
+#beforeBtn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+
+  color: #000;
+}
+
+@include mobile {
+  #beforeBtn {
+    display: block;
+    img {
+      display: block;
+      width: 32px;
+      height: 32px;
+    }
   }
 }
