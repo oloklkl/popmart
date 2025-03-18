@@ -11,11 +11,10 @@
       <div class="container">
         <div class="inner">
           <div class="registerLogo">
-            <a href="#register">
+            <a href="register.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/4dd1c90a45a6c7a2aba9ea8f50b98ba1bcf5ed23/popmart/mypage/registerLogo.svg"
-                alt="회원가입"
-              />
+                alt="회원가입" />
             </a>
           </div>
 
@@ -30,12 +29,20 @@
                   <!-- 회원 체크 -->
                   <div class="radio-group">
                     <label>
-                      <input class="radio" type="radio" name="member_type" value="individual" />
+                      <input
+                        class="radio"
+                        type="radio"
+                        name="member_type"
+                        value="individual" />
                       <span class="checkMark"></span>
                       <span>개인회원</span>
                     </label>
                     <label>
-                      <input class="radio" type="radio" name="member_type" value="foreigner" />
+                      <input
+                        class="radio"
+                        type="radio"
+                        name="member_type"
+                        value="foreigner" />
                       <span class="checkMark"></span>
                       <span class="foreigner">외국인회원(foreigner)</span>
                     </label>
@@ -46,12 +53,20 @@
                     <div class="authCont">
                       <div class="authBox">
                         <label>
-                          <input class="radio" type="radio" name="auth_type" value="phone" />
+                          <input
+                            class="radio"
+                            type="radio"
+                            name="auth_type"
+                            value="phone" />
                           <span class="checkMark"></span>
                           <span>휴대폰인증</span>
                         </label>
                         <label>
-                          <input class="radio" type="radio" name="auth_type" value="email" />
+                          <input
+                            class="radio"
+                            type="radio"
+                            name="auth_type"
+                            value="email" />
                           <span class="checkMark"></span>
                           <span>이메일인증</span>
                         </label>
@@ -67,36 +82,63 @@
                   </div>
                   <div class="inputCont">
                     <div class="shortBoxCont">
-                      <input class="shortBox normalBox" type="text" id="userId" name="userId" placeholder="아이디" />
-                      <button class="authBtn btnShort" type="button">중복확인</button>
+                      <input
+                        class="shortBox normalBox"
+                        type="text"
+                        id="userId"
+                        name="userId"
+                        placeholder="아이디" />
+                      <button class="authBtn btnShort" type="button">
+                        중복확인
+                      </button>
                     </div>
-                    <span id="userIdError" class="error-message-register"></span>
+                    <span
+                      id="userIdError"
+                      class="error-message-register"></span>
 
-                    <input class="normalBox" type="password" id="password" name="password" placeholder="비밀번호" />
-                    <span id="passwordError" class="error-message-register"></span>
+                    <input
+                      class="normalBox"
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="비밀번호" />
+                    <span
+                      id="passwordError"
+                      class="error-message-register"></span>
 
                     <input
                       class="normalBox"
                       type="password"
                       id="passwordConfirm"
                       name="passwordConfirm"
-                      placeholder="비밀번호 확인"
-                    />
-                    <span id="passwordConfirmError" class="error-message-register"></span>
+                      placeholder="비밀번호 확인" />
+                    <span
+                      id="passwordConfirmError"
+                      class="error-message-register"></span>
                     <div class="shortBoxCont">
-                      <input class="shortBox normalBox" type="text" id="address" name="address" placeholder="주소" />
-                      <button class="authBtn btnShort" type="button">우편번호</button>
+                      <input
+                        class="shortBox normalBox"
+                        type="text"
+                        id="address"
+                        name="address"
+                        placeholder="주소" />
+                      <button class="authBtn btnShort" type="button">
+                        우편번호
+                      </button>
                     </div>
-                    <span id="addressError" class="error-message-register"></span>
+                    <span
+                      id="addressError"
+                      class="error-message-register"></span>
 
                     <input
                       class="normalBox"
                       type="text"
                       id="detailAddress"
                       name="detailAddress"
-                      placeholder="상세주소"
-                    />
-                    <span id="detailAddressError" class="error-message-register"></span>
+                      placeholder="상세주소" />
+                    <span
+                      id="detailAddressError"
+                      class="error-message-register"></span>
                   </div>
                 </div>
                 <div class="addInfoCont">
@@ -108,12 +150,21 @@
                     <div class="birthCont">
                       <div class="calendar-group">
                         <label>
-                          <input class="radio" type="radio" name="lunar" value="solar" checked />
+                          <input
+                            class="radio"
+                            type="radio"
+                            name="lunar"
+                            value="solar"
+                            checked />
                           <span class="checkMark"></span>
                           <span>양력</span>
                         </label>
                         <label>
-                          <input class="radio" type="radio" name="lunar" value="lunar" />
+                          <input
+                            class="radio"
+                            type="radio"
+                            name="lunar"
+                            value="lunar" />
 
                           <span class="checkMark"></span>
                           <span>음력</span>
@@ -128,8 +179,7 @@
                           size="4"
                           min="1000"
                           max="9999"
-                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                        />
+                          oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                         <span>년</span>
                         <input
                           class="month inputDate"
@@ -139,8 +189,7 @@
                           size="2"
                           min="1"
                           max="12"
-                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                        />
+                          oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                         <span>월</span>
                         <input
                           class="day inputDate"
@@ -150,8 +199,9 @@
                           size="2"
                           min="1"
                           max="31"
-                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                        /><span>일</span>
+                          oninput="this.value = this.value.replace(/[^0-9]/g, '')" /><span
+                          >일</span
+                        >
                       </div>
                       <p>• 한번 입력된 생년월일은 변경이 불가합니다!</p>
                     </div>
