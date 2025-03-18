@@ -1,61 +1,48 @@
 import { popStoryItems, addPopStoryItems } from './popStoryItems.js'
 
-const gridContainer = document.querySelector('.grid')
-const loadMoreBtn = document.createElement('button')
-loadMoreBtn.classList.add('moreBtn')
-loadMoreBtn.textContent = '더보기'
-document.querySelector('.popStoryListContainer').appendChild(loadMoreBtn)
+const gridContainer = document.querySelector('.popStoryListGrid')
+const loadMoreBtn = document.querySelector('.moreBtn')
 
 let currentIndex = 0
 const itemsPerPage = 6
 const allStories = [...popStoryItems, ...addPopStoryItems]
 
-const createGridItem = ({ title, byArtist, imgSrc, subtitle, bgColor }) => {
-  const link = document.createElement('a')
-  link.href = '#'
-  link.classList.add('link')
+const updateGridItems = () => {
+  allStories
+    .slice(currentIndex, currentIndex + itemsPerPage)
+    .forEach((item) => {
+      const popStoryList = document.createElement('div')
+      popStoryList.classList.add('popStoryGridItem')
+      popStoryList.setAttribute('data-bg', item.bgColor)
+      popStoryList.innerHTML = `
+      <div class="textarea">
+        <h3>${item.title}</h3>
+        <p>${item.byArtist}</p>
+      </div>
+      <img src="${item.imgSrc}" alt="${item.subtitle}">
+    `
+      gridContainer.appendChild(popStoryList)
 
-  const gridItem = document.createElement('div')
-  gridItem.classList.add('grid-item')
-  gridItem.setAttribute('data-bg', bgColor)
-  gridItem.innerHTML = `<div class="textarea"><h3>${title}</h3><p>${byArtist}</p></div>`
-
-  const img = document.createElement('img')
-  img.src = imgSrc
-  img.alt = subtitle
-  gridItem.appendChild(img)
-
-  link.appendChild(gridItem)
-
-  const wrapper = document.createElement('div')
-  wrapper.classList.add('grid-item-wrapper')
-  wrapper.appendChild(link)
-
-  return wrapper
-}
-
-const renderGridItems = () => {
-  gridContainer.innerHTML = ''
-  allStories.slice(0, currentIndex + itemsPerPage).forEach((item) => {
-    gridContainer.appendChild(createGridItem(item))
-  })
+      // popStory 페이지로 연결
+      popStoryList.addEventListener('click', () => {
+        window.location.href = `/page/popStory.html?id=${item.id}`
+      })
+    })
 
   applyHoverEffects()
+  currentIndex += itemsPerPage
 
-  if (currentIndex + itemsPerPage >= allStories.length) {
+  if (currentIndex >= allStories.length) {
     loadMoreBtn.style.display = 'none'
   }
 }
 
-loadMoreBtn.addEventListener('click', () => {
-  currentIndex += itemsPerPage
-  renderGridItems()
-})
+loadMoreBtn.addEventListener('click', updateGridItems)
 
 const applyHoverEffects = () => {
   if (window.matchMedia('(max-width: 1024px)').matches) return
 
-  document.querySelectorAll('.grid-item').forEach((item) => {
+  document.querySelectorAll('.popStoryGridItem').forEach((item) => {
     item.style.setProperty('--hover-bg', item.getAttribute('data-bg'))
 
     item.addEventListener('mouseenter', () => {
@@ -70,4 +57,5 @@ const applyHoverEffects = () => {
   })
 }
 
-renderGridItems()
+// 초기 아이템 로드
+updateGridItems()
