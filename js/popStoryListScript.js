@@ -23,7 +23,7 @@ const createGridItem = ({ title, byArtist, imgSrc, subtitle, bgColor }) => {
   link.classList.add('link')
 
   const popStoryGirdItemCont = document.createElement('div')
-  popStoryGirdItemCont.classList.add('grid-item-wrapper') // 새로 추가된 wrapper div
+  popStoryGirdItemCont.classList.add('grid-item-wrapper')
 
   const gridItem = document.createElement('div')
   gridItem.classList.add('grid-item')
@@ -41,9 +41,9 @@ const createGridItem = ({ title, byArtist, imgSrc, subtitle, bgColor }) => {
   gridItem.appendChild(img)
   link.appendChild(gridItem)
 
-  popStoryGirdItemCont.appendChild(link) // wrapper div에 링크 추가
+  popStoryGirdItemCont.appendChild(link)
 
-  return popStoryGirdItemCont // wrapper div 반환
+  return popStoryGirdItemCont
 }
 
 // "더보기" 버튼 클릭 렌더링

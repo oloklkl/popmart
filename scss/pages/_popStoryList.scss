@@ -8,7 +8,7 @@
 .inner {
   position: relative;
   width: 100%;
-  max-width: calc(100% - 200px);
+  max-width: $grid;
   margin: 0 auto;
   padding: 0;
   @include tablet {
