@@ -1,7 +1,7 @@
 export const items = [
   {
     id: 1,
-    date: '2025. 3. 7 (금)',
+    date: '2025. 3. 8 (금)',
     name: '지거 경계선 위의 우리 시리즈',
     EngName: 'Zsiga Borderline Drifter Series',
     mainImg: 'https://github.com/hyeonky/dp-static/blob/main/popmart/event/notice/notice0/notice0.png?raw=true',
