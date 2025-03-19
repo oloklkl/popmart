@@ -22,7 +22,7 @@
   right: 0;
   transform: translateX(0);
   @include mobileMore {
-    // transform: translateX(0px);
+    transform: translateX(-20px);
   }
 }
 #search-box {

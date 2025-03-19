@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return
     }
     // 로그인 처리
-    if (userId === 'popmart' && password === 'p1234!') {
+    if ((userId === 'popmart', 'test', 'user123' && password === 'p1234!')) {
       alert('로그인 성공!')
       console.log('✅ 로그인 성공')
       // 로그인 상태 저장
