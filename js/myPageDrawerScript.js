@@ -41,12 +41,16 @@ document.getElementById('modal-overlay').addEventListener('click', function () {
   document.getElementById('modal-overlay').classList.remove('open')
 })
 
+document.getElementById('beforeBtn').addEventListener('click', function () {
+  document.getElementById('mypage-menu').classList.remove('open')
+})
+
 // 로그아웃 버튼 클릭 시 로컬스토리지 비우고 로그인 페이지로 이동
 document.getElementById('logoutBtn').addEventListener('click', function () {
   localStorage.removeItem('isLoggedIn')
   localStorage.removeItem('userId')
 
-  window.location.hash = '#login'
+  window.location.href = '/page/myPage/login.html'
 
   document.getElementById('mypage-menu').classList.remove('open')
   document.getElementById('modal-overlay').classList.remove('open')

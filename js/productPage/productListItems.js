@@ -29,11 +29,12 @@ const items = [
     },
     {
         id: 6,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail5.png?raw=true',
-        title: '스컬판다 원더랜드 시리즈',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail29.png?raw=true',
+        title: '라부부 x 원피스 시리즈',
         price: '15,000원',
-        category: 'skullpanda',
+        category: 'labubu',
     },
+
     {
         id: 31,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail31.jpg?raw=true',
@@ -42,12 +43,13 @@ const items = [
         category: 'azura',
     },
     {
-        id: 8,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail9.png?raw=true',
-        title: '[온라인 단독] 아주라 백야의 은하계 블리스터',
-        price: '40,000원',
-        category: 'azura',
+        id: 7,
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail11.png?raw=true',
+        title: '메가 스페이스 몰리 스티치 400%',
+        price: '268,000원',
+        category: 'molly',
     },
+
     {
         id: 32,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail32.jpg?raw=true',
@@ -57,29 +59,15 @@ const items = [
     },
     {
         id: 5,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail6.png?raw=true',
-        title: '히로노 X 어린왕자 시리즈',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail14.png?raw=true',
+        title: '몰리 빵순이 시리즈',
         price: '15,000원',
-        category: 'hirono',
-    },
-    {
-        id: 9,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail11.png?raw=true',
-        title: '메가 스페이스 몰리 스티치 400%',
-        price: '268,000원',
         category: 'molly',
     },
     {
         id: 10,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail13.png?raw=true',
         title: '베이비 몰리 두 살과 네 살 사이 시리즈',
-        price: '15,000원',
-        category: 'molly',
-    },
-    {
-        id: 12,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail14.png?raw=true',
-        title: '몰리 빵순이 시리즈',
         price: '15,000원',
         category: 'molly',
     },
@@ -96,6 +84,20 @@ const items = [
         title: '라부부 리듬 체조 블리스터',
         price: '40,000원',
         category: 'labubu',
+    },
+    {
+        id: 12,
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail6.png?raw=true',
+        title: '히로노 X 어린왕자 시리즈',
+        price: '15,000원',
+        category: 'hirono',
+    },
+    {
+        id: 8,
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail9.png?raw=true',
+        title: '[온라인 단독] 아주라 백야의 은하계 블리스터',
+        price: '40,000원',
+        category: 'azura',
     },
     {
         id: 15,
@@ -190,10 +192,10 @@ const items = [
     },
     {
         id: 27,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail29.png?raw=true',
-        title: '라부부 x 원피스 시리즈',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail5.png?raw=true',
+        title: '스컬판다 원더랜드 시리즈',
         price: '15,000원',
-        category: 'labubu',
+        category: 'skullpanda',
     },
     {
         id: 28,
@@ -231,7 +233,7 @@ const items = [
         category: 'skullpanda',
     },
     {
-        id: 7,
+        id: 9,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail8.png?raw=true',
         title: '피노젤리 탄생석 시리즈',
         price: '15,000원',

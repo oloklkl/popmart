@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../../css/output/styles.css" />
         <title>POPMART - Product Detail</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     </head>
 
     <body>
@@ -14,36 +15,7 @@
                 <section class="product-slider-section">
                     <div class="swiper product-slider">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-4.jpg?raw=true"
-                                    alt="produc1"
-                                />
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-5.jpg?raw=true"
-                                    alt="product2"
-                                />
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-2.jpg?raw=true"
-                                    alt="product3"
-                                />
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-3.jpg?raw=true"
-                                    alt="product4"
-                                />
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg2/bigImg2-6.jpg?raw=true"
-                                    alt="product5"
-                                />
-                            </div>
+                            <!-- 상품 이미지 슬라이더 (동적으로 생성) -->
                         </div>
 
                         <!-- 네비게이션 버튼 -->
@@ -54,8 +26,10 @@
                     </div>
 
                     <div class="product-info">
-                        <h2 class="product-title">라부부 코카콜라 시리즈</h2>
-                        <p class="price product-price">15,000 원</p>
+                        <h2 class="product-title"></h2>
+                        <!-- 상품 제목 (동적으로 생성) -->
+                        <p class="price product-price"></p>
+                        <!-- 상품 가격 (동적으로 생성) -->
                         <div class="product-details">
                             <div class="quantity-control">
                                 <p>수량</p>
@@ -84,12 +58,14 @@
                 <!-- 카드 형태 UI (초기에는 숨김) -->
                 <div class="product-card" style="display: none">
                     <h2 class="product-title"></h2>
+                    <!-- 상품 제목 (동적으로 생성) -->
                     <p class="price product-price"></p>
+                    <!-- 상품 가격 (동적으로 생성) -->
                     <div class="product-details">
                         <div class="quantity-control">
                             <p>수량</p>
                             <button class="minus">-</button>
-                            <span class="quantity">1</span>
+                            <span>1</span>
                             <button class="plus">+</button>
                         </div>
                         <div class="shipping-info">
@@ -121,18 +97,7 @@
                     <h2>DETAIL</h2>
 
                     <div class="detail-img">
-                        <img
-                            src="https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail2/detail2.jpg?raw=true"
-                            alt="메인 제품 이미지"
-                        />
-                        <img
-                            src="https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail2/detail2-2.jpg?raw=true"
-                            alt="메인 제품 이미지2"
-                        />
-                        <img
-                            src="https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail2/detail2-3.jpg?raw=true"
-                            alt="메인 제품 이미지2"
-                        />
+                        <!-- 상세 이미지 (동적으로 생성) -->
                     </div>
                 </section>
 
@@ -140,26 +105,7 @@
                 <section class="product-info-section">
                     <h2>INFORMATION</h2>
                     <table>
-                        <tr>
-                            <th>상품명</th>
-                            <td>라부부 코카콜라 시리즈</td>
-                        </tr>
-                        <tr>
-                            <th>브랜드</th>
-                            <td>POP MART</td>
-                        </tr>
-                        <tr>
-                            <th>사용연령</th>
-                            <td>15세 이상</td>
-                        </tr>
-                        <tr>
-                            <th>사이즈</th>
-                            <td>77 ~ 107mm</td>
-                        </tr>
-                        <tr>
-                            <th>재질</th>
-                            <td>PVC / ABS</td>
-                        </tr>
+                        <!-- 상품 정보 테이블 (동적으로 생성) -->
                     </table>
                 </section>
 
@@ -168,55 +114,7 @@
                     <h2>관련 상품</h2>
                     <div class="swiper related-products">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="product-item">
-                                    <img src="" alt="" />
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
+                            <!-- 관련 상품 목록 (동적으로 생성) -->
                         </div>
                         <!-- 좌우 네비게이션 -->
                         <div class="swiper-button-prev"></div>
@@ -252,7 +150,7 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-        <script type="module" src="../../js/productDetailSwiper.js"></script>
-        <script type="module" src="../../js/productDetailScript.js"></script>
+        <script type="module" src="../../js/productPage/productDetailSwiper.js"></script>
+        <script type="module" src="../../js/productPage/productDetailScript.js"></script>
     </body>
 </html>

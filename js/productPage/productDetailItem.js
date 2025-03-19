@@ -100,6 +100,55 @@ const productDetailItem = [
             재질: 'PVC / ABS',
         },
     },
+    {
+        id: 5,
+        title: '몰리 빵순이 시리즈',
+        price: '15,000원',
+        mainImages: [
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg14/bigImg14-3.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg14/bigImg14-2.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg14/bigImg14-7.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg14/bigImg14-8.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg14/bigImg14-4.jpg?raw=true',
+        ],
+        detailImages: [
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail14/detail14.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail14/detail14-2.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail14/detail14-3.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail14/detail14-4.jpg?raw=true',
+        ],
+        information: {
+            상품명: '몰리 빵순이 시리즈',
+            브랜드: 'POP MART',
+            사이즈: '약 70 ~ 110mm',
+            재질: 'PVC / ABS',
+        },
+    },
+    {
+        id: 6,
+        title: '라부부 x 원피스 시리즈',
+        price: '15,000원',
+        mainImages: [
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg29/bigImg29-3.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg29/bigImg29-4.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg29/bigImg29-2.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg29/bigImg29-6.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/bigimg/bigImg29/bigImg29-7.jpg?raw=true',
+        ],
+        detailImages: [
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail29/detail29.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail29/detail29-2.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail29/detail29-3.jpg?raw=true',
+            'https://github.com/hyeonky/dp-static/blob/main/popmart/detail/detail29/detail29-4.jpg?raw=true',
+        ],
+        information: {
+            상품명: '라부부 x 원피스 시리즈',
+            브랜드: 'POP MART',
+            사용연령: '15세 이상',
+            사이즈: '약 90mm',
+            재질: 'PVC / ABS',
+        },
+    },
 ];
 
 export default productDetailItem;
