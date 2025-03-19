@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(cursorShadow);
   }
 
-  // 마우스 이동 시 검은색 원이 따라오도록 설정
   document.addEventListener('mousemove', (e) => {
     gsap.to(cursorShadow, {
       x: e.clientX,
@@ -19,6 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power2.out',
     });
   });
+  const itemsPerPage = 7;
+  let currentPage = 1;
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+
+  const pagination = document.createElement('div');
+  pagination.id = 'pagination';
+  document.body.appendChild(pagination);
+
+  function getItemsForPage(page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    return items.slice(startIndex, startIndex + itemsPerPage);
+  }
+
+  function renderEventList() {};
 
   items.forEach((items, index) => {
     const eventElement = document.createElement('a');
