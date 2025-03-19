@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(cursorShadow);
   }
 
-  // 마우스 이동 시 검은색 원이 따라오도록 설정
   document.addEventListener('mousemove', (e) => {
     gsap.to(cursorShadow, {
       x: e.clientX,
@@ -19,30 +18,66 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power2.out',
     });
   });
+  const itemsPerPage = 7;
+  let currentPage = 1;
+  const totalPages = Math.ceil(items.length / itemsPerPage);
 
-  items.forEach((items, index) => {
-    const eventElement = document.createElement('a');
-    const cursor = document.createElement('div');
-    cursor.classList.add('cursor');
-    document.body.appendChild(cursor);
-    eventElement.classList.add('event_item');
-    eventElement.href = '/page/eventDetail.html';
-    eventElement.id = `item_${index + 1}`;
+  const pagination = document.createElement('div');
+  pagination.id = 'pagination';
+  document.body.appendChild(pagination);
 
-    eventElement.innerHTML = `
-    <div class="event_item_name">${items.name}</div>
-    <div class="event_item_Enname">${items.EngName}</div>
-    <div class="event_item_date">${items.date}</div>
-    <div class="event_item_state">진행중</div>
-    <div class="event_item_border"></div>
-`;
-    eventElement.addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.href = `/page/eventDetail.html?id=${items.id}`;
+  function getPaginatedItems(page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    return items.slice(startIndex, startIndex + itemsPerPage);
+  }
+
+  function renderEventList() {
+    eventListContainer.innerHTML = ''; // 기존 리스트 초기화
+    const paginatedItems = getPaginatedItems(currentPage);
+
+    paginatedItems.forEach((items, index) => {
+      const eventElement = document.createElement('a');
+      const cursor = document.createElement('div');
+      cursor.classList.add('cursor');
+      document.body.appendChild(cursor);
+      eventElement.classList.add('event_item');
+      eventElement.href = '/page/eventDetail.html';
+      eventElement.id = `item_${index + 1}`;
+
+      eventElement.innerHTML = `
+      <div class="event_item_name">${items.name}</div>
+      <div class="event_item_Enname">${items.EngName}</div>
+      <div class="event_item_date">${items.date}</div>
+      <div class="event_item_state">진행중</div>
+      <div class="event_item_border"></div>
+    `;
+      eventElement.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.href = `/page/eventDetail.html?id=${items.id}`;
+      });
+
+      eventListContainer.appendChild(eventElement);
     });
+    renderPagination();
+  }
+  function renderPagination() {
+    pagination.innerHTML = '';
 
-    eventListContainer.appendChild(eventElement);
-  });
+    for (let page = 1; page <= totalPages; page++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.textContent = page;
+      pageBtn.classList.add('page-btn');
+      if (page === currentPage) pageBtn.classList.add('active');
+
+      pageBtn.addEventListener('click', () => {
+        currentPage = page;
+        renderEventList();
+      });
+
+      pagination.appendChild(pageBtn);
+    }
+  }
+
   const hoverBg = document.createElement('div');
   hoverBg.classList.add('event_hover_bg');
   eventListContainer.appendChild(hoverBg);
@@ -75,4 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+  function init() {
+    renderEventList();
+    addHoverEffect();
+  }
+
+  init();
 });

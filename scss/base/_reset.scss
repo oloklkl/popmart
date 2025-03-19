@@ -70,7 +70,7 @@ label,
   padding: 0;
   box-sizing: border-box;
   -webkit-text-size-adjust: none;
-  font-family: inherit;
+  font-family: unset;
   line-height: $line-height-base;
   letter-spacing: inherit;
 }
