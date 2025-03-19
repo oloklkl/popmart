@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POP MART</title>
-    <link rel="stylesheet" href="/scss/components/_header.scss" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__logo">POP MART</div>
-      <nav class="header__nav">
-        <ul>
-          <li><a href="#">NEW</a></li>
-          <li><a href="#">BEST</a></li>
-          <li><a href="#">COLLECTION</a></li>
-          <li><a href="#">TYPES</a></li>
-          <li><a href="#">POP STORY</a></li>
-          <li><a href="#">NOTICE</a></li>
-        </ul>
-      </nav>
-      <div class="header__icons">
-        <span class="search-icon">🔍</span>
-        <span class="user-icon">👤</span>
-      </div>
-    </header>
-  </body>
-</html>
+<header class="header">
+  <img
+    src="https://github.com/hyeonky/dp-static/blob/main/popmart/logo.png?raw=true"
+    alt="POPMART LOGO"
+  />
+  <nav class="header__nav">
+    <ul>
+      <li><a href="#">NEW</a></li>
+      <li><a href="#">BEST</a></li>
+      <li><a href="#">COLLECTION</a></li>
+      <li><a href="#">TYPES</a></li>
+      <li><a href="#">POP STORY</a></li>
+      <li><a href="#">NOTICE</a></li>
+    </ul>
+  </nav>
+  <div class="header__icons">
+    <img
+      src="https://raw.githubusercontent.com/hyeonky/dp-static/458548acc9f4394aa0511e7891ad7b6a4255a14c/popmart/btnIcon/search.svg"
+      alt="검색 아이콘"
+      class="search-icon"
+      id="searchIcon"
+      onclick="toggleSearch()"
+    />
+    <img
+      src="https://raw.githubusercontent.com/hyeonky/dp-static/83aa2d0c73e1f68ba707e88e7c9d1caf09953f6d/popmart/btnIcon/user.svg"
+      alt="유저 아이콘"
+      class="user-icon"
+      id="userIcon"
+      onclick="toggleUserMenu()"
+    />
+  </div>
+</header>
