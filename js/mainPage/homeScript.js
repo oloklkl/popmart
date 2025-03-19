@@ -431,53 +431,34 @@ function handleInfoButtonClick(e) {
 }
 
 // 정보 박스 열기
-function openInfoBox(infoBox) {
-  console.log(`🟢 [정보 박스 열기] ${infoBox.id} 박스 열기`);
+if (typeof openInfoBox === 'undefined') {
+  function openInfoBox(infoBox, infoBtn) {
+    console.log(`🟢 [정보 박스 열기] ${infoBox.id} 박스 열기`);
 
-  // 다른 모든 박스 닫기
-  document.querySelectorAll('.info-box').forEach((box) => {
-    if (box !== infoBox && box.classList.contains('show')) {
-      closeInfoBox(box);
+    document.querySelectorAll('.info-box').forEach((box) => {
+      if (box !== infoBox && box.classList.contains('show')) {
+        closeInfoBox(box);
+      }
+    });
+
+    const btnRect = infoBtn.getBoundingClientRect();
+    const boxRect = infoBox.getBoundingClientRect();
+
+    let leftPosition = btnRect.right + 10;
+    if (leftPosition + boxRect.width > window.innerWidth) {
+      leftPosition = btnRect.left - boxRect.width - 10;
     }
-  });
 
-  // 버튼 위치 가져오기
-  const btnRect = infoBtn.getBoundingClientRect();
-  const boxRect = infoBox.getBoundingClientRect();
+    infoBox.style.position = 'absolute';
+    infoBox.style.top = `${btnRect.top + window.scrollY}px`;
+    infoBox.style.left = `${leftPosition}px`;
+    infoBox.style.display = 'block';
 
-  let leftPosition = btnRect.right + 10; // 기본적으로 버튼의 오른쪽에 배치
-  if (leftPosition + boxRect.width > window.innerWidth) {
-    leftPosition = btnRect.left - boxRect.width - 10; // 오른쪽 공간이 부족하면 왼쪽에 배치
+    setTimeout(() => {
+      infoBox.classList.add('show');
+      gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+    }, 10);
   }
-
-  // `info-box`의 위치 설정
-  infoBox.style.position = 'absolute';
-  infoBox.style.top = `${btnRect.top + window.scrollY}px`;
-  infoBox.style.left = `${leftPosition}px`;
-  // 표시 전에 display 속성 설정
-  infoBox.style.display = 'block';
-
-  // 약간의 지연 후 애니메이션 적용 (브라우저 렌더링 동기화 문제 방지)
-  setTimeout(() => {
-    infoBox.classList.add('show');
-    gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
-    console.log(`✅ [정보 박스 표시됨] ${infoBox.id}`);
-  }, 10);
-}
-
-// 정보 박스 닫기
-function openInfoBox(infoBox, infoBtn) {
-  console.log(`❌ [정보 박스 닫기] ${infoBox.id} 박스 닫기`);
-  gsap.to(infoBox, {
-    opacity: 0,
-    scale: 0.8,
-    duration: 0.3,
-    ease: 'power2.inOut',
-    onComplete: () => {
-      infoBox.classList.remove('show');
-      infoBox.style.display = 'none';
-    },
-  });
 }
 document.removeEventListener('click', handleInfoButtonClick);
 document.addEventListener('click', handleInfoButtonClick);
