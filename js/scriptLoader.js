@@ -1,4 +1,5 @@
 window.addEventListener('popstate', () => {
+
   console.log('🔄 popstate 감지됨! 페이지 스크립트 실행')
   executePageScript()
   initSwiper()
@@ -16,8 +17,8 @@ function executePageScript() {
     home: '/mainPage/homeScript.js',
     login: 'loginScript.js',
     register: 'registerScript.js',
-    productList: 'productListScript.js',
-    productDetail: 'productDetailScript.js',
+    productList: '/productPage/productListScript.js',
+    productDetail: '/productPage/productDetailScript.js'
     cart: 'cartScript.js',
     event: 'eventScript.js',
     shop: 'shopScript.js',
@@ -84,6 +85,7 @@ function executePageScript() {
 //   };
 // 특정 페이지(home.html)에서만 숨기기
 function toggleVisibility() {
+
   const route = window.location.hash.substring(1)
   const hiddenRoutes = ['home'] // Drawer >> 여기에 숨길 페이지 추가 가능
 
