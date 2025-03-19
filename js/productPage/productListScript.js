@@ -53,7 +53,7 @@ function runProductListScripts(productItems) {
         for (let i = startIndex; i < endIndex; i++) {
             const item = productItems[i];
             const gridItem = document.createElement('a');
-            gridItem.href = `/page/productPage/productDetail?id=${item.id}`;
+            gridItem.href = `/page/productPage/productDetail.html?id=${item.id}`;
             gridItem.className = 'grid-item';
 
             const imgElement = document.createElement('img');
