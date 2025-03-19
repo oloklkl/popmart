@@ -16,10 +16,10 @@ function updateProductSlider() {
 
     if (product) {
         const allImages = [...product.mainImages]; // 기존 5개의 이미지
-        const additionalImages = [...product.mainImages]; // 추가로 동일한 ID의 이미지를 3개 더 추가
+        const additionalImages = [...product.mainImages]; // 추가로 동일한 ID의 이미지를 2개 더 추가
 
         // 8개의 이미지를 배열에 넣기
-        const totalImages = [...allImages, ...additionalImages].slice(0, 8); // 최대 8개만
+        const totalImages = [...allImages, ...additionalImages].slice(0, 7); // 최대 7개만
 
         totalImages.forEach((imgSrc) => {
             const slide = document.createElement('div');
