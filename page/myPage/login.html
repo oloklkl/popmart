@@ -14,8 +14,7 @@
             <a href="login.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/7f866ab3fe2902079230309d3fb84ccb342b5cd6/popmart/mypage/loginLogo.svg"
-                alt="로그인"
-              />
+                alt="로그인" />
             </a>
           </div>
           <div class="loginWrap">
@@ -23,12 +22,20 @@
               <div class="formContainer">
                 <!-- id -->
                 <div class="idCont">
-                  <input class="inputBox" type="text" id="userId" placeholder="아이디" />
+                  <input
+                    class="inputBox"
+                    type="text"
+                    id="userId"
+                    placeholder="아이디" />
                   <div id="userIdError" class="error-message"></div>
                 </div>
                 <!-- password -->
                 <div class="passwordCont">
-                  <input class="inputBox password" type="password" id="password" placeholder="비밀번호" />
+                  <input
+                    class="inputBox password"
+                    type="password"
+                    id="password"
+                    placeholder="비밀번호" />
                   <div id="passwordError" class="error-message"></div>
                 </div>
                 <!-- checkBox -->
@@ -60,20 +67,17 @@
                 <a href="register.html">
                   <img
                     src="https://raw.githubusercontent.com/hyeonky/dp-static/3a35cbb8a7add967ac16682afc667a358365c9d1/popmart/mypage/snsLogo/naver.svg"
-                    alt="네이버 로그인"
-                  />
+                    alt="네이버 로그인" />
                 </a>
                 <a href="register.html">
                   <img
                     src="https://raw.githubusercontent.com/hyeonky/dp-static/3a35cbb8a7add967ac16682afc667a358365c9d1/popmart/mypage/snsLogo/kakao.svg"
-                    alt="카카오 로그인"
-                  />
+                    alt="카카오 로그인" />
                 </a>
                 <a href="register.html">
                   <img
                     src="https://raw.githubusercontent.com/hyeonky/dp-static/3a35cbb8a7add967ac16682afc667a358365c9d1/popmart/mypage/snsLogo/apple.svg"
-                    alt="애플 로그인"
-                  />
+                    alt="애플 로그인" />
                 </a>
               </div>
             </div>
@@ -86,11 +90,13 @@
     <script>
       window.addEventListener('DOMContentLoaded', () => {
         if (typeof loadCommonElements === 'function') {
-          loadCommonElements(); // ✅ `scriptLoader.js`가 로드된 후 실행
+          loadCommonElements() // ✅ `scriptLoader.js`가 로드된 후 실행
         } else {
-          console.error('❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
+          console.error(
+            '❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.'
+          )
         }
-      });
+      })
     </script>
   </body>
 </html>
