@@ -1,8 +1,9 @@
 // 페이지가 완전히 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function () {
     // 전역 변수 및 요소
+
     const cartItems = document.querySelectorAll('.cart-item');
-    const selectedItemsContainer = document.querySelector('.selected-items');
+    const selectedItemsContainer = document.querySelector('.cart-selected-items');
     const selectedThumbnails = document.querySelector('.selected-thumbnails');
     const orderSummary = document.querySelector('.order-summary');
     const selectAllCheckbox = document.getElementById('select-all');
@@ -149,14 +150,16 @@ document.addEventListener('DOMContentLoaded', function () {
             selectedItemsContainer.style.width = '100%';
             selectedItemsContainer.style.left = '0';
             selectedItemsContainer.style.transform = 'none';
-            selectedItemsContainer.style.borderRadius = '20px 20px 0 0';
+            selectedItemsContainer.style.borderRadius = '30px';
+            selectedItemsContainer.style.border = '3px solid black';
         } else {
             // 데스크탑에서는 비율에 맞게 조정
             selectedItemsContainer.style.width = device.isTablet ? '95%' : '90%';
             selectedItemsContainer.style.maxWidth = '1520px';
             selectedItemsContainer.style.left = '50%';
             selectedItemsContainer.style.transform = 'translateX(-50%)';
-            selectedItemsContainer.style.borderRadius = '20px';
+            selectedItemsContainer.style.borderRadius = '30px';
+            selectedItemsContainer.style.border = '3px solid black';
         }
     }
 
@@ -551,8 +554,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 mergedContainer.style.margin = '20px auto';
                 mergedContainer.style.padding = '15px';
                 mergedContainer.style.backgroundColor = 'white';
-                mergedContainer.style.borderRadius = '20px';
-                mergedContainer.style.boxShadow = '0 -4px 10px rgba(0, 0, 0, 0.1)';
+                mergedContainer.style.borderRadius = '30px';
+                mergedContainer.style.border = '3px solid #000';
                 mergedContainer.style.position = 'relative';
                 mergedContainer.style.zIndex = '101'; // fixed 컨테이너보다 높은 z-index
 

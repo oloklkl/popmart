@@ -1,11 +1,11 @@
 /* 전반적인 페이지 스타일 설정 */
-body {
-    background-color: #f5f2e9; // 배경색을 부드러운 베이지 톤으로 설정
-    color: #333; // 기본 텍스트 색상을 어두운 회색으로 설정
-    font-family: 'Arial', sans-serif; // 기본 글꼴 설정
-    margin: 0;
-    padding: 0;
-}
+// body {
+//     background-color: #f5f2e9; // 배경색을 부드러운 베이지 톤으로 설정
+//     color: #333; // 기본 텍스트 색상을 어두운 회색으로 설정
+//     font-family: 'Arial', sans-serif; // 기본 글꼴 설정
+//     margin: 0;
+//     padding: 0;
+// }
 
 .popstory-container {
     position: relative;
@@ -26,7 +26,8 @@ body {
     text-align: center;
     position: absolute;
     z-index: 0;
-    .textbox { // 제목 영역 스타일
+    .textbox {
+        // 제목 영역 스타일
         top: -8%;
         width: 100%;
         text-align: center;
@@ -38,21 +39,19 @@ body {
         flex-wrap: nowrap;
         align-items: baseline;
         justify-content: center;
-        .title
-         {
+        .title {
             font-size: 128px; // 제목 크기 설정
             font-weight: bold;
             margin-bottom: 20px;
         }
-        
+
         .subtitle {
             font-size: 32px; // 부제목 크기 설정
             font-weight: normal;
             color: #444;
         }
-        
     }
-  
+
     .content-wrap {
         position: absolute;
         top: 0;
@@ -61,7 +60,6 @@ body {
         z-index: 0;
         width: 100vw;
         height: 100vh;
-  
     }
 }
 
@@ -71,9 +69,9 @@ body {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-  
+
     align-items: center;
-  
+
     width: 100%;
     z-index: 10;
     .product-image {
@@ -92,8 +90,7 @@ body {
             z-index: -1;
             filter: blur(5px); // 블러 효과 적용
         }
-        
-        
+
         .character-image {
             position: absolute;
             top: 0;
@@ -110,15 +107,10 @@ body {
             width: 25%;
             height: auto;
             top: -120px;
-            left:750px;
-            
+            left: 750px;
         }
     }
-
 }
-
-
-
 
 // 프레임 이미지 스타일
 .frame-container {
@@ -127,8 +119,6 @@ body {
     max-width: 500px;
     margin-right: 20px; // 간격을 주기 위해 설정
 }
-
-
 
 // 태그 스타일링
 .tag-container {
@@ -149,9 +139,6 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 
-
-
-
     .tags {
         display: none;
         opacity: 0;
@@ -159,7 +146,7 @@ body {
     }
 
     &::before {
-        content: "";
+        content: '';
         position: absolute;
         right: -9%;
         bottom: -25%;
@@ -181,8 +168,6 @@ body {
         display: flex;
         opacity: 1;
     }
-
-
 }
 
 // .tags {
@@ -199,10 +184,10 @@ body {
     align-items: center;
     width: auto;
     height: 39px;
-    background-color: #FFBA4A;
+    background-color: #ffba4a;
     border: 2px solid #000000;
     color: #000;
-    padding: 0 16px;  // 좌우 여백 유지
+    padding: 0 16px; // 좌우 여백 유지
     border-radius: 13px;
     font-size: 12px;
     font-weight: bold;
@@ -210,12 +195,10 @@ body {
     text-align: center;
 }
 
-
-
 // 아티스트 정보 박스 스타일
 .artist-info {
     width: 355px;
-    background-color: #DFDFDF;
+    background-color: #dfdfdf;
     padding: 15px;
     border-radius: 10px;
     border: 3px solid #000000;
@@ -237,13 +220,12 @@ body {
 
 .popstory-pwrap {
     z-index: 10;
-    position: absolute;  // 위치 조정 가능하게 변경
+    position: absolute; // 위치 조정 가능하게 변경
     top: 35%;
     left: 62%;
     transform: translate(-50%, -50%);
-    width: 30%;  // 가로 너비 설정
-    height: 400px;//높이를 주어야만 그 안에서 버같은 부수요소에 설정할수있다
-
+    width: 30%; // 가로 너비 설정
+    height: 400px; //높이를 주어야만 그 안에서 버같은 부수요소에 설정할수있다
 
     //hover했을때 나타나는 효과
     &:hover .product-description {
@@ -252,12 +234,12 @@ body {
     }
 }
 
-.product-description {    
+.product-description {
     position: absolute;
     left: 70%;
     font-size: 15px;
     border: 3px solid #000000;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     max-width: 400px;
@@ -274,17 +256,17 @@ body {
     }
 
     &::before {
-        content: ""; // 가상요소 추가
+        content: ''; // 가상요소 추가
         position: absolute;
         right: 90%;
-        bottom:-10%;
+        bottom: -10%;
         background-color: #000000;
         width: 59px;
         height: 59px;
         border-radius: 50%;
         z-index: 30;
         display: block;
-        opacity: 1;  // 항상 보이게 설정
+        opacity: 1; // 항상 보이게 설정
     }
 }
 
@@ -315,7 +297,7 @@ body {
     position: absolute;
     bottom: 2%;
     right: 1%;
-    background-color: #DFDFDF;
+    background-color: #dfdfdf;
     padding: 15px;
     border-radius: 10px;
     border: 3px solid #000000;
@@ -330,7 +312,7 @@ body {
     border-bottom: 2px solid #000000;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    
+
     &:hover {
         background-color: #ffffff;
     }
@@ -354,8 +336,6 @@ body {
         transform: scale(1.1);
     }
 }
-
-
 
 // 반응형 스타일링
 @media (max-width: 1024px) {
