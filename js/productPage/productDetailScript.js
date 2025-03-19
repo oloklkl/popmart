@@ -132,14 +132,17 @@ function updateRelatedProducts() {
     const swiperWrapper = document.querySelector('.related-products-section .swiper-wrapper');
     swiperWrapper.innerHTML = ''; // 기존 내용 초기화
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 4; i++) {
         const randomIndex = Math.floor(Math.random() * productDetailItem.length);
         const randomProduct = productDetailItem[randomIndex];
         const swiperSlide = document.createElement('div');
         swiperSlide.classList.add('swiper-slide');
 
+        // 0, 2, 4 인덱스 이미지 선택
+        const imageIndex = [0, 2, 4][i % 3]; // 0, 2, 4 인덱스를 순차적으로 사용
+
         swiperSlide.innerHTML = `
-            <img src="${randomProduct.mainImages[0]}" alt="${randomProduct.title}" />
+            <img src="${randomProduct.mainImages[imageIndex]}" alt="${randomProduct.title}" />
             <h3>${randomProduct.title}</h3>
             <p>${randomProduct.price}</p>
         `;
