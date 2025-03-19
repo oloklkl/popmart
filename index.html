@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo/nanumsquareneo.css"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POPMART</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="css/output/styles.css" />
+    <script src="/js/common/header.js"></script>
   </head>
   <body>
     <!-- 공통 헤더 -->
@@ -40,56 +47,61 @@
 
     <script>
       // 공통 헤더 & 푸터 불러오기
-      fetch('common/header.html')
+      fetch("common/header.html")
         .then((response) => response.text())
-        .then((data) => (document.getElementById('header').innerHTML = data))
-        .catch((error) => console.error('Error loading header:', error));
+        .then((data) => (document.getElementById("header").innerHTML = data))
+        .catch((error) => console.error("Error loading header:", error));
 
-      fetch('common/footer.html')
+      fetch("common/footer.html")
         .then((response) => response.text())
-        .then((data) => (document.getElementById('footer').innerHTML = data))
-        .catch((error) => console.error('Error loading footer:', error));
+        .then((data) => (document.getElementById("footer").innerHTML = data))
+        .catch((error) => console.error("Error loading footer:", error));
 
-      fetch('/common/myPageDrawer.html')
+      fetch("/common/myPageDrawer.html")
         .then((response) => response.text())
-        .then((data) => (document.getElementById('myPageDrawer').innerHTML = data))
-        .catch((error) => console.error('Error loading myPageDrawer:', error));
+        .then(
+          (data) => (document.getElementById("myPageDrawer").innerHTML = data)
+        )
+        .catch((error) => console.error("Error loading myPageDrawer:", error));
 
-      fetch('/common/searchDrawer.html')
+      fetch("/common/searchDrawer.html")
         .then((response) => response.text())
-        .then((data) => (document.getElementById('searchDrawer').innerHTML = data))
-        .catch((error) => console.error('Error loading searchDrawer:', error));
+        .then(
+          (data) => (document.getElementById("searchDrawer").innerHTML = data)
+        )
+        .catch((error) => console.error("Error loading searchDrawer:", error));
 
       // 라우팅 설정 (각 페이지 매핑)
       function loadPage() {
-        const path = window.location.pathname.replace('/', '');
+        const path = window.location.pathname.replace("/", "");
         const routes = {
-          '': 'page/mainPage/home.html',
-          home: 'page/mainPage/home.html',
-          login: 'page/myPage/login.html',
-          register: 'page/myPage/register.html',
-          productList: 'page/productPage/productList.html',
-          productDetail: 'page/productPage/productDetail.html',
-          cart: 'page/cart.html',
-          event: 'page/event.html',
-          shop: 'page/shop.html',
-          cs: 'page/cs.html',
-          popStory: 'page/popStory.html',
-          popStoryList: 'page/popStoryList.html',
+          "": "page/mainPage/home.html",
+          home: "page/mainPage/home.html",
+          login: "page/myPage/login.html",
+          register: "page/myPage/register.html",
+          productList: "page/productPage/productList.html",
+          productDetail: "page/productPage/productDetail.html",
+          cart: "page/cart.html",
+          event: "page/event.html",
+          shop: "page/shop.html",
+          cs: "page/cs.html",
+          popStory: "page/popStory.html",
+          popStoryList: "page/popStoryList.html",
           // myPageDrawer: 'common/myPageDrawer.html',
           // searchDrawer: 'common/searchDrawer.html',
+          test: "page/test.html",
         };
 
-        const pagePath = routes[route] || 'page/mainPage/home.html'; // 기본 페이지는 home.html
+        const pagePath = routes[route] || "page/mainPage/home.html"; // 기본 페이지는 home.html
 
         fetch(pagePath)
           .then((response) => response.text())
-          .then((data) => (document.getElementById('content').innerHTML = data))
-          .catch((error) => console.error('Error loading page:', error));
+          .then((data) => (document.getElementById("content").innerHTML = data))
+          .catch((error) => console.error("Error loading page:", error));
       }
 
-      window.addEventListener('popstate', loadPage); // 브라우저 히스토리 감지
-      window.addEventListener('load', loadPage);
+      window.addEventListener("popstate", loadPage); // 브라우저 히스토리 감지
+      window.addEventListener("load", loadPage);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="js/scriptLoader.js"></script>
