@@ -412,13 +412,8 @@ function handleInfoButtonClick(e) {
 
   if (infoBtn) {
     console.log('🟢 [클릭 감지됨] 버튼 클릭 이벤트 발생', infoBtn);
-
+    // if (!infoBtn) return;
     const infoId = infoBtn.getAttribute('data-info');
-    if (!infoId) {
-      console.error('❌ [오류] 버튼에 data-info 속성이 없습니다.');
-      return;
-    }
-
     const infoBox = document.getElementById(infoId);
     console.log(`🔘 [버튼 클릭] 버튼 데이터 정보: ${infoId}, 찾은 info-box ID: ${infoBox ? infoBox.id : '❌ 없음'}`);
 
@@ -427,50 +422,46 @@ function handleInfoButtonClick(e) {
       return;
     }
 
-    if (infoBox.classList.contains('show')) {
+    if (infoBox.style.display === 'block' && infoBox.classList.contains('show')) {
       closeInfoBox(infoBox);
     } else {
-      openInfoBox(infoBox);
+      openInfoBox(infoBox, infoBtn);
     }
   }
 }
 
 // 정보 박스 열기
-function openInfoBox(infoBox) {
-  console.log(`🟢 [정보 박스 열기] ${infoBox.id} 박스 열기`);
+if (typeof openInfoBox === 'undefined') {
+  function openInfoBox(infoBox, infoBtn) {
+    console.log(`🟢 [정보 박스 열기] ${infoBox.id} 박스 열기`);
 
-  // 다른 모든 박스 닫기
-  document.querySelectorAll('.info-box').forEach((box) => {
-    if (box !== infoBox && box.classList.contains('show')) {
-      closeInfoBox(box);
+    document.querySelectorAll('.info-box').forEach((box) => {
+      if (box !== infoBox && box.classList.contains('show')) {
+        closeInfoBox(box);
+      }
+    });
+
+    const btnRect = infoBtn.getBoundingClientRect();
+    const boxRect = infoBox.getBoundingClientRect();
+
+    let leftPosition = btnRect.right + 10;
+    if (leftPosition + boxRect.width > window.innerWidth) {
+      leftPosition = btnRect.left - boxRect.width - 10;
     }
-  });
 
-  // 표시 전에 display 속성 설정
-  infoBox.style.display = 'block';
+    infoBox.style.position = 'absolute';
+    infoBox.style.top = `${btnRect.top + window.scrollY}px`;
+    infoBox.style.left = `${leftPosition}px`;
+    infoBox.style.display = 'block';
 
-  // 약간의 지연 후 애니메이션 적용 (브라우저 렌더링 동기화 문제 방지)
-  setTimeout(() => {
-    infoBox.classList.add('show');
-    gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
-    console.log(`✅ [정보 박스 표시됨] ${infoBox.id}`);
-  }, 10);
+    setTimeout(() => {
+      infoBox.classList.add('show');
+      gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+    }, 10);
+  }
 }
-
-// 정보 박스 닫기
-function closeInfoBox(infoBox) {
-  console.log(`❌ [정보 박스 닫기] ${infoBox.id} 박스 닫기`);
-  gsap.to(infoBox, {
-    opacity: 0,
-    scale: 0.8,
-    duration: 0.3,
-    ease: 'power2.inOut',
-    onComplete: () => {
-      infoBox.classList.remove('show');
-      infoBox.style.display = 'none';
-    },
-  });
-}
+document.removeEventListener('click', handleInfoButtonClick);
+document.addEventListener('click', handleInfoButtonClick);
 
 // DOM 로드 완료 이벤트
 document.addEventListener('DOMContentLoaded', () => {

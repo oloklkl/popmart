@@ -1,102 +1,119 @@
-window.addEventListener('popstate', () => {
-
-  console.log('🔄 popstate 감지됨! 페이지 스크립트 실행')
-  executePageScript()
-  initSwiper()
-})
-
 window.addEventListener('load', () => {
-  executePageScript()
-})
+  console.log('✅ scriptLoader.js 실행됨!');
 
+  if (typeof loadCommonElements === 'function') {
+    loadCommonElements(); // ✅ 모든 페이지에서 헤더 & 푸터 자동 로드
+  }
+  executePageScript();
+});
+
+function loadCommonElements() {
+  console.log('📢 [헤더 & 푸터 로딩 시작]');
+
+  if (!document.getElementById('header')) {
+    const header = document.createElement('header');
+    header.id = 'header';
+    header.classList.add('header');
+    document.body.prepend(header);
+  }
+
+  if (!document.getElementById('footer')) {
+    const footer = document.createElement('footer');
+    footer.id = 'footer';
+    document.body.appendChild(footer);
+  }
+
+  fetch('/common/header.html')
+    .then((response) => response.text())
+    .then((data) => {
+      console.log('✅ [헤더 로드 성공]');
+      document.getElementById('header').innerHTML = data;
+      reloadStylesheets();
+    })
+    .catch((error) => console.error('❌ 헤더 로딩 실패:', error));
+
+  fetch('/common/footer.html')
+    .then((response) => response.text())
+    .then((data) => {
+      console.log('✅ [푸터 로드 성공]');
+      document.getElementById('footer').innerHTML = data;
+    })
+    .catch((error) => console.error('❌ 푸터 로딩 실패:', error));
+}
+const loadedScripts = new Set();
 function executePageScript() {
-  const route = window.location.pathname.replace('/', '')
-  console.log(`${route}`)
+  const path = window.location.pathname.replace('/', '') || 'home'; // ✅ `route` 대신 `path` 사용
+  console.log(`📌 현재 경로: ${path}`);
 
   const scriptMap = {
-    home: '/mainPage/homeScript.js',
-    login: 'loginScript.js',
-    register: 'registerScript.js',
-    productList: '/productPage/productListScript.js',
-    productDetail: '/productPage/productDetailScript.js'
-    cart: 'cartScript.js',
-    event: 'eventScript.js',
-    shop: 'shopScript.js',
-    cs: 'csScript.js',
-    popStory: 'popStoryScript.js',
-    popStoryList: 'popStoryListScript.js',
-    myPageDrawer: 'myPageDrawerScript.js',
-    searchDrawer: 'searchDrawerScript.js',
+    home: '/js/mainPage/homeScript.js', // ✅ `/js/` 추가하여 올바른 경로로 수정
+    login: '/js/myPage/loginScript.js',
+    register: '/js/myPage/registerScript.js',
+    productList: '/js/productPage/productListScript.js',
+    productDetail: '/js/productPage/productDetailScript.js',
+    cart: '/js/cartScript.js',
+    event: '/js/eventScript.js',
+    shop: '/js/shopScript.js',
+    cs: '/js/csScript.js',
+    popStory: '/js/popStoryScript.js',
+    popStoryList: '/js/popStoryListScript.js',
+  };
+
+  const scriptPath = scriptMap[path] || scriptMap['home'];
+  if (!scriptPath) {
+    console.error(`⚠️ ${path} script not found`);
+    return;
   }
 
-  const scriptPath = scriptMap[route]
-  if (scriptPath) {
-    console.log(`실행 : ${scriptPath}`)
-
-    if (route === 'productDetail') {
-      // productDetail 페이지인 경우, 기존 Swiper 인스턴스 파괴
-      import('./productDetailScript.js')
-        .then((module) => {
-          if (module.destroyPage) {
-            module.destroyPage() // 파괴 함수 호출
-          }
-          if (module.initializePage) {
-            module.initializePage() // 초기화 함수 호출
-          } else {
-            console.error()
-          }
-        })
-        .catch((error) => console.error(`${route} JS 로드 실패:`, error))
-    } else {
-      import(`./${scriptPath}`)
-        .then((module) => {
-          if (module.initializePage) {
-            module.initializePage()
-          } else {
-            console.error()
-          }
-        })
-        .catch((error) => console.error(`${route} JS 로드 실패:`, error))
-    }
-  } else {
-    console.error(`${route} script not found`)
+  if (loadedScripts.has(scriptPath)) {
+    console.log(`⏭️ 이미 로드된 스크립트: ${scriptPath}`);
+    return; // ✅ 중복 로드 방지
   }
+
+  console.log(`✅ 실행할 스크립트: ${scriptPath}`);
+  loadedScripts.add(scriptPath); // ✅ 로드된 스크립트 저장
+
+  import(`${scriptPath}`)
+    .then((module) => {
+      if (module.initializePage) {
+        module.initializePage();
+      } else {
+        console.error('⚠️ initializePage 함수 없음');
+      }
+    })
+    .catch((error) => console.error(`${path} JS 로드 실패:`, error));
 }
 
-// window.addEventListener('load', () => {
-//   executePageScript();
-// });
-
-// function executePageScript() {
-//   const route = window.location.hash.substring(1);
-//   console.log(`#${route}`);
-
-//   const scriptMap = {
-//     home: '/mainPage/homeScript.js',
-//     login: 'loginScript.js',
-//     register: 'registerScript.js',
-//     productList: 'productListScript.js',
-//     productDetail: 'productDetailScript.js',
-//     cart: 'cartScript.js',
-//     event: 'eventScript.js',
-//     shop: 'shopScript.js',
-//     cs: 'csScript.js',
-//     popStory: 'popStoryScript.js',
-//   };
-// 특정 페이지(home.html)에서만 숨기기
+// ✅ Drawer 표시 여부 설정 (null 체크 추가)
 function toggleVisibility() {
+  const path = window.location.pathname.replace('/', '');
+  const hiddenRoutes = ['home']; // ✅ 숨길 페이지 목록
 
-  const route = window.location.hash.substring(1)
-  const hiddenRoutes = ['home'] // Drawer >> 여기에 숨길 페이지 추가 가능
+  const myPageDrawer = document.getElementById('myPageDrawer');
+  const searchDrawer = document.getElementById('searchDrawer');
 
-  if (hiddenRoutes.includes(route)) {
-    document.getElementById('myPageDrawer').style.display = 'none'
-    document.getElementById('searchDrawer').style.display = 'none'
+  if (!myPageDrawer || !searchDrawer) {
+    console.warn('⚠️ `myPageDrawer` 또는 `searchDrawer`가 존재하지 않습니다.');
+    return; // ✅ `null`이면 실행하지 않음
+  }
+
+  if (hiddenRoutes.includes(path)) {
+    myPageDrawer.style.display = 'none';
+    searchDrawer.style.display = 'none';
   } else {
-    document.getElementById('myPageDrawer').style.display = 'block'
-    document.getElementById('searchDrawer').style.display = 'block'
+    myPageDrawer.style.display = 'block';
+    searchDrawer.style.display = 'block';
   }
 }
 
-// window.addEventListener('hashchange', toggleVisibility);
-window.addEventListener('load', toggleVisibility)
+// ✅ CSS 리로드 (스타일 깨짐 방지)
+function reloadStylesheets() {
+  console.log('🔄 CSS 리로드 중...');
+
+  const links = document.querySelectorAll("link[rel='stylesheet']");
+  links.forEach((link) => {
+    const newLink = link.cloneNode();
+    newLink.href = link.href.split('?')[0] + '?timestamp=' + new Date().getTime();
+    link.parentNode.replaceChild(newLink, link);
+  });
+}
