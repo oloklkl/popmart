@@ -189,13 +189,24 @@ function updateProductInfo(productId) {
 }
 
 // 관련 상품 업데이트 함수
+// 관련 상품 업데이트 함수
 function updateRelatedProducts() {
     const swiperWrapper = document.querySelector('.related-products-section .swiper-wrapper');
     swiperWrapper.innerHTML = ''; // 기존 내용 초기화
 
+    const selectedProducts = new Set(); // 이미 선택된 상품을 저장할 Set
+
     for (let i = 0; i < 4; i++) {
-        const randomIndex = Math.floor(Math.random() * productDetailItem.length);
-        const randomProduct = productDetailItem[randomIndex];
+        let randomProduct;
+
+        // 중복된 상품을 방지하기 위한 루프
+        do {
+            const randomIndex = Math.floor(Math.random() * productDetailItem.length);
+            randomProduct = productDetailItem[randomIndex];
+        } while (selectedProducts.has(randomProduct.id)); // 이미 선택된 상품이면 다시 선택
+
+        selectedProducts.add(randomProduct.id); // 선택된 상품을 Set에 추가
+
         const swiperSlide = document.createElement('div');
         swiperSlide.classList.add('swiper-slide');
 
