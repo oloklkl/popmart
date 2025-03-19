@@ -2,6 +2,137 @@
 import productDetailItem from './productDetailItem.js';
 import { initializeProductSwipers } from './productDetailSwiper.js';
 
+// 제품 슬라이더 업데이트 함수
+function updateProductSlider() {
+    const swiperWrapper = document.querySelector('.product-slider .swiper-wrapper');
+    swiperWrapper.innerHTML = ''; // 기존 내용 초기화
+
+    // URL 파라미터로 상품 ID 받아오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+
+    // 해당 상품 정보 찾기
+    const product = productDetailItem.find((item) => item.id === productId);
+
+    if (product) {
+        const allImages = [...product.mainImages]; // 기존 5개의 이미지
+        const additionalImages = [...product.mainImages]; // 추가로 동일한 ID의 이미지를 3개 더 추가
+
+        // 8개의 이미지를 배열에 넣기
+        const totalImages = [...allImages, ...additionalImages].slice(0, 8); // 최대 8개만
+
+        totalImages.forEach((imgSrc) => {
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `상품 이미지`;
+
+            slide.appendChild(img);
+            swiperWrapper.appendChild(slide);
+        });
+    }
+}
+
+// 상품 정보 업데이트 함수
+function updateProductInfo(productId) {
+    const product = productDetailItem.find((item) => item.id === productId);
+
+    if (product) {
+        // 메인 이미지 슬라이더 요소 생성
+        const swiperWrapper = document.querySelector('.product-slider .swiper-wrapper');
+        swiperWrapper.innerHTML = ''; // 기존 내용 초기화
+
+        // 메인 이미지 슬라이드 동적 생성
+        product.mainImages.forEach((imgSrc) => {
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = product.title;
+
+            slide.appendChild(img);
+            swiperWrapper.appendChild(slide);
+        });
+
+        // 상품 정보 변경
+        document.querySelector('.product-info h2').textContent = product.title;
+        document.querySelector('.product-info .price').textContent = product.price;
+
+        // 카드 UI의 제목과 가격도 업데이트 (있을 경우)
+        const cardTitle = document.querySelector('.product-card .product-title');
+        if (cardTitle) cardTitle.textContent = product.title;
+
+        const cardPrice = document.querySelector('.product-card .product-price');
+        if (cardPrice) cardPrice.textContent = product.price;
+
+        // 상세 이미지 생성
+        const detailImgContainer = document.querySelector('.product-detail-section .detail-img');
+        detailImgContainer.innerHTML = ''; // 기존 내용 초기화
+
+        // 표시할 특정 인덱스
+        const selectedIndices = [0, 2, 4];
+
+        // 중복 이미지 확인을 위한 Set
+        const uniqueImages = new Set();
+
+        // 상세 이미지 동적 생성 (선택된 인덱스만)
+        selectedIndices.forEach((index) => {
+            // 해당 인덱스의 이미지가 존재하는지 확인
+            if (index < product.detailImages.length) {
+                const imgSrc = product.detailImages[index];
+
+                // 중복 이미지 확인
+                if (!uniqueImages.has(imgSrc)) {
+                    uniqueImages.add(imgSrc);
+
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = `${product.title} 상세 이미지`;
+                    detailImgContainer.appendChild(img);
+                }
+            }
+        });
+
+        // 상품 정보 테이블 변경
+        const infoTable = document.querySelector('.product-info-section table');
+        let tableHTML = '';
+        for (const key in product.information) {
+            tableHTML += `
+                <tr>
+                    <th>${key}</th>
+                    <td>${product.information[key]}</td>
+                </tr>
+            `;
+        }
+        infoTable.innerHTML = tableHTML;
+    } else {
+        console.error('해당 ID의 상품을 찾을 수 없습니다.');
+    }
+}
+
+// 관련 상품 업데이트 함수
+function updateRelatedProducts() {
+    const swiperWrapper = document.querySelector('.related-products-section .swiper-wrapper');
+    swiperWrapper.innerHTML = ''; // 기존 내용 초기화
+
+    for (let i = 0; i < 8; i++) {
+        const randomIndex = Math.floor(Math.random() * productDetailItem.length);
+        const randomProduct = productDetailItem[randomIndex];
+        const swiperSlide = document.createElement('div');
+        swiperSlide.classList.add('swiper-slide');
+
+        swiperSlide.innerHTML = `
+            <img src="${randomProduct.mainImages[0]}" alt="${randomProduct.title}" />
+            <h3>${randomProduct.title}</h3>
+            <p>${randomProduct.price}</p>
+        `;
+        swiperWrapper.appendChild(swiperSlide);
+    }
+}
+
 // 전역 변수 선언을 함수 내부로 이동
 function initializePage() {
     console.log('productDetailScript.js 실행됨');
@@ -19,6 +150,7 @@ function initializePage() {
         // 이미지가 로드된 후 스와이퍼 초기화
         setTimeout(() => {
             initializeProductSwipers();
+            updateProductSlider(); // 슬라이더 내용 업데이트
         }, 100);
     } else {
         console.error('유효한 상품 ID가 아닙니다.');
@@ -107,104 +239,6 @@ function initializePage() {
             cardElement.style.transform =
                 cardElement.style.transform === 'translateY(100px)' ? 'translateY(0)' : 'translateY(100px)';
         });
-    }
-}
-
-// 상품 정보 업데이트 함수
-function updateProductInfo(productId) {
-    const product = productDetailItem.find((item) => item.id === productId);
-
-    if (product) {
-        // 메인 이미지 슬라이더 요소 생성
-        const swiperWrapper = document.querySelector('.product-slider .swiper-wrapper');
-        swiperWrapper.innerHTML = ''; // 기존 내용 초기화
-
-        // 메인 이미지 슬라이드 동적 생성
-        product.mainImages.forEach((imgSrc) => {
-            const slide = document.createElement('div');
-            slide.classList.add('swiper-slide');
-
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = product.title;
-
-            slide.appendChild(img);
-            swiperWrapper.appendChild(slide);
-        });
-
-        // 상품 정보 변경
-        document.querySelector('.product-info h2').textContent = product.title;
-        document.querySelector('.product-info .price').textContent = product.price;
-
-        // 카드 UI의 제목과 가격도 업데이트 (있을 경우)
-        const cardTitle = document.querySelector('.product-card .product-title');
-        if (cardTitle) cardTitle.textContent = product.title;
-
-        const cardPrice = document.querySelector('.product-card .product-price');
-        if (cardPrice) cardPrice.textContent = product.price;
-
-        // 상세 이미지 생성
-        const detailImgContainer = document.querySelector('.product-detail-section .detail-img');
-        detailImgContainer.innerHTML = ''; // 기존 내용 초기화
-
-        // 표시할 특정 인덱스
-        const selectedIndices = [0, 2, 4];
-
-        // 중복 이미지 확인을 위한 Set
-        const uniqueImages = new Set();
-
-        // 상세 이미지 동적 생성 (선택된 인덱스만)
-        selectedIndices.forEach((index) => {
-            // 해당 인덱스의 이미지가 존재하는지 확인
-            if (index < product.detailImages.length) {
-                const imgSrc = product.detailImages[index];
-
-                // 중복 이미지 확인
-                if (!uniqueImages.has(imgSrc)) {
-                    uniqueImages.add(imgSrc);
-
-                    const img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.alt = `${product.title} 상세 이미지`;
-                    detailImgContainer.appendChild(img);
-                }
-            }
-        });
-
-        // 상품 정보 테이블 변경
-        const infoTable = document.querySelector('.product-info-section table');
-        let tableHTML = '';
-        for (const key in product.information) {
-            tableHTML += `
-                <tr>
-                    <th>${key}</th>
-                    <td>${product.information[key]}</td>
-                </tr>
-            `;
-        }
-        infoTable.innerHTML = tableHTML;
-    } else {
-        console.error('해당 ID의 상품을 찾을 수 없습니다.');
-    }
-}
-
-// 관련 상품 업데이트 함수
-function updateRelatedProducts() {
-    const swiperWrapper = document.querySelector('.related-products-section .swiper-wrapper');
-    swiperWrapper.innerHTML = ''; // 기존 내용 초기화
-
-    for (let i = 0; i < 4; i++) {
-        const randomIndex = Math.floor(Math.random() * productDetailItem.length);
-        const randomProduct = productDetailItem[randomIndex];
-        const swiperSlide = document.createElement('div');
-        swiperSlide.classList.add('swiper-slide');
-
-        swiperSlide.innerHTML = `
-            <img src="${randomProduct.mainImages[0]}" alt="${randomProduct.title}" />
-            <h3>${randomProduct.title}</h3>
-            <p>${randomProduct.price}</p>
-        `;
-        swiperWrapper.appendChild(swiperSlide);
     }
 }
 
