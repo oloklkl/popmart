@@ -18,31 +18,63 @@ export function initializeProductSwipers() {
         },
         on: {
             init() {
-                this.emit('slideChange'); // 초기 슬라이드 상태 설정
-                setTimeout(() => this.update(), 10); // 약간의 지연 시간 후 업데이트
+                // Swiper가 초기화될 때 강제로 슬라이드를 업데이트
+                this.update();
+                // 또는 첫 번째 슬라이드로 이동
+                this.slideTo(2, 0); // 2번 슬라이드로 이동 (0은 애니메이션 없이 바로 이동)
             },
             slideChange() {
+                // 주어진 slideChange() 코드 적용
                 const { activeIndex, slides } = this;
 
                 slides.forEach((slide, index) => {
-                    slide.classList.remove('active', 'next', 'prev', 'far-next', 'far-prev');
-                    slide.style.visibility = 'visible';
-                    slide.style.pointerEvents = 'auto';
+                    if (slide) {
+                        // slide가 존재하는지 확인
+                        slide.classList.remove('active', 'next', 'prev', 'far-next', 'far-prev');
+                        slide.style.visibility = 'visible';
+                        slide.style.pointerEvents = 'auto';
 
-                    const distance = Math.abs(index - activeIndex);
-                    if (distance > 2) {
-                        slide.style.visibility = 'hidden'; // 화면에서 숨김
-                        slide.style.pointerEvents = 'none'; // 클릭 불가
+                        const distance = Math.abs(index - activeIndex);
+                        if (distance > 2) {
+                            slide.style.visibility = 'hidden'; // 화면에서 숨김
+                            slide.style.pointerEvents = 'none'; // 클릭 불가
+                        }
+                    } else {
+                        console.warn(`슬라이드가 정의되지 않았습니다. index: ${index}`);
                     }
                 });
 
-                slides[activeIndex].classList.add('active');
-                slides[(activeIndex + 1) % slides.length].classList.add('next');
-                slides[(activeIndex - 1 + slides.length) % slides.length].classList.add('prev');
-                slides[(activeIndex + 2) % slides.length].classList.add('far-next');
-                slides[(activeIndex - 2 + slides.length) % slides.length].classList.add('far-prev');
+                if (slides[activeIndex]) {
+                    slides[activeIndex].classList.add('active');
+                }
+                if (slides[(activeIndex + 1) % slides.length]) {
+                    slides[(activeIndex + 1) % slides.length].classList.add('next');
+                }
+                if (slides[(activeIndex - 1 + slides.length) % slides.length]) {
+                    slides[(activeIndex - 1 + slides.length) % slides.length].classList.add('prev');
+                }
+                if (slides[(activeIndex + 2) % slides.length]) {
+                    slides[(activeIndex + 2) % slides.length].classList.add('far-next');
+                }
+                if (slides[(activeIndex - 2 + slides.length) % slides.length]) {
+                    slides[(activeIndex - 2 + slides.length) % slides.length].classList.add('far-prev');
+                }
             },
         },
+    });
+
+    // 이미지 로딩 완료 후 Swiper 업데이트
+    const images = document.querySelectorAll('.product-slider-section img');
+    let loadedImagesCount = 0;
+
+    images.forEach((image) => {
+        image.onload = () => {
+            loadedImagesCount++;
+            if (loadedImagesCount === images.length) {
+                // 모든 이미지 로딩 완료 시 Swiper 업데이트
+                productSliderSwiper.update();
+            }
+        };
     });
 
     // 관련 상품 Swiper
