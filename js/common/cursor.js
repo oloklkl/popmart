@@ -25,6 +25,7 @@
   filter: invert(1); /* 색상 반전 효과 */
   transform: translate(-50%, -50%) scale(1.5); /* 그림자 크기를 확대 */
 }
+  // 마우스커서 테스트중
 
   `;
 
