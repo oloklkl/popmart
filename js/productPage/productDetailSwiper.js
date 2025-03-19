@@ -69,5 +69,3 @@ export function initializeProductSwipers() {
         },
     });
 }
-
-// DOMContentLoaded 이벤트가 아닌, 이제 이 함수가 호출되는 방식으로 변경됩니다.
