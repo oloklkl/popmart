@@ -1,3 +1,15 @@
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tabletMore {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
 .cartPreview {
   position: fixed;
   bottom: 0;
@@ -20,6 +32,7 @@
     height: 90px;
   }
 }
+
 .scroll-up {
   position: fixed;
   bottom: 0;
