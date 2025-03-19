@@ -198,6 +198,7 @@ export const addPopStoryItems = [
     alt: 'PEACH RIOT',
     bgColor: '#ff9a9e',
     // popStoryData
+    
     subtitle: '피치라이엇',
     description:
       '세 명의 활기차고 발랄한 소녀들로 이루어진 펑크 밴드 그룹, PEACH RIOT! 차고에서 직접 작곡한 곡을 연습하며 시간을 보내는 열정적인 밴드 친구들이에요. 학교생활을 병행하면서 전 세계 투어 공연을 펼치고, 꿈을 향해 달려가죠. 우리들의 귀여운 복숭아, 피치 라이엇의 무대를 즐길 준비 되셨나요?',
