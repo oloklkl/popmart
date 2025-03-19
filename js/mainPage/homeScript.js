@@ -32,7 +32,7 @@ async function loadDependencies() {
     // productListItems.js 로드
     let items;
     try {
-      const module = await import('../productListItems.js');
+      const module = await import('../productPage/productListItems');
       items = module.default;
       if (!items || items.length === 0) {
         console.warn('productListItems.js에서 아이템을 불러오지 못했거나 아이템이 없습니다.');
