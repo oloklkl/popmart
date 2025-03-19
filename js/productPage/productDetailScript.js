@@ -32,6 +32,20 @@ function updateProductSlider() {
             slide.appendChild(img);
             swiperWrapper.appendChild(slide);
         });
+
+        // 모든 이미지가 로드되면 Swiper 초기화
+        const images = swiperWrapper.querySelectorAll('img');
+        let loadedImagesCount = 0;
+
+        images.forEach((image) => {
+            image.onload = () => {
+                loadedImagesCount++;
+                if (loadedImagesCount === images.length) {
+                    // 모든 이미지가 로드되었을 때 Swiper 초기화
+                    initializeProductSwipers();
+                }
+            };
+        });
     }
 }
 
