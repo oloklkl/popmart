@@ -1,11 +1,8 @@
-.cartPreview {
+.cart-btn {
   position: fixed;
-  bottom: 0;
-  right: 0;
-  -webkit-transform: translate(-50%, -170%);
-          transform: translate(-50%, -170%);
-  width: 50px;
-  height: 50px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,32 +13,38 @@
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  bottom: 130px;
+}
+.cart-btn img {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+.cart-btn:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 @media (max-width: 768px) {
-  .cartPreview {
-    -webkit-transform: translate(-50%, -170%);
-            transform: translate(-50%, -170%);
-    width: 70px;
-    height: 70px;
+  .cart-btn {
+    width: 50px;
+    height: 50px;
   }
 }
 @media (max-width: 1024px) {
-  .cartPreview {
-    -webkit-transform: translate(-50%, -170%);
-            transform: translate(-50%, -170%);
-    width: 90px;
-    height: 90px;
+  .cart-btn {
+    width: 80px;
+    height: 80px;
   }
 }
 
-.scroll-up {
+.scroll-up-btn {
   position: fixed;
-  bottom: 0;
-  right: 0;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,16 +55,29 @@
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  bottom: 20px;
+}
+.scroll-up-btn img {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+.scroll-up-btn:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 @media (max-width: 768px) {
-  .scroll-up {
-    width: 70px;
-    height: 70px;
+  .scroll-up-btn {
+    width: 50px;
+    height: 50px;
   }
 }
 @media (max-width: 1024px) {
-  .scroll-up {
-    width: 90px;
-    height: 90px;
+  .scroll-up-btn {
+    width: 80px;
+    height: 80px;
   }
 }/*# sourceMappingURL=cartButton.css.map */
