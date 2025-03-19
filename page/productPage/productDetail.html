@@ -152,5 +152,15 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
         <script type="module" src="../../js/productPage/productDetailSwiper.js"></script>
         <script type="module" src="../../js/productPage/productDetailScript.js"></script>
+        <script src="/js/scriptLoader.js" defer></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                if (typeof loadCommonElements === 'function') {
+                    loadCommonElements(); // :흰색_확인_표시: `scriptLoader.js`가 로드된 후 실행
+                } else {
+                    console.error(':x: loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
+                }
+            });
+        </script>
     </body>
 </html>
