@@ -8,7 +8,7 @@
 .inner {
   position: relative;
   width: 100%;
-  max-width: calc(100% - 200px);
+  max-width: $grid;
   margin: 0 auto;
   padding: 0;
   @include tablet {
@@ -41,6 +41,7 @@
     }
   }
   h2 {
+    font-family: $font-family-point !important;
     font-size: 24px;
     font-weight: bold;
     @include tablet {
@@ -51,7 +52,7 @@
     }
   }
 }
-.grid {
+.popStoryListGrid {
   display: grid;
   grid-template-columns: repeat(1);
   padding: 18px 0 120px 0;
@@ -108,7 +109,7 @@
   height: 100%;
 }
 
-.grid-item {
+.popStoryGridItem {
   overflow: hidden;
   border: 1px solid black;
   padding: 30px;
@@ -119,7 +120,7 @@
   align-items: center;
   gap: 5px;
   transition: background-color 0.3s ease-in-out;
-
+  cursor: pointer;
   @include tablet {
     height: 500px;
     padding: 40px;
@@ -128,12 +129,13 @@
     height: 700px;
     padding: 100px;
   }
+
   img {
     width: 100%;
     height: 100%;
     @include tablet {
-      max-width: 240px;
-      max-height: 350px;
+      max-width: 250px;
+      max-height: 260px;
     }
     @include tabletMore {
       max-width: 330px;

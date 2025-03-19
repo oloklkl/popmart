@@ -10,15 +10,15 @@
   }
 
   &__logo {
-    margin-right: auto; // 왼쪽에 붙음
+    margin-right: auto;
   }
 
   &__nav {
     flex-grow: 1;
-    flex-shrink: 1; // 화면이 줄어들 때 같이 줄어듦
+    flex-shrink: 1;
     display: flex;
     justify-content: center;
-    max-width: 100%; // 부모 요소를 넘지 않도록 설정
+    max-width: 100%;
 
     ul {
       display: flex;
@@ -134,7 +134,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-left: auto; // 오른쪽에 붙음
+    margin-left: auto;
 
     img {
       height: 35px;

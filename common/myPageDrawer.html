@@ -16,29 +16,36 @@
 
     <!-- mypage menu -->
     <div id="mypage-menu" class="mypageMenu">
+      <button id="beforeBtn" class="before-btn">
+        <img
+          src="https://raw.githubusercontent.com/hyeonky/dp-static/25c22bdca826b9f46f262043d2aaf150cfc64ffd/popmart/btnIcon/chevron-left.svg"
+          alt="이전" />
+      </button>
       <!-- 비회원 -->
       <div id="non-member" class="nonMember" style="display: none">
         <ul>
           <li class="singBtnCont">
-            <button class="singBtn login" onclick="location.href='#login'">
+            <button
+              class="singBtn login"
+              onclick="location.href='/page/myPage/login.html'">
               로그인
             </button>
             <button
               class="singBtn register"
-              onclick="location.href='#register'">
+              onclick="location.href='/page/myPage/register.html'">
               회원가입
             </button>
           </li>
           <li>
-            <a href="#cart">
+            <a href="/page/cart.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>장바구니<span id="cart-count">(0)</span></span>
+              <span>장바구니</span>
             </a>
           </li>
           <li>
-            <a href="#login">
+            <a href="/">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -46,7 +53,7 @@
             >
           </li>
           <li>
-            <a href="#login"
+            <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -54,7 +61,7 @@
             >
           </li>
           <li>
-            <a href="#login">
+            <a href="/page/cs.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -62,7 +69,7 @@
             >
           </li>
           <li>
-            <a href="#login"
+            <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -76,23 +83,23 @@
       <div id="member" class="member-login" style="display: none">
         <ul>
           <li>
-            <a href="#cart">
+            <a href="/page/cart.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>관심상품<span id="cart-count"> (0)</span></span></a
+              <span>관심상품<span id="cart-count"> (5)</span></span></a
             >
           </li>
           <li>
-            <a href="#cart">
+            <a href="/page/cart.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>장바구니<span id="cart-count"> (0)</span></span></a
+              <span>장바구니<span id="cart-count"> (3)</span></span></a
             >
           </li>
           <li>
-            <a href="#login">
+            <a href="/">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -100,15 +107,15 @@
             >
           </li>
           <li>
-            <a href="#login"
+            <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
-              <span>쿠폰<span id="cupoon-count"> (0)</span></span></a
+              <span>쿠폰<span id="cupoon-count"> (2)</span></span></a
             >
           </li>
           <li>
-            <a href="#login">
+            <a href="/page/cs.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -116,7 +123,7 @@
             >
           </li>
           <li>
-            <a href="#login"
+            <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
                 alt="chevron-right" />
@@ -130,6 +137,5 @@
       </div>
     </div>
     <script src="../js/myPageDrawerScript.js"></script>
-    <script src="../js/auth.js"></script>
   </body>
 </html>
