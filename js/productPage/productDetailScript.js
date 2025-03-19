@@ -147,12 +147,28 @@ function updateProductInfo(productId) {
         const detailImgContainer = document.querySelector('.product-detail-section .detail-img');
         detailImgContainer.innerHTML = ''; // 기존 내용 초기화
 
-        // 상세 이미지 동적 생성
-        product.detailImages.forEach((imgSrc) => {
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = `${product.title} 상세 이미지`;
-            detailImgContainer.appendChild(img);
+        // 표시할 특정 인덱스
+        const selectedIndices = [0, 2, 4];
+
+        // 중복 이미지 확인을 위한 Set
+        const uniqueImages = new Set();
+
+        // 상세 이미지 동적 생성 (선택된 인덱스만)
+        selectedIndices.forEach((index) => {
+            // 해당 인덱스의 이미지가 존재하는지 확인
+            if (index < product.detailImages.length) {
+                const imgSrc = product.detailImages[index];
+
+                // 중복 이미지 확인
+                if (!uniqueImages.has(imgSrc)) {
+                    uniqueImages.add(imgSrc);
+
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = `${product.title} 상세 이미지`;
+                    detailImgContainer.appendChild(img);
+                }
+            }
         });
 
         // 상품 정보 테이블 변경
