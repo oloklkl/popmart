@@ -412,13 +412,8 @@ function handleInfoButtonClick(e) {
 
   if (infoBtn) {
     console.log('🟢 [클릭 감지됨] 버튼 클릭 이벤트 발생', infoBtn);
-
+    // if (!infoBtn) return;
     const infoId = infoBtn.getAttribute('data-info');
-    if (!infoId) {
-      console.error('❌ [오류] 버튼에 data-info 속성이 없습니다.');
-      return;
-    }
-
     const infoBox = document.getElementById(infoId);
     console.log(`🔘 [버튼 클릭] 버튼 데이터 정보: ${infoId}, 찾은 info-box ID: ${infoBox ? infoBox.id : '❌ 없음'}`);
 
@@ -427,10 +422,10 @@ function handleInfoButtonClick(e) {
       return;
     }
 
-    if (infoBox.classList.contains('show')) {
+    if (infoBox.style.display === 'block' && infoBox.classList.contains('show')) {
       closeInfoBox(infoBox);
     } else {
-      openInfoBox(infoBox);
+      openInfoBox(infoBox, infoBtn);
     }
   }
 }
@@ -446,6 +441,19 @@ function openInfoBox(infoBox) {
     }
   });
 
+  // 버튼 위치 가져오기
+  const btnRect = infoBtn.getBoundingClientRect();
+  const boxRect = infoBox.getBoundingClientRect();
+
+  let leftPosition = btnRect.right + 10; // 기본적으로 버튼의 오른쪽에 배치
+  if (leftPosition + boxRect.width > window.innerWidth) {
+    leftPosition = btnRect.left - boxRect.width - 10; // 오른쪽 공간이 부족하면 왼쪽에 배치
+  }
+
+  // `info-box`의 위치 설정
+  infoBox.style.position = 'absolute';
+  infoBox.style.top = `${btnRect.top + window.scrollY}px`;
+  infoBox.style.left = `${leftPosition}px`;
   // 표시 전에 display 속성 설정
   infoBox.style.display = 'block';
 
@@ -458,7 +466,7 @@ function openInfoBox(infoBox) {
 }
 
 // 정보 박스 닫기
-function closeInfoBox(infoBox) {
+function openInfoBox(infoBox, infoBtn) {
   console.log(`❌ [정보 박스 닫기] ${infoBox.id} 박스 닫기`);
   gsap.to(infoBox, {
     opacity: 0,
@@ -471,6 +479,8 @@ function closeInfoBox(infoBox) {
     },
   });
 }
+document.removeEventListener('click', handleInfoButtonClick);
+document.addEventListener('click', handleInfoButtonClick);
 
 // DOM 로드 완료 이벤트
 document.addEventListener('DOMContentLoaded', () => {
