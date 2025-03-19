@@ -1,36 +1,144 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 24px 200px;
+  box-sizing: border-box;
+  width: 100%;
+
+  img {
+    height: 45px;
+  }
 
   &__logo {
-    font-size: 24px;
-    font-weight: bold;
+    margin-right: auto; // 왼쪽에 붙음
   }
 
   &__nav {
+    flex-grow: 1;
+    flex-shrink: 1; // 화면이 줄어들 때 같이 줄어듦
     display: flex;
-    align-items: center;
-  }
+    justify-content: center;
+    max-width: 100%; // 부모 요소를 넘지 않도록 설정
 
-  &__nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin-right: 20px;
+    ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      position: relative;
 
-    li {
-      margin-right: 65px;
-      a {
-        text-decoration: none;
+      li {
+        position: relative;
+        text-align: center;
+        min-width: 98px;
+        min-height: 45px;
+        margin-right: 3vw; // 반응형 마진 조정 (뷰포트 기준)
+        flex-shrink: 1; // 요소 크기 줄어들 수 있도록 설정
+
+        a {
+          text-decoration: none;
+          position: relative;
+          z-index: 2;
+          display: inline-block;
+          padding: 10px 0;
+        }
+        &:nth-child(1)::after {
+          content: "";
+          background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true");
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          display: block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 1;
+        }
+
+        &:nth-child(2)::after {
+          content: "";
+          background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking22.png?raw=true");
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          display: block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 1;
+        }
+        &:nth-child(3)::after {
+          background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking66.png");
+          width: 130px;
+          height: 100%;
+          position: absolute;
+          display: block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 1;
+        }
+        &:nth-child(4)::after {
+          background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking55.png");
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          display: block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 1;
+        }
+        &:nth-child(5)::after {
+          background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true");
+          width: 120px;
+          height: 100%;
+          position: absolute;
+          display: block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 1;
+        }
+        &:nth-child(6)::after {
+          background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking77.png");
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          display: block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 1;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          transform: translateX(-50%);
+          display: block;
+          background-size: cover;
+          background-repeat: no-repeat;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+        }
       }
     }
   }
 
   &__icons {
     display: flex;
-    gap: 15px;
-    font-size: 20px;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto; // 오른쪽에 붙음
+
+    img {
+      height: 35px;
+      width: 35px;
+    }
   }
 }
