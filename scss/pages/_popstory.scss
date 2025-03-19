@@ -1,188 +1,173 @@
 /* 전반적인 페이지 스타일 설정 */
-body {
-    background-color: #f5f2e9; // 배경색을 부드러운 베이지 톤으로 설정
-    color: #333; // 기본 텍스트 색상을 어두운 회색으로 설정
-    font-family: 'Arial', sans-serif; // 기본 글꼴 설정
-    margin: 0;
-    padding: 0;
-}
+// body {
+//     background-color: #f5f2e9; // 배경색을 부드러운 베이지 톤으로 설정
+//     color: #333; // 기본 텍스트 색상을 어두운 회색으로 설정
+//     font-family: 'Arial', sans-serif; // 기본 글꼴 설정
+//     margin: 0;
+//     padding: 0;
+// }
 
 .popstory-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    background-color: #ffba4a12;
-    width: 100vw;
-    height: 150vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #ffba4a12;
+  width: 100vw;
+  height: 150vh;
 }
 .popstory-inner {
-    width: 100vw;
-    margin: 50px auto;
-    height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100vw;
+  margin: 50px auto;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  z-index: 0;
+  .textbox {
+    // 제목 영역 스타일
+    top: -8%;
+    width: 100%;
     text-align: center;
+    margin-bottom: 30px;
     position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: center;
+    .title {
+      font-size: 128px; // 제목 크기 설정
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 32px; // 부제목 크기 설정
+      font-weight: normal;
+      color: #444;
+    }
+  }
+
+  .content-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 30;
     z-index: 0;
-    .textbox { // 제목 영역 스타일
-        top: -8%;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 30px;
-        position: absolute;
-        z-index: 2;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: baseline;
-        justify-content: center;
-        .title
-         {
-            font-size: 128px; // 제목 크기 설정
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        
-        .subtitle {
-            font-size: 32px; // 부제목 크기 설정
-            font-weight: normal;
-            color: #444;
-        }
-        
-    }
-  
-    .content-wrap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 30;
-        z-index: 0;
-        width: 100vw;
-        height: 100vh;
-  
-    }
+    width: 100vw;
+    height: 100vh;
+  }
 }
 
 // 메인 콘텐츠 영역 스타일
 .main-content {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    align-items: center;
-  
-    width: 100%;
-    z-index: 10;
-    .product-image {
-        position: absolute;
-        top: 50px;
-        left: 50%;
-        z-index: 3;
-        width: 70%;
-        transform: translate(-50%, -50%);
-        .frame-image {
-            width: 35%;
-            height: auto;
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            filter: blur(5px); // 블러 효과 적용
-        }
-        
-        
-        .character-image {
-            position: absolute;
-            top: 0;
-            left: 40%;
-            transform: translate(-50%, -50%);
-            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-            width: 25%;
-            z-index: 3;
-        }
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-        .figures-image {
-            z-index: 10;
-            position: absolute;
-            width: 25%;
-            height: auto;
-            top: -120px;
-            left:750px;
-            
-        }
+  align-items: center;
+
+  width: 100%;
+  z-index: 10;
+  .product-image {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    z-index: 3;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    .frame-image {
+      width: 35%;
+      height: auto;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      filter: blur(5px); // 블러 효과 적용
     }
 
+    .character-image {
+      position: absolute;
+      top: 0;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+      width: 25%;
+      z-index: 3;
+    }
+
+    .figures-image {
+      z-index: 10;
+      position: absolute;
+      width: 25%;
+      height: auto;
+      top: -120px;
+      left: 750px;
+    }
+  }
 }
-
-
-
 
 // 프레임 이미지 스타일
 .frame-container {
-    position: relative;
-    width: 45%;
-    max-width: 500px;
-    margin-right: 20px; // 간격을 주기 위해 설정
+  position: relative;
+  width: 45%;
+  max-width: 500px;
+  margin-right: 20px; // 간격을 주기 위해 설정
 }
-
-
 
 // 태그 스타일링
 .tag-container {
-    position: relative;
-    z-index: 10;
-    border-radius: 17px;
-    border: solid 3px #000000;
-    width: 442px;
-    height: 103px;
-    background-color: #ffffff70;
-    position: absolute;
-    bottom: 220px;
-    left: 50%;
-    transform: translateY(-270%) translateX(-155%);
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+  position: relative;
+  z-index: 10;
+  border-radius: 17px;
+  border: solid 3px #000000;
+  width: 442px;
+  height: 103px;
+  background-color: #ffffff70;
+  position: absolute;
+  bottom: 220px;
+  left: 50%;
+  transform: translateY(-270%) translateX(-155%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  .tags {
+    display: none;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+  }
 
+  &::before {
+    content: '';
+    position: absolute;
+    right: -9%;
+    bottom: -25%;
+    background-color: #000000;
+    width: 59px;
+    height: 59px;
+    border-radius: 50%;
+    z-index: 30;
+    display: block;
+    opacity: 1;
+  }
 
+  &::before:hover + .tag-container,
+  &:hover {
+    opacity: 1;
+  }
 
-
-    .tags {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        right: -9%;
-        bottom: -25%;
-        background-color: #000000;
-        width: 59px;
-        height: 59px;
-        border-radius: 50%;
-        z-index: 30;
-        display: block;
-        opacity: 1;
-    }
-
-    &::before:hover + .tag-container,
-    &:hover {
-        opacity: 1;
-    }
-
-    &:hover .tags {
-        display: flex;
-        opacity: 1;
-    }
-
-
+  &:hover .tags {
+    display: flex;
+    opacity: 1;
+  }
 }
 
 // .tags {
@@ -194,188 +179,183 @@ body {
 // }
 
 .tag {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 39px;
-    background-color: #FFBA4A;
-    border: 2px solid #000000;
-    color: #000;
-    padding: 0 16px;  // 좌우 여백 유지
-    border-radius: 13px;
-    font-size: 12px;
-    font-weight: bold;
-    white-space: nowrap;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 39px;
+  background-color: #ffba4a;
+  border: 2px solid #000000;
+  color: #000;
+  padding: 0 16px; // 좌우 여백 유지
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
 }
-
-
 
 // 아티스트 정보 박스 스타일
 .artist-info {
-    width: 355px;
-    background-color: #DFDFDF;
-    padding: 15px;
-    border-radius: 10px;
-    border: 3px solid #000000;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    position: absolute;
-    left: 1%;
-    bottom: 7%;
-    font-size: 15px;
+  width: 355px;
+  background-color: #dfdfdf;
+  padding: 15px;
+  border-radius: 10px;
+  border: 3px solid #000000;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: absolute;
+  left: 1%;
+  bottom: 7%;
+  font-size: 15px;
 }
 
 .artist-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .popstory-pwrap {
-    z-index: 10;
-    position: absolute;  // 위치 조정 가능하게 변경
-    top: 35%;
-    left: 62%;
-    transform: translate(-50%, -50%);
-    width: 30%;  // 가로 너비 설정
-    height: 400px;//높이를 주어야만 그 안에서 버같은 부수요소에 설정할수있다
+  z-index: 10;
+  position: absolute; // 위치 조정 가능하게 변경
+  top: 35%;
+  left: 62%;
+  transform: translate(-50%, -50%);
+  width: 30%; // 가로 너비 설정
+  height: 400px; //높이를 주어야만 그 안에서 버같은 부수요소에 설정할수있다
 
-
-    //hover했을때 나타나는 효과
-    &:hover .product-description {
-        display: block;
-        opacity: 1;
-    }
+  //hover했을때 나타나는 효과
+  &:hover .product-description {
+    display: block;
+    opacity: 1;
+  }
 }
 
-.product-description {    
+.product-description {
+  position: absolute;
+  left: 70%;
+  font-size: 15px;
+  border: 3px solid #000000;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  &.show {
+    display: block;
+    opacity: 1;
+  }
+
+  &::before {
+    content: ''; // 가상요소 추가
     position: absolute;
-    left: 70%;
-    font-size: 15px;
-    border: 3px solid #000000;
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-
-    &.show {
-        display: block;
-        opacity: 1;
-    }
-
-    &::before {
-        content: ""; // 가상요소 추가
-        position: absolute;
-        right: 90%;
-        bottom:-10%;
-        background-color: #000000;
-        width: 59px;
-        height: 59px;
-        border-radius: 50%;
-        z-index: 30;
-        display: block;
-        opacity: 1;  // 항상 보이게 설정
-    }
-}
-
-.story-itembtn {
-    z-index: 30;
-    position: absolute;
-    right: 28%;
-    bottom: 10%;
+    right: 90%;
+    bottom: -10%;
     background-color: #000000;
     width: 59px;
     height: 59px;
     border-radius: 50%;
+    z-index: 30;
+    display: block;
+    opacity: 1; // 항상 보이게 설정
+  }
+}
+
+.story-itembtn {
+  z-index: 30;
+  position: absolute;
+  right: 28%;
+  bottom: 10%;
+  background-color: #000000;
+  width: 59px;
+  height: 59px;
+  border-radius: 50%;
 }
 
 .popstory-p {
-    font-size: 15px;
-    margin-bottom: 20px;
-    line-height: 1.6;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 
-    &:last-of-type {
-        margin-bottom: 0; // 마지막 p 태그만 margin-bottom 제거
-    }
+  &:last-of-type {
+    margin-bottom: 0; // 마지막 p 태그만 margin-bottom 제거
+  }
 }
 
 // 시리즈 메뉴 스타일
 .series-menu {
-    width: 22%;
-    position: absolute;
-    bottom: 2%;
-    right: 1%;
-    background-color: #DFDFDF;
-    padding: 15px;
-    border-radius: 10px;
-    border: 3px solid #000000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 22%;
+  position: absolute;
+  bottom: 2%;
+  right: 1%;
+  background-color: #dfdfdf;
+  padding: 15px;
+  border-radius: 10px;
+  border: 3px solid #000000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .series-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 2px solid #000000;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #ffffff;
+  }
+  strong {
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .circle-icon {
+    width: 25px;
+    height: 25px;
+    background-color: #ffcc80;
+    border-radius: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 15px;
-    border-bottom: 2px solid #000000;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    
-    &:hover {
-        background-color: #ffffff;
-    }
-    strong {
-        font-size: 14px;
-        font-weight: 800;
-    }
-    .circle-icon {
-        width: 25px;
-        height: 25px;
-        background-color: #ffcc80;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-    }
+    transition: transform 0.2s ease;
+  }
 
-    .circle-icon:hover {
-        transform: scale(1.1);
-    }
+  .circle-icon:hover {
+    transform: scale(1.1);
+  }
 }
-
-
 
 // 반응형 스타일링
 @media (max-width: 1024px) {
-    .textbox h1 {
-        font-size: 80px;
-    }
-    .textbox h2 {
-        font-size: 24px;
-    }
-    .main-content {
-        flex-direction: column;
-        align-items: center;
-    }
-    .frame-container {
-        width: 90%;
-    }
-    .product-description,
-    .series-menu,
-    .artist-info {
-        width: 80%;
-        text-align: center;
-    }
+  .textbox h1 {
+    font-size: 80px;
+  }
+  .textbox h2 {
+    font-size: 24px;
+  }
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .frame-container {
+    width: 90%;
+  }
+  .product-description,
+  .series-menu,
+  .artist-info {
+    width: 80%;
+    text-align: center;
+  }
 }

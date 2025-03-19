@@ -32,7 +32,7 @@ async function loadDependencies() {
     // productListItems.js 로드
     let items;
     try {
-      const module = await import('../productPage/productListItems');
+      const module = await import('../productPage/productListItems.js');
       items = module.default;
       if (!items || items.length === 0) {
         console.warn('productListItems.js에서 아이템을 불러오지 못했거나 아이템이 없습니다.');
@@ -261,10 +261,8 @@ function setupGridItems(items) {
 function setupCursorEffect() {
   console.log('[circle-cursor] 초기화');
 
-  // 이미 존재하는 커서 확인
   let cursor = document.querySelector('.circle-cursor');
 
-  // 커서가 없으면 생성
   if (!cursor) {
     cursor = document.createElement('div');
     cursor.classList.add('circle-cursor');
@@ -273,25 +271,25 @@ function setupCursorEffect() {
   } else {
     console.log('.circle-cursor 이미 존재함');
   }
-
-  // 커서 스타일 설정 - 전체 페이지에 대해 동작하도록 수정
-  // const color = this.getAttribute('data-color');
   gsap.set(cursor, {
     width: 200,
     height: 200,
     opacity: 1,
-    position: 'fixed', // fixed 포지션 유지
+    visibility: 'visible',
+    position: 'fixed',
     left: '0',
     top: '0',
-    zIndex: 9999, // 최상위 레이어에 위치
-    pointerEvents: 'none', // 마우스 이벤트를 통과시켜 하위 요소에 영향이 가도록
+    zIndex: 999999,
+    pointerEvents: 'none',
     background: 'black',
     borderRadius: '50%',
     mixBlendMode: 'difference',
-    transform: 'translate(-50%, -50%)', // 중심점 조정
+    transform: 'translate(-50%, -50%)',
   });
+
   gsap.to(cursor, {
-    autoAlpha: 1,
+    // autoAlpha: 1,
+    opacity: 1,
     duration: 0.5,
   });
 
@@ -304,27 +302,52 @@ function setupCursorEffect() {
 function updateCursorPosition(e) {
   const cursor = document.querySelector('.circle-cursor');
   if (cursor) {
-    // gsap 애니메이션 대신 직접 위치 설정으로 변경하여 더 부드러운 움직임
     gsap.to(cursor, {
       x: e.clientX,
       y: e.clientY,
       duration: 0.1,
       ease: 'power2.out',
-      opacity: 1,
+      // opacity: 1,
     });
   }
 }
+// 🔹 페이지 로드 시 커서가 보이도록 설정
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('🚀 DOMContentLoaded: 커서 효과 설정 시작');
+  setupCursorEffect(); // ✅ 페이지 로드 시 커서 생성
+});
 
+// 추가: 새로고침 후에도 커서 보이도록 설정
+window.onload = () => {
+  const cursor = document.querySelector('.circle-cursor');
+  if (cursor) {
+    gsap.to(cursor, { opacity: 1, duration: 0.5 }); // ✅ 새로고침 후에도 커서 유지
+  }
+};
 // 그리드 아이템 호버 효과 추가
 function addHoverEffectToItems() {
   document.querySelectorAll('.homeGrid-item').forEach((item) => {
-    // 이벤트 리스너가 중복 등록되지 않도록 기존 이벤트 제거
-    item.removeEventListener('mouseenter', handleItemMouseEnter);
-    item.removeEventListener('mouseleave', handleItemMouseLeave);
+    item.addEventListener('mouseenter', function () {
+      const cursor = document.querySelector('.circle-cursor');
+      if (cursor) {
+        cursor.style.mixBlendMode = 'difference'; // 🔥 `difference` 유지
+        const color = this.getAttribute('data-color');
+        gsap.to(cursor, {
+          background: color, // 🔹 마우스 오버 시 배경 변경
+          duration: 0.3,
+        });
+      }
+    });
 
-    // 새 이벤트 리스너 등록
-    item.addEventListener('mouseenter', handleItemMouseEnter);
-    item.addEventListener('mouseleave', handleItemMouseLeave);
+    item.addEventListener('mouseleave', function () {
+      const cursor = document.querySelector('.circle-cursor');
+      if (cursor) {
+        gsap.to(cursor, {
+          background: color, // 🔹 마우스 떠날 때 기본값 복귀
+          duration: 0.3,
+        });
+      }
+    });
   });
 }
 
@@ -441,23 +464,41 @@ if (typeof openInfoBox === 'undefined') {
       }
     });
 
-    const btnRect = infoBtn.getBoundingClientRect();
-    const boxRect = infoBox.getBoundingClientRect();
+    // const btnRect = infoBtn.getBoundingClientRect();
+    // const boxRect = infoBox.getBoundingClientRect();
 
-    let leftPosition = btnRect.right + 10;
-    if (leftPosition + boxRect.width > window.innerWidth) {
-      leftPosition = btnRect.left - boxRect.width - 10;
-    }
+    // let leftPosition = btnRect.right;
+    // if (leftPosition + boxRect.width > window.innerWidth) {
+    //   leftPosition = btnRect.left - boxRect.width - 10;
+    // }
 
-    infoBox.style.position = 'absolute';
-    infoBox.style.top = `${btnRect.top + window.scrollY}px`;
-    infoBox.style.left = `${leftPosition}px`;
+    // infoBox.style.position = 'absolute';
+    // infoBox.style.top = `${btnRect.top + window.scrollY}px`;
+    // infoBox.style.right = `${leftPosition}px`;
     infoBox.style.display = 'block';
 
     setTimeout(() => {
       infoBox.classList.add('show');
-      gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+      gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.inout' });
     }, 10);
+  }
+}
+if (typeof closeInfoBox === 'undefined') {
+  function closeInfoBox(infoBox) {
+    console.log(`🔴 [정보 박스 닫기] ${infoBox.id} 박스 닫기`);
+
+    if (!infoBox) return;
+
+    gsap.to(infoBox, {
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.2,
+      ease: 'power2.inout',
+      onComplete: () => {
+        infoBox.style.display = 'none';
+        infoBox.classList.remove('show');
+      },
+    });
   }
 }
 document.removeEventListener('click', handleInfoButtonClick);
