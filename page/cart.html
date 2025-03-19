@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>장바구니</title>
         <link rel="stylesheet" href="/scss/styles.css" />
-        <script type="module" src="../js/cart.js"></script>
+        
 
         <style>
             /* 수량 입력 컨테이너 */
@@ -186,7 +186,7 @@
     </head>
     <body>
         <!-- Header -->
-        <div class="header"></div>
+        <!-- <div class="header"></div> -->
 
         <!-- Main Content -->
         <div class="cart-container">
@@ -1206,8 +1206,17 @@
                     </svg>
                 </button>
             </div>
-    
-           
+            <script type="module" src="../js/cart.js"></script>
+            <script src="/js/scriptLoader.js" defer></script>
+            <script>
+              window.addEventListener('DOMContentLoaded', () => {
+                if (typeof loadCommonElements === 'function') {
+                  loadCommonElements();
+                } else {
+                  console.error('❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
+                }
+              });
+            </script>
          
     </body>
 </html>
