@@ -15,11 +15,13 @@
   right: 20px;
   width: 100px;
   height: 100px;
+  z-index: 10001; // 마우스 커서보다 위
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  pointer-events: auto; // 클릭 가능하게 설정
 
   img {
     transition: transform 0.3s ease-in-out;

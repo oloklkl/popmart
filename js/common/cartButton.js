@@ -1,53 +1,28 @@
-// cartButton.js
 export function initCartButtons() {
-  const existingButtons = document.querySelector(
-    ".cart-button, .scroll-up-button"
-  );
+  const cartButton = document.querySelector(".cart-btn");
+  const scrollUpButton = document.querySelector(".scroll-up-btn");
 
-  if (!existingButtons) {
-    fetch("/common/cartButton.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.body.insertAdjacentHTML("beforeend", data);
+  console.log("scrollUpButton:", scrollUpButton); // 추가된 코드
 
-        const scrollUpButton = document.querySelector(".scroll-up-button");
-        if (scrollUpButton) {
-          scrollUpButton.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          });
-        }
+  if (scrollUpButton) {
+    console.log("위로 이동 버튼 이벤트 리스너 추가됨"); // 추가된 코드
+    scrollUpButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      console.log("페이지 맨 위로 이동함!"); // 추가된 코드
+    });
+  }
 
-        const cartButton = document.querySelector(".cart-button");
-        if (cartButton) {
-          cartButton.addEventListener("click", () => {
-            window.location.href = "/cart";
-          });
-        }
-      })
-      .catch((error) => console.error("Error loading cart buttons:", error));
+  if (cartButton) {
+    cartButton.addEventListener("click", () => {
+      window.location.href = "http://127.0.0.1:5500/page/cart.html";
+    });
   }
 }
 
-// 페이지 변경 시 버튼 초기화
-function handlePageChange() {
-  // 이전에 생성된 버튼 제거
-  const cartButton = document.querySelector(".cart-button");
-  const scrollUpButton = document.querySelector(".scroll-up-button");
+document.querySelector(".scroll-up-btn").addEventListener("click", () => {
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0; // Safari 대응
+  console.log("스크롤 강제 이동 실행됨!");
+});
 
-  if (cartButton) cartButton.remove();
-  if (scrollUpButton) scrollUpButton.remove();
-
-  // 새로운 버튼 초기화
-  initCartButtons();
-}
-
-// 페이지 로드 완료 시 초기화
-document.addEventListener("DOMContentLoaded", initCartButtons);
-
-// 페이지 변경 시 이벤트 (history API)
-window.addEventListener("popstate", handlePageChange);
-
-// 외부에서 페이지 변경을 알릴 수 있는 함수
-function notifyPageChange() {
-  handlePageChange();
-}
+window.addEventListener("popstate", initCartButtons);

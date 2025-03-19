@@ -3,6 +3,7 @@
   right: 20px;
   width: 100px;
   height: 100px;
+  z-index: 10001;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,6 +16,7 @@
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  pointer-events: auto;
   bottom: 130px;
 }
 .cart-btn img {
@@ -45,6 +47,7 @@
   right: 20px;
   width: 100px;
   height: 100px;
+  z-index: 10001;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,6 +60,7 @@
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  pointer-events: auto;
   bottom: 20px;
 }
 .scroll-up-btn img {
