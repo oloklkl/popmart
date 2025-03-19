@@ -4,133 +4,166 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/output/styles.css" />
-    <script src="../../js/register.js" defer></script>
     <title>회원가입 페이지</title>
   </head>
   <body>
     <main>
       <div class="container">
-        <div class="registerLogo">
-          <a href="./login.html">
-            <img
-              src="https://raw.githubusercontent.com/hyeonky/dp-static/4dd1c90a45a6c7a2aba9ea8f50b98ba1bcf5ed23/popmart/mypage/registerLogo.svg"
-              alt="로그인"
-            />
-          </a>
-        </div>
-        <form action="../../page/myPage/login.html" method="POST">
-          <div class="registerForm">
-            <div class="register-title">
-              <h2>회원 인증</h2>
-            </div>
-            <div class="check-group">
-              <label>
-                <input class="radio" type="radio" name="member_type" value="individual" />
-                <span class="checkMark"></span>
-                <span>개인회원</span>
-              </label>
-              <label>
-                <input class="radio" type="radio" name="member_type" value="foreigner" />
-                <span class="checkMark"></span>
-                <span class="foreigner">외국인회원(foreigner)</span>
-              </label>
-            </div>
-            <div class="line"></div>
-            <div class="check-group">
-              <div class="radioCon">
-                <div class="radioBox">
-                  <label>
-                    <input class="radio" type="radio" name="auth_type" value="phone" />
-                    <span class="checkMark"></span>
-                    <span>휴대폰인증</span>
-                  </label>
-                  <label>
-                    <input class="radio" type="radio" name="auth_type" value="email" />
-                    <span class="checkMark"></span>
-                    <span>이메일인증</span>
-                  </label>
-                </div>
-
-                <div class="authbtn">
-                  <button class="authBtn" type="button">휴대폰 인증</button>
-                </div>
-              </div>
-            </div>
-            <div class="section-title">
-              <h2>기본 정보</h2>
-            </div>
-            <div class="inputbox">
-              <input class="inputShort" type="text" id="user_id" name="user_id" placeholder="아이디" />
-              <button class="authBtn btnShort" type="button">중복확인</button>
-            </div>
-            <div class="inputbox">
-              <input class="input" type="password" id="password" name="password" placeholder="비밀번호" />
-            </div>
-            <div class="inputbox">
-              <input
-                class="input"
-                type="password"
-                id="password_confirm"
-                name="password_confirm"
-                placeholder="비밀번호 확인"
+        <div class="inner">
+          <div class="registerLogo">
+            <a href="#register">
+              <img
+                src="https://raw.githubusercontent.com/hyeonky/dp-static/4dd1c90a45a6c7a2aba9ea8f50b98ba1bcf5ed23/popmart/mypage/registerLogo.svg"
+                alt="회원가입"
               />
-            </div>
-            <div class="inputbox">
-              <input class="inputShort" type="text" id="address" name="address" placeholder="주소" />
-              <button class="authBtn btnShort" type="button">우편번호</button>
-            </div>
-            <div class="inputbox">
-              <input class="input" type="text" id="detail_address" name="detail_address" placeholder="상세주소" />
-            </div>
-            <div class="section-title">
-              <h2>추가 정보</h2>
-            </div>
-            <div class="birth-container">
-              <label class="birthTit">생년월일</label>
-              <div class="birth-selection">
-                <div class="calendar-type">
-                  <label>
-                    <input class="radio" type="radio" name="lunar" value="solar" checked />
-                    <span class="checkMark"></span>
-                    <span>양력</span>
-                  </label>
-                  <label>
-                    <input class="radio" type="radio" name="lunar" value="lunar" />
-
-                    <span class="checkMark"></span>
-                    <span>음력</span>
-                  </label>
-                </div>
-                <div class="birth-date-inputs">
-                  <input class="year date-inputs" type="text" name="birth_year" placeholder="년" size="4" />
-                  <span>년</span>
-                  <input class="month date-inputs" type="text" name="birth_month" placeholder="월" size="2" />
-                  <span>월</span>
-                  <input class="day date-inputs" type="text" name="birth_day" placeholder="일" size="2" /><span
-                    >일</span
-                  >
-                </div>
-                <p>• 한번 입력된 생년월일은 변경이 불가합니다!</p>
-              </div>
-            </div>
-            <button class="signupBtn" type="submit">가입하기</button>
+            </a>
           </div>
-        </form>
+
+          <div class="registerWrap">
+            <form id="registerForm">
+              <div class="formContainer">
+                <!-- 회원 인증 -->
+                <div class="registerCont">
+                  <div class="contTit">
+                    <h2>회원 인증</h2>
+                  </div>
+                  <!-- 회원 체크 -->
+                  <div class="radio-group">
+                    <label>
+                      <input class="radio" type="radio" name="member_type" value="individual" />
+                      <span class="checkMark"></span>
+                      <span>개인회원</span>
+                    </label>
+                    <label>
+                      <input class="radio" type="radio" name="member_type" value="foreigner" />
+                      <span class="checkMark"></span>
+                      <span class="foreigner">외국인회원(foreigner)</span>
+                    </label>
+                  </div>
+                  <div class="line"></div>
+                  <!-- 인증 체크 -->
+                  <div class="radio-group">
+                    <div class="authCont">
+                      <div class="authBox">
+                        <label>
+                          <input class="radio" type="radio" name="auth_type" value="phone" />
+                          <span class="checkMark"></span>
+                          <span>휴대폰인증</span>
+                        </label>
+                        <label>
+                          <input class="radio" type="radio" name="auth_type" value="email" />
+                          <span class="checkMark"></span>
+                          <span>이메일인증</span>
+                        </label>
+                      </div>
+                      <button class="authBtn" type="button">휴대폰 인증</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- 기본 정보 -->
+                <div class="basicInfoCont">
+                  <div class="contTit">
+                    <h2>기본 정보</h2>
+                  </div>
+                  <div class="inputCont">
+                    <div class="shortBoxCont">
+                      <input class="shortBox normalBox" type="text" id="userId" name="userId" placeholder="아이디" />
+                      <button class="authBtn btnShort" type="button">중복확인</button>
+                    </div>
+                    <span id="userIdError" class="error-message-register"></span>
+
+                    <input class="normalBox" type="password" id="password" name="password" placeholder="비밀번호" />
+                    <span id="passwordError" class="error-message-register"></span>
+
+                    <input
+                      class="normalBox"
+                      type="password"
+                      id="passwordConfirm"
+                      name="passwordConfirm"
+                      placeholder="비밀번호 확인"
+                    />
+                    <span id="passwordConfirmError" class="error-message-register"></span>
+                    <div class="shortBoxCont">
+                      <input class="shortBox normalBox" type="text" id="address" name="address" placeholder="주소" />
+                      <button class="authBtn btnShort" type="button">우편번호</button>
+                    </div>
+                    <span id="addressError" class="error-message-register"></span>
+
+                    <input
+                      class="normalBox"
+                      type="text"
+                      id="detailAddress"
+                      name="detailAddress"
+                      placeholder="상세주소"
+                    />
+                    <span id="detailAddressError" class="error-message-register"></span>
+                  </div>
+                </div>
+                <div class="addInfoCont">
+                  <div class="contTit">
+                    <h2>추가 정보</h2>
+                  </div>
+                  <div class="birthWrap">
+                    <label class="birthTit">생년월일</label>
+                    <div class="birthCont">
+                      <div class="calendar-group">
+                        <label>
+                          <input class="radio" type="radio" name="lunar" value="solar" checked />
+                          <span class="checkMark"></span>
+                          <span>양력</span>
+                        </label>
+                        <label>
+                          <input class="radio" type="radio" name="lunar" value="lunar" />
+
+                          <span class="checkMark"></span>
+                          <span>음력</span>
+                        </label>
+                      </div>
+                      <div class="birthDateCont">
+                        <input
+                          class="year inputDate"
+                          type="number"
+                          id="birthYear"
+                          name="birthYear"
+                          size="4"
+                          min="1000"
+                          max="9999"
+                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        />
+                        <span>년</span>
+                        <input
+                          class="month inputDate"
+                          type="number"
+                          id="birthMonth"
+                          name="birthMonth"
+                          size="2"
+                          min="1"
+                          max="12"
+                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        />
+                        <span>월</span>
+                        <input
+                          class="day inputDate"
+                          type="number"
+                          id="birthDay"
+                          name="birthDay"
+                          size="2"
+                          min="1"
+                          max="31"
+                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        /><span>일</span>
+                      </div>
+                      <p>• 한번 입력된 생년월일은 변경이 불가합니다!</p>
+                    </div>
+                  </div>
+                  <button class="registerBtn" type="submit">가입하기</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </main>
-    <div id="phoneModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>휴대폰 인증</h2>
-        <label for="phone">휴대폰 번호:</label>
-        <input type="text" id="phone" name="phone" placeholder="휴대폰 번호" />
-        <br /><br />
-        <label for="phone_code">인증 코드:</label>
-        <input type="text" id="phone_code" name="phone_code" placeholder="인증 코드" />
-        <br /><br />
-        <button id="send_code" type="button">인증 코드 발송</button>
-        <button id="verify_code" type="button">인증 코드 확인</button>
-      </div>
-    </div>
+    <script src="../../js/registerScript.js" defer></script>
   </body>
 </html>
