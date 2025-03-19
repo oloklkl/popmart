@@ -1,5 +1,5 @@
 // productDetailSwiper.js
-document.addEventListener('DOMContentLoaded', () => {
+export function initializeProductSwipers() {
     // 제품 상세 Swiper
     const productSliderSwiper = new Swiper('.product-slider-section .swiper', {
         slidesPerView: 5,
@@ -68,4 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         },
     });
-});
+}
+
+// DOMContentLoaded 이벤트가 아닌, 이제 이 함수가 호출되는 방식으로 변경됩니다.
