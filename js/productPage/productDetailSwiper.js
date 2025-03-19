@@ -3,9 +3,10 @@ export function initializeProductSwipers() {
     // 제품 상세 Swiper
     const productSliderSwiper = new Swiper('.product-slider-section .swiper', {
         slidesPerView: 5,
-        centeredSlides: true,
+        centeredSlides: false,
         loop: true,
         spaceBetween: -150,
+        speed: 500,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -39,11 +40,21 @@ export function initializeProductSwipers() {
                 slides[farPrevIndex].classList.add('far-prev');
             },
             init: function () {
-                // 초기 로드 시 활성 슬라이드 및 주변 슬라이드 설정
-                this.emit('slideChange');
+                setTimeout(() => {
+                    this.emit('slideChange');
+                }, 10); // ✅ 약간의 지연을 추가해 0ms transition 방지
             },
         },
-        // coverflow 효과 제거하고 대신 크기와 투명도를 클래스로 조절
+        effect: 'coverflow',
+        grabCursor: true,
+        slidesPerView: '5',
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 500,
+            modifier: 1,
+            slideShadows: true,
+        },
     });
 
     // 관련 상품 Swiper
