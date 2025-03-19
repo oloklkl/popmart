@@ -53,15 +53,17 @@
 
         @include tablet {
             flex-direction: row;
+            flex-wrap: wrap;
         }
 
         @include mobile {
             flex-direction: row;
+            flex-wrap: wrap;
         }
 
         span {
             display: inline-block;
-            width: 240px;
+            width: 270px;
             height: 85px;
             font-size: 20px;
             text-align: center;
@@ -70,15 +72,15 @@
             background-position: center;
 
             @include tablet {
-                width: auto;
-                height: auto;
+                width: 170px;
+                height: 50px;
                 font-size: 17px;
                 line-height: 55px;
             }
 
             @include mobile {
-                width: auto;
-                height: auto;
+                width: 145px;
+                height: 45px;
                 font-size: 15px;
                 line-height: 55px;
             }
@@ -333,16 +335,18 @@
                     opacity: 1; /* 호버 시 활성화 */
                 }
 
-                // &:hover {
-                //     transform: translateY(-10px);
-                // }
-
                 img {
                     width: 100%;
                     object-fit: fill;
                     position: relative;
                     z-index: 2;
                     border: 1px solid $gray-30;
+                    border-bottom: none;
+                    transition: transform 0.5s ease;
+
+                    &:hover {
+                        transform: translateY(-20px);
+                    }
                 }
 
                 .grid-item-details {
@@ -402,7 +406,6 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: pink;
     pointer-events: none;
     transform: translate(-50%, -50%);
     transition: background-color 0.3s ease;
