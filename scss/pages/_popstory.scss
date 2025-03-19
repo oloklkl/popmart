@@ -1,19 +1,15 @@
-/* 전반적인 페이지 스타일 설정 */
-body {
-    background-color: #f5f2e9; // 배경색을 부드러운 베이지 톤으로 설정
-    color: #333; // 기본 텍스트 색상을 어두운 회색으로 설정
-    font-family: 'Arial', sans-serif; // 기본 글꼴 설정
-    margin: 0;
-    padding: 0;
-}
 
 .popstory-container {
     position: relative;
     top: 0;
     left: 0;
-    background-color: #ffba4a12;
+    background-color: #f5f2e9; // 배경색을 부드러운 베이지 톤으로 설정
     width: 100vw;
     height: 150vh;
+    color: #333; // 기본 텍스트 색상을 어두운 회색으로 설정
+    font-family: 'Arial', sans-serif; // 기본 글꼴 설정
+    margin: 0;
+    padding: 0;
 }
 .popstory-inner {
     width: 100vw;
@@ -112,6 +108,12 @@ body {
             top: -120px;
             left:750px;
             
+
+                //hover했을때 나타나는 효과
+             &:hover .product-description {
+                 display: block;
+                  opacity: 1;
+                    }
         }
     }
 
@@ -172,26 +174,6 @@ body {
         opacity: 1;
     }
 
-    &::before:hover + .tag-container,
-    &:hover {
-        opacity: 1;
-    }
-
-    &:hover .tags {
-        display: flex;
-        opacity: 1;
-    }
-
-
-}
-
-// .tags {
-//     display: flex;
-//     flex-direction: row;
-// justify-content: center;
-// align-items: center;
-// gap: 14px;
-// }
 
 .tag {
     display: flex;
@@ -208,6 +190,7 @@ body {
     font-weight: bold;
     white-space: nowrap;
     text-align: center;
+}
 }
 
 
@@ -245,11 +228,7 @@ body {
     height: 400px;//높이를 주어야만 그 안에서 버같은 부수요소에 설정할수있다
 
 
-    //hover했을때 나타나는 효과
-    &:hover .product-description {
-        display: block;
-        opacity: 1;
-    }
+
 }
 
 .product-description {    
