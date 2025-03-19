@@ -1,11 +1,11 @@
-@import '../base/include.scss';
+@import "../base/include.scss";
 
 // body {
 //   background-color: #f5f5f5;
 // }
-.header {
-  display: none;
-}
+// .header {
+//   display: none;
+// }
 #myPageDrawer {
   display: none;
 }
@@ -302,22 +302,22 @@
 
 .info-box {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 100%;
+  transform: translateY(-10px);
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 15px;
   border-radius: 10px;
-  visibility: hidden; /* 기본적으로 숨김 */
+  // visibility: hidden; /* 기본적으로 숨김 */
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3 ease-in-out;
   z-index: 10;
 }
 .info-box.show {
-  visibility: visible; /* 🔹 visibility 속성 추가 */
+  // visibility: visible; /* 🔹 visibility 속성 추가 */
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateY(0) scale(1);
 }
 .info-wrapper {
   position: relative; /* 🔥 relative를 적용할 새로운 부모 요소 */
