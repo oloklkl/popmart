@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Popmart Collection</title>
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
         <link rel="stylesheet" href="/css/output/styles.css" />
     </head>
 
@@ -16,7 +15,7 @@
                     <section class="content-wrapper">
                         <section class="brand-container">
                             <div class="brand-list">
-                                <span class="labubu"><a href="/productListItems?category=labubu">라부부</a></span>
+                                <span class="labubu"><a href="#" data-category="labubu">라부부</a></span>
 
                                 <span class="crybaby"><a href="#" data-category="crybaby">크라이베이비</a></span>
                                 <span class="skullpanda"><a href="#" data-category="skullpanda">스컬판다</a></span>
@@ -42,18 +41,14 @@
                                 <h2>COLLECTION</h2>
                             </div>
                             <div class="grid-container">
-                                <div class="swiper product-swiper">
-                                    <div class="grid-wrapper-inner swiper-wrapper">
-                                        <!-- 상품 아이템들이 여기에 동적으로 추가됩니다 -->
-                                    </div>
-
-                                    <!-- 컨트롤 요소 -->
+                                <div class="grid-wrapper-inner">
+                                    <!-- 동적으로 아이템이 추가됨 -->
                                 </div>
-                                <div class="swiper-controls">
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-pagination"></div>
-                                    <div class="swiper-button-next"></div>
-                                </div>
+                            </div>
+                            <div class="pagination-controls">
+                                <button class="prev-button">이전</button>
+                                <span class="page-numbers">1 / 4</span>
+                                <button class="next-button">다음</button>
                             </div>
                         </section>
                     </section>
@@ -61,7 +56,6 @@
             </section>
         </main>
         <div id="footer"></div>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script type="module" src="/js/productPage/productListScript.js"></script>
         <script src="/js/scriptLoader.js" defer></script>
     </body>
