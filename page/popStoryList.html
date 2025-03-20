@@ -35,13 +35,11 @@
     <script>
       window.addEventListener('DOMContentLoaded', () => {
         if (typeof loadCommonElements === 'function') {
-          loadCommonElements() // ✅ `scriptLoader.js`가 로드된 후 실행
+          loadCommonElements(); // :흰색_확인_표시: `scriptLoader.js`가 로드된 후 실행
         } else {
-          console.error(
-            '❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.'
-          )
+          console.error(':x: loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
         }
-      })
+      });
     </script>
   </body>
 </html>
