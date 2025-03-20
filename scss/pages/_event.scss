@@ -281,6 +281,9 @@
   transform: translateX(-50%);
 
   img {
+    @include mobile {
+      margin-top: -13px;
+    }
     position: relative;
     width: 100%;
     height: auto;
@@ -402,6 +405,7 @@
     .text_area {
       @include mobile {
         font-size: 32px;
+        text-align: left;
       }
       @include tablet {
         font-size: 36px;
@@ -474,6 +478,7 @@
     .text_area {
       @include mobile {
         font-size: 32px;
+        text-align: left;
       }
       @include tablet {
         font-size: 36px;
@@ -499,6 +504,9 @@
 .info_area {
   position: relative;
   &::before {
+    @include mobile {
+      height: 1200px;
+    }
     content: '';
     position: absolute;
     top: -300px;
@@ -510,7 +518,7 @@
     z-index: -100;
   }
   .info_area_inner {
-    margin-top: 619px;
+    margin-top: 320px;
   }
 
   .notice_release,
@@ -655,5 +663,11 @@
     background-color: $primary;
     border-radius: 30px;
     padding: 15px;
+  }
+  .arrow-btn {
+    margin-left: 5px;
+  }
+  .arrow-btn {
+    margin-left: 5px;
   }
 }

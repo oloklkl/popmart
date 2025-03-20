@@ -80,3 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// gsap
+
+document.querySelectorAll('.notice_amount, .notice_release, .notice_guide').forEach((element) => {
+  gsap.from(element, {
+    scrollTrigger: {
+      trigger: element,
+      start: 'top 80%',
+      toggleActions: 'play none none none',
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power2.out',
+  });
+});
