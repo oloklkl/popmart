@@ -4,12 +4,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Popmart Collection</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
         <link rel="stylesheet" href="../../css/output/styles.css" />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
-        <main id="content">
-            <div class="inner">
+        <main>
+            <div class="product-inner">
                 <div class="content-wrapper">
                     <div class="brand-container">
                         <div class="brand-list">
@@ -57,22 +58,18 @@
                     </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer></footer>
-
-    <script type="module" src="/js/productListScript.js"></script>
-    <script src="/js/scriptLoader.js" defer></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        if (typeof loadCommonElements === 'function') {
-          loadCommonElements(); // ✅ `scriptLoader.js`가 로드된 후 실행
-        } else {
-          console.error('❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
-        }
-      });
-    </script>
-  </body>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script type="module" src="../../js/productPage/productListScript.js"></script>
+        <script src="/js/scriptLoader.js" defer></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                if (typeof loadCommonElements === 'function') {
+                    loadCommonElements(); // :흰색_확인_표시: `scriptLoader.js`가 로드된 후 실행
+                } else {
+                    console.error(':x: loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
+                }
+            });
+        </script>
+    </body>
 </html>

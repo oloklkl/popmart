@@ -37,7 +37,7 @@ const items = [
 
     {
         id: 31,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail31.jpg?raw=true',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail31.png?raw=true',
         title: '아주라 꿈으로 가는 열쇠 블리스터',
         price: '40,000원',
         category: 'azura',
@@ -52,7 +52,7 @@ const items = [
 
     {
         id: 32,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail32.jpg?raw=true',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail32.png?raw=true',
         title: '디무 By Your Side 시리즈',
         price: '15,000원',
         category: 'dimoo',
@@ -115,7 +115,7 @@ const items = [
     },
     {
         id: 33,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail33.jpg?raw=true',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail33.png?raw=true',
         title: '하치푸푸 In My Dream 시리즈',
         price: '15,000원',
         category: 'hacipupu',
@@ -220,7 +220,7 @@ const items = [
     },
     {
         id: 34,
-        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail34.jpg?raw=true',
+        imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail34.png?raw=true',
         title: '디무 14주년 기념 시리즈',
         price: '15,000원',
         category: 'dimoo',
