@@ -48,7 +48,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      background-color: white;
+      background-color: #f5f2e9;
       position: relative;
       overflow: hidden;
       transition: color 0.2s ease-in-out;
@@ -94,9 +94,12 @@
           transform: scale(3);
           background-color: #fff !important;
           border-radius: 50%;
-
           transform-origin: center;
           transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+          svg {
+            display: block;
+            z-index: 999;
+          }
         }
       }
 
@@ -120,9 +123,12 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        z-index: 1;
+        z-index: 10;
         transform-origin: center;
         transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        svg {
+          display: block;
+        }
       }
     }
   }
@@ -181,6 +187,9 @@
     }
     .event_item_state {
       @include mobile {
+        position: absolute;
+        top: 20px;
+        right: 0;
         display: inline;
         font-size: 12px;
         padding: 5px 14px;
@@ -192,6 +201,10 @@
       border: 1px solid #000;
       padding: 10px 28px;
       border-radius: 30px;
+    }
+    .event_item_border {
+      @include mobile {
+      }
     }
   }
 }
@@ -206,10 +219,14 @@
   background-color: black;
   left: 50%;
   z-index: -1;
+  @include mobile {
+    bottom: 12px; /* 바닥에서 5px 위로 올림 (원하는 값으로 조정 가능) */
+  }
 }
 
 .event_item::after {
   @include mobile {
+    bottom: 12px;
   }
   content: '';
   position: absolute;
@@ -257,20 +274,6 @@
   }
 }
 
-.cursor-shadow {
-  width: 100px;
-  height: 100px;
-  background-color: rgba(0, 0, 0, 1);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease-out;
-}
-
 .event_detail_main {
   position: relative;
   width: 100vw;
@@ -278,6 +281,9 @@
   transform: translateX(-50%);
 
   img {
+    @include mobile {
+      margin-top: -13px;
+    }
     position: relative;
     width: 100%;
     height: auto;
@@ -357,6 +363,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 95px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
@@ -367,6 +376,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: left;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -387,11 +397,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 220px;
+    gap: 95px;
     margin-top: 245px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
+        text-align: left;
       }
       @include tablet {
         font-size: 36px;
@@ -399,6 +413,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: right;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -421,6 +436,9 @@
     align-items: center;
     gap: 95px;
     margin-top: 245px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
@@ -431,6 +449,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: left;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -451,11 +470,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 220px;
+    gap: 95px;
     margin-top: 245px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
+        text-align: left;
       }
       @include tablet {
         font-size: 36px;
@@ -463,6 +486,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: right;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -480,18 +504,21 @@
 .info_area {
   position: relative;
   &::before {
+    @include mobile {
+      height: 1200px;
+    }
     content: '';
     position: absolute;
     top: -300px;
     left: 50%;
     width: 100vw;
-    height: 2000px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 50%, black 100%);
+    height: 1800px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 50%, black 100%);
     transform: translateX(-50%);
     z-index: -100;
   }
   .info_area_inner {
-    margin-top: 619px;
+    margin-top: 320px;
   }
 
   .notice_release,
@@ -624,6 +651,23 @@
   }
 }
 #pagination {
-  margin-top: 20px;
-  text-align: center;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin: 15px 0;
+  .page-btn {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+  .active {
+    background-color: $primary;
+    border-radius: 30px;
+    padding: 15px;
+  }
+  .arrow-btn {
+    margin-left: 5px;
+  }
+  .arrow-btn {
+    margin-left: 5px;
+  }
 }
