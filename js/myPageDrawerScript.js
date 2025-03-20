@@ -27,18 +27,43 @@ function setupEventListeners() {
   }
 
   // 모달 오버레이 클릭 이벤트 - 메뉴 닫기
-  const modalOverlay = document.getElementById("modal-overlay");
-  if (modalOverlay) {
-    modalOverlay.addEventListener("click", function (event) {
-      // 검색 관련 이벤트가 아닌 경우에만 메뉴 닫기
-      if (!document.getElementById("search-box").classList.contains("open")) {
-        console.log("오버레이가 클릭되었습니다.");
-        closeMenu();
-      }
-    });
-  } else {
-    console.warn("모달 오버레이(#modal-overlay)를 찾을 수 없습니다.");
-  }
+  // const modalOverlay = document.getElementById("modal-overlay");
+  // if (modalOverlay) {
+  //   modalOverlay.addEventListener("click", function (event) {
+  //     // 검색 관련 이벤트가 아닌 경우에만 메뉴 닫기
+  //     if (!document.getElementById("search-box").classList.contains("open")) {
+  //       console.log("오버레이가 클릭되었습니다.");
+  //       closeMenu();
+  //     }
+  //   });
+  // } else {
+  //   console.warn("모달 오버레이(#modal-overlay)를 찾을 수 없습니다.");
+  // }
+  document.addEventListener("DOMContentLoaded", () => {
+    const userIcon = document.getElementById("user-icon");
+    const mypageMenu = document.getElementById("mypage-menu");
+    const mypageOverlay = document.getElementById("modal-overlay-mypage-menu");
+
+    // 마이페이지 메뉴 열기
+    if (userIcon) {
+      userIcon.addEventListener("click", () => {
+        mypageMenu.classList.add("open");
+        mypageOverlay.classList.add("open");
+        mypageOverlay.style.display = "block";
+      });
+    }
+
+    // 마이페이지 메뉴 닫기 (오버레이 클릭 시 닫힘)
+    if (mypageOverlay) {
+      mypageOverlay.addEventListener("click", () => {
+        mypageMenu.classList.remove("open");
+        mypageOverlay.classList.remove("open");
+        setTimeout(() => {
+          mypageOverlay.style.display = "none";
+        }, 300);
+      });
+    }
+  });
 
   // 뒤로가기 버튼 클릭 이벤트
   const beforeBtn = document.getElementById("beforeBtn");
