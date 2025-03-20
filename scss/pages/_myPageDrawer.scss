@@ -38,7 +38,7 @@
 
 // 마이페이지 메뉴 열렸을 때 스타일
 #mypage-menu.open {
-  display: block; // 보이도록 설정
+  display: block !important; // 추가
   right: 0;
 }
 
