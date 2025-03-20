@@ -7,6 +7,7 @@
     <title>Pop Story</title>
   </head>
   <body>
+    <div id="header"></div>
     <div class="popstory-container">
       <div class="popstory-inner">
         <div class="textbox">
@@ -78,17 +79,8 @@
         </div>
       </div>
     </div>
-
+    <div id="footer"></div>
     <script src="/js/popStoryScript.js"></script>
     <script src="/js/scriptLoader.js" defer></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        if (typeof loadCommonElements === 'function') {
-          loadCommonElements();
-        } else {
-          console.error('❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
-        }
-      });
-    </script>
   </body>
 </html>

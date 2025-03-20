@@ -1,16 +1,16 @@
 // productListScript.js
 
-import items from "./productListItems.js";
-import { initSwiper } from "./productListSwiper.js";
+import items from './productDetailItem.js';
+import { initSwiper } from './productListSwiper.js';
 
 export function initializePage() {
   setTimeout(() => {
-    if (typeof Swiper === "undefined") {
-      console.error("Swiper not found");
+    if (typeof Swiper === 'undefined') {
+      console.error('Swiper not found');
       return;
     }
     const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get("category");
+    const category = urlParams.get('category');
 
     const filteredItems = category ? filterProducts(category) : items;
     runProductListScripts(filteredItems);
@@ -20,8 +20,8 @@ export function initializePage() {
 
 function waitForSwiper(callback) {
   const checkSwiper = setInterval(() => {
-    if (typeof window.Swiper !== "undefined") {
-      console.log("✅ Swiper 라이브러리 로드 완료");
+    if (typeof window.Swiper !== 'undefined') {
+      console.log('✅ Swiper 라이브러리 로드 완료');
       clearInterval(checkSwiper);
       callback();
     }
@@ -33,55 +33,54 @@ function filterProducts(category) {
 }
 
 function runProductListScripts(productItems) {
-  const gridContainer = document.querySelector(".grid-container");
-  if (!gridContainer) return console.error("Grid container not found");
+  const gridContainer = document.querySelector('.grid-container');
+  if (!gridContainer) return console.error('Grid container not found');
 
   const isMobile = window.innerWidth <= 599;
   const itemsPerPage = isMobile ? 6 : 9;
   const totalPages = Math.ceil(productItems.length / itemsPerPage);
 
-  const wrapperDiv = document.createElement("div");
-  wrapperDiv.className = "grid-wrapper-inner swiper-wrapper";
+  const wrapperDiv = document.createElement('div');
+  wrapperDiv.className = 'grid-wrapper-inner swiper-wrapper';
 
   for (let page = 0; page < totalPages; page++) {
-    const pageDiv = document.createElement("div");
-    pageDiv.className = "grid-page swiper-slide";
+    const pageDiv = document.createElement('div');
+    pageDiv.className = 'grid-page swiper-slide';
 
     const startIndex = page * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, productItems.length);
 
     for (let i = startIndex; i < endIndex; i++) {
       const item = productItems[i];
-      const gridItem = document.createElement("a");
+      const gridItem = document.createElement('a');
       gridItem.href = `/page/productPage/productDetail.html?id=${item.id}`;
-      gridItem.className = "grid-item";
+      gridItem.className = 'grid-item';
 
-      const imgElement = document.createElement("img");
+      const imgElement = document.createElement('img');
       imgElement.src = item.imgSrc;
       imgElement.alt = item.title;
-      imgElement.onerror = () => (imgElement.src = "/images/placeholder.png");
+      imgElement.onerror = () => (imgElement.src = '/images/placeholder.png');
 
-      const detailsDiv = document.createElement("div");
-      detailsDiv.className = "grid-item-details";
+      const detailsDiv = document.createElement('div');
+      detailsDiv.className = 'grid-item-details';
 
-      const infoDiv = document.createElement("div");
-      infoDiv.className = "grid-item-info";
+      const infoDiv = document.createElement('div');
+      infoDiv.className = 'grid-item-info';
 
-      const titleElement = document.createElement("h3");
-      titleElement.className = "grid-item-title";
+      const titleElement = document.createElement('h3');
+      titleElement.className = 'grid-item-title';
       titleElement.textContent = item.title;
 
-      const priceElement = document.createElement("p");
-      priceElement.className = "grid-item-price";
+      const priceElement = document.createElement('p');
+      priceElement.className = 'grid-item-price';
       priceElement.textContent = item.price;
 
-      const arrowDiv = document.createElement("div");
-      arrowDiv.className = "grid-item-arrow";
-      const arrowIcon = document.createElement("img");
-      arrowIcon.src =
-        "https://raw.githubusercontent.com/hyeonky/dp-static/main/popmart/btnIcon/arrow-right.svg";
-      arrowIcon.alt = "Arrow Icon";
-      arrowIcon.className = "arrow-icon";
+      const arrowDiv = document.createElement('div');
+      arrowDiv.className = 'grid-item-arrow';
+      const arrowIcon = document.createElement('img');
+      arrowIcon.src = 'https://raw.githubusercontent.com/hyeonky/dp-static/main/popmart/btnIcon/arrow-right.svg';
+      arrowIcon.alt = 'Arrow Icon';
+      arrowIcon.className = 'arrow-icon';
       arrowDiv.appendChild(arrowIcon);
 
       infoDiv.appendChild(titleElement);
@@ -94,7 +93,7 @@ function runProductListScripts(productItems) {
       pageDiv.appendChild(gridItem);
 
       // 클릭 이벤트 리스너 추가
-      gridItem.addEventListener("click", (event) => {
+      gridItem.addEventListener('click', (event) => {
         event.preventDefault();
         window.location.href = `/page/productPage/productDetail.html?id=${item.id}`;
       });
@@ -105,14 +104,14 @@ function runProductListScripts(productItems) {
   setTimeout(initSwiper, 1000);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    fetch("/common/header.html").then((res) => res.text()),
-    fetch("/common/footer.html").then((res) => res.text()),
+    fetch('/common/header.html').then((res) => res.text()),
+    fetch('/common/footer.html').then((res) => res.text()),
   ])
     .then(([headerHTML, footerHTML]) => {
-      document.getElementById("header").innerHTML = headerHTML;
-      document.getElementById("footer").innerHTML = footerHTML;
+      document.getElementById('header').innerHTML = headerHTML;
+      document.getElementById('footer').innerHTML = footerHTML;
     })
-    .catch((error) => console.error("Error loading common components:", error));
+    .catch((error) => console.error('Error loading common components:', error));
 });
