@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/output/styles.css" />
-    <script
-      type="text/javascript"
-      src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <title>로그인 페이지</title>
   </head>
   <body>
+    <div id="header"></div>
     <main>
       <div class="container">
         <div class="inner">
@@ -17,7 +16,8 @@
             <a href="login.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/7f866ab3fe2902079230309d3fb84ccb342b5cd6/popmart/mypage/loginLogo.svg"
-                alt="로그인" />
+                alt="로그인"
+              />
             </a>
           </div>
           <div class="loginWrap">
@@ -25,20 +25,12 @@
               <div class="formContainer">
                 <!-- id -->
                 <div class="idCont">
-                  <input
-                    class="inputBox"
-                    type="text"
-                    id="userId"
-                    placeholder="아이디" />
+                  <input class="inputBox" type="text" id="userId" placeholder="아이디" />
                   <div id="userIdError" class="error-message"></div>
                 </div>
                 <!-- password -->
                 <div class="passwordCont">
-                  <input
-                    class="inputBox password"
-                    type="password"
-                    id="password"
-                    placeholder="비밀번호" />
+                  <input class="inputBox password" type="password" id="password" placeholder="비밀번호" />
                   <div id="passwordError" class="error-message"></div>
                 </div>
                 <!-- checkBox -->
@@ -70,18 +62,21 @@
                 <a href="register.html">
                   <img
                     src="https://raw.githubusercontent.com/hyeonky/dp-static/3a35cbb8a7add967ac16682afc667a358365c9d1/popmart/mypage/snsLogo/naver.svg"
-                    alt="네이버 로그인" />
+                    alt="네이버 로그인"
+                  />
                 </a>
                 <a id="kakao-login-btn" href="javascript:;">
                   <img
                     src="https://raw.githubusercontent.com/hyeonky/dp-static/3a35cbb8a7add967ac16682afc667a358365c9d1/popmart/mypage/snsLogo/kakao.svg"
-                    alt="카카오 로그인" />
+                    alt="카카오 로그인"
+                  />
                 </a>
                 <p class="kakaoP">마지막으로 접속!</p>
                 <a href="register.html">
                   <img
                     src="https://raw.githubusercontent.com/hyeonky/dp-static/3a35cbb8a7add967ac16682afc667a358365c9d1/popmart/mypage/snsLogo/apple.svg"
-                    alt="애플 로그인" />
+                    alt="애플 로그인"
+                  />
                 </a>
               </div>
               <p class="testId">
@@ -94,18 +89,8 @@
         </div>
       </div>
     </main>
+    <div id="footer"></div>
     <script src="../../js/loginScript.js" defer></script>
-    <script src="/js/scriptLoader.js" defer></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        if (typeof loadCommonElements === 'function') {
-          loadCommonElements() // ✅ `scriptLoader.js`가 로드된 후 실행
-        } else {
-          console.error(
-            '❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.'
-          )
-        }
-      })
-    </script>
+    <script src="/js/scriptLoader.js"></script>
   </body>
 </html>
