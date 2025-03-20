@@ -103,6 +103,26 @@
         </div>
       </div>
     </div>
+    <script src="/js/scriptLoader.js" defer></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof loadCommonElements === 'function') {
+          loadCommonElements(); // ✅ `scriptLoader.js`가 로드된 후 실행
+        } else {
+          console.error('❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
+        }
+      });
+    </script>
+    <script src="/js/scriptLoader.js" defer></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof loadCommonElements === 'function') {
+          loadCommonElements(); // ✅ `scriptLoader.js`가 로드된 후 실행
+        } else {
+          console.error('❌ loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
+        }
+      });
+    </script>
   </body>
   <script type="module" src="../js/eventDetail.js"></script>
 </html>

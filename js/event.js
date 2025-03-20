@@ -2,22 +2,6 @@ import { items } from './eventList.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const eventListContainer = document.querySelector('.event_list');
-
-  let cursorShadow = document.querySelector('.cursor-shadow');
-  if (!cursorShadow) {
-    cursorShadow = document.createElement('div');
-    cursorShadow.classList.add('cursor-shadow');
-    document.body.appendChild(cursorShadow);
-  }
-
-  document.addEventListener('mousemove', (e) => {
-    gsap.to(cursorShadow, {
-      x: e.clientX,
-      y: e.clientY,
-      duration: 0.01,
-      ease: 'power2.out',
-    });
-  });
   const itemsPerPage = 7;
   let currentPage = 1;
   const totalPages = Math.ceil(items.length / itemsPerPage);
@@ -32,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderEventList() {
-    eventListContainer.innerHTML = ''; // 기존 리스트 초기화
+    eventListContainer.innerHTML = '';
     const paginatedItems = getPaginatedItems(currentPage);
 
     paginatedItems.forEach((items, index) => {
@@ -63,6 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderPagination() {
     pagination.innerHTML = '';
 
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = '◀';
+    prevBtn.classList.add('arrow-btn', 'prev');
+    if (currentPage === 1) prevBtn.classList.add('disabled');
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderEventList();
+      }
+    });
+    pagination.appendChild(prevBtn);
+
     for (let page = 1; page <= totalPages; page++) {
       const pageBtn = document.createElement('button');
       pageBtn.textContent = page;
@@ -76,6 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pagination.appendChild(pageBtn);
     }
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = '▶';
+    nextBtn.classList.add('arrow-btn', 'next');
+    if (currentPage === totalPages) nextBtn.classList.add('disabled');
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderEventList();
+      }
+    });
+    pagination.appendChild(nextBtn);
   }
 
   const hoverBg = document.createElement('div');

@@ -48,7 +48,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      background-color: white;
+      background-color: #f5f2e9;
       position: relative;
       overflow: hidden;
       transition: color 0.2s ease-in-out;
@@ -257,20 +257,6 @@
   }
 }
 
-.cursor-shadow {
-  width: 100px;
-  height: 100px;
-  background-color: rgba(0, 0, 0, 1);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease-out;
-}
-
 .event_detail_main {
   position: relative;
   width: 100vw;
@@ -357,6 +343,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 95px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
@@ -367,6 +356,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: left;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -387,8 +377,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 220px;
+    gap: 95px;
     margin-top: 245px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
@@ -399,6 +392,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: right;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -421,6 +415,9 @@
     align-items: center;
     gap: 95px;
     margin-top: 245px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
@@ -431,6 +428,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: left;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -451,8 +449,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 220px;
+    gap: 95px;
     margin-top: 245px;
+    .image_area {
+      flex: 1;
+    }
     .text_area {
       @include mobile {
         font-size: 32px;
@@ -463,6 +464,7 @@
       font-size: 64px;
       font-weight: 500;
       text-align: right;
+      flex: 1;
       span {
         @include mobile {
           font-size: 16px;
@@ -485,8 +487,8 @@
     top: -300px;
     left: 50%;
     width: 100vw;
-    height: 2000px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 50%, black 100%);
+    height: 1800px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 50%, black 100%);
     transform: translateX(-50%);
     z-index: -100;
   }
@@ -624,6 +626,19 @@
   }
 }
 #pagination {
-  margin-top: 20px;
-  text-align: center;
+  @include mobile {
+    display: none;
+  }
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin: 15px 0;
+  .page-btn {
+    font-size: 24px;
+  }
+  .active {
+    background-color: $primary;
+    border-radius: 30px;
+    padding: 15px;
+  }
 }
