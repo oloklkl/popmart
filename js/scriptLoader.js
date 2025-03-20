@@ -1,25 +1,20 @@
-window.addEventListener('load', () => {
-  console.log('✅ scriptLoader.js 실행됨!');
-
-  if (typeof loadCommonElements === 'function') {
-    loadCommonElements(); // ✅ 모든 페이지에서 헤더 & 푸터 자동 로드
-  }
-  executePageScript();
-});
+console.log('🚀 scriptLoader.js 로드됨!');
 
 function loadCommonElements() {
   console.log('📢 [헤더 & 푸터 로딩 시작]');
 
-  if (!document.getElementById('header')) {
-    const header = document.createElement('header');
-    header.id = 'header';
+  // ✅ 이미 .header가 존재하면 새로 만들지 않음
+  let header = document.querySelector('.header');
+  if (!header) {
+    header = document.createElement('header');
     header.classList.add('header');
     document.body.prepend(header);
   }
 
-  if (!document.getElementById('footer')) {
-    const footer = document.createElement('footer');
-    footer.id = 'footer';
+  let footer = document.querySelector('.footer');
+  if (!footer) {
+    footer = document.createElement('footer');
+    footer.classList.add('footer');
     document.body.appendChild(footer);
   }
 
@@ -27,7 +22,7 @@ function loadCommonElements() {
     .then((response) => response.text())
     .then((data) => {
       console.log('✅ [헤더 로드 성공]');
-      document.getElementById('header').innerHTML = data;
+      document.querySelector('.header').innerHTML = data; // ✅ 기존 `.header`에 삽입
       reloadStylesheets();
     })
     .catch((error) => console.error('❌ 헤더 로딩 실패:', error));
@@ -36,10 +31,12 @@ function loadCommonElements() {
     .then((response) => response.text())
     .then((data) => {
       console.log('✅ [푸터 로드 성공]');
-      document.getElementById('footer').innerHTML = data;
+      document.querySelector('.footer').innerHTML = data;
     })
     .catch((error) => console.error('❌ 푸터 로딩 실패:', error));
+  loadCommonElements();
 }
+
 const loadedScripts = new Set();
 function executePageScript() {
   const path = window.location.pathname.replace('/', '') || 'home'; // ✅ `route` 대신 `path` 사용

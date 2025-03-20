@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     slide.innerHTML = `
       <div class="slide-content">
         <img src="${item.imgSrc}" alt="${item.title}" class="slide-img">
-        <h3 class="slide-title">${item.title}</h3>
-        <p class="slide-price">${item.price}</p>
+        
       </div>
     `;
 
@@ -46,19 +45,13 @@ document.addEventListener('DOMContentLoaded', async function () {
       delay: 3000, // 3초마다 자동 슬라이드
       disableOnInteraction: false, // 유저가 터치해도 자동 재생 유지
     },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    slidesPerView: 5, // 한 번에 보이는 슬라이드 개수
-    spaceBetween: 20, // 슬라이드 간격
+
+    slidesPerView: 9, // 한 번에 보이는 슬라이드 개수
+    spaceBetween: 9, // 슬라이드 간격
     breakpoints: {
       768: { slidesPerView: 3 },
       1024: { slidesPerView: 4 },
     },
   });
+  initializePage();
 });

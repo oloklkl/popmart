@@ -25,25 +25,25 @@
 
     <script>
       // 공통 헤더 & 푸터 불러오기
-      fetch('/common/header.html')
-        .then((response) => response.text())
-        .then((data) => (document.getElementById('header').innerHTML = data))
-        .catch((error) => console.error('Error loading header:', error));
+      // fetch('/common/header.html')
+      //   .then((response) => response.text())
+      //   .then((data) => (document.getElementById('header').innerHTML = data))
+      //   .catch((error) => console.error('Error loading header:', error));
 
-      fetch('/common/footer.html')
-        .then((response) => response.text())
-        .then((data) => (document.getElementById('footer').innerHTML = data))
-        .catch((error) => console.error('Error loading footer:', error));
+      // fetch('/common/footer.html')
+      //   .then((response) => response.text())
+      //   .then((data) => (document.getElementById('footer').innerHTML = data))
+      //   .catch((error) => console.error('Error loading footer:', error));
 
-      fetch('/common/myPageDrawer.html')
-        .then((response) => response.text())
-        .then((data) => (document.getElementById('myPageDrawer').innerHTML = data))
-        .catch((error) => console.error('Error loading myPageDrawer:', error));
+      // fetch('/common/myPageDrawer.html')
+      //   .then((response) => response.text())
+      //   .then((data) => (document.getElementById('myPageDrawer').innerHTML = data))
+      //   .catch((error) => console.error('Error loading myPageDrawer:', error));
 
-      fetch('/common/searchDrawer.html')
-        .then((response) => response.text())
-        .then((data) => (document.getElementById('searchDrawer').innerHTML = data))
-        .catch((error) => console.error('Error loading searchDrawer:', error));
+      // fetch('/common/searchDrawer.html')
+      //   .then((response) => response.text())
+      //   .then((data) => (document.getElementById('searchDrawer').innerHTML = data))
+      //   .catch((error) => console.error('Error loading searchDrawer:', error));
 
       // ✅ 슬래시 기반 라우팅 설정
       function loadPage() {

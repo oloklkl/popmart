@@ -13,13 +13,14 @@
   display: none;
 }
 .background-yellow {
-  height: 500px;
+  height: 5400px;
   background-color: #ffba4a;
   width: 100vw;
   position: relative;
   top: 0;
   left: 0;
   z-index: -10;
+  overflow: hidden;
   .dom-back {
     height: 1000px;
     width: 100vw;
@@ -128,6 +129,9 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
         .big-circle {
           stroke-linecap: round;
           opacity: 0.6;
@@ -287,28 +291,28 @@
 }
 
 // 호버효과
-.circle-cursor {
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: black;
-  // background: difference;
-  mix-blend-mode: normal;
-  pointer-events: none;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
-  overflow: visible;
-}
-// .black-bg:hover .circle-cursor {
-//   mix-blend-mode: normal; /* 블렌드 모드 해제 */
-//   background: white; /* 밝은 색으로 변경 */
+// .circle-cursor {
+//   // position: fixed;
+//   // width: 200px;
+//   // height: 200px;
+//   // border-radius: 50%;
+//   // background: black;
+//   // // background: difference;
+//   // mix-blend-mode: normal;
+//   // pointer-events: none;
+//   // z-index: 9999;
+//   // left: 0;
+//   // top: 0;
+//   // opacity: 1;
+//   // visibility: visible;
+//   // transform: translate(-50%, -50%);
+//   // transition: opacity 0.3s ease;
+//   // overflow: visible;
 // }
+.black-bg:hover .circle-cursor {
+  mix-blend-mode: normal; /* 블렌드 모드 해제 */
+  background: white; /* 밝은 색으로 변경 */
+}
 .prev-product-container:hover .prev-product {
   transform: scale(1.7);
 }
@@ -375,18 +379,19 @@
 }
 #section04 {
   position: absolute;
-  bottom: -4000px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  padding: 50px 0;
+  padding: 20px 20px;
   background: #0a0a0a;
   text-align: center;
   z-index: 15;
   .swiper-container {
-    width: 90%;
+    width: 50%;
     max-width: 1200px;
     margin: auto;
     position: relative;
+    z-index: 10;
   }
 
   .swiper-slide {
@@ -394,8 +399,8 @@
     flex-direction: column;
     align-items: center;
     background: #111;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 2px;
+    border-radius: 2px;
     transition: transform 0.3s ease;
   }
 
@@ -404,28 +409,8 @@
   }
 
   .slide-img {
-    width: 100px;
+    width: 100%;
     height: auto;
     margin-bottom: 10px;
-  }
-
-  .slide-title {
-    font-size: 16px;
-    color: white;
-    margin-bottom: 5px;
-  }
-
-  .slide-price {
-    font-size: 14px;
-    color: #aaa;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: white !important;
-  }
-
-  .swiper-pagination-bullet {
-    background: white;
   }
 }
