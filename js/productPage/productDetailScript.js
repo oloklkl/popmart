@@ -139,13 +139,16 @@ function updateRelatedProducts() {
         swiperSlide.classList.add('swiper-slide');
 
         // 0, 2, 4 인덱스 이미지 선택
-        const imageIndex = [0, 2, 4][i % 3]; // 0, 2, 4 인덱스를 순차적으로 사용
-
-        swiperSlide.innerHTML = `
-            <img src="${randomProduct.mainImages[imageIndex]}" alt="${randomProduct.title}" />
-            <h3>${randomProduct.title}</h3>
-            <p>${randomProduct.price}</p>
-        `;
+        const imageIndex = [0, 2, 4][i % 3];
+        if (randomProduct.mainImages[imageIndex]) {
+            swiperSlide.innerHTML = `
+                <img src="${randomProduct.mainImages[imageIndex]}" alt="${randomProduct.title}" />
+                <h3>${randomProduct.title}</h3>
+                <p>${randomProduct.price}</p>
+            `;
+        } else {
+            console.error(`mainImages[${imageIndex}] does not exist for product ID: ${randomProduct.id}`);
+        }
         swiperWrapper.appendChild(swiperSlide);
     }
 }
