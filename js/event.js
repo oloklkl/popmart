@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   pagination.id = 'pagination';
   document.body.appendChild(pagination);
 
+  const isMobile = window.innerWidth <= 600;
+
   function getPaginatedItems(page) {
     const startIndex = (page - 1) * itemsPerPage;
     return items.slice(startIndex, startIndex + itemsPerPage);
@@ -48,7 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     pagination.innerHTML = '';
 
     const prevBtn = document.createElement('button');
-    prevBtn.textContent = '◀';
+    prevBtn.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>`;
     prevBtn.classList.add('arrow-btn', 'prev');
     if (currentPage === 1) prevBtn.classList.add('disabled');
 
@@ -74,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pagination.appendChild(pageBtn);
     }
     const nextBtn = document.createElement('button');
-    nextBtn.textContent = '▶';
+    nextBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
     nextBtn.classList.add('arrow-btn', 'next');
     if (currentPage === totalPages) nextBtn.classList.add('disabled');
 
