@@ -58,6 +58,45 @@ document.getElementById('address').addEventListener('keydown', function (e) {
   e.preventDefault()
 })
 
+// 휴대폰 & 이메일 인증
+document.querySelector('.authBtn').addEventListener('click', function () {
+  const authType = document.querySelector(
+    'input[name="auth_type"]:checked'
+  )?.value
+
+  if (authType === 'email') {
+    // 이메일 입력 받기
+    const email = prompt('이메일을 입력하세요 (예: example@example.com)')
+
+    if (email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (emailRegex.test(email)) {
+        const verificationCode = generateVerificationCode()
+        alert(`이메일 인증 코드가 전송되었습니다: ${verificationCode}`)
+      } else {
+        alert('올바른 이메일 형식을 입력하세요.')
+      }
+    }
+  } else if (authType === 'phone') {
+    const phoneNumber = prompt('휴대폰 번호를 입력하세요 (예: 01012345678)')
+
+    if (phoneNumber) {
+      const phoneRegex = /^\d{10,11}$/
+      if (phoneRegex.test(phoneNumber)) {
+        const verificationCode = generateVerificationCode()
+        alert(`휴대폰 인증 코드가 전송되었습니다: ${verificationCode}`)
+      } else {
+        alert('올바른 휴대폰 번호 형식을 입력하세요.')
+      }
+    }
+  }
+})
+
+// 인증번호 생성
+function generateVerificationCode() {
+  return Math.floor(100000 + Math.random() * 999999)
+}
+
 // 회원가입 폼 제출 이벤트
 const registerForm = document.getElementById('registerForm')
 registerForm.addEventListener('submit', (e) => {

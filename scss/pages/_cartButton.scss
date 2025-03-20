@@ -10,46 +10,46 @@
   }
 }
 
-.cartPreview {
+@mixin div-style {
   position: fixed;
-  bottom: 0;
-  right: 0;
-  transform: translate(-50%, -170%);
-  width: 50px;
-  height: 50px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  z-index: 10001; // 마우스 커서보다 위
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  @include tablet {
-    transform: translate(-50%, -170%);
-    width: 70px;
-    height: 70px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: auto; // 클릭 가능하게 설정
+
+  img {
+    transition: transform 0.3s ease-in-out;
   }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  @include tablet {
+    width: 50px;
+    height: 50px;
+  }
+
   @include tabletMore {
-    transform: translate(-50%, -170%);
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
 }
 
-.scroll-up {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  @include tablet {
-    width: 70px;
-    height: 70px;
-  }
-  @include tabletMore {
-    width: 90px;
-    height: 90px;
-  }
+.cart-btn {
+  @include div-style;
+  bottom: 130px;
+}
+
+.scroll-up-btn {
+  @include div-style;
+  bottom: 20px;
 }
