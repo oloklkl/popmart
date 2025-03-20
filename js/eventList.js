@@ -151,7 +151,7 @@ export const items = [
   {
     id: 8,
     date: '2025. 3. 22. (토)',
-    name: '피노젤리 아이돌 프로젝트 시리즈',
+    name: '스컬판다 소원을 말해봐 시리즈',
     EngName: 'PINO JELLY Star Project Series',
     mainImg: 'https://github.com/hyeonky/dp-static/blob/main/popmart/event/notice/notice06/notice06.png?raw=true',
     comp1: '스위트빈의 과일 세계 모험 시리즈',
@@ -189,7 +189,7 @@ export const items = [
   {
     id: 8,
     date: '2025. 3. 22. (토)',
-    name: '피노젤리 아이돌 프로젝트 시리즈',
+    name: '아주라 포근한 봄 시리즈',
     EngName: 'PINO JELLY Star Project Series',
     mainImg: 'https://github.com/hyeonky/dp-static/blob/main/popmart/event/notice/notice06/notice06.png?raw=true',
     comp1: '스위트빈의 과일 세계 모험 시리즈',
@@ -208,7 +208,7 @@ export const items = [
   {
     id: 8,
     date: '2025. 3. 22. (토)',
-    name: '피노젤리 아이돌 프로젝트 시리즈',
+    name: '모코코를 찾아라 시리즈',
     EngName: 'PINO JELLY Star Project Series',
     mainImg: 'https://github.com/hyeonky/dp-static/blob/main/popmart/event/notice/notice06/notice06.png?raw=true',
     comp1: '스위트빈의 과일 세계 모험 시리즈',
@@ -227,7 +227,7 @@ export const items = [
   {
     id: 8,
     date: '2025. 3. 22. (토)',
-    name: '피노젤리 아이돌 프로젝트 시리즈',
+    name: '작은 별이 보내는 선물 시리즈',
     EngName: 'PINO JELLY Star Project Series',
     mainImg: 'https://github.com/hyeonky/dp-static/blob/main/popmart/event/notice/notice06/notice06.png?raw=true',
     comp1: '스위트빈의 과일 세계 모험 시리즈',
@@ -245,8 +245,8 @@ export const items = [
   },
   {
     id: 8,
-    date: '2025. 3. 22. (토)',
-    name: '피노젤리 아이돌 프로젝트 시리즈',
+    date: '2025. 3. 29. (수)',
+    name: '창문 속 지거 시리즈 세트',
     EngName: 'PINO JELLY Star Project Series',
     mainImg: 'https://github.com/hyeonky/dp-static/blob/main/popmart/event/notice/notice06/notice06.png?raw=true',
     comp1: '스위트빈의 과일 세계 모험 시리즈',
