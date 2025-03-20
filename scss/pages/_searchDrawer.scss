@@ -19,7 +19,7 @@
 }
 
 #search-box.open {
-  display: block; // 클래스가 추가되었을 때 보이도록 수정
+  display: block !important;
   transform: translateX(0);
   @include mobileMore {
     transform: translateX(-20px);

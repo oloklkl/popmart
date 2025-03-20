@@ -1,6 +1,33 @@
 // 로그인 상태 체크
 let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBtn = document.getElementById("search-btn");
+  const closeBtn = document.getElementById("close");
+  const searchBox = document.getElementById("search-box");
+  const modalOverlay = document.getElementById("modal-overlay");
+
+  // 검색창 열기
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      searchBox.classList.add("open");
+      modalOverlay.classList.add("open");
+      modalOverlay.style.display = "block"; // 오버레이 표시
+    });
+  }
+
+  // 검색창 닫기
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      searchBox.classList.remove("open");
+      modalOverlay.classList.remove("open");
+      setTimeout(() => {
+        modalOverlay.style.display = "none"; // 애니메이션 후 숨김 처리
+      }, 500);
+    });
+  }
+});
+
 // 검색 버튼 클릭 이벤트
 document.getElementById("search-btn").addEventListener("click", function () {
   document.getElementById("search-box").classList.toggle("open");

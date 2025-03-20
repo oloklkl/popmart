@@ -1,51 +1,23 @@
-@import '../base/breakpoints';
-@import '../base/util';
-@import '../base/variables';
+@import "../base/include";
 
 // ========== 전체 페이지 설정 ==========
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  height: 100%;
-  font-family: $font-family-base;
-  color: var(--gray-90);
-  font-weight: map-get($fws, normal);
-  line-height: $line-height-base;
-  word-break: keep-all;
-  word-wrap: break-word;
-  -webkit-tap-highlight-color: transparent;
-  scroll-behavior: smooth;
-}
 
-html {
-  font-size: $font-size-root; // 10px = 1rem 설정
+.hide-footer footer {
+  display: none !important;
 }
-
-body {
-  font-size: $font-size-base; // 1.7rem = 17px
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
 //  기본 컨테이너
 .cart-container {
   width: 100%;
-  max-width: $container-max-width;
+  max-width: $grid;
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
-  
+
   @include tabletLess {
     padding: 0 15px;
     max-width: 95%;
   }
-  
+
   @include mobile {
     padding: 0 10px;
     max-width: 100%;
@@ -60,12 +32,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+
   .select-all {
     display: flex;
     align-items: center;
     font-size: 16px;
-    
+
     .checkbox-icon {
       margin-right: 8px;
       color: #ff3b30;
@@ -84,24 +56,24 @@ body {
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 15px;
-  
+
   // 구분선
   .divider {
     border-top: 1px solid #eee;
     margin: 15px 0;
   }
-  
+
   // 아이템 컨텐츠 레이아웃
   .item-content {
     display: flex;
     align-items: center;
-    
+
     // 체크박스
     .item-checkbox {
       margin-right: 15px;
       color: #ff3b30;
     }
-    
+
     // 상품 이미지
     .item-image {
       width: 110px;
@@ -110,47 +82,47 @@ body {
       border-radius: 4px;
       overflow: hidden;
       margin-right: 20px;
-      
+
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
     }
-    
+
     // 상품 정보
     .item-info {
       flex-grow: 1;
-      
+
       .item-name {
         font-weight: bold;
         font-size: 16px;
         margin-bottom: 5px;
       }
-      
+
       .item-category {
         color: #888;
         font-size: 14px;
         margin-bottom: 5px;
       }
-      
+
       .item-price {
         font-weight: bold;
         font-size: 16px;
       }
     }
-    
+
     // 수량 및 총액
     .item-actions {
       display: flex;
       align-items: center;
-      
+
       // 수량 조절
       .quantity-controls {
         display: flex;
         align-items: center;
         margin-right: 20px;
-        
+
         .quantity-btn {
           width: 32px;
           height: 32px;
@@ -162,7 +134,7 @@ body {
           justify-content: center;
           cursor: pointer;
         }
-        
+
         .quantity-input {
           width: 40px;
           height: 32px;
@@ -171,7 +143,7 @@ body {
           margin: 0 5px;
           border-radius: 4px;
         }
-        
+
         .btn-confirm {
           height: 32px;
           background: #000;
@@ -183,7 +155,7 @@ body {
           cursor: pointer;
         }
       }
-      
+
       // 총액
       .item-total {
         font-weight: bold;
@@ -192,13 +164,13 @@ body {
       }
     }
   }
-  
+
   // 하단 버튼
   .item-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    
+
     .btn-edit {
       padding: 6px 15px;
       background: #f5f5f5;
@@ -206,7 +178,7 @@ body {
       border-radius: 20px;
       cursor: pointer;
     }
-    
+
     .btn-delete {
       padding: 6px 15px;
       background: #ff6b6b;
@@ -221,13 +193,13 @@ body {
 // 선택된 상품 영역
 .selected-items {
   margin: 20px 0;
-  
+
   .selected-thumbnails {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
-    
+
     .thumbnail {
       width: 60px;
       height: 60px;
@@ -235,13 +207,13 @@ body {
       border-radius: 4px;
       overflow: hidden;
       position: relative;
-      
+
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
-      
+
       &:hover::after {
         content: "×";
         position: absolute;
@@ -249,7 +221,7 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         color: white;
         display: flex;
         align-items: center;
@@ -258,7 +230,7 @@ body {
       }
     }
   }
-  
+
   .selected-count {
     font-size: 14px;
     margin-bottom: 10px;
@@ -271,48 +243,23 @@ body {
   background: #f9f9f9;
   padding: 20px;
   border-radius: 12px;
-  
+
   .summary-row {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    
+
     &:not(:last-child) {
       border-bottom: 1px solid #eee;
     }
-    
+
     .summary-label {
       color: #555;
     }
-    
+
     .summary-value {
       font-weight: bold;
       text-align: right;
-    }
-  }
-}
-
-// 하단 버튼
-.cart-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 30px 0;
-  
-  .btn {
-    padding: 10px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    
-    &.btn-continue {
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-    }
-    
-    &.btn-checkout {
-      background: #ff6b6b;
-      color: white;
-      border: 1px solid #ff6b6b;
     }
   }
 }
@@ -321,39 +268,39 @@ body {
 @include tabletLess {
   .cart-item {
     padding: 15px;
-    
+
     .item-content {
       .item-image {
         width: 90px;
         height: 90px;
       }
-      
+
       .item-info {
         .item-name {
           font-size: 15px;
         }
-        
+
         .item-category {
           font-size: 13px;
         }
-        
+
         .item-price {
           font-size: 15px;
         }
       }
-      
+
       .item-actions {
         .quantity-controls {
           .quantity-btn {
             width: 28px;
             height: 28px;
           }
-          
+
           .quantity-input {
             width: 36px;
             height: 28px;
           }
-          
+
           .btn-confirm {
             height: 28px;
             padding: 0 8px;
@@ -367,68 +314,69 @@ body {
 @include mobile {
   .cart-item {
     padding: 12px;
-    
+
     .item-content {
       .item-image {
         width: 70px;
         height: 70px;
         margin-right: 10px;
       }
-      
+
       .item-info {
         .item-name {
           font-size: 14px;
         }
-        
+
         .item-category {
           font-size: 12px;
         }
-        
+
         .item-price {
           font-size: 14px;
         }
       }
-      
+
       .item-actions {
         .quantity-controls {
           margin-right: 10px;
-          
+
           .quantity-btn {
             width: 26px;
             height: 26px;
           }
-          
+
           .quantity-input {
             width: 32px;
             height: 26px;
           }
-          
+
           .btn-confirm {
             height: 26px;
             padding: 0 6px;
             font-size: 12px;
           }
         }
-        
+
         .item-total {
           font-size: 14px;
           min-width: 80px;
         }
       }
     }
-    
+
     .item-buttons {
-      .btn-edit, .btn-delete {
+      .btn-edit,
+      .btn-delete {
         padding: 4px 12px;
         font-size: 12px;
       }
     }
   }
-  
+
   .order-summary {
     padding: 15px;
   }
-  
+
   .cart-buttons {
     .btn {
       padding: 8px 20px;
