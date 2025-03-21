@@ -55,70 +55,57 @@ async function loadDependencies() {
     return { success: false, items: [] };
   }
 }
+async function setupInfiniteSlider() {
+  const sliderContainer = document.querySelector('.slider-container');
+  const sliderTrack = sliderContainer.querySelector('.slider-track'); // ✅ 기존 DOM 사용
 
-// ✅ Swiper 슬라이드 설정 및 초기화
-async function setupSwiper() {
-  console.log('🚀 Swiper 초기화 시작!');
+  if (!sliderTrack) {
+    console.error('❌ .slider-track 요소를 찾을 수 없습니다.');
+    return;
+  }
+
+  sliderTrack.innerHTML = ''; // 기존 내용 초기화
 
   let items = [];
   try {
     const module = await import('../productPage/productListItems.js');
     items = module.default;
-  } catch (error) {
-    console.error('❌ productListItems.js 로드 실패:', error);
+  } catch (e) {
+    console.error('❌ 상품 목록 로드 실패:', e);
     return;
   }
 
-  const swiperWrapper = document.querySelector('.swiper-wrapper');
-  if (!swiperWrapper) {
-    console.error('❌ .swiper-wrapper 요소를 찾을 수 없습니다.');
-    return;
-  }
-
-  swiperWrapper.innerHTML = ''; // 기존 슬라이드 초기화
-  items.forEach((item) => {
+  // 슬라이드 생성
+  [...items, ...items].forEach((item) => {
     const slide = document.createElement('div');
-    slide.classList.add('swiper-slide');
-    slide.innerHTML = `<div class="slide-content"><img src="${item.imgSrc}" alt="${item.title}" class="slide-img"></div>`;
-    swiperWrapper.appendChild(slide);
+    slide.classList.add('slide');
+    slide.innerHTML = `<img src="${item.imgSrc}" alt="${item.title}" />`;
+    sliderTrack.appendChild(slide);
   });
 
-  // ✅ Swiper 플러그인 실행
-  new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    slidesPerView: 4,
-    spaceBetween: 9,
-    breakpoints: {
-      768: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 },
-    },
-    on: {
-      init: () => {
-        console.log('✅ Swiper가 초기화됨, GSAP 재설정 실행');
-        updateScrollTrigger();
-        addHoverEffectToItems(); // ✅ Swiper 로드 후 호버 효과 다시 적용
-      },
-    },
+  const totalWidth = sliderTrack.scrollWidth / 2;
+  const slideAnimation = gsap.to(sliderTrack, {
+    x: `-=${totalWidth}px`,
+    duration: 20,
+    ease: 'linear',
+    repeat: -1,
   });
+
+  sliderTrack.addEventListener('mouseenter', () => slideAnimation.pause());
+  sliderTrack.addEventListener('mouseleave', () => slideAnimation.resume());
 }
+// ✅ 페이지 로드 시 실행
+// document.addEventListener('DOMContentLoaded', () => {
+//   setupInfiniteSlider();
+// });
 
 // ✅ 커서 효과 설정
 function setupCursorEffect() {
-  console.log('🚀 커서 효과 초기화');
-
   let cursor = document.querySelector('.circle-cursor');
-
   if (!cursor) {
     cursor = document.createElement('div');
-    cursor.classList.add('circle-cursor');
+    cursor.className = 'circle-cursor';
     document.body.appendChild(cursor);
-    console.log('.circle-cursor 추가됨');
-  } else {
-    console.log('.circle-cursor 이미 존재함');
   }
   gsap.set(cursor, {
     width: 200, // 크기를 기존보다 조금 줄임
@@ -135,40 +122,33 @@ function setupCursorEffect() {
     mixBlendMode: 'difference',
     transform: 'translate(-50%, -50%)',
   });
-  document.removeEventListener('mousemove', updateCursorPosition);
-  document.addEventListener('mousemove', updateCursorPosition);
-
-  gsap.to(cursor, {
-    autoAlpha: 1,
-    opacity: 1,
-    duration: 0.5,
-  });
-  document.addEventListener('mousemove', updateCursorPosition);
-  document.addEventListener('mousemove', updateCursorPosition);
-}
-// 마우스 이동 이벤트 핸들러 - 전역 문서에서 작동하도록 수정
-function updateCursorPosition(e) {
-  const cursor = document.querySelector('.circle-cursor');
-  if (cursor) {
+  document.addEventListener('mousemove', (e) => {
     gsap.to(cursor, {
       x: e.clientX,
       y: e.clientY,
-      opacity: 1, // ✅ 마우스 움직일 때 다시 보이게 설정
       duration: 0.1,
       ease: 'power2.out',
-      // opacity: 1,
+    });
+  });
+
+  const track = document.querySelector('.slider-track');
+  if (track) {
+    track.addEventListener('mouseenter', () => {
+      gsap.to(cursor, {
+        scale: 1.5,
+        background: 'rgba(0,255,255,0.9)',
+        duration: 0.3,
+      });
+    });
+    track.addEventListener('mouseleave', () => {
+      gsap.to(cursor, {
+        scale: 1,
+        background: 'rgba(255,255,255,0.9)',
+        duration: 0.3,
+      });
     });
   }
 }
-document.addEventListener('mouseleave', () => {
-  gsap.to('.circle-cursor', { opacity: 0, duration: 0.3 });
-});
-// 🔹 페이지 로드 시 커서가 보이도록 설정
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 DOMContentLoaded: 커서 효과 설정 시작');
-  setupCursorEffect(); // ✅ 페이지 로드 시 커서 생성
-});
-
 // 추가: 새로고침 후에도 커서 보이도록 설정
 window.onload = () => {
   const cursor = document.querySelector('.circle-cursor');
@@ -176,18 +156,6 @@ window.onload = () => {
     gsap.to(cursor, { opacity: 1, duration: 0.5 }); // ✅ 새로고침 후에도 커서 유지
   }
 };
-// 그리드 아이템 호버 효과 추가
-function addHoverEffectToItems() {
-  console.log('🚀 [addHoverEffectToItems] 실행됨');
-
-  document.querySelectorAll('.homeGrid-item, .swiper-slide').forEach((item) => {
-    item.removeEventListener('mouseenter', handleItemMouseEnter); // ✅ 기존 이벤트 제거
-    item.removeEventListener('mouseleave', handleItemMouseLeave);
-
-    item.addEventListener('mouseenter', handleItemMouseEnter);
-    item.addEventListener('mouseleave', handleItemMouseLeave);
-  });
-}
 
 // ✅ 마우스 진입 이벤트 핸들러
 function handleItemMouseEnter() {
@@ -217,66 +185,53 @@ function handleItemMouseLeave() {
     });
   }
 }
-// 그리드 아이템 마우스 진입 핸들러
-function handleItemMouseEnter(e) {
-  const cursor = document.querySelector('.circle-cursor');
-  if (cursor) {
-    const color = this.getAttribute('data-color');
-    gsap.to(cursor, {
-      background: color,
-      duration: 0.3,
-      opacity: 1,
-    });
-  }
-}
 
-// 그리드 아이템 마우스 이탈 핸들러
-function handleItemMouseLeave(e) {
-  const cursor = document.querySelector('.circle-cursor');
-  if (cursor) {
-    // 🔹 mix-blend-mode를 초기화 (테스트 후 제거 가능)
-    cursor.style.mixBlendMode = 'difference';
-
-    // 🔹 GSAP의 `set()`을 먼저 실행하여 background를 강제 적용
-    gsap.set(cursor, { background: 'black' });
-
-    // 🔹 `to()`를 통해 opacity를 조절하면서 애니메이션 적용
-    gsap.to(cursor, {
-      duration: 0.3,
-      opacity: 1,
-      onComplete: () => {
-        cursor.style.mixBlendMode = 'difference';
-      },
-    });
-    setTimeout(() => {
-      cursor.style.mixBlendMode = 'difference';
-    }, 50);
-  }
-}
 function addHoverEffectToItems() {
   console.log('🚀 호버 효과 초기화');
 
   document.querySelectorAll('.homeGrid-item, .swiper-slide').forEach((item) => {
     item.addEventListener('mouseenter', function () {
       const cursor = document.querySelector('.circle-cursor');
+      const img = this.querySelector('img');
+
       if (cursor) {
         cursor.style.mixBlendMode = 'difference';
         const color = this.getAttribute('data-color');
         gsap.to(cursor, {
           background: color,
-          scale: 1.7, // 호버 시 커서 크기 증가
+          scale: 1.7,
           duration: 0.3,
+        });
+      }
+
+      // ✅ 이미지 확대 효과 추가
+      if (img) {
+        gsap.to(img, {
+          scale: 1.15,
+          duration: 0.4,
+          ease: 'power2.out',
         });
       }
     });
 
     item.addEventListener('mouseleave', function () {
       const cursor = document.querySelector('.circle-cursor');
+      const img = this.querySelector('img');
+
       if (cursor) {
         gsap.to(cursor, {
           background: 'rgba(0, 0, 0, 0.8)',
-          scale: 1, // 원래 크기로 변경
+          scale: 1,
           duration: 0.3,
+        });
+      }
+
+      // ✅ 이미지 원래 크기로 복귀
+      if (img) {
+        gsap.to(img, {
+          scale: 1,
+          duration: 0.4,
+          ease: 'power2.out',
         });
       }
     });
@@ -296,45 +251,11 @@ function updateCursorPosition(e) {
     });
   }
 }
-function handleItemMouseEnter(e) {
-  const cursor = document.querySelector('.circle-cursor');
-  if (cursor) {
-    const color = this.getAttribute('data-color');
-    gsap.to(cursor, {
-      background: color,
-      duration: 0.3,
-      opacity: 1,
-    });
-  }
-}
 
-// 그리드 아이템 마우스 이탈 핸들러
-function handleItemMouseLeave(e) {
-  const cursor = document.querySelector('.circle-cursor');
-  if (cursor) {
-    // 🔹 mix-blend-mode를 초기화 (테스트 후 제거 가능)
-    cursor.style.mixBlendMode = 'difference';
-
-    // 🔹 GSAP의 `set()`을 먼저 실행하여 background를 강제 적용
-    gsap.set(cursor, { background: 'black' });
-
-    // 🔹 `to()`를 통해 opacity를 조절하면서 애니메이션 적용
-    gsap.to(cursor, {
-      duration: 0.3,
-      opacity: 1,
-      onComplete: () => {
-        cursor.style.mixBlendMode = 'difference';
-      },
-    });
-    setTimeout(() => {
-      cursor.style.mixBlendMode = 'difference';
-    }, 50);
-  }
-}
 // 마우스가 페이지를 벗어날 때 커서 숨김 처리
-document.addEventListener('mouseleave', () => {
-  gsap.to('.circle-cursor', { opacity: 0, duration: 0.3 });
-});
+// document.addEventListener('mouseleave', () => {
+//   gsap.to('.circle-cursor', { opacity: 0, duration: 0.3 });
+// });
 
 // ✅ 그리드 아이템 설정
 function setupGridItems(items) {
@@ -354,8 +275,6 @@ function setupGridItems(items) {
   gridContainer.innerHTML = '';
   wrapperDiv.className = 'homeGrid-wrapper-inner';
   wrapperDiv.innerHTML = '';
-
-  // ✅ 아이템 추가 개수 제한
   const itemsPerPage = 12;
   let count = 0;
   let i = 0;
@@ -363,7 +282,7 @@ function setupGridItems(items) {
   while (count < itemsPerPage && i < items.length) {
     if (items[i].id === 31 || items[i].id === 32) {
       i++;
-      continue; // 특정 ID(31, 32) 제외하고 계속 진행
+      continue;
     }
 
     const gridItem = document.createElement('div');
@@ -408,7 +327,7 @@ function observeGridChanges() {
       mutation.addedNodes.forEach((node) => {
         if (node.classList && node.classList.contains('homeGrid-item')) {
           console.log('🔍 새로 추가된 homeGrid-item 감지:', node);
-          addHoverEffectToItems(); // ✅ 새로 추가된 요소에 이벤트 바인딩
+          addHoverEffectToItems();
         }
       });
     });
@@ -548,12 +467,10 @@ async function initializePage() {
     gsap.registerPlugin(ScrollTrigger);
     if (items.length > 0) {
       setupGridItems(items);
-      addHoverEffectToItems(); // ✅ 아이템 추가 후 호버 효과 적용
     }
   }
+  await setupInfiniteSlider();
 
-  setupSwiper();
-  // ✅ Swiper 실행 후 ScrollTrigger 갱신
   setTimeout(updateScrollTrigger, 1500);
 
   state.initialized = true;
@@ -563,7 +480,7 @@ async function initializePage() {
 // ✅ 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 DOMContentLoaded: Swiper, GSAP, 커서 효과 설정 시작');
-  setupCursorEffect();
+  // setupCursorEffect();
   initializePage();
 });
 
