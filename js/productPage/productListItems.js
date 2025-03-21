@@ -53,7 +53,7 @@ const items = [
     {
         id: 32,
         imgSrc: 'https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail32.png?raw=true',
-        title: '디무 By Your Side 시리즈',
+        title: '디무 네 곁에 있을게 시리즈',
         price: '15,000원',
         category: 'dimoo',
     },
