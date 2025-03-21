@@ -216,6 +216,7 @@ export const addPopStoryItems = [
     alt: 'PEACH RIOT',
     bgColor: '#ff9a9e',
     // popStoryData
+    
     subtitle: '피치라이엇',
     bgColorDetail: '#F3D0A6',
     btnColor: '#D98C5F',
