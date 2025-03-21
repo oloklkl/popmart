@@ -297,7 +297,52 @@ function observeGridChanges() {
   observer.observe(targetNode, config);
   console.log('🔍 [MutationObserver] - homeGrid-item 변경 감지 중...');
 }
+function setupBackgroundCharacters() {
+  const container = document.querySelector('.background-characters');
+  const horizontalPositions = [-100, -60, -20, 10, 90, 120, 160, 200, 230];
+  if (!container) return;
 
+  import('../productPage/productListItems.js').then((module) => {
+    const items = module.default.slice(15, 23);
+    items.forEach((item, index) => {
+      const img = document.createElement('img');
+      img.src = item.imgSrc;
+      img.alt = item.title;
+      img.classList.add('background-character');
+      const left = horizontalPositions[index];
+      // const top = 70 + Math.random() * 20; // 70% ~ 90%
+
+      // 랜덤 위치 지정
+      img.style.top = `50%`;
+      img.style.left = `${left}%`;
+      img.style.transform = `translate(-50%, -50%)`;
+      img.style.pointerEvents = 'auto';
+
+      // 커서 감지를 위해 pointer-events 다시 켜기
+      img.style.pointerEvents = 'auto';
+
+      // 마우스 이벤트 연결
+      img.addEventListener('mouseenter', () => {
+        gsap.to(img, {
+          scale: 1.7,
+          duration: 0.3,
+          ease: 'power2.out',
+          opacity: 1,
+        });
+      });
+
+      img.addEventListener('mouseleave', () => {
+        gsap.to(img, {
+          scale: 1,
+          duration: 0.3,
+          opacity: 0.5,
+        });
+      });
+
+      container.appendChild(img);
+    });
+  });
+}
 // ✅ 초기화 함수에서 MutationObserver 실행
 // document.addEventListener('DOMContentLoaded', () => {
 //   observeGridChanges();
@@ -547,7 +592,32 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('⏳ 1초 후 초기화 시작');
     initializePage();
     setupInteractions(); // ✅ 여기서 실행
+    setupBackgroundCharacters();
+    const btn = document.getElementById('colorToggleBtn');
+    const target = document.querySelector('.section03'); // 예: .background-yellow 같은 영역
+    const colors = ['#1a1a1a', '#FFC107', '#03A9F4', '#8BC34A', '#FF4081'];
+    let currentIndex = 0;
+
+    if (btn && target) {
+      btn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % colors.length;
+        target.style.backgroundColor = colors[currentIndex];
+      });
+    } else {
+      console.warn('❌ 버튼 또는 타겟 요소를 찾을 수 없습니다.');
+    }
   }, 1000);
+
+  const homeartistInfo = document.querySelector('.home-artist-info');
+  const homeartistHeader = document.querySelector('.home-artist-header');
+  const artistProfileImg = document.querySelector('.artist-profile-img');
+
+  if (homeartistHeader && homeartistInfo) {
+    homeartistHeader.addEventListener('click', () => {
+      homeartistInfo.classList.toggle('open');
+      artistProfileImg.classList.toggle('show');
+    });
+  }
 });
 
 document.addEventListener('click', (e) => {
