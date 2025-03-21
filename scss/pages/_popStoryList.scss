@@ -12,10 +12,10 @@
   margin: 0 auto;
   padding: 0;
   @include tablet {
-    max-width: calc(100% - $p-tablet);
+    padding: 0 $p-tablet;
   }
   @include mobile {
-    max-width: calc(100% - $p-mobile);
+    padding: 0 $p-mobile;
   }
 }
 .popStoryListTit {
