@@ -233,6 +233,17 @@ function setupUIEvents() {
             targetSection.scrollIntoView({ behavior: 'smooth' });
         });
     }
+
+    const downBtnWrapper = document.querySelector('.down-btn-wrapper');
+
+    // 클릭 시 애니메이션 중지/재시작
+    downBtnWrapper.addEventListener('click', () => {
+        if (downBtnWrapper.style.animation) {
+            downBtnWrapper.style.animation = ''; // 애니메이션 중지
+        } else {
+            downBtnWrapper.style.animation = 'bounce 1.5s infinite ease-in-out'; // 애니메이션 재시작
+        }
+    });
 }
 
 // 페이지 초기화 함수
