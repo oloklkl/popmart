@@ -1,83 +1,127 @@
-(function () {
-  // GSAP 라이브러리 로드 확인
+document.body.style.cursor = "none";
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM 로드 완료, 커서 스크립트 시작");
+
   if (typeof gsap === "undefined") {
-    console.error(
-      'GSAP 라이브러리가 필요합니다. <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>를 HTML에 추가하세요.'
-    );
+    console.error("GSAP 라이브러리가 필요합니다.");
     return;
   }
 
-  const style = document.createElement("style");
-  document.head.appendChild(style);
+  let cursor = document.querySelector(".cursor-shadow");
+  if (!cursor) {
+    cursor = document.createElement("div");
+    cursor.classList.add("cursor-shadow");
 
-  style.innerHTML = `
-    .cursor-shadow {
-      position: fixed; /* absolute 대신 fixed 사용 */
-      width: 50px;
-      height: 50px;
-      background-color: transparent;
-      border: 3px solid rgba(0, 0, 0, 0.3);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: width 0.5s, height 0.5s, background-color 0.5s, border-color 0.5s;
-      z-index: 9999;
-      will-change: transform;
-    }
+    cursor.style.position = "fixed";
+    cursor.style.width = "100px";
+    cursor.style.height = "100px";
+    cursor.style.border = "2px solid #000";
+    cursor.style.borderRadius = "50%";
+    cursor.style.pointerEvents = "none";
+    cursor.style.zIndex = "99999";
+    cursor.style.backgroundColor = "transparent";
+    cursor.style.overflow = "hidden";
 
-    /* 클릭 가능한 요소에 호버할 때의 커서 스타일 */
-    .clickable-hover .cursor-shadow {
-      width: 50px;
-      height: 50px;
-      background-color: rgba(0, 0, 0, 0.1);
-      border-color: rgba(0, 0, 0, 0.5);
-    }
-  `;
+    const innerLayer = document.createElement("div");
+    innerLayer.classList.add("cursor-inner-layer");
+    innerLayer.style.width = "100%";
+    innerLayer.style.height = "100%";
+    innerLayer.style.position = "absolute";
+    innerLayer.style.top = "0";
+    innerLayer.style.left = "0";
+    innerLayer.style.pointerEvents = "none";
+    innerLayer.style.backgroundColor = "transparent";
 
-  // 커서 그림자 요소 생성
-  let cursorShadow = document.querySelector(".cursor-shadow");
-  if (!cursorShadow) {
-    cursorShadow = document.createElement("div");
-    cursorShadow.classList.add("cursor-shadow");
-    document.body.appendChild(cursorShadow);
+    const cursorImage = document.createElement("img");
+    cursorImage.classList.add("cursor-image");
+    cursorImage.src =
+      "https://raw.githubusercontent.com/hyeonky/dp-static/refs/heads/main/popmart/btnIcon/navigation.png";
+    cursorImage.style.width = "40%";
+    cursorImage.style.height = "40%";
+    cursorImage.style.position = "absolute";
+    cursorImage.style.top = "50%";
+    cursorImage.style.left = "50%";
+    cursorImage.style.transform = "translate(-50%, -50%)";
+    cursorImage.style.pointerEvents = "none";
+
+    innerLayer.appendChild(cursorImage);
+    cursor.appendChild(innerLayer);
+    document.body.appendChild(cursor);
+    console.log("커서 요소 생성됨");
   }
 
-  // 클릭 가능한 요소들 선택 (버튼, 링크 등)
-  const clickableElements = document.querySelectorAll(
-    'a, button, [role="button"], input[type="submit"], .clickable'
+  let prevX = 0;
+  let prevY = 0;
+  let moveX = 0;
+  let moveY = 0;
+  let currentRotation = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    if (cursor) {
+      const offsetX = cursor.offsetWidth / 2;
+      const offsetY = cursor.offsetHeight / 2;
+
+      gsap.to(cursor, {
+        left: e.clientX - offsetX + "px",
+        top: e.clientY - offsetY + "px",
+        duration: 0.15,
+        ease: "power2.out",
+      });
+
+      moveX = e.clientX - prevX;
+      moveY = e.clientY - prevY;
+
+      if (Math.abs(moveX) > 3 || Math.abs(moveY) > 3) {
+        const angle = Math.atan2(-moveY, -moveX);
+        const degrees = angle * (180 / Math.PI);
+
+        currentRotation = currentRotation * 0.8 + degrees * 0.2;
+
+        const cursorImage = cursor.querySelector(".cursor-image");
+        if (cursorImage) {
+          gsap.to(cursorImage, {
+            rotation: currentRotation,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        }
+      }
+
+      prevX = e.clientX;
+      prevY = e.clientY;
+    }
+  });
+
+  const hoverElements = document.querySelectorAll(
+    'a, button, [role="button"], input, select, textarea, img, li, [tabindex="0"]'
   );
 
-  // 클릭 가능한 요소에 마우스 오버 이벤트 추가
-  clickableElements.forEach((el) => {
+  hoverElements.forEach((el) => {
+    el.style.cursor = "none";
     el.addEventListener("mouseenter", () => {
-      document.body.classList.add("clickable-hover");
+      gsap.to(cursor, {
+        scale: 1.2,
+        duration: 0.3,
+        backdropFilter: "blur(3px)",
+      });
     });
 
     el.addEventListener("mouseleave", () => {
-      document.body.classList.remove("clickable-hover");
+      gsap.to(cursor, {
+        scale: 1,
+        duration: 0.3,
+      });
+
+      const innerLayer = cursor.querySelector(".cursor-inner-layer");
+      if (innerLayer) {
+        gsap.to(innerLayer, {
+          backgroundColor: "transparent",
+          duration: 0.3,
+        });
+      }
     });
   });
 
-  // 마우스 이동 이벤트 감지
-  document.addEventListener("mousemove", (e) => {
-    gsap.to(cursorShadow, {
-      x: e.clientX,
-      y: e.clientY,
-      duration: 0.15, // 약간 더 부드러운 움직임을 위해 조정
-      ease: "power2.out",
-    });
-  });
-
-  // 페이지를 벗어날 때 커서 숨기기
-  document.addEventListener("mouseleave", () => {
-    cursorShadow.style.opacity = "0";
-  });
-
-  // 페이지로 돌아올 때 커서 표시
-  document.addEventListener("mouseenter", () => {
-    cursorShadow.style.opacity = "1";
-  });
-
-  // 실제 마우스 커서 숨기기 (선택 사항)
-  document.body.style.cursor = "none";
-})();
+  console.log("커서 스크립트 설정 완료");
+});
