@@ -2,110 +2,49 @@
 import productDetailItem from './productDetailItem.js';
 import { initializeProductSwipers } from './productDetailSwiper.js';
 
-// 전역 변수 선언을 함수 내부로 이동
-function initializePage() {
-    console.log('productDetailScript.js 실행됨');
+// 제품 슬라이더 업데이트 함수
+function updateProductSlider() {
+    const swiperWrapper = document.querySelector('.product-slider .swiper-wrapper');
+    swiperWrapper.innerHTML = ''; // 기존 내용 초기화
 
-    // URLSearchParams를 사용하여 상품 ID 추출
+    // URL 파라미터로 상품 ID 받아오기
     const urlParams = new URLSearchParams(window.location.search);
     const productId = parseInt(urlParams.get('id'));
 
-    console.log('상품 ID:', productId);
-    console.log('URL 파라미터:', window.location.search);
+    // 해당 상품 정보 찾기
+    const product = productDetailItem.find((item) => item.id === productId);
 
-    // 상품 ID가 있는지 확인
-    if (productId && !isNaN(productId)) {
-        updateProductInfo(productId);
-        // 이미지가 로드된 후 스와이퍼 초기화
-        setTimeout(() => {
-            initializeProductSwipers();
-        }, 100);
-    } else {
-        console.error('유효한 상품 ID가 아닙니다.');
-        return; // 상품 ID가 유효하지 않으면 함수 종료
-    }
+    if (product) {
+        const allImages = [...product.mainImages]; // 기존 5개의 이미지
+        const additionalImages = [...product.mainImages]; // 추가로 동일한 ID의 이미지를 2개 더 추가
 
-    updateRelatedProducts(); // 관련 상품 업데이트
+        // 8개의 이미지를 배열에 넣기
+        const totalImages = [...allImages, ...additionalImages].slice(0, 7); // 최대 7개만
 
-    // 수량 버튼 이벤트 핸들러 추가
-    const buttons = [
-        { selector: '.minus', action: 'decrement' },
-        { selector: '.plus', action: 'increment' },
-    ];
+        totalImages.forEach((imgSrc) => {
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
 
-    buttons.forEach(({ selector, action }) => {
-        const btn = document.querySelector(selector);
-        const quantitySpan = document.querySelector('.quantity-control span');
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `상품 이미지`;
 
-        if (btn && quantitySpan) {
-            btn.addEventListener('click', () => {
-                let quantity = parseInt(quantitySpan.textContent);
-                if (action === 'decrement' && quantity > 1) {
-                    quantitySpan.textContent = quantity - 1;
-                } else if (action === 'increment') {
-                    quantitySpan.textContent = quantity + 1;
+            slide.appendChild(img);
+            swiperWrapper.appendChild(slide);
+        });
+
+        // 모든 이미지가 로드되면 Swiper 초기화
+        const images = swiperWrapper.querySelectorAll('img');
+        let loadedImagesCount = 0;
+
+        images.forEach((image) => {
+            image.onload = () => {
+                loadedImagesCount++;
+                if (loadedImagesCount === images.length) {
+                    // 모든 이미지가 로드되었을 때 Swiper 초기화
+                    initializeProductSwipers();
                 }
-            });
-        }
-    });
-
-    // 📌 다운 버튼 클릭 시 특정 섹션으로 스크롤 이동
-    const downBtn = document.querySelector('.down-btn-wrapper');
-    const targetSection = document.querySelector('.product-detail-section');
-
-    if (downBtn && targetSection) {
-        downBtn.addEventListener('click', () => {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    // 📌 스크롤 위치에 따라 버튼 및 카드 보이기/숨기기
-    window.addEventListener('scroll', () => {
-        const topBtn = document.querySelector('.top-btn');
-        const toggleBtn = document.querySelector('.toggle-btn');
-        const cartBtn = document.querySelector('.cart-btn');
-        const card = document.querySelector('.product-card');
-
-        const displayStyle = window.scrollY > 600 ? 'block' : 'none';
-        if (topBtn) topBtn.style.display = displayStyle;
-        if (toggleBtn) toggleBtn.style.display = displayStyle;
-        if (cartBtn) cartBtn.style.display = displayStyle;
-        if (card) card.style.transform = window.scrollY > 600 ? 'translateY(100px)' : 'translateY(0)';
-    });
-
-    // 📌 Top 버튼 클릭 이벤트
-    const topBtn = document.querySelector('.top-btn');
-    if (topBtn) {
-        topBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // 📌 장바구니 버튼 클릭 이벤트
-    const cartBtn = document.querySelector('.cart-btn');
-    if (cartBtn) {
-        cartBtn.addEventListener('click', () => {
-            alert('장바구니에 추가되었습니다!');
-        });
-    }
-
-    // 📌 토글 버튼 기능
-    const toggleBtn = document.querySelector('.toggle-btn');
-    const menu = document.querySelector('.menu');
-    if (toggleBtn && menu) {
-        toggleBtn.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    }
-
-    // 📌 카드 숨기기/보이기 버튼
-    const toggleCardBtn = document.querySelector('.toggle-card-btn');
-    const cardElement = document.querySelector('.card');
-
-    if (toggleCardBtn && cardElement) {
-        toggleCardBtn.addEventListener('click', () => {
-            cardElement.style.transform =
-                cardElement.style.transform === 'translateY(100px)' ? 'translateY(0)' : 'translateY(100px)';
+            };
         });
     }
 }
@@ -210,12 +149,127 @@ function updateRelatedProducts() {
         const swiperSlide = document.createElement('div');
         swiperSlide.classList.add('swiper-slide');
 
-        swiperSlide.innerHTML = `
-            <img src="${randomProduct.mainImages[0]}" alt="${randomProduct.title}" />
-            <h3>${randomProduct.title}</h3>
-            <p>${randomProduct.price}</p>
-        `;
+        // 0, 2, 4 인덱스 이미지 선택
+        const imageIndex = [0, 2, 4][i % 3];
+        if (randomProduct.mainImages[imageIndex]) {
+            swiperSlide.innerHTML = `
+                <img src="${randomProduct.mainImages[imageIndex]}" alt="${randomProduct.title}" />
+                <h3>${randomProduct.title}</h3>
+                <p>${randomProduct.price}</p>
+            `;
+        } else {
+            console.error(`mainImages[${imageIndex}] does not exist for product ID: ${randomProduct.id}`);
+        }
         swiperWrapper.appendChild(swiperSlide);
+    }
+}
+
+// 전역 변수 선언을 함수 내부로 이동
+function initializePage() {
+    console.log('productDetailScript.js 실행됨');
+
+    // URLSearchParams를 사용하여 상품 ID 추출
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+
+    console.log('상품 ID:', productId);
+    console.log('URL 파라미터:', window.location.search);
+
+    // 상품 ID가 있는지 확인
+    if (productId && !isNaN(productId)) {
+        updateProductInfo(productId);
+        // 이미지가 로드된 후 스와이퍼 초기화
+        setTimeout(() => {
+            initializeProductSwipers();
+            updateProductSlider(); // 슬라이더 내용 업데이트
+        }, 100);
+    } else {
+        console.error('유효한 상품 ID가 아닙니다.');
+        return; // 상품 ID가 유효하지 않으면 함수 종료
+    }
+
+    updateRelatedProducts(); // 관련 상품 업데이트
+
+    // 수량 버튼 이벤트 핸들러 추가
+    const buttons = [
+        { selector: '.minus', action: 'decrement' },
+        { selector: '.plus', action: 'increment' },
+    ];
+
+    buttons.forEach(({ selector, action }) => {
+        const btn = document.querySelector(selector);
+        const quantitySpan = document.querySelector('.quantity-control span');
+
+        if (btn && quantitySpan) {
+            btn.addEventListener('click', () => {
+                let quantity = parseInt(quantitySpan.textContent);
+                if (action === 'decrement' && quantity > 1) {
+                    quantitySpan.textContent = quantity - 1;
+                } else if (action === 'increment') {
+                    quantitySpan.textContent = quantity + 1;
+                }
+            });
+        }
+    });
+
+    // 📌 다운 버튼 클릭 시 특정 섹션으로 스크롤 이동
+    const downBtn = document.querySelector('.down-btn-wrapper');
+    const targetSection = document.querySelector('.product-detail-section');
+
+    if (downBtn && targetSection) {
+        downBtn.addEventListener('click', () => {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // 📌 스크롤 위치에 따라 버튼 및 카드 보이기/숨기기
+    window.addEventListener('scroll', () => {
+        const topBtn = document.querySelector('.top-btn');
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const cartBtn = document.querySelector('.cart-btn');
+        const card = document.querySelector('.product-card');
+
+        const displayStyle = window.scrollY > 600 ? 'block' : 'none';
+        if (topBtn) topBtn.style.display = displayStyle;
+        if (toggleBtn) toggleBtn.style.display = displayStyle;
+        if (cartBtn) cartBtn.style.display = displayStyle;
+        if (card) card.style.transform = window.scrollY > 600 ? 'translateY(100px)' : 'translateY(0)';
+    });
+
+    // 📌 Top 버튼 클릭 이벤트
+    const topBtn = document.querySelector('.top-btn');
+    if (topBtn) {
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 📌 장바구니 버튼 클릭 이벤트
+    const cartBtn = document.querySelector('.cart-btn');
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            alert('장바구니에 추가되었습니다!');
+        });
+    }
+
+    // 📌 토글 버튼 기능
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const menu = document.querySelector('.menu');
+    if (toggleBtn && menu) {
+        toggleBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    // 📌 카드 숨기기/보이기 버튼
+    const toggleCardBtn = document.querySelector('.toggle-card-btn');
+    const cardElement = document.querySelector('.card');
+
+    if (toggleCardBtn && cardElement) {
+        toggleCardBtn.addEventListener('click', () => {
+            cardElement.style.transform =
+                cardElement.style.transform === 'translateY(100px)' ? 'translateY(0)' : 'translateY(100px)';
+        });
     }
 }
 

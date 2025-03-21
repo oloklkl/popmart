@@ -63,3 +63,32 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = '/page/mainPage/home.html'
   }
 })
+
+// 카카오 로그인 초기화
+Kakao.init('d5c35b758ceb8a4896b8870f8da53f38')
+
+// 카카오 로그인 버튼 클릭 시
+document.getElementById('kakao-login-btn').onclick = function () {
+  Kakao.Auth.login({
+    success: function (authObj) {
+      console.log(authObj)
+      Kakao.API.request({
+        url: '/v2/user/me',
+        success: function (res) {
+          console.log(res)
+          alert('카카오 로그인 성공! popmart님')
+          // 로그인 성공 후 홈 화면으로 이동
+          window.location.href = '/page/mainPage/home.html'
+        },
+        fail: function (error) {
+          console.error(error)
+          alert('로그인 실패!')
+        },
+      })
+    },
+    fail: function (error) {
+      console.error(error)
+      alert('카카오 로그인 실패!')
+    },
+  })
+}

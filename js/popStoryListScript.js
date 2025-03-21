@@ -1,7 +1,7 @@
 import { popStoryItems, addPopStoryItems } from './popStoryItems.js'
 
 const gridContainer = document.querySelector('.popStoryListGrid')
-const loadMoreBtn = document.querySelector('.moreBtn')
+const loadMoreBtn = document.querySelector('.popStoryListMoreBtn')
 
 let currentIndex = 0
 const itemsPerPage = 6

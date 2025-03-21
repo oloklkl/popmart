@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "feather-icons": "^4.29.2",
     "swiper": "^11.2.5"
   }
 }

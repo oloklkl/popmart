@@ -24,15 +24,15 @@ $colors: (
 );
 
 //primary colors
-$primary-5: #eff5ff !default;
-$primary-10: #d3e1fb !default;
-$primary-20: #a7c4f7 !default;
-$primary-30: #7ca6f3 !default;
-$primary-40: #5089ef !default;
-$primary-60: #1d56bc !default;
-$primary-70: #16408d !default;
-$primary-80: #0e2b5e !default;
-$primary-90: #07152f !default;
+$primary-5: #ffe9e9 !default;
+$primary-10: #ffd4d4 !default;
+$primary-20: #ffaaaa !default;
+$primary-30: #ff8080 !default;
+$primary-40: #ff5555 !default;
+$primary-60: #cc4b4b !default;
+$primary-70: #993737 !default;
+$primary-80: #662424 !default;
+$primary-90: #331212 !default;
 
 $primary-colors: (
   '5': $primary-5,
@@ -383,18 +383,3 @@ $inputs: (
     ),
   ),
 ) !default;
-
-//transition
-$transition-base: 0.4s ease-in-out !default;
-$transition-fade: opacity 0.4s linear !default;
-$transition-collapse: max-height 0.4s ease !default;
-$transition-collapse-width: width 0.4s ease !default;
-
-//box shadow
-$box-shadow-base: 2px 2px 2px 0px rgba(0, 0, 0, 0.15) !default;
-
-//img url 대치
-$url: '../../img' !default;
-
-//position 종류
-$position-type: (x, y, both);
