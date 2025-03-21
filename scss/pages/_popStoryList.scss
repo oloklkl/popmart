@@ -5,17 +5,17 @@
   width: 100%;
   height: 100%;
 }
-.inner {
+.popStoryList-inner {
   position: relative;
   width: 100%;
   max-width: $grid;
   margin: 0 auto;
   padding: 0;
   @include tablet {
-    max-width: calc(100% - $p-tablet);
+    padding: 0 $p-tablet;
   }
   @include mobile {
-    max-width: calc(100% - $p-mobile);
+    padding: 0 $p-mobile;
   }
 }
 .popStoryListTit {
