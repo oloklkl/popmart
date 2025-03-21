@@ -1,7 +1,7 @@
-.header {
-  display: flex;
+div.inner {
+  display: flex !important;
   align-items: center;
-  padding: 24px 200px;
+  padding: 24px 0;
   box-sizing: border-box;
   width: 100%;
 
@@ -13,7 +13,7 @@
     margin-right: auto;
   }
 
-  &__nav {
+  nav {
     flex-grow: 1;
     flex-shrink: 1;
     display: flex;

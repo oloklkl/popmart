@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>장바구니</title>
-        <link rel="stylesheet" href="/css/output/styles.css" />
-    </head>
-    <body>
-        <!-- Main Content -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니</title>
+    <link rel="stylesheet" href="/css/output/styles.css" />
+    <script type="module" src="../js/cart.js"></script>
+  </head>
+  <div id="header"></div>
+  <body>
+    <!-- Main Content -->
+    <div id="header-container"></div>
 
         <div class="cart-container">
             <!-- Cart Title -->
@@ -1056,16 +1059,1355 @@
                 </button>
             </div>
         </div>
-        <script type="module" src="../js/cart.js"></script>
-        <script src="/js/scriptLoader.js" defer></script>
-        <script>
-            window.addEventListener('DOMContentLoaded', () => {
-                if (typeof loadCommonElements === 'function') {
-                    loadCommonElements();
-                } else {
-                    console.error(':x: loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다.');
-                }
-            });
-        </script>
-    </body>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="cart-items">
+        <!-- Item 1 -->
+        <div class="cart-item">
+          <!-- 메인 콘텐츠 영역 -->
+          <div class="cart-item-main">
+            <div class="item-checkbox">
+              <input
+                type="checkbox"
+                id="checkbox1"
+                class="checkbox-input item-checkbox-input"
+                checked
+              />
+              <label for="checkbox1" class="checkbox-label">
+                <!-- 체크된 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg checked-svg"
+                >
+                  <rect
+                    class="checkbox-outer"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    fill="#FF4E4E"
+                    fill-opacity="0.65"
+                  />
+                  <rect
+                    class="checkbox-border"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#E02121"
+                    stroke-width="3"
+                  />
+                  <rect
+                    class="checkbox-inner"
+                    x="7"
+                    y="7"
+                    width="17"
+                    height="17"
+                    rx="4"
+                    fill="#E02121"
+                  />
+                </svg>
+                <!-- 미체크 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg unchecked-svg"
+                >
+                  <rect
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#4D5053"
+                    stroke-width="3"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="item-image">
+              <img
+                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail8.png?raw=true"
+                alt="피노젤리 탄생석 시리즈"
+              />
+            </div>
+            <div class="item-info">
+              <div class="item-name">피노젤리 탄생석 시리즈</div>
+              <div class="item-category">배송: [무료] / 기본배송</div>
+              <div class="item-price">15,000 원</div>
+            </div>
+            <div class="item-quantity">
+              <button type="button" class="quantity-btn minus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="quantity-input-container" data-value="1">
+                <svg
+                  width="56"
+                  height="39"
+                  viewBox="0 0 56 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  value="1"
+                  class="quantity-input"
+                  style="
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                />
+              </div>
+              <button type="button" class="quantity-btn plus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M20 13V27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="confirm-btn">
+                <svg
+                  width="55"
+                  height="39"
+                  viewBox="0 0 55 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    fill="black"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="item-total">합계: 15,000 원</div>
+          </div>
+          <hr
+            style="
+              width: calc(100% - 200px);
+              height: 1px;
+              background-color: #000;
+              border: none;
+              margin: 15px 0;
+              margin-left: 200px;
+            "
+          />
+          <!-- 버튼 영역 -->
+          <div class="action-wrapper">
+            <div class="action-buttons">
+              <button type="button" class="action-btn">삭제하기</button>
+              <button type="button" class="action-btn delete">주문하기</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="cart-item">
+          <!-- 메인 콘텐츠 영역 -->
+          <div class="cart-item-main">
+            <div class="item-checkbox">
+              <input
+                type="checkbox"
+                id="checkbox2"
+                class="checkbox-input item-checkbox-input"
+                checked
+              />
+              <label for="checkbox2" class="checkbox-label">
+                <!-- 체크된 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg checked-svg"
+                >
+                  <rect
+                    class="checkbox-outer"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    fill="#FF4E4E"
+                    fill-opacity="0.65"
+                  />
+                  <rect
+                    class="checkbox-border"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#E02121"
+                    stroke-width="3"
+                  />
+                  <rect
+                    class="checkbox-inner"
+                    x="7"
+                    y="7"
+                    width="17"
+                    height="17"
+                    rx="4"
+                    fill="#E02121"
+                  />
+                </svg>
+                <!-- 미체크 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg unchecked-svg"
+                >
+                  <rect
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#4D5053"
+                    stroke-width="3"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="item-image">
+              <img
+                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail15.png?raw=true"
+                alt="지거 경계선 위의 우리 시리즈"
+              />
+            </div>
+            <div class="item-info">
+              <div class="item-name">지거 경계선 위의 우리 시리즈</div>
+              <div class="item-category">배송: [무료] / 기본배송</div>
+              <div class="item-price">15,000 원</div>
+            </div>
+            <div class="item-quantity">
+              <button type="button" class="quantity-btn minus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="quantity-input-container" data-value="1">
+                <svg
+                  width="56"
+                  height="39"
+                  viewBox="0 0 56 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  value="1"
+                  class="quantity-input"
+                  style="
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                />
+              </div>
+              <button type="button" class="quantity-btn plus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M20 13V27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="confirm-btn">
+                <svg
+                  width="55"
+                  height="39"
+                  viewBox="0 0 55 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    fill="black"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="item-total">합계: 15,000 원</div>
+          </div>
+          <hr
+            style="
+              width: calc(100% - 200px);
+              height: 1px;
+              background-color: #000;
+              border: none;
+              margin: 15px 0;
+              margin-left: 200px;
+            "
+          />
+          <!-- 버튼 영역  -->
+          <div class="action-wrapper">
+            <div class="action-buttons">
+              <button type="button" class="action-btn">삭제하기</button>
+              <button type="button" class="action-btn delete">주문하기</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="cart-item">
+          <!-- 메인 콘텐츠 영역 -->
+          <div class="cart-item-main">
+            <div class="item-checkbox">
+              <input
+                type="checkbox"
+                id="checkbox3"
+                class="checkbox-input item-checkbox-input"
+                checked
+              />
+              <label for="checkbox3" class="checkbox-label">
+                <!-- 체크된 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg checked-svg"
+                >
+                  <rect
+                    class="checkbox-outer"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    fill="#FF4E4E"
+                    fill-opacity="0.65"
+                  />
+                  <rect
+                    class="checkbox-border"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#E02121"
+                    stroke-width="3"
+                  />
+                  <rect
+                    class="checkbox-inner"
+                    x="7"
+                    y="7"
+                    width="17"
+                    height="17"
+                    rx="4"
+                    fill="#E02121"
+                  />
+                </svg>
+                <!-- 미체크 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg unchecked-svg"
+                >
+                  <rect
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#4D5053"
+                    stroke-width="3"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="item-image">
+              <img
+                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail15.png?raw=true"
+                alt="바비 스타일 아이콘 시리즈"
+              />
+            </div>
+            <div class="item-info">
+              <div class="item-name">바비 스타일 아이콘 시리즈</div>
+              <div class="item-category">배송: [무료] / 기본배송</div>
+              <div class="item-price">15,000 원</div>
+            </div>
+            <div class="item-quantity">
+              <button type="button" class="quantity-btn minus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="quantity-input-container" data-value="1">
+                <svg
+                  width="56"
+                  height="39"
+                  viewBox="0 0 56 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  value="1"
+                  class="quantity-input"
+                  style="
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                />
+              </div>
+              <button type="button" class="quantity-btn plus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M20 13V27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="confirm-btn">
+                <svg
+                  width="55"
+                  height="39"
+                  viewBox="0 0 55 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    fill="black"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="item-total">합계: 15,000 원</div>
+          </div>
+          <hr
+            style="
+              width: calc(100% - 200px);
+              height: 1px;
+              background-color: #000;
+              border: none;
+              margin: 15px 0;
+              margin-left: 200px;
+            "
+          />
+          <!-- 버튼 영역  -->
+          <div class="action-wrapper">
+            <div class="action-buttons">
+              <button type="button" class="action-btn">삭제하기</button>
+              <button type="button" class="action-btn delete">주문하기</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="cart-item">
+          <!-- 메인 콘텐츠 영역 -->
+          <div class="cart-item-main">
+            <div class="item-checkbox">
+              <input
+                type="checkbox"
+                id="checkbox4"
+                class="checkbox-input item-checkbox-input"
+                checked
+              />
+              <label for="checkbox4" class="checkbox-label">
+                <!-- 체크된 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg checked-svg"
+                >
+                  <rect
+                    class="checkbox-outer"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    fill="#FF4E4E"
+                    fill-opacity="0.65"
+                  />
+                  <rect
+                    class="checkbox-border"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#E02121"
+                    stroke-width="3"
+                  />
+                  <rect
+                    class="checkbox-inner"
+                    x="7"
+                    y="7"
+                    width="17"
+                    height="17"
+                    rx="4"
+                    fill="#E02121"
+                  />
+                </svg>
+                <!-- 미체크 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg unchecked-svg"
+                >
+                  <rect
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#4D5053"
+                    stroke-width="3"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="item-image">
+              <img
+                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail15.png?raw=true"
+                alt="귀멸의 칼날 탄생화 시리즈"
+              />
+            </div>
+            <div class="item-info">
+              <div class="item-name">귀멸의 칼날 탄생화 시리즈</div>
+              <div class="item-category">배송: [무료] / 기본배송</div>
+              <div class="item-price">15,000 원</div>
+            </div>
+            <div class="item-quantity">
+              <button type="button" class="quantity-btn minus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="quantity-input-container" data-value="1">
+                <svg
+                  width="56"
+                  height="39"
+                  viewBox="0 0 56 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  value="1"
+                  class="quantity-input"
+                  style="
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                />
+              </div>
+              <button type="button" class="quantity-btn plus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M20 13V27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="confirm-btn">
+                <svg
+                  width="55"
+                  height="39"
+                  viewBox="0 0 55 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    fill="black"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="item-total">합계: 15,000 원</div>
+          </div>
+          <hr
+            style="
+              width: calc(100% - 200px);
+              height: 1px;
+              background-color: #000;
+              border: none;
+              margin: 15px 0;
+              margin-left: 200px;
+            "
+          />
+          <!-- 버튼 영역  -->
+          <div class="action-wrapper">
+            <div class="action-buttons">
+              <button type="button" class="action-btn">삭제하기</button>
+              <button type="button" class="action-btn delete">주문하기</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="cart-item">
+          <!-- 메인 콘텐츠 영역 -->
+          <div class="cart-item-main">
+            <div class="item-checkbox">
+              <input
+                type="checkbox"
+                id="checkbox5"
+                class="checkbox-input item-checkbox-input"
+                checked
+              />
+              <label for="checkbox5" class="checkbox-label">
+                <!-- 체크된 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg checked-svg"
+                >
+                  <rect
+                    class="checkbox-outer"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    fill="#FF4E4E"
+                    fill-opacity="0.65"
+                  />
+                  <rect
+                    class="checkbox-border"
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#E02121"
+                    stroke-width="3"
+                  />
+                  <rect
+                    class="checkbox-inner"
+                    x="7"
+                    y="7"
+                    width="17"
+                    height="17"
+                    rx="4"
+                    fill="#E02121"
+                  />
+                </svg>
+                <!-- 미체크 상태 SVG -->
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 31 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="checkbox-svg unchecked-svg"
+                >
+                  <rect
+                    x="1.5"
+                    y="1.5"
+                    width="28"
+                    height="28"
+                    rx="5.5"
+                    stroke="#4D5053"
+                    stroke-width="3"
+                  />
+                </svg>
+              </label>
+            </div>
+            <div class="item-image">
+              <img
+                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail15.png?raw=true"
+                alt="귀멸의 칼날 탄생화 시리즈"
+              />
+            </div>
+            <div class="item-info">
+              <div class="item-name">귀멸의 칼날 탄생화 시리즈</div>
+              <div class="item-category">배송: [무료] / 기본배송</div>
+              <div class="item-price">15,000 원</div>
+            </div>
+            <div class="item-quantity">
+              <button type="button" class="quantity-btn minus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="quantity-input-container" data-value="1">
+                <svg
+                  width="56"
+                  height="39"
+                  viewBox="0 0 56 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="54"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  value="1"
+                  class="quantity-input"
+                  style="
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                />
+              </div>
+              <button type="button" class="quantity-btn plus-btn">
+                <svg
+                  width="39"
+                  height="39"
+                  viewBox="0 0 39 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    fill="white"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="37"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M20 13V27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 20H27"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="confirm-btn">
+                <svg
+                  width="55"
+                  height="39"
+                  viewBox="0 0 55 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    fill="black"
+                  />
+                  <rect
+                    x="1"
+                    y="1"
+                    width="53"
+                    height="37"
+                    rx="12"
+                    stroke="black"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M24.808 18.644H22.468V20.048H17.008V14.24H18.16V16.076H21.316V14.24H22.468V15.284H24.808V13.712H26.008V22.052H24.808V18.644ZM24.808 17.672V16.256H22.468V17.672H24.808ZM18.16 17.12V18.992H21.316V17.12H18.16ZM19.84 21.416V23.756H26.476V24.848H18.64V21.416H19.84ZM33.9069 16.376C33.3069 17.888 31.6909 19.056 29.0589 19.88L28.6029 18.812C29.9229 18.412 30.9629 17.912 31.7229 17.312C32.4829 16.712 32.8949 16.072 32.9589 15.392H28.8549V14.3H34.1709V14.924C34.1709 15.036 34.1629 15.196 34.1469 15.404H36.4269V13.712H37.6149V19.784H36.4269V18.524H33.8949V17.552H36.4269V16.376H33.9069ZM35.1069 20.372C35.6349 20.372 36.0989 20.472 36.4989 20.672C36.9069 20.864 37.2189 21.136 37.4349 21.488C37.6589 21.832 37.7709 22.224 37.7709 22.664C37.7709 23.112 37.6589 23.508 37.4349 23.852C37.2189 24.204 36.9069 24.476 36.4989 24.668C36.0989 24.868 35.6349 24.968 35.1069 24.968H32.6709C32.1429 24.968 31.6789 24.868 31.2789 24.668C30.8789 24.476 30.5669 24.204 30.3429 23.852C30.1269 23.508 30.0189 23.112 30.0189 22.664C30.0189 22.224 30.1269 21.832 30.3429 21.488C30.5669 21.136 30.8789 20.864 31.2789 20.672C31.6789 20.472 32.1429 20.372 32.6709 20.372H35.1069ZM34.9149 23.888C35.4509 23.888 35.8589 23.776 36.1389 23.552C36.4269 23.328 36.5709 23.032 36.5709 22.664C36.5709 22.296 36.4269 22 36.1389 21.776C35.8589 21.552 35.4509 21.44 34.9149 21.44H32.8749C32.3389 21.44 31.9269 21.552 31.6389 21.776C31.3589 22 31.2189 22.296 31.2189 22.664C31.2189 23.032 31.3589 23.328 31.6389 23.552C31.9269 23.776 32.3389 23.888 32.8749 23.888H34.9149Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="item-total">합계: 15,000 원</div>
+          </div>
+          <hr
+            style="
+              width: calc(100% - 200px);
+              height: 1px;
+              background-color: #000;
+              border: none;
+              margin: 15px 0;
+              margin-left: 200px;
+            "
+          />
+          <!-- 버튼 영역  -->
+          <div class="action-wrapper">
+            <div class="action-buttons">
+              <button type="button" class="action-btn">삭제하기</button>
+              <button type="button" class="action-btn delete">주문하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selected Items -->
+      <div class="cart-selected-items">
+        <!-- 선택된 상품 썸네일 영역 -->
+        <div class="selected-thumbnails"></div>
+
+        <!-- 선택된 상품 정보 및 버튼 -->
+        <div class="selected-count">
+          <span>3 개 상품이 선택 되었습니다.</span>
+          <div class="action-buttons">
+            <button type="button" class="action-btn">선택상품 주문</button>
+            <button type="button" class="action-btn delete">
+              전체상품 주문
+            </button>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <div class="summary-row">
+            <span class="summary-label">결제 예정금액</span>
+            <span class="summary-value">78,000 원</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">총 상품금액</span>
+            <span class="summary-value">78,000 원</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">총 배송비</span>
+            <span class="summary-value">0 원</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOP 버튼 -->
+      <div id="top-button">
+        <button type="button" onclick="scrollToTop()" title="맨 위로 이동">
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 136 136"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_748_371)">
+              <rect
+                width="136"
+                height="136"
+                rx="68"
+                fill="url(#paint0_radial_748_371)"
+              />
+              <path
+                d="M69 100L69 41"
+                stroke="white"
+                stroke-width="8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M46.625 62.5L68.5 40.625L90.375 62.5"
+                stroke="white"
+                stroke-width="8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <defs>
+              <radialGradient
+                id="paint0_radial_748_371"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(50 29) rotate(69.2459) scale(50.7962 81.3628)"
+              >
+                <stop stop-color="#FF8C8C" />
+                <stop offset="1" stop-color="#E02121" />
+              </radialGradient>
+              <clipPath id="clip0_748_371">
+                <rect width="136" height="136" rx="68" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="/js/scriptLoader.js" defer></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        if (typeof loadCommonElements === "function") {
+          loadCommonElements();
+        } else {
+          console.error(
+            ":x: loadCommonElements is not defined. scriptLoader.js가 로드되지 않았습니다."
+          );
+        }
+      });
+    </script>
+  </body>
 </html>
