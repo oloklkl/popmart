@@ -994,6 +994,10 @@
         margin-bottom: 20px;
         padding: 5px;
 
+        @include mobile {
+            width: 300px;
+        }
+
         th {
             font-size: $font-size-title-xlg;
             font-weight: $font-bold;
@@ -1117,14 +1121,14 @@
         }
 
         @include tablet {
-            width: 106px;
-            height: 106px;
+            width: 90px;
+            height: 90px;
         }
 
         @include mobile {
-            right: 10px;
-            width: 76px;
-            height: 76px;
+            right: 145px;
+            width: 70px;
+            height: 70px;
         }
     }
 
@@ -1147,15 +1151,15 @@
         }
 
         @include tablet {
-            width: 100px;
-            height: 100px;
+            width: 85px;
+            height: 85px;
         }
 
         @include mobile {
             bottom: 110px;
-            right: 8px;
-            width: 80px;
-            height: 80px;
+            right: 140px;
+            width: 65px;
+            height: 65px;
         }
     }
 
@@ -1178,15 +1182,15 @@
         }
 
         @include tablet {
-            right: 140px;
-            width: 106px;
-            height: 106px;
+            right: 130px;
+            width: 90px;
+            height: 90px;
         }
 
         @include mobile {
-            right: 90px;
-            width: 76px;
-            height: 76px;
+            right: 220px;
+            width: 70px;
+            height: 70px;
         }
     }
 }
