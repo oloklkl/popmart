@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
     tagsContainer.classList.add('tag-content')
     const tagInnerContainer = document.createElement('div')
     tagInnerContainer.classList.add('tags')
-    item.members.forEach((member) => {
+    item.tags.forEach((tag) => {
       const span = document.createElement('span')
       span.classList.add('tag')
-      span.innerText = member.name
+      span.innerText = tag
       tagInnerContainer.appendChild(span)
     })
     tagsContainer.appendChild(tagInnerContainer)
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.appendChild(innerDiv)
   } else {
-    // 로드 실패
+    //로드 실패
     const container = document.querySelector('.popStory-container')
     container.innerHTML = `<p>아이템을 찾을 수 없습니다.</p>`
   }
