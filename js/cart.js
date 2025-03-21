@@ -24,7 +24,44 @@ document.addEventListener('DOMContentLoaded', function () {
     /**
      * 장바구니 초기화
      */
+    /**
+     * 장바구니 초기화
+     */
     function initCart() {
+        // 체크박스 레이블 스타일 먼저 초기화
+        const labels = document.querySelectorAll('.checkbox-label');
+        labels.forEach((label) => {
+            label.style.display = 'inline-block';
+            label.style.width = 'auto';
+            label.style.height = 'auto';
+            label.style.marginBottom = '-100px';
+            label.style.padding = '0';
+
+            // SVG 요소만 클릭 가능하도록 설정
+            const svgs = label.querySelectorAll('svg');
+            svgs.forEach((svg) => {
+                svg.style.display = 'inline-block';
+                svg.style.pointerEvents = 'auto';
+            });
+
+            // #select-all-text는 제외하고 나머지 텍스트 노드는 감춤
+            if (!label.querySelector('#select-all-text')) {
+                Array.from(label.childNodes).forEach((node) => {
+                    if (node.nodeType === 3) {
+                        // 텍스트 노드
+                        node.textContent = '';
+                    }
+                });
+            }
+        });
+
+        // 그 다음 체크박스 숨기기
+        hideCheckboxes();
+
+        // 체크박스 초기 상태 설정
+        updateCheckboxStatus();
+
+        // 기존 코드들
         // 수량 입력 컨테이너 초기화
         initializeQuantityContainers();
 
@@ -33,9 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 아이템 합계 초기화
         initializeItemTotals();
-
-        // 체크박스 상태 업데이트
-        updateCheckboxStatus();
 
         // 선택된 상품 업데이트
         updateSelectedItems();
@@ -46,7 +80,26 @@ document.addEventListener('DOMContentLoaded', function () {
         // 하단 패널 위치 조정
         adjustBottomPanel();
     }
-
+    /**
+     * 체크박스 숨기기
+     */
+    function hideCheckboxes() {
+        const checkboxes = document.querySelectorAll('.checkbox-input, .item-checkbox-input');
+        checkboxes.forEach((checkbox) => {
+            checkbox.style.display = 'none';
+            checkbox.style.opacity = '0';
+            checkbox.style.position = 'absolute';
+            checkbox.style.zIndex = '-1';
+            checkbox.style.width = '0';
+            checkbox.style.height = '0';
+            checkbox.style.margin = '0';
+            checkbox.style.padding = '0';
+            checkbox.style.appearance = 'none';
+            checkbox.style.webkitAppearance = 'none';
+            checkbox.style.mozAppearance = 'none';
+            checkbox.style.visibility = 'hidden';
+        });
+    }
     /**
      * 이벤트 리스너 설정
      */
@@ -76,7 +129,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const input = container.querySelector('.quantity-input');
             if (input) {
                 container.setAttribute('data-value', input.value);
+                input.style.outline = 'none';
+                input.style.boxShadow = 'none';
+                input.style.webkitAppearance = 'none';
+                input.style.mozAppearance = 'none';
+                input.style.appearance = 'none';
             }
+            container.style.position = 'relative';
+            container.style.display = 'inline-block';
+            container.style.width = '54px';
+            container.style.height = '37px';
         });
     }
 
@@ -84,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * 이미지 중앙 정렬
      */
     function initializeImages() {
-        const images = document.querySelectorAll('.item-image img');
+        const images = document.querySelectorAll('.item-image img:not(.cart-image):not(.thumbnail-image)');
         images.forEach((img) => {
             img.style.position = 'absolute';
             img.style.top = '50%';
@@ -144,45 +206,155 @@ document.addEventListener('DOMContentLoaded', function () {
     function adjustBottomPanel() {
         if (!selectedItemsContainer) return;
 
+        // 공통 스타일 적용
+        selectedItemsContainer.style.position = 'fixed';
+        selectedItemsContainer.style.bottom = '0';
+        selectedItemsContainer.style.background = 'white';
+        selectedItemsContainer.style.boxShadow = '0 -4px 10px rgba(0, 0, 0, 0.1)';
+        selectedItemsContainer.style.padding = '15px';
+        selectedItemsContainer.style.borderRadius = '30px 30px 0 0';
+        selectedItemsContainer.style.border = '3px solid black';
+        selectedItemsContainer.style.zIndex = '100';
+        selectedItemsContainer.style.height = 'auto';
+        selectedItemsContainer.style.overflowY = 'visible'; // 스크롤 제거
+
         if (device.isMobile) {
             // 모바일에서는 전체 너비
             selectedItemsContainer.style.width = '100%';
             selectedItemsContainer.style.left = '0';
             selectedItemsContainer.style.transform = 'none';
-            selectedItemsContainer.style.borderRadius = '20px 20px 0 0';
         } else {
             // 데스크탑에서는 비율에 맞게 조정
             selectedItemsContainer.style.width = device.isTablet ? '95%' : '90%';
             selectedItemsContainer.style.maxWidth = '1520px';
             selectedItemsContainer.style.left = '50%';
             selectedItemsContainer.style.transform = 'translateX(-50%)';
-            selectedItemsContainer.style.borderRadius = '20px';
+        }
+
+        // 선택된 아이템 썸네일 컨테이너 스타일 설정
+        if (selectedThumbnails) {
+            selectedThumbnails.style.display = 'flex';
+            selectedThumbnails.style.flexWrap = 'nowrap';
+            selectedThumbnails.style.alignItems = 'center';
+            selectedThumbnails.style.justifyContent = 'flex-start';
+            selectedThumbnails.style.gap = '10px';
+            selectedThumbnails.style.margin = '10px 0';
+            selectedThumbnails.style.maxWidth = '100%';
+            selectedThumbnails.style.height = '70px';
+        }
+
+        // 선택상품 정보 및 버튼 영역 조정
+        const selectedCount = selectedItemsContainer.querySelector('.selected-count');
+        if (selectedCount) {
+            selectedCount.style.display = 'flex';
+            selectedCount.style.justifyContent = 'space-between';
+            selectedCount.style.alignItems = 'center';
+            selectedCount.style.marginTop = '10px';
+        }
+
+        // 주문 버튼 영역 조정
+        const actionButtons = selectedItemsContainer.querySelector('.action-buttons');
+        if (actionButtons) {
+            actionButtons.style.display = 'flex';
+            actionButtons.style.flexDirection = 'row';
+            actionButtons.style.justifyContent = 'flex-end';
+            actionButtons.style.alignItems = 'center';
+            actionButtons.style.gap = '10px';
+            actionButtons.style.marginLeft = 'auto'; // 오른쪽 정렬
         }
     }
 
     /**
      * 체크박스 이벤트 설정
      */
+    /**
+     * 체크박스 이벤트 설정
+     */
+    /**
+     * 체크박스 이벤트 설정
+     */
     function setupCheckboxes() {
-        // 개별 체크박스
-        const itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
-        itemCheckboxes.forEach((checkbox) => {
+        // 모든 체크박스에 대해 명시적으로 SVG 상태 설정
+        const checkboxes = document.querySelectorAll('.checkbox-input, .item-checkbox-input');
+        checkboxes.forEach((checkbox) => {
+            const label = checkbox.nextElementSibling;
+            if (!label) return;
+
+            const checkedSvg = label.querySelector('.checked-svg');
+            const uncheckedSvg = label.querySelector('.unchecked-svg');
+
+            if (!checkedSvg || !uncheckedSvg) return;
+
+            // 초기 상태 명확히 설정 - 둘 중 하나만 보이도록
+            function updateSvgDisplay(isChecked) {
+                if (isChecked) {
+                    checkedSvg.style.display = 'block';
+                    uncheckedSvg.style.display = 'none';
+                } else {
+                    checkedSvg.style.display = 'none';
+                    uncheckedSvg.style.display = 'block';
+                }
+            }
+
+            // 초기 상태 명확히 설정
+            updateSvgDisplay(checkbox.checked);
+
+            // 체크박스 변경 시 SVG 업데이트
             checkbox.addEventListener('change', function () {
+                updateSvgDisplay(this.checked);
+
                 updateCheckboxStatus();
                 updateSelectedItems();
                 updateTotalPrice();
             });
         });
 
-        // 전체 선택 체크박스
+        // 전체 선택 체크박스 처리
+        const selectAllCheckbox = document.getElementById('select-all');
         if (selectAllCheckbox) {
+            const selectAllLabel = selectAllCheckbox.nextElementSibling;
+            const checkedSvg = selectAllLabel.querySelector('.checked-svg');
+            const uncheckedSvg = selectAllLabel.querySelector('.unchecked-svg');
+
+            // 초기 상태 설정
+            function updateSelectAllSvgDisplay(isChecked) {
+                if (isChecked) {
+                    checkedSvg.style.display = 'block';
+                    uncheckedSvg.style.display = 'none';
+                } else {
+                    checkedSvg.style.display = 'none';
+                    uncheckedSvg.style.display = 'block';
+                }
+            }
+
+            // 초기 상태 설정
+            updateSelectAllSvgDisplay(selectAllCheckbox.checked);
+
+            // 전체 선택 체크박스 변경 이벤트
             selectAllCheckbox.addEventListener('change', function () {
+                // 전체선택 체크박스 SVG 상태 업데이트
+                updateSelectAllSvgDisplay(this.checked);
+
                 const isChecked = this.checked;
 
                 // 모든 상품 체크박스에 적용
                 const itemCheckboxes = document.querySelectorAll('.item-checkbox-input');
                 itemCheckboxes.forEach((checkbox) => {
+                    // 체크박스 상태 변경
                     checkbox.checked = isChecked;
+
+                    // 개별 체크박스 SVG 업데이트
+                    const itemLabel = checkbox.nextElementSibling;
+                    const itemCheckedSvg = itemLabel.querySelector('.checked-svg');
+                    const itemUncheckedSvg = itemLabel.querySelector('.unchecked-svg');
+
+                    if (isChecked) {
+                        itemCheckedSvg.style.display = 'block';
+                        itemUncheckedSvg.style.display = 'none';
+                    } else {
+                        itemCheckedSvg.style.display = 'none';
+                        itemUncheckedSvg.style.display = 'block';
+                    }
                 });
 
                 // 전체선택 텍스트 업데이트
@@ -191,13 +363,44 @@ document.addEventListener('DOMContentLoaded', function () {
                     selectAllText.textContent = isChecked ? '전체 선택 삭제' : '전체선택';
                 }
 
-                // 체크박스 상태, 선택된 상품, 가격 업데이트
-                updateCheckboxVisibility();
+                // 선택된 상품, 가격 업데이트
                 updateSelectedItems();
                 updateTotalPrice();
             });
         }
+
+        // 체크박스 레이블 수정
+        const labels = document.querySelectorAll('.checkbox-label');
+        labels.forEach((label) => {
+            label.style.display = 'inline-block';
+            label.style.width = 'auto';
+            label.style.height = 'auto';
+            label.style.margin = '0 0 -0px 0';
+            label.style.padding = '0';
+
+            // SVG 요소만 클릭 가능하도록 설정
+            const svgs = label.querySelectorAll('svg');
+            svgs.forEach((svg) => {
+                svg.style.display = 'inline-block';
+                svg.style.pointerEvents = 'auto';
+            });
+
+            // #select-all-text는 제외하고 나머지 텍스트 노드는 감춤
+            if (!label.querySelector('#select-all-text')) {
+                Array.from(label.childNodes).forEach((node) => {
+                    if (node.nodeType === 3) {
+                        // 텍스트 노드
+                        node.textContent = '';
+                    }
+                });
+            }
+        });
+
+        // 체크박스 숨기기
+        setTimeout(hideCheckboxes, 100);
     }
+
+    // 기존의 updateCheckboxVisibility 함수는 삭제해도 됩니다.
 
     /**
      * 체크박스 상태 업데이트
@@ -346,6 +549,19 @@ document.addEventListener('DOMContentLoaded', function () {
         // 수량 입력 필드
         const quantityInputs = document.querySelectorAll('.quantity-input');
         quantityInputs.forEach((input) => {
+            input.style.position = 'absolute'; // 절대 위치로 변경
+            input.style.top = '0';
+            input.style.left = '0';
+            input.style.opacity = '1';
+            input.style.zIndex = '10';
+            input.style.width = '100%';
+            input.style.height = '100%';
+            input.style.textAlign = 'center';
+            input.style.border = 'none';
+            input.style.background = 'transparent';
+            input.style.fontSize = '16px';
+            input.style.fontWeight = 'bold';
+            input.style.color = '#000';
             // 값 변경 이벤트
             input.addEventListener('change', function () {
                 let value = parseInt(this.value) || 1;
@@ -403,8 +619,6 @@ document.addEventListener('DOMContentLoaded', function () {
         orderButtons.forEach((button) => {
             button.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                // 주문 처리 (예: 알림 표시)
                 alert('주문이 완료되었습니다.');
             });
         });
@@ -494,34 +708,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
-     * 하단에 도달했을 때 레이아웃 변경
+     * 하단 패널 위치 조정 - 맨 아래에서는 fixed 제거하는 버전
      */
     /**
-     * 스크롤 위치에 따른 하단 패널 관리
-     */
-    /**
-     * 스크롤 위치에 따른 하단 패널 관리
+     * 하단 패널 위치 조정 - 100% 너비 적용 버전
      */
     function handleBottomLayout() {
         if (!selectedItemsContainer || !orderSummary) return;
 
-        // orderSummary 숨기기
-        orderSummary.style.display = 'none';
+        // 스크롤이 페이지 하단에 도달했는지 확인
+        const isAtBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 200;
 
-        // 선택된 항목 컨테이너 스타일 설정 - 항상 화면 하단에 고정
-        selectedItemsContainer.style.position = 'fixed';
-        selectedItemsContainer.style.bottom = '0';
-        selectedItemsContainer.style.left = device.isMobile ? '0' : '50%';
-        selectedItemsContainer.style.transform = device.isMobile ? 'none' : 'translateX(-50%)';
-        selectedItemsContainer.style.width = device.isMobile ? '100%' : '90%';
-        selectedItemsContainer.style.maxWidth = '1520px';
+        // 기본 스타일 (공통)
+        selectedItemsContainer.style.display = 'block';
+        selectedItemsContainer.style.width = '100%'; // 항상 100% 너비 적용
         selectedItemsContainer.style.zIndex = '100';
         selectedItemsContainer.style.background = 'white';
         selectedItemsContainer.style.boxShadow = '0 -4px 10px rgba(0, 0, 0, 0.1)';
         selectedItemsContainer.style.padding = '15px';
 
-        // 디바이스 타입에 따른 보더 스타일
-        selectedItemsContainer.style.borderRadius = device.isMobile ? '20px 20px 0 0' : '20px';
+        if (isAtBottom) {
+            // 페이지 하단에 도달: fixed 제거하고 일반 흐름에 따르도록 설정
+            selectedItemsContainer.style.position = 'relative';
+            selectedItemsContainer.style.bottom = 'auto';
+            selectedItemsContainer.style.left = '0';
+            selectedItemsContainer.style.transform = 'none';
+            selectedItemsContainer.style.margin = '30px 0 50px';
+            selectedItemsContainer.style.borderRadius = '30px';
+        } else {
+            // 일반 스크롤 상태: fixed 위치로 고정
+            selectedItemsContainer.style.position = 'fixed';
+            selectedItemsContainer.style.bottom = '0';
+            selectedItemsContainer.style.left = '0';
+            selectedItemsContainer.style.transform = 'none';
+            selectedItemsContainer.style.margin = '0';
+            selectedItemsContainer.style.borderRadius = '30px 30px 0 0';
+        }
 
         // merged 클래스가 있으면 제거
         if (selectedItemsContainer.classList.contains('merged')) {
@@ -592,14 +814,26 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
     /**
-     * 선택된 상품 목록 업데이트
+     * 선택된 상품 목록 업데이트 - 썸네일 및 버튼 영역 설정
      */
     function updateSelectedItems() {
         if (!selectedThumbnails) return;
 
         // 썸네일 영역 초기화
         selectedThumbnails.innerHTML = '';
+
+        // 스타일 초기화 및 설정 - 가로로 모든 항목 표시
+        selectedThumbnails.style.display = 'flex';
+        selectedThumbnails.style.flexDirection = 'row';
+        selectedThumbnails.style.alignItems = 'center';
+        selectedThumbnails.style.flexWrap = 'nowrap'; // 줄바꿈 없음
+        selectedThumbnails.style.gap = '10px';
+        selectedThumbnails.style.width = '100%';
+        selectedThumbnails.style.height = '70px'; // 높이 고정
+        selectedThumbnails.style.padding = '5px 15px';
+        selectedThumbnails.style.overflowX = 'visible'; // 스크롤 제거
 
         // 체크된 상품 찾기
         const selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
@@ -625,24 +859,62 @@ document.addEventListener('DOMContentLoaded', function () {
             thumbItem.className = 'selected-item';
             thumbItem.setAttribute('data-id', checkboxId);
 
+            // 명확한 크기 설정
+            thumbItem.style.width = '60px';
+            thumbItem.style.height = '60px';
+            thumbItem.style.border = '3px solid #E0212';
+            thumbItem.style.borderRadius = '8px';
+            thumbItem.style.overflow = 'hidden';
+            thumbItem.style.position = 'relative';
+            thumbItem.style.display = 'flex';
+            thumbItem.style.flexShrink = '0'; // 크기 유지
+            thumbItem.style.margin = '0 5px';
+
             // 이미지 추가
             const img = document.createElement('img');
             img.src = image.src;
             img.alt = image.alt;
+            img.className = 'thumbnail-image';
 
-            // 삭제 아이콘 추가
-            const deleteIcon = document.createElement('div');
-            deleteIcon.className = 'delete-icon';
-            deleteIcon.innerHTML = `
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="11" fill="#FF4E4E" stroke="black" stroke-width="1"/>
-                    <path d="M7 7L17 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M17 7L7 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            `;
+            // 이미지 스타일 설정
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            img.style.position = 'static';
+            img.style.transform = 'none';
 
-            // 삭제 이벤트 추가
-            deleteIcon.addEventListener('click', function (e) {
+            // X 표시 오버레이 생성 (숨김 상태)
+            const overlay = document.createElement('div');
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.color = 'white';
+            overlay.style.display = 'none';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.fontSize = '24px';
+            overlay.innerHTML = '×';
+
+            // 이미지에 호버 이벤트 추가
+            thumbItem.addEventListener('mouseenter', function () {
+                overlay.style.display = 'flex';
+            });
+
+            thumbItem.addEventListener('mouseleave', function () {
+                overlay.style.display = 'none';
+            });
+
+            // 요소 구성
+            thumbItem.appendChild(img);
+            thumbItem.appendChild(overlay);
+            selectedThumbnails.appendChild(thumbItem);
+
+            // 클릭 이벤트 추가
+            thumbItem.addEventListener('click', function (e) {
+                e.preventDefault();
                 e.stopPropagation();
 
                 // 체크박스 찾아서 해제
@@ -656,14 +928,302 @@ document.addEventListener('DOMContentLoaded', function () {
                     updateCheckboxStatus();
                 }
             });
+        });
+
+        // 선택상품 정보 및 버튼 영역 조정
+        const selectedCount = selectedItemsContainer.querySelector('.selected-count');
+        if (selectedCount) {
+            selectedCount.style.display = 'flex';
+            selectedCount.style.justifyContent = 'space-between';
+            selectedCount.style.alignItems = 'center';
+            selectedCount.style.marginTop = '10px';
+            selectedCount.style.width = '100%';
+        }
+
+        // 주문 버튼 영역 조정
+        const actionButtons = selectedItemsContainer.querySelector('.action-buttons');
+        if (actionButtons) {
+            actionButtons.style.display = 'flex';
+            actionButtons.style.flexDirection = 'row';
+            actionButtons.style.justifyContent = 'flex-end';
+            actionButtons.style.alignItems = 'center';
+            actionButtons.style.gap = '10px';
+            actionButtons.style.marginLeft = 'auto'; // 오른쪽 정렬
+        }
+    }
+
+    /**
+     * 선택된 상품 목록 업데이트 - 버튼 영역 개선 버전
+     */
+    function updateSelectedItems() {
+        if (!selectedThumbnails) return;
+
+        // 썸네일 영역 초기화
+        selectedThumbnails.innerHTML = '';
+
+        // 스타일 초기화 및 설정 - 가로로 모든 항목 표시
+        selectedThumbnails.style.display = 'flex';
+        selectedThumbnails.style.flexDirection = 'row';
+        selectedThumbnails.style.alignItems = 'center';
+        selectedThumbnails.style.flexWrap = 'nowrap'; // 줄바꿈 없음
+        selectedThumbnails.style.gap = '10px';
+        selectedThumbnails.style.width = '100%';
+        selectedThumbnails.style.height = '70px'; // 높이 고정
+        selectedThumbnails.style.padding = '5px 15px';
+        selectedThumbnails.style.overflowX = 'visible'; // 스크롤 제거
+
+        // 체크된 상품 찾기
+        const selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
+
+        // 선택된 항목 개수 업데이트
+        const countSpan = selectedItemsContainer.querySelector('.selected-count span');
+        if (countSpan) {
+            countSpan.textContent = `${selectedCheckboxes.length} 개 상품이 선택 되었습니다.`;
+        }
+
+        // 썸네일 추가
+        selectedCheckboxes.forEach((checkbox) => {
+            const cartItem = findParent(checkbox, '.cart-item');
+            if (!cartItem) return;
+
+            const image = cartItem.querySelector('.item-image img');
+            if (!image) return;
+
+            const checkboxId = checkbox.getAttribute('id');
+
+            // 썸네일 요소 생성
+            const thumbItem = document.createElement('div');
+            thumbItem.className = 'selected-item';
+            thumbItem.setAttribute('data-id', checkboxId);
+
+            // 명확한 크기 설정
+            thumbItem.style.width = '60px';
+            thumbItem.style.height = '60px';
+            thumbItem.style.border = '1px solid #ddd';
+            thumbItem.style.borderRadius = '4px';
+            thumbItem.style.overflow = 'hidden';
+            thumbItem.style.position = 'relative';
+            thumbItem.style.display = 'flex';
+            thumbItem.style.flexShrink = '0'; // 크기 유지
+            thumbItem.style.margin = '0 5px';
+
+            // 이미지 추가
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.alt;
+            img.className = 'thumbnail-image';
+
+            // 이미지 스타일 설정
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            img.style.position = 'static';
+            img.style.transform = 'none';
+
+            // X 표시 오버레이 생성 (숨김 상태)
+            const overlay = document.createElement('div');
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.color = 'white';
+            overlay.style.display = 'none';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.fontSize = '24px';
+            overlay.innerHTML = '×';
+
+            // 이미지에 호버 이벤트 추가
+            thumbItem.addEventListener('mouseenter', function () {
+                overlay.style.display = 'flex';
+            });
+
+            thumbItem.addEventListener('mouseleave', function () {
+                overlay.style.display = 'none';
+            });
 
             // 요소 구성
             thumbItem.appendChild(img);
-            thumbItem.appendChild(deleteIcon);
+            thumbItem.appendChild(overlay);
             selectedThumbnails.appendChild(thumbItem);
-        });
-    }
 
+            // 클릭 이벤트 추가
+            thumbItem.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // 체크박스 찾아서 해제
+                const itemId = thumbItem.getAttribute('data-id');
+                const checkbox = document.getElementById(itemId);
+                if (checkbox) {
+                    checkbox.checked = false;
+                    updateCheckboxVisibility();
+                    updateSelectedItems();
+                    updateTotalPrice();
+                    updateCheckboxStatus();
+                }
+            });
+        });
+
+        // 선택상품 정보 및 버튼 영역 조정
+        const selectedCount = selectedItemsContainer.querySelector('.selected-count');
+        if (selectedCount) {
+            selectedCount.style.display = 'flex';
+            selectedCount.style.justifyContent = 'space-between';
+            selectedCount.style.alignItems = 'center';
+            selectedCount.style.marginTop = '10px';
+            selectedCount.style.width = '100%';
+        }
+
+        // 주문 버튼 영역 조정
+        const actionButtons = selectedItemsContainer.querySelector('.action-buttons');
+        if (actionButtons) {
+            actionButtons.style.display = 'flex';
+            actionButtons.style.flexDirection = 'row';
+            actionButtons.style.justifyContent = 'flex-end';
+            actionButtons.style.alignItems = 'center';
+            actionButtons.style.gap = '10px';
+            actionButtons.style.marginLeft = 'auto'; // 오른쪽 정렬
+        }
+    }
+    /**
+     * 선택된 상품 목록 업데이트
+     */
+    function updateSelectedItems() {
+        if (!selectedThumbnails) return;
+
+        // 썸네일 영역 초기화
+        selectedThumbnails.innerHTML = '';
+
+        // 스타일 초기화 및 설정 - 가로로 모든 항목 표시
+        selectedThumbnails.style.display = 'flex';
+        selectedThumbnails.style.flexDirection = 'row';
+        selectedThumbnails.style.alignItems = 'center';
+        selectedThumbnails.style.flexWrap = 'nowrap'; // 줄바꿈 없음
+        selectedThumbnails.style.gap = '10px';
+        selectedThumbnails.style.width = '100%';
+        selectedThumbnails.style.height = '70px'; // 높이 고정
+        selectedThumbnails.style.padding = '5px 15px';
+        selectedThumbnails.style.overflowX = 'visible'; // 스크롤 제거
+
+        // 체크된 상품 찾기
+        const selectedCheckboxes = document.querySelectorAll('.item-checkbox-input:checked');
+
+        // 선택된 항목 개수 업데이트
+        const countSpan = selectedItemsContainer.querySelector('.selected-count span');
+        if (countSpan) {
+            countSpan.textContent = `${selectedCheckboxes.length} 개 상품이 선택 되었습니다.`;
+        }
+
+        // 썸네일 추가
+        selectedCheckboxes.forEach((checkbox) => {
+            const cartItem = findParent(checkbox, '.cart-item');
+            if (!cartItem) return;
+
+            const image = cartItem.querySelector('.item-image img');
+            if (!image) return;
+
+            const checkboxId = checkbox.getAttribute('id');
+
+            // 썸네일 요소 생성
+            const thumbItem = document.createElement('div');
+            thumbItem.className = 'selected-item';
+            thumbItem.setAttribute('data-id', checkboxId);
+
+            // 명확한 크기 설정
+            thumbItem.style.width = '60px';
+            thumbItem.style.height = '60px';
+            thumbItem.style.border = '1px solid #ddd';
+            thumbItem.style.borderRadius = '4px';
+            thumbItem.style.overflow = 'hidden';
+            thumbItem.style.position = 'relative';
+            thumbItem.style.display = 'flex';
+            thumbItem.style.flexShrink = '0'; // 크기 유지
+            thumbItem.style.margin = '0 5px';
+
+            // 이미지 추가
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.alt;
+            img.className = 'thumbnail-image';
+
+            // 이미지 스타일 설정
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            img.style.position = 'static';
+            img.style.transform = 'none';
+
+            // X 표시 오버레이 생성 (숨김 상태)
+            const overlay = document.createElement('div');
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.color = 'white';
+            overlay.style.display = 'none';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.fontSize = '24px';
+            overlay.innerHTML = '×';
+
+            // 이미지에 호버 이벤트 추가
+            thumbItem.addEventListener('mouseenter', function () {
+                overlay.style.display = 'flex';
+            });
+
+            thumbItem.addEventListener('mouseleave', function () {
+                overlay.style.display = 'none';
+            });
+
+            // 요소 구성
+            thumbItem.appendChild(img);
+            thumbItem.appendChild(overlay);
+            selectedThumbnails.appendChild(thumbItem);
+
+            // 클릭 이벤트 추가
+            thumbItem.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // 체크박스 찾아서 해제
+                const itemId = thumbItem.getAttribute('data-id');
+                const checkbox = document.getElementById(itemId);
+                if (checkbox) {
+                    checkbox.checked = false;
+                    updateCheckboxVisibility();
+                    updateSelectedItems();
+                    updateTotalPrice();
+                    updateCheckboxStatus();
+                }
+            });
+        });
+
+        // 선택상품 정보 및 버튼 영역 조정
+        const selectedCount = selectedItemsContainer.querySelector('.selected-count');
+        if (selectedCount) {
+            selectedCount.style.display = 'flex';
+            selectedCount.style.justifyContent = 'space-between';
+            selectedCount.style.alignItems = 'center';
+            selectedCount.style.marginTop = '10px';
+            selectedCount.style.width = '100%';
+        }
+
+        // 주문 버튼 영역 조정
+        const actionButtons = selectedItemsContainer.querySelector('.action-buttons');
+        if (actionButtons) {
+            actionButtons.style.display = 'flex';
+            actionButtons.style.flexDirection = 'row';
+            actionButtons.style.justifyContent = 'flex-end';
+            actionButtons.style.alignItems = 'center';
+            actionButtons.style.gap = '10px';
+            actionButtons.style.marginLeft = 'auto'; // 오른쪽 정렬
+        }
+    }
     /**
      * 개별 상품 합계 계산
      */
