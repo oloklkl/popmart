@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
     tagsContainer.classList.add('tag-content')
     const tagInnerContainer = document.createElement('div')
     tagInnerContainer.classList.add('tags')
-    item.tags.forEach((tag) => {
+    item.members.forEach((member) => {
       const span = document.createElement('span')
       span.classList.add('tag')
-      span.innerText = tag
+      span.innerText = member.name
       tagInnerContainer.appendChild(span)
     })
     tagsContainer.appendChild(tagInnerContainer)
