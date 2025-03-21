@@ -48,7 +48,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      background-color: #f5f2e9;
+      background-color: #fff;
       position: relative;
       overflow: hidden;
       transition: color 0.2s ease-in-out;
@@ -220,7 +220,7 @@
   left: 50%;
   z-index: -1;
   @include mobile {
-    bottom: 12px; /* 바닥에서 5px 위로 올림 (원하는 값으로 조정 가능) */
+    bottom: 12px;
   }
 }
 
@@ -269,7 +269,12 @@
   height: 95px;
   background-color: transparent;
   z-index: -1;
+  transform: translateX(-50%);
+  left: 50%;
   @include tablet {
+    height: 70px;
+  }
+  @include mobile {
     height: 70px;
   }
 }

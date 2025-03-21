@@ -2,14 +2,11 @@ import { items } from './eventList.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const eventListContainer = document.querySelector('.event_list');
+  const pagination = document.getElementById('pagination');
+
   const itemsPerPage = 7;
   let currentPage = 1;
   const totalPages = Math.ceil(items.length / itemsPerPage);
-
-  const pagination = document.createElement('div');
-  pagination.id = 'pagination';
-  document.body.appendChild(pagination);
-
   const isMobile = window.innerWidth <= 600;
 
   function getPaginatedItems(page) {
@@ -28,18 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
       eventElement.id = `item_${index + 1}`;
 
       eventElement.innerHTML = `
-      <div class="event_item_name">${items.name}</div>
-      <div class="event_item_Enname">${items.EngName}</div>
-      <div class="event_item_date">${items.date}</div>
-      <div class="event_item_state">진행중</div>
-      <div class="event_item_border"></div>
-    `;
+        <div class="event_item_name">${items.name}</div>
+        <div class="event_item_Enname">${items.EngName}</div>
+        <div class="event_item_date">${items.date}</div>
+        <div class="event_item_state">진행중</div>
+        <div class="event_item_border"></div>
+      `;
 
       eventListContainer.appendChild(eventElement);
     });
 
-    applyHoverEffect(); // hover 효과 설정
-    renderPagination(); // 페이지네이션 다시 렌더링
+    applyHoverEffect();
+    renderPagination();
   }
 
   function applyHoverEffect() {
@@ -61,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eventItems.forEach((item) => {
       const itemId = item.id;
+
       item.addEventListener('mouseenter', () => {
         const itemRect = item.getBoundingClientRect();
         const listRect = eventListContainer.getBoundingClientRect();
@@ -70,6 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.set(hoverBg, { backgroundColor: bgColors[itemId] });
         gsap.to(hoverBg, {
           y: offsetY,
+          duration: 0.4,
+          ease: 'power2.out',
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        gsap.to(hoverBg, {
+          backgroundColor: 'transparent',
           duration: 0.4,
           ease: 'power2.out',
         });
