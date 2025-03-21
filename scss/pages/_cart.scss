@@ -258,25 +258,28 @@ body {
 }
 
 // 선택된 상품 영역
-.cart-selected-items {
+.selected-items {
     margin: 20px 0;
-    border: 3px solid #000;
-    width: 155px;
-
-    @include mobile {
-        width: 95% !important;
-    }
 
     .selected-thumbnails {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: -85px;
+        gap: 10px;
+        margin-bottom: 20px;
 
         .thumbnail {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ddd;
             border-radius: 4px;
             overflow: hidden;
             position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
 
             &:hover::after {
                 content: '×';
@@ -285,8 +288,8 @@ body {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: rgba($black, 0.5);
-                color: $white;
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -296,40 +299,17 @@ body {
     }
 
     .selected-count {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        font-size: 20px;
-
-        span {
-            margin-bottom: 11px;
-        }
-        .action-buttons {
-            display: flex;
-        }
-        @include mobile {
-            flex-direction: column;
-            align-items: flex-start;
-
-            .action-buttons {
-                display: flex;
-                margin-top: 10px;
-                width: 100%;
-            }
-        }
+        font-size: 14px;
+        margin-bottom: 10px;
     }
 }
 
 // 주문 요약
 .order-summary {
     margin: 30px 0;
-    background: $gray-5;
+    background: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
-
-    @include mobile {
-        padding: 15px;
-    }
 
     .summary-row {
         display: flex;
@@ -337,11 +317,11 @@ body {
         padding: 10px 0;
 
         &:not(:last-child) {
-            border-bottom: 1px solid $gray-20;
+            border-bottom: 1px solid #eee;
         }
 
         .summary-label {
-            color: $gray-70;
+            color: #555;
         }
 
         .summary-value {
@@ -351,273 +331,168 @@ body {
     }
 }
 
-// 수량 입력 컨테이너
-.quantity-input-container {
-    position: relative;
-    display: inline-block;
-
-    svg {
-        display: block;
-    }
-
-    &::after {
-        content: attr(data-value);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 16px;
-        color: $gray-50;
-        pointer-events: none;
-    }
-}
-
-// 선택된 항목
-.selected-item {
-    position: relative;
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 95px;
-    height: 95px;
-    border: 3px solid #000;
-    img {
-        object-fit: contain;
-        transition: opacity 0.3s ease;
-        background-color: $white;
-
-        @include mobile {
-            width: 70px;
-            height: 70px;
-        }
-    }
-
-    &:hover img {
-        opacity: 0.5;
-    }
-
-    .delete-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 24px;
-        height: 24px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 2;
-    }
-
-    &:hover .delete-icon {
-        opacity: 1;
-    }
-}
-
-// 체크박스
-// 체크박스 스타일 수정
-.checkbox-input {
-    position: absolute;
-    opacity: 0; // display: none 대신 opacity: 0 사용
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    z-index: -1;
-
-    &:focus {
-        outline: none;
-    }
-}
-
-// 체크박스 라벨 스타일 강화
-.checkbox-label {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-
-    .checkbox-svg {
-        position: relative;
-        z-index: 1;
-        margin-bottom: -195px;
-    }
-    .all-checkbox-svg {
-        margin: 30px 12px 0 0;
-    }
-}
-
-// 기타 모바일 스타일
-@include mobile {
-    body {
-        padding-bottom: 160px;
-    }
-
-    hr {
-        width: 100% !important;
-        margin-left: 0 !important;
-    }
-
-    .action-buttons .action-btn svg {
-        width: 60px;
-        height: 30px;
-    }
-
-    .quantity-btn svg,
-    .confirm-btn svg {
-        width: 30px;
-        height: 30px;
-    }
-
-    .quantity-input-container svg {
-        width: 40px;
-        height: 30px;
-    }
-}
-
-// HTML에서 사용하는 cart-item-main 클래스 스타일 추가
-.cart-item-main {
+// 하단 버튼
+.cart-buttons {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
 
-    @include mobile {
-        padding: 5px;
-    }
+    .btn {
+        padding: 10px 25px;
+        border-radius: 25px;
+        cursor: pointer;
 
-    .item-image {
-        width: 154px;
-        height: 154px;
-        border: 4px solid $black;
-        border-radius: 7px;
-        overflow: hidden;
-        margin: 50px 20px -30px 0;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        @include tabletLess {
-            width: 80px;
-            height: 80px;
+        &.btn-continue {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
         }
 
-        @include mobile {
-            width: 40px;
-            height: 40px;
-            margin-right: 5px;
-        }
-
-        .cart-image {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
+        &.btn-checkout {
+            background: #ff6b6b;
+            color: white;
+            border: 1px solid #ff6b6b;
         }
     }
+}
 
-    .item-quantity {
-        display: flex;
-        align-items: center;
-        margin: 55px 600px 0 0;
+// 반응형 조정 - 레이아웃은 유지하고 크기만 줄임
+@include tabletLess {
+    .cart-item {
+        padding: 15px;
 
-        @include mobile {
-            width: 100%;
-            margin-top: 10px;
+        .item-content {
+            .item-image {
+                width: 90px;
+                height: 90px;
+            }
+
+            .item-info {
+                .item-name {
+                    font-size: 15px;
+                }
+
+                .item-category {
+                    font-size: 13px;
+                }
+
+                .item-price {
+                    font-size: 15px;
+                }
+            }
+
+            .item-actions {
+                .quantity-controls {
+                    .quantity-btn {
+                        width: 28px;
+                        height: 28px;
+                    }
+
+                    .quantity-input {
+                        width: 36px;
+                        height: 28px;
+                    }
+
+                    .btn-confirm {
+                        height: 28px;
+                        padding: 0 8px;
+                    }
+                }
+            }
         }
     }
+}
 
-    .item-total {
-        font-weight: bold;
-        min-width: 100px;
-        text-align: right;
-        margin-bottom: -85px;
+@include mobile {
+    .cart-item {
+        padding: 12px;
 
-        @include mobile {
-            margin-top: 5px;
-            font-size: 14px;
-            min-width: 80px;
+        .item-content {
+            .item-image {
+                width: 70px;
+                height: 70px;
+                margin-right: 10px;
+            }
+
+            .item-info {
+                .item-name {
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin: 20px 0 17px 0;
+
+                    @include tabletLess {
+                        font-size: 12px;
+                    }
+
+                    @include mobile {
+                        font-size: 8px;
+                    }
+                }
+
+                .item-category {
+                    color: $gray;
+                    font-size: 14px;
+                    margin-bottom: 17px;
+
+                    @include tabletLess {
+                        font-size: 9px;
+                    }
+
+                    @include mobile {
+                        font-size: 5px;
+                    }
+                }
+
+                .item-price {
+                    font-size: 14px;
+                }
+            }
+
+            .item-actions {
+                .quantity-controls {
+                    margin-right: 10px;
+
+                    .quantity-btn {
+                        width: 26px;
+                        height: 26px;
+                    }
+
+                    .quantity-input {
+                        width: 32px;
+                        height: 26px;
+                    }
+
+                    .btn-confirm {
+                        height: 26px;
+                        padding: 0 6px;
+                        font-size: 12px;
+                    }
+                }
+
+                .item-total {
+                    font-size: 14px;
+                    min-width: 80px;
+                }
+            }
         }
-    }
 
-    .item-checkbox {
-        margin-right: 15px;
-        color: $danger;
-    }
-
-    .item-info {
-        flex-grow: 1;
-
-        @include mobile {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .item-name {
-            font-weight: bold;
-            font-size: 16px;
-            margin: 20px 0 17px 0;
-
-            @include tabletLess {
+        .item-buttons {
+            .btn-edit,
+            .btn-delete {
+                padding: 4px 12px;
                 font-size: 12px;
             }
-
-            @include mobile {
-                font-size: 8px;
-            }
-        }
-
-        .item-category {
-            color: $gray;
-            font-size: 14px;
-            margin-bottom: 17px;
-
-            @include tabletLess {
-                font-size: 9px;
-            }
-
-            @include mobile {
-                font-size: 5px;
-            }
-        }
-
-        .item-price {
-            font-weight: bold;
-            font-size: 16px;
-
-            @include tabletLess {
-                font-size: 10px;
-            }
-
-            @include mobile {
-                font-size: 7px;
-            }
         }
     }
-}
-// 액션 래퍼 스타일 추가
-.action-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end; // 오른쪽 정렬
-    margin-top: 15px;
 
-    .action-buttons {
-        display: flex;
-        gap: 10px; // 버튼 사이 간격
+    .order-summary {
+        padding: 15px;
+    }
 
-        .action-btn {
-            padding: 0;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-
-            svg {
-                display: block;
-            }
+    .cart-buttons {
+        .btn {
+            padding: 8px 20px;
+            font-size: 14px;
         }
     }
 }

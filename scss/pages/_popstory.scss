@@ -138,6 +138,22 @@
     gap: 8px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    position: relative;
+    z-index: 10;
+    border-radius: 17px;
+    border: solid 3px #000000;
+    width: 442px;
+    height: 103px;
+    background-color: #ffffff70;
+    position: absolute;
+    bottom: 220px;
+    left: 50%;
+    transform: translateY(-270%) translateX(-155%);
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 
     .tags {
         display: none;
