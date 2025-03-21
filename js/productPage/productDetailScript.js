@@ -2,27 +2,49 @@ import productDetailItem from './productDetailItem.js';
 import { initializeProductSwipers } from './productDetailSwiper.js';
 
 // 제품 슬라이더 업데이트 함수
-function updateProductSlider(productId) {
+function updateProductSlider() {
     const swiperWrapper = document.querySelector('.product-slider .swiper-wrapper');
     swiperWrapper.innerHTML = ''; // 기존 내용 초기화
 
+    // URL 파라미터로 상품 ID 받아오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+
+    // 해당 상품 정보 찾기
     const product = productDetailItem.find((item) => item.id === productId);
+
     if (product) {
-        product.mainImages.forEach((imgSrc) => {
+        const allImages = [...product.mainImages]; // 기존 5개의 이미지
+        const additionalImages = [...product.mainImages]; // 추가로 동일한 ID의 이미지를 2개 더 추가
+
+        // 8개의 이미지를 배열에 넣기
+        const totalImages = [...allImages, ...additionalImages].slice(0, 7); // 최대 7개만
+
+        totalImages.forEach((imgSrc) => {
             const slide = document.createElement('div');
             slide.classList.add('swiper-slide');
 
             const img = document.createElement('img');
             img.src = imgSrc;
-            img.alt = product.title;
+            img.alt = `상품 이미지`;
 
             slide.appendChild(img);
             swiperWrapper.appendChild(slide);
         });
 
-        initializeProductSwipers();
-    } else {
-        console.error('상품을 찾을 수 없습니다.');
+        // 모든 이미지가 로드되면 Swiper 초기화
+        const images = swiperWrapper.querySelectorAll('img');
+        let loadedImagesCount = 0;
+
+        images.forEach((image) => {
+            image.onload = () => {
+                loadedImagesCount++;
+                if (loadedImagesCount === images.length) {
+                    // 모든 이미지가 로드되었을 때 Swiper 초기화
+                    initializeProductSwipers();
+                }
+            };
+        });
     }
 }
 
