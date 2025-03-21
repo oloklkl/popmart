@@ -68,6 +68,11 @@
                     line-height: 85px;
                     background-size: cover;
                     background-position: center;
+                    transition: transform 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                    }
 
                     @include tablet {
                         width: 170px;
@@ -147,6 +152,11 @@
                     line-height: 85px;
                     background-size: cover;
                     background-position: center;
+                    transition: transform 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                    }
 
                     @include tablet {
                         width: 170px;
@@ -1107,8 +1117,8 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
         background: none;
         border: none;
         cursor: pointer;
@@ -1137,8 +1147,8 @@
         position: fixed;
         bottom: 150px; /* Top 버튼 위에 위치 */
         right: 15px;
-        width: 130px;
-        height: 130px;
+        width: 115px;
+        height: 115px;
         background: none;
         border: none;
         cursor: pointer;
@@ -1167,9 +1177,9 @@
     .toggle-btn {
         position: fixed;
         bottom: 20px; /* Top 버튼 위에 위치 */
-        right: 170px;
-        width: 120px;
-        height: 120px;
+        right: 150px;
+        width: 110px;
+        height: 110px;
         background: none;
         border: none;
         cursor: pointer;
