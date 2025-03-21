@@ -13,7 +13,7 @@
   display: none;
 }
 .background-yellow {
-  height: 5400px;
+  height: 6000px;
   background-color: #ffba4a;
   width: 100vw;
   position: relative;
@@ -188,6 +188,7 @@
   }
 
   .homeGrid-item {
+    pointer-events: auto !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,6 +198,7 @@
     // border: 1px solid #ddd;
     // border-radius: 10px;
     transition: transform 0.3s ease;
+
     &:hover {
       transform: translateY(-5px);
     }
@@ -205,6 +207,7 @@
       height: auto;
       object-fit: contain;
       margin-bottom: 10px;
+      pointer-events: auto;
     }
     div {
       text-align: center;
@@ -262,7 +265,8 @@
       align-items: center;
       justify-content: center;
       transition: background 0.3s ease;
-      pointer-events: all;
+      pointer-events: auto;
+      z-index: 9999;
     }
   }
 }
@@ -292,14 +296,14 @@
 
 // 호버효과
 .circle-cursor {
+  pointer-events: none !important;
   position: fixed;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background: black;
-  // background: difference;
+  background: difference;
   mix-blend-mode: normal;
-  pointer-events: none;
   z-index: 9999;
   left: 0;
   top: 0;
@@ -344,7 +348,7 @@
   justify-content: center;
   align-items: center;
   .info-box {
-    width: 300px;
+    width: 400px;
     transform: translate(-50%, -50%);
     position: absolute;
     /* ✅ 수정 */
@@ -354,7 +358,7 @@
     border-radius: 10px;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease-in-out; /* ✅ transform 속성 수정 */
-    z-index: 10;
+    // z-index: 9999;
     visibility: hidden; /* 기본적으로 숨김 */
     p {
       line-height: 170%;
@@ -379,7 +383,7 @@
 }
 #section04 {
   position: absolute;
-  bottom: 0;
+  bottom: 500px;
   left: 0;
   width: 100%;
   padding: 20px 20px;
@@ -405,20 +409,4 @@
     width: 100%;
     display: block;
   }
-}
-.custom-cursor {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-  transition: transform 0.2s ease-out, background 0.2s ease-out;
-}
-
-.custom-cursor.active {
-  transform: scale(1.5);
-  background: rgba(0, 255, 255, 0.9);
 }
