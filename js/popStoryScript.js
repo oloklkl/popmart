@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.appendChild(innerDiv)
   } else {
-    // 로드 실패
+    //로드 실패
     const container = document.querySelector('.popStory-container')
     container.innerHTML = `<p>아이템을 찾을 수 없습니다.</p>`
   }
