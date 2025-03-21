@@ -2,27 +2,43 @@ export function initCartButtons() {
   const cartButton = document.querySelector(".cart-btn");
   const scrollUpButton = document.querySelector(".scroll-up-btn");
 
-  console.log("scrollUpButton:", scrollUpButton); // 추가된 코드
+  console.log("📌 cartButton:", cartButton);
+  console.log("📌 scrollUpButton:", scrollUpButton);
+
+  if (!cartButton) {
+    console.warn("🚨 장바구니 버튼을 찾을 수 없습니다!");
+  }
+
+  if (!scrollUpButton) {
+    console.warn("🚨 스크롤 업 버튼을 찾을 수 없습니다!");
+  }
 
   if (scrollUpButton) {
-    console.log("위로 이동 버튼 이벤트 리스너 추가됨"); // 추가된 코드
-    scrollUpButton.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      console.log("페이지 맨 위로 이동함!"); // 추가된 코드
-    });
+    scrollUpButton.removeEventListener("click", scrollToTop);
+    scrollUpButton.addEventListener("click", scrollToTop);
+    console.log("⬆️ 위로 이동 버튼 이벤트 리스너 추가됨!");
   }
 
   if (cartButton) {
-    cartButton.addEventListener("click", () => {
-      window.location.href = "http://127.0.0.1:5500/page/cart.html";
-    });
+    cartButton.removeEventListener("click", goToCart);
+    cartButton.addEventListener("click", goToCart);
+    console.log("🛒 장바구니 버튼 클릭 이벤트 추가됨!");
   }
 }
 
-document.querySelector(".scroll-up-btn").addEventListener("click", () => {
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0; // Safari 대응
-  console.log("스크롤 강제 이동 실행됨!");
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  console.log("⬆️ 페이지 맨 위로 이동함!");
+}
+
+function goToCart() {
+  console.log("🛒 장바구니 페이지로 이동!");
+  window.location.href = "/page/cart.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("🌟 DOM 로드 완료! 버튼 이벤트 등록 시작");
+  initCartButtons();
 });
 
 window.addEventListener("popstate", initCartButtons);
