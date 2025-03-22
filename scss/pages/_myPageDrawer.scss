@@ -1,4 +1,4 @@
-@import "../base/include";
+@import '../base/include';
 
 // 모달 오버레이 스타일
 #modal-overlay-mypage-menu {
@@ -8,14 +8,16 @@
   right: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(223, 223, 223, 0.95);
-  z-index: 999;
-  transition: right 0.3s ease;
+  background-color: rgba(18, 22, 25, 0.5); /* 반투명 어두운 배경 */
+  z-index: 10003;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 #modal-overlay-mypage-menu.open {
   right: 0%;
   opacity: 1;
+  // display: block;
 }
 
 // 마이페이지 메뉴 스타일
@@ -31,14 +33,18 @@
   overflow-y: auto;
 
   @include mobileMore {
-    width: 300px;
-    right: -300px; // 화면 밖에 위치
+    top: 50px;
+    max-width: 465px;
+    height: 500px;
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 17px;
   }
 }
 
 // 마이페이지 메뉴 열렸을 때 스타일
 #mypage-menu.open {
-  display: block !important; // 추가
+  display: block; // 추가
   right: 0;
 }
 
@@ -136,17 +142,35 @@
 }
 
 // 뒤로가기 버튼 스타일
-#beforeBtn {
+// #beforeBtn {
+//   position: absolute;
+//   top: 20px;
+//   left: 20px;
+//   background: none;
+//   border: none;
+//   cursor: pointer;
+//   z-index: 1000;
+
+//   img {
+//     width: 24px;
+//     height: 24px;
+//   }
+// }
+#closeMyPage {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
+  bottom: 0;
+  right: 0;
+  transform: translate(-70%, -70%);
+  z-index: 10004;
+
+  @include mobile {
+    top: 0;
+    right: 0;
+    transform: translate(-90%, -45%);
+  }
 
   img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 }

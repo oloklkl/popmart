@@ -12,35 +12,24 @@
       <button id="user-icon">마이페이지</button>
     </header>
 
-    <div id="modal-overlay" class="modal"></div>
+    <!-- 이게 있어야 돼요!! -->
+    <div id="modal-overlay-mypage-menu"></div>
 
     <!-- mypage menu -->
     <div id="mypage-menu" class="mypageMenu">
-      <button id="beforeBtn" class="before-btn">
-        <img
-          src="https://raw.githubusercontent.com/hyeonky/dp-static/25c22bdca826b9f46f262043d2aaf150cfc64ffd/popmart/btnIcon/chevron-left.svg"
-          alt="이전" />
-      </button>
       <!-- 비회원 -->
       <div id="non-member" class="nonMember" style="display: none">
         <ul>
           <li class="singBtnCont">
-            <button
-              class="singBtn login"
-              onclick="location.href='/page/myPage/login.html'">
-              로그인
-            </button>
-            <button
-              class="singBtn register"
-              onclick="location.href='/page/myPage/register.html'">
-              회원가입
-            </button>
+            <button class="singBtn login" onclick="location.href='/page/myPage/login.html'">로그인</button>
+            <button class="singBtn register" onclick="location.href='/page/myPage/register.html'">회원가입</button>
           </li>
           <li>
             <a href="/page/cart.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>장바구니</span>
             </a>
           </li>
@@ -48,7 +37,8 @@
             <a href="/">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>적립금</span></a
             >
           </li>
@@ -56,7 +46,8 @@
             <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>쿠폰</span></a
             >
           </li>
@@ -64,7 +55,8 @@
             <a href="/page/cs.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>고객센터</span></a
             >
           </li>
@@ -72,7 +64,8 @@
             <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>배송 주소록 관리</span></a
             >
           </li>
@@ -86,7 +79,8 @@
             <a href="/page/cart.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>관심상품<span id="cart-count"> (5)</span></span></a
             >
           </li>
@@ -94,7 +88,8 @@
             <a href="/page/cart.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>장바구니<span id="cart-count"> (3)</span></span></a
             >
           </li>
@@ -102,7 +97,8 @@
             <a href="/">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>적립금</span></a
             >
           </li>
@@ -110,7 +106,8 @@
             <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>쿠폰<span id="cupoon-count"> (2)</span></span></a
             >
           </li>
@@ -118,7 +115,8 @@
             <a href="/page/cs.html">
               <img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>고객센터</span></a
             >
           </li>
@@ -126,7 +124,8 @@
             <a href="/"
               ><img
                 src="https://raw.githubusercontent.com/hyeonky/dp-static/d5cd9ef30828079a9271c06775e707fb25775bc6/popmart/btnIcon/chevron-right.svg"
-                alt="chevron-right" />
+                alt="chevron-right"
+              />
               <span>배송 주소록 관리</span></a
             >
           </li>
@@ -134,8 +133,17 @@
             <button id="logoutBtn" onclick="logout()">로그아웃</button>
           </li>
         </ul>
+        <div class="closeBtn">
+          <button id="closeMyPage" onclick="closeMyPage()">
+            <img
+              src="https://raw.githubusercontent.com/hyeonky/dp-static/3f3ffa72cba4a8c68d31add7e181d4ebc77272f6/popmart/btnIcon/x.svg"
+              alt="닫기"
+            />
+          </button>
+        </div>
       </div>
     </div>
+    <script src="../js/common/header.js"></script>
     <script src="../js/myPageDrawerScript.js"></script>
   </body>
 </html>

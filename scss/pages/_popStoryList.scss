@@ -31,7 +31,7 @@
     padding-left: 100px;
   }
   h3 {
-    font-weight: lighter;
+    font-weight: bold;
     font-size: 18px;
     @include tablet {
       font-size: 20px;
@@ -42,7 +42,8 @@
   }
   h2 {
     font-family: $font-family-point !important;
-    font-size: 24px;
+    font-size: 6.4rem;
+    letter-spacing: 2px;
     font-weight: bold;
     @include tablet {
       font-size: 32px;
