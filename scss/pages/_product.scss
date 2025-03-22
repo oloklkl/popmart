@@ -1,4 +1,4 @@
-@import "../base/include";
+@import '../base/include';
 
 // .product-inner {
 //     position: relative;
@@ -221,8 +221,10 @@
         }
 
         h2:nth-of-type(2) {
+          font-family: $font-family-point;
           font-size: 6.4rem;
-          font-weight: $font-bold;
+          letter-spacing: 2px;
+          // font-weight: $font-bold;
           margin-bottom: 20px;
 
           @include tablet {
@@ -1123,7 +1125,7 @@
     border: none;
     cursor: pointer;
     display: none; /* 기본적으로 숨김 */
-    z-index: 100;
+    z-index: 10002;
 
     &:hover {
       background: none;

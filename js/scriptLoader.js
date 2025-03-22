@@ -9,6 +9,16 @@ function loadCommonElements() {
     .then((data) => {
       console.log(':흰색_확인_표시: [헤더 로드 성공]');
       $header.innerHTML = data; // :흰색_확인_표시: 기존 `.header`에 삽입
+      const headerScript = document.createElement('script');
+      headerScript.src = '/js/common/header.js';
+      headerScript.onload = () => {
+        console.log(':흰색_확인_표시: [header.js 로드 성공]');
+        const drawerScript = document.createElement('script');
+        drawerScript.src = '/js/myPageDrawerScript.js';
+        document.body.appendChild(drawerScript);
+      };
+      document.body.appendChild(headerScript);
+
       reloadStylesheets();
     })
     .catch((error) => console.error(':x: 헤더 로딩 실패:', error));

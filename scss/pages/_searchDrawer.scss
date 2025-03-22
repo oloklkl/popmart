@@ -1,4 +1,4 @@
-@import "../base/include";
+@import '../base/include';
 
 #modal-overlay {
   display: none; /* 기본적으로 숨김 */
@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(18, 22, 25, 0.5); /* 반투명 어두운 배경 */
-  z-index: 1;
+  z-index: 10003;
   opacity: 0;
   transition: opacity 0.5s ease; /* 부드러운 fade-in 효과 */
 }
@@ -58,13 +58,8 @@
       align-items: flex-end;
       height: 40px;
 
-      &:not(
-          .searchCont,
-          .popularCont,
-          #recent-search-container,
-          #recent-searches li
-        )::after {
-        content: "";
+      &:not(.searchCont, .popularCont, #recent-search-container, #recent-searches li)::after {
+        content: '';
         position: absolute;
         bottom: 0;
         left: 50%;

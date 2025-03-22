@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POPMART - Product Detail</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/output/styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   </head>
@@ -45,15 +42,11 @@
               <div class="shipping-info">
                 <span>배송혜택</span>
                 <div class="shipping-progress-container">
-                  <p class="shipping">
-                    15,000원 더 담으면 <span>무료배송!</span>
-                  </p>
+                  <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
                   <div class="progress-bar">
                     <div class="progress"></div>
                   </div>
-                  <p class="free-shipping-condition">
-                    3만원 이상 무료 배송됩니다!
-                  </p>
+                  <p class="free-shipping-condition">3만원 이상 무료 배송됩니다!</p>
                 </div>
               </div>
             </div>
@@ -79,15 +72,11 @@
               <div class="shipping-info">
                 <span>배송혜택</span>
                 <div class="shipping-progress-container">
-                  <p class="shipping">
-                    15,000원 더 담으면 <span>무료배송!</span>
-                  </p>
+                  <p class="shipping">15,000원 더 담으면 <span>무료배송!</span></p>
                   <div class="progress-bar">
                     <div class="progress"></div>
                   </div>
-                  <p class="free-shipping-condition">
-                    3만원 이상 무료 배송됩니다!
-                  </p>
+                  <p class="free-shipping-condition">3만원 이상 무료 배송됩니다!</p>
                 </div>
               </div>
             </div>
@@ -146,12 +135,12 @@
       </button>
 
       <!-- 장바구니 버튼 -->
-      <button class="cart-btn">
+      <!-- <button class="cart-btn">
         <img
           src="https://github.com/hyeonky/dp-static/blob/main/popmart/btnIcon/cartBtnIcon.png?raw=true"
           alt="장바구니 버튼"
         />
-      </button>
+      </button> -->
 
       <!-- 토글 버튼 -->
       <button class="toggle-btn">
@@ -162,7 +151,14 @@
       </button>
     </div>
     <div id="footer"></div>
-
+    <script>
+      fetch('/common/cartButton.html')
+        .then((response) => response.text())
+        .then((data) => {
+          document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch((error) => console.error('Error loading cartButton.html:', error));
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>

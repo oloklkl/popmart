@@ -1,71 +1,104 @@
-let isLoggedIn = false;
+// header.js
 
+let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+// 🔍 검색 모달
 function toggleSearch() {
-  console.log("toggleSearch 함수 호출됨");
-  const searchModal = document.getElementById("modal-overlay");
+  const searchModal = document.getElementById('modal-overlay');
+  const searchBox = document.getElementById('search-box');
 
-  if (!searchModal) {
-    console.error("searchModal 요소를 찾을 수 없습니다!");
-    return;
-  }
+  if (!searchModal || !searchBox) return;
 
-  searchModal.classList.toggle("open");
+  const isOpen = searchModal.classList.contains('open');
 
-  // 모달 상태 확인 후 출력
-  if (searchModal.classList.contains("open")) {
-    console.log("모달 상태: 숨김");
+  if (isOpen) {
+    searchModal.classList.remove('open');
+    searchBox.classList.remove('open');
+    setTimeout(() => {
+      searchModal.style.display = 'none';
+    }, 300);
   } else {
-    console.log("모달 상태: 표시");
+    searchModal.classList.add('open');
+    searchBox.classList.add('open');
+    searchModal.style.display = 'block';
   }
 }
 
 function closeSearch() {
-  const searchModal = document.getElementById("close");
-  if (searchModal) {
-    searchModal.classList.add("hidden");
+  const searchModal = document.getElementById('modal-overlay');
+  const searchBox = document.getElementById('search-box');
+  if (searchModal && searchBox) {
+    searchModal.classList.remove('open');
+    searchBox.classList.remove('open');
+    setTimeout(() => {
+      searchModal.style.display = 'none';
+    }, 300);
   }
 }
 
+// 🙋 마이페이지 메뉴
 function toggleUserMenu() {
-  const userMenu = document.getElementById("modal-overlay-mypage-menu");
-  const loggedInMenu = document.getElementById("loggedInMenu");
-  const loggedOutMenu = document.getElementById("loggedOutMenu");
+  const overlay = document.getElementById('modal-overlay-mypage-menu');
+  const menu = document.getElementById('mypage-menu');
+  const member = document.getElementById('member');
+  const nonMember = document.getElementById('non-member');
 
-  if (userMenu) {
-    userMenu.classList.toggle("hidden");
+  if (!overlay || !menu) return;
 
-    if (isLoggedIn) {
-      loggedInMenu.classList.remove("hidden");
-      loggedOutMenu.classList.add("hidden");
+  const isOpen = overlay.classList.contains('open');
+
+  if (isOpen) {
+    overlay.classList.remove('open');
+    menu.classList.remove('open');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 300);
+  } else {
+    overlay.classList.add('open');
+    menu.classList.add('open');
+    overlay.style.display = 'block';
+
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (loggedIn) {
+      member.style.display = 'block';
+      nonMember.style.display = 'none';
     } else {
-      loggedOutMenu.classList.remove("hidden");
-      loggedInMenu.classList.add("hidden");
+      member.style.display = 'none';
+      nonMember.style.display = 'block';
     }
   }
 }
-function toggleUserMenu() {
-  const userMenu = document.getElementById("modal-overlay-mypage-menu");
-  console.log("modal-overlay-mypage-menu 함수 호출됨");
 
-  if (userMenu) {
-    userMenu.classList.toggle("hidden");
-  } else {
-    console.error("유저 메뉴 요소가 존재하지 않습니다.");
-  }
+function closeMyPage() {
+  const overlay = document.getElementById('modal-overlay-mypage-menu');
+  const menu = document.getElementById('mypage-menu');
+  if (!overlay || !menu) return;
+
+  overlay.classList.remove('open');
+  menu.classList.remove('open');
+
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 300);
 }
 
 function login() {
   isLoggedIn = true;
+  localStorage.setItem('isLoggedIn', 'true');
   toggleUserMenu();
 }
 
 function logout() {
   isLoggedIn = false;
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userId');
   toggleUserMenu();
 }
 
+// ✅ 반드시 window에 등록!
 window.toggleSearch = toggleSearch;
 window.closeSearch = closeSearch;
 window.toggleUserMenu = toggleUserMenu;
+window.closeMyPage = closeMyPage;
 window.login = login;
 window.logout = logout;

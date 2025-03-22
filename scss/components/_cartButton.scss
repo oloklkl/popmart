@@ -1,56 +1,56 @@
-// @import "../base/include";
+@import '../base/include';
 
-// @mixin tablet {
-//   @media (max-width: 768px) {
-//     @content;
-//   }
-// }
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
 
-// @mixin tabletMore {
-//   @media (max-width: 1024px) {
-//     @content;
-//   }
-// }
+@mixin tabletMore {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
 
-// @mixin div-style {
-//   position: fixed;
-//   right: 20px;
-//   width: 100px;
-//   height: 100px;
-//   z-index: 10001;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   cursor: pointer;
-//   transition: all 0.3s ease-in-out;
-//   pointer-events: auto;
-//   img {
-//     transition: transform 0.3s ease-in-out;
-//   }
+@mixin div-style {
+  position: fixed;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  pointer-events: auto;
+  img {
+    transition: transform 0.3s ease-in-out;
+  }
 
-//   &:hover {
-//     img {
-//       transform: scale(1.1);
-//     }
-//   }
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
 
-//   @include tablet {
-//     width: 50px;
-//     height: 50px;
-//   }
+  @include tablet {
+    width: 50px;
+    height: 50px;
+  }
 
-//   @include tabletMore {
-//     width: 80px;
-//     height: 80px;
-//   }
-// }
+  @include tabletMore {
+    width: 80px;
+    height: 80px;
+  }
+}
 
-// .cart-btn {
-//   @include div-style;
-//   bottom: 130px;
-// }
+.cart-btn {
+  @include div-style;
+  bottom: 130px;
+}
 
-// .scroll-up-btn {
-//   @include div-style;
-//   bottom: 20px;
-// }
+.scroll-up-btn {
+  @include div-style;
+  bottom: 20px;
+}
