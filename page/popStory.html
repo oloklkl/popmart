@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/output/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <title>Pop Story</title>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="popStory-container">
+      <div class="background-effect">
+        <canvas id="star-canvas"></canvas>
+        <div class="noise-overlay"></div>
+      </div>
+
+      <div class="popstory-inner">
+        <div class="textbox">
+          <h2 class="pops-title"></h2>
+          <h3 class="pops-subtitle"></h3>
+        </div>
+        <div class="content-wrap">
+          <div class="main-content">
+            <div class="product-image">
+              <img class="poster-image" />
+              <img class="character-image" />
+              <img class="figures-image" />
+              <div class="product-description product-description-1">
+                <p class="popstory-text popstory-text-1"></p>
+              </div>
+              <div class="product-description product-description-2">
+                <p class="popstory-text popstory-text-2"></p>
+              </div>
+
+              <!-- 설명 버튼 2개 -->
+              <button class="toggle-description-btn toggle-description-btn-1">STORY 1</button>
+              <button class="toggle-description-btn toggle-description-btn-2">STORY 2</button>
+
+              <!-- 태그 보기 버튼 -->
+              <button class="toggle-tag-btn">SHOW TAGS</button>
+
+              <div class="tag-container">
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-header">
+            <strong></strong>
+            <img
+              class="artist-icon"
+              src="https://raw.githubusercontent.com/hyeonky/dp-static/main/popmart/btnIcon/chevron-down.svg"
+            />
+          </div>
+          <p class="artist-p"></p>
+        </div>
+
+        <div class="series-menu">
+          <div class="series-item prev-item">
+            <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/chevron-left.svg" alt="이전" />
+            <span class="prev-label">PREV</span>
+            <div class="circle-icon"></div>
+          </div>
+          <div class="series-item next-item">
+            <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/chevron-right.svg" alt="다음" />
+            <span class="next-label">NEXT</span>
+            <div class="circle-icon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+    <script type="module" src="../js/popStoryScript.js"></script>
+    <script src="/js/scriptLoader.js" defer></script>
+    <script src="/js/common/cursor.js"></script>
+  </body>
+</html>

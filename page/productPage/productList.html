@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popmart Collection</title>
+    <link rel="stylesheet" href="/css/output/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+    <main>
+      <section class="product-list-section">
+        <div class="product-inner">
+          <section class="content-wrapper">
+            <section class="brand-container">
+              <div class="brand-list">
+                <span class="labubu"><a href="#" data-category="labubu">라부부</a></span>
+
+                <span class="crybaby"><a href="#" data-category="crybaby">크라이베이비</a></span>
+                <span class="skullpanda"><a href="#" data-category="skullpanda">스컬판다</a></span>
+                <span class="molly"><a href="#" data-category="molly">물리</a></span>
+                <span class="pinogelly"><a href="#" data-category="pinogelly">피노젤리</a></span>
+                <span class="add-category">+</span>
+              </div>
+
+              <!-- 추가 브랜드 목록 (초기에는 숨겨짐) -->
+              <div class="additional-brands" style="display: none">
+                <span class="hirono"><a href="#" data-category="hirono">히로노</a></span>
+                <span class="dimoo"><a href="#" data-category="dimoo">디무</a></span>
+                <span class="azura"><a href="#" data-category="azura">아주라</a></span>
+                <span class="barbie"><a href="#" data-category="barbie">바비</a></span>
+                <span class="hacipupu"><a href="#" data-category="hacipupu">하치푸푸</a></span>
+              </div>
+              <!-- 추가 브랜드 목록 끝 -->
+            </section>
+
+            <section class="grid-wrapper">
+              <div class="grid-header">
+                <h2>POPMART</h2>
+                <h2>COLLECTION</h2>
+              </div>
+              <div class="grid-container">
+                <div class="grid-wrapper-inner">
+                  <!-- 동적으로 아이템이 추가됨 -->
+                </div>
+              </div>
+              <div class="pagination-controls">
+                <button class="prev-button">이전</button>
+                <span class="page-numbers">1 / 4</span>
+                <button class="next-button">다음</button>
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
+    </main>
+    <div id="footer"></div>
+    <script type="module" src="/js/productPage/productListScript.js"></script>
+    <script src="/js/scriptLoader.js" defer></script>
+    <script src="/js/common/cursor.js"></script>
+    <script>
+      fetch('/common/cartButton.html')
+        .then((response) => response.text())
+        .then((data) => {
+          document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch((error) => console.error('Error loading cartButton.html:', error));
+    </script>
+    <script type="module" src="/js/common/cartButton.js"></script>
+  </body>
+</html>

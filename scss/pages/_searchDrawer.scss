@@ -1,0 +1,187 @@
+@import '../base/include';
+
+#modal-overlay {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0; /* 화면 왼쪽에 고정 */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 22, 25, 0.5); /* 반투명 어두운 배경 */
+  z-index: 10003;
+  opacity: 0;
+  transition: opacity 0.5s ease; /* 부드러운 fade-in 효과 */
+}
+
+#modal-overlay.open {
+  display: block; /* 'open' 클래스가 있을 때 모달을 보이게 함 */
+  opacity: 1;
+}
+
+#search-box {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(223, 223, 223, 0.9);
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  padding-top: 200px;
+  z-index: 10;
+  transition: transform 0.5s ease;
+  transform: translateX(100%);
+
+  &.open {
+    display: block !important;
+    transform: translateX(0);
+  }
+
+  @include mobileMore {
+    top: 50px;
+    max-width: 465px;
+    height: 500px;
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 17px;
+  }
+
+  ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    li {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      height: 40px;
+
+      &:not(.searchCont, .popularCont, #recent-search-container, #recent-searches li)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        height: 1px;
+        background-color: black;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+.search-word {
+  padding-bottom: 10px;
+
+  span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.searchCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;
+
+  .search-bar {
+    line-height: 2;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    padding-bottom: 3px;
+    width: 100%;
+
+    &:focus {
+      border-color: transparent;
+      outline: none;
+    }
+  }
+
+  #searchBtn {
+    display: flex;
+    font-weight: bold;
+    padding-bottom: 3px;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.popular-word {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin: auto 0;
+  margin-left: 30px;
+
+  a {
+    @include tabletMore {
+      display: inline-block;
+      transition: transform 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+      transform-origin: center;
+
+      &:hover {
+        transform: scale(1.1);
+        color: black;
+        font-weight: 900;
+      }
+    }
+  }
+
+  span {
+    font-size: 14px;
+    color: rgb(18, 22, 25, 0.75);
+  }
+}
+
+#close {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-70%, -70%);
+
+  @include mobile {
+    top: 0;
+    right: 0;
+    transform: translate(-90%, -45%);
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+// 최근 검색어
+#recent-search-container {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#recent-searches {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap; // 아이템이 넘칠 경우 줄 바꿈
+}
+
+#recent-searches li {
+  display: inline-block;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background: #f8f8f8;
+  white-space: nowrap;
+}

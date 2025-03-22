@@ -3,5 +3,14 @@
 @use './components/header';
 @use './components/footer';
 @use './pages/home';
-@use './pages/mypage';
 @use './pages/product';
+@use './components/buttons';
+@use './pages/popstory';
+@use './pages/cart';
+@use './pages/event';
+@use './pages/login';
+@use './pages/register';
+@use './pages/popStoryList';
+@use './pages/myPageDrawer';
+@use './pages/searchDrawer';
+@use './components/cartButton';
