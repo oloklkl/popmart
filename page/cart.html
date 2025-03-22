@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>장바구니</title>
     <link rel="stylesheet" href="/css/output/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   </head>
   <div id="header"></div>
   <body>
     <!-- Main Content -->
-    <div id="header-container"></div>
+    <!-- <div id="header-container"></div> -->
 
         <div class="cart-container">
             <!-- Cart Title -->
@@ -1700,6 +1701,7 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
       <!-- TOP 버튼 -->
       <div id="top-button">
@@ -1749,5 +1751,20 @@
         }
       });
     </script> -->
+=======
+    </div>
+    <div id="footer"></div>
+>>>>>>> f2c56f36407687597993a30b56d9261e15c6498f
   </body>
+  <script type="module" src="../js/cart.js"></script>
+  <script src="/js/scriptLoader.js" defer></script>
+  <script src="/js/common/cursor.js" defer></script>
+  <script>
+    fetch("/common/cartButton.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.body.insertAdjacentHTML("beforeend", data);
+      })
+      .catch((error) => console.error("Error loading cartButton.html:", error));
+  </script>
 </html>

@@ -1,9 +1,55 @@
 div.inner {
-  display: flex !important;
+  display: flex;
   align-items: center;
   padding: 24px 0;
+  margin-bottom: 80px;
   box-sizing: border-box;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  opacity: 1;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  #modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(18, 22, 25, 0.5);
+    z-index: 1;
+    opacity: 1;
+    transition: right 0.5s ease, opacity 0.5s ease;
+  }
+
+  #modal-overlay:not(.hidden) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button:focus {
+    outline: none;
+  }
 
   img {
     height: 45px;
@@ -31,8 +77,8 @@ div.inner {
         text-align: center;
         min-width: 98px;
         min-height: 45px;
-        margin-right: 3vw; // 반응형 마진 조정 (뷰포트 기준)
-        flex-shrink: 1; // 요소 크기 줄어들 수 있도록 설정
+        margin-right: 3vw;
+        flex-shrink: 1;
 
         a {
           text-decoration: none;
@@ -52,6 +98,7 @@ div.inner {
           background-repeat: no-repeat;
           background-position: center;
           z-index: 1;
+          opacity: 10;
         }
 
         &:nth-child(2)::after {
@@ -65,8 +112,10 @@ div.inner {
           background-repeat: no-repeat;
           background-position: center;
           z-index: 1;
+          opacity: 100;
         }
         &:nth-child(3)::after {
+          content: "";
           background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking66.png");
           width: 130px;
           height: 100%;
@@ -76,8 +125,10 @@ div.inner {
           background-repeat: no-repeat;
           background-position: center;
           z-index: 1;
+          opacity: 100;
         }
         &:nth-child(4)::after {
+          content: "";
           background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking55.png");
           width: 100%;
           height: 100%;
@@ -87,8 +138,10 @@ div.inner {
           background-repeat: no-repeat;
           background-position: center;
           z-index: 1;
+          opacity: 100;
         }
         &:nth-child(5)::after {
+          content: "";
           background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true");
           width: 120px;
           height: 100%;
@@ -98,8 +151,10 @@ div.inner {
           background-repeat: no-repeat;
           background-position: center;
           z-index: 1;
+          opacity: 10;
         }
         &:nth-child(6)::after {
+          content: "";
           background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking77.png");
           width: 100%;
           height: 100%;
@@ -141,4 +196,34 @@ div.inner {
       width: 35px;
     }
   }
+}
+
+div.inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point.png?raw=true");
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  z-index: -2;
+  pointer-events: none;
+}
+
+div.inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point2.png?raw=true");
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  z-index: -1;
+  pointer-events: none;
 }
