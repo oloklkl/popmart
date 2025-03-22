@@ -1,4 +1,4 @@
-// ✅ 전역 상태 관리 객체
+// 전역 상태 관리 객체
 const state = {
   gsapLoaded: false,
   scrollTriggerLoaded: false,
@@ -6,19 +6,19 @@ const state = {
   initialized: false,
 };
 
-// ✅ ScrollTrigger 업데이트 함수 (Swiper 추가 시 갱신)
+// ScrollTrigger 업데이트 함수 (Swiper 추가 시 갱신)
 function updateScrollTrigger() {
   if (typeof ScrollTrigger !== 'undefined') {
     ScrollTrigger.refresh();
   }
 }
 
-// ✅ 페이지 로드 시 ScrollTrigger 갱신
+// 페이지 로드 시 ScrollTrigger 갱신
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(updateScrollTrigger, 1000);
 });
 
-// ✅ GSAP 및 ScrollTrigger 로드
+// GSAP 및 ScrollTrigger 로드
 async function loadDependencies() {
   try {
     state.gsapLoaded = true;
@@ -34,7 +34,7 @@ async function loadDependencies() {
       state.scrollTriggerLoaded = true;
     }
 
-    // ✅ productListItems.js 로드
+    //productListItems.js 로드
     let items = [];
     try {
       const module = await import('../productPage/productListItems.js');
@@ -50,14 +50,14 @@ async function loadDependencies() {
 }
 async function setupInfiniteSlider() {
   const sliderContainer = document.querySelector('.slider-container');
-  const sliderTrack = sliderContainer.querySelector('.slider-track'); // ✅ 기존 DOM 사용
+  const sliderTrack = sliderContainer.querySelector('.slider-track');
 
   if (!sliderTrack) {
     console.error('❌ .slider-track 요소를 찾을 수 없습니다.');
     return;
   }
 
-  sliderTrack.innerHTML = ''; // 기존 내용 초기화
+  sliderTrack.innerHTML = '';
 
   let items = [];
   try {
@@ -87,32 +87,28 @@ async function setupInfiniteSlider() {
   sliderTrack.addEventListener('mouseenter', () => slideAnimation.pause());
   sliderTrack.addEventListener('mouseleave', () => slideAnimation.resume());
 }
-let cursorEffectInitialized = false; // 실행 여부를 추적하는 변수 추가
+let cursorEffectInitialized = false;
 function getRandomNeonColor() {
   const hue = Math.floor(Math.random() * 360);
-  const lightness = 60 + Math.random() * 20; // 60% ~ 80%
+  const lightness = 60 + Math.random() * 20;
   return `hsl(${hue}, 100%, ${lightness}%)`;
 }
-// ✅ 커서 효과 설정
+// 커서 효과 설정
 function setupCursorEffect(targetItem = null) {
   if (!targetItem) {
     if (cursorEffectInitialized) {
-      console.warn('⚠️ setupCursorEffect 이미 실행됨. 중복 실행 방지!');
+      console.warn('setupCursorEffect 이미 실행됨. 중복 실행 방지!');
       return;
     }
-    cursorEffectInitialized = true; // 실행 상태 변경 (최초 1회만 설정)
+    cursorEffectInitialized = true;
   }
-
-  console.log('⚡ setupCursorEffect 실행됨! 커서 효과 적용 시작');
 
   let cursor = document.querySelector('.circle-cursor');
   if (!cursor) {
-    console.log('⚠️ .circle-cursor 요소가 없음. 새로 생성!');
     cursor = document.createElement('div');
     cursor.className = 'circle-cursor';
     document.body.appendChild(cursor);
   } else {
-    console.log('✅ .circle-cursor 요소 확인됨!');
   }
 
   gsap.set(cursor, {
@@ -131,7 +127,7 @@ function setupCursorEffect(targetItem = null) {
     transform: 'translate(-50%, -50%)',
   });
 
-  let currentHoveredItem = null;
+  // let currentHoveredItem = null;
 
   function handleMouseMove(e) {
     gsap.to(cursor, {
@@ -187,36 +183,31 @@ function setupCursorEffect(targetItem = null) {
   document.removeEventListener('mousemove', handleMouseMove);
   document.addEventListener('mousemove', handleMouseMove);
 
-  // 각 아이템에만 마우스 진입/이탈 이벤트 연결
   document.querySelectorAll('.homeGrid-item').forEach((item) => {
     item.removeEventListener('mouseenter', handleItemEnter);
     item.removeEventListener('mouseleave', handleItemLeave);
     item.addEventListener('mouseenter', handleItemEnter);
     item.addEventListener('mouseleave', handleItemLeave);
   });
-  // 새 `.homeGrid-item` 요소에 이벤트 리스너 추가
+
   if (targetItem) {
     targetItem.addEventListener('mouseenter', handleMouseMove);
     targetItem.addEventListener('mouseleave', handleMouseMove);
   }
 }
 
-// ✅ 초기화 함수에서 MutationObserver 실행
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 DOMContentLoaded: Swiper, GSAP, 커서 효과 설정 시작');
-  // setupCursorEffect(); // 초기 실행 (최초 1회)
   observeGridChanges();
 });
 
-// 추가: 새로고침 후에도 커서 보이도록 설정
-window.onload = () => {
-  const cursor = document.querySelector('.circle-cursor');
-  if (cursor) {
-    gsap.to(cursor, { opacity: 1, duration: 0.5 });
-  }
-};
+// window.onload = () => {
+//   const cursor = document.querySelector('.circle-cursor');
+//   if (cursor) {
+//     gsap.to(cursor, { opacity: 1, duration: 0.5 });
+//   }
+// };
 
-// ✅ 그리드 아이템 설정
+// 그리드 아이템 설정
 function setupGridItems(items) {
   if (!items || items.length === 0) {
     console.warn('그리드 아이템을 설정할 수 없습니다: 아이템이 없습니다.');
@@ -251,7 +242,6 @@ function setupGridItems(items) {
     const color = `hsl(${hue}, 100%, 50%)`;
     const invertedColor = `hsl(${hue}, 100%, 90%)`;
 
-    // ✅ 데이터 속성으로만 저장 (스타일 적용 X)
     gridItem.setAttribute('data-color', color);
     gridItem.setAttribute('data-inverted-color', invertedColor);
     gridItem.innerHTML = `
@@ -263,21 +253,18 @@ function setupGridItems(items) {
     `;
 
     wrapperDiv.appendChild(gridItem);
-    count++; // 아이템 추가한 개수 증가
-    i++; // 다음 아이템으로 이동
+    count++;
+    i++;
   }
 
   gridContainer.appendChild(wrapperDiv);
-  console.log('✅ setupGridItems 실행 완료! 현재 .homeGrid-item 목록:');
-  document.querySelectorAll('.homeGrid-item').forEach((item, index) => {
-    console.log(`🔹 ${index + 1}번째 .homeGrid-item:`, item);
-  });
+
+  document.querySelectorAll('.homeGrid-item').forEach((item, index) => {});
 }
 function observeGridChanges() {
   const targetNode = document.querySelector('.homeGrid-container');
 
   if (!targetNode) {
-    console.warn('⚠️ [observeGridChanges] - homeGrid-container가 존재하지 않습니다.');
     return;
   }
 
@@ -287,15 +274,14 @@ function observeGridChanges() {
       mutation.addedNodes.forEach((node) => {
         if (node.classList && node.classList.contains('homeGrid-item')) {
           console.log('✅ 새로운 .homeGrid-item 감지됨:', node);
-          setupCursorEffect(node); // ✅ DOM 업데이트 후 커서 효과 설정
-          obs.disconnect(); // ✅ 중복 실행 방지
+          setupCursorEffect(node);
+          obs.disconnect();
         }
       });
     });
   });
 
   observer.observe(targetNode, config);
-  console.log('🔍 [MutationObserver] - homeGrid-item 변경 감지 중...');
 }
 function setupBackgroundCharacters() {
   const container = document.querySelector('.background-characters');
@@ -310,18 +296,14 @@ function setupBackgroundCharacters() {
       img.alt = item.title;
       img.classList.add('background-character');
       const left = horizontalPositions[index];
-      // const top = 70 + Math.random() * 20; // 70% ~ 90%
 
-      // 랜덤 위치 지정
       img.style.top = `50%`;
       img.style.left = `${left}%`;
       img.style.transform = `translate(-50%, -50%)`;
       img.style.pointerEvents = 'auto';
 
-      // 커서 감지를 위해 pointer-events 다시 켜기
       img.style.pointerEvents = 'auto';
 
-      // 마우스 이벤트 연결
       img.addEventListener('mouseenter', () => {
         gsap.to(img, {
           scale: 1.7,
@@ -343,16 +325,10 @@ function setupBackgroundCharacters() {
     });
   });
 }
-// ✅ 초기화 함수에서 MutationObserver 실행
-// document.addEventListener('DOMContentLoaded', () => {
-//   observeGridChanges();
-// });
 
-// ✅ GSAP 애니메이션 설정
+// GSAP 애니메이션 설정
 function setupAnimations() {
-  console.log('🚀 GSAP 애니메이션 설정 시작');
-
-  // 1. 원형 컨테이너 애니메이션
+  // 1. 원형 애니메이션
   if (document.querySelector('.circle-container')) {
     gsap.set('.circle-container', {
       position: 'fixed',
@@ -389,7 +365,7 @@ function setupAnimations() {
     });
   }
 
-  // 2. 글자 이미지 애니메이션
+  // 2. 글자 애니메이션
   const letterImgs = gsap.utils.toArray('.letter-img');
   if (letterImgs.length > 0) {
     letterImgs.forEach((img) => {
@@ -443,19 +419,16 @@ function setupAnimations() {
         scrub: 1,
       },
     });
-  } else {
-    console.warn('prev-wrap not found. HTML 구조를 확인하세요.');
   }
 }
-// ✅ 전체 초기화 함수
+// 전체 초기화 함수
 async function initializePage() {
   console.log('home-GSAP 초기화 시작');
 
-  setupAnimations(); // ✅ GSAP 애니메이션 설정
+  setupAnimations();
 
   const { success, items } = await loadDependencies();
   if (!success) {
-    console.error('❌ 필수 의존성 로드 실패');
     return;
   }
 
@@ -464,7 +437,6 @@ async function initializePage() {
 
     if (items.length > 0) {
       setupGridItems(items);
-      // observeGridChanges(); // ✅ 여기서 observer 실행
     }
   }
 
@@ -474,67 +446,46 @@ async function initializePage() {
   state.initialized = true;
   console.log('홈페이지 초기화 완료');
 }
-// 상호작용 설정
+
 function setupInteractions() {
-  // 이미지 확대 효과를 위한 이벤트 리스너
   const prevProduct = document.querySelector('.prev-product');
   if (prevProduct) {
-    // 기존 이벤트 제거
     prevProduct.removeEventListener('mouseenter', handlePrevProductMouseEnter);
     prevProduct.removeEventListener('mouseleave', handlePrevProductMouseLeave);
 
-    // 새 이벤트 등록
     prevProduct.addEventListener('mouseenter', handlePrevProductMouseEnter);
     prevProduct.addEventListener('mouseleave', handlePrevProductMouseLeave);
-
-    console.log('✅ prev-product 이벤트 추가됨');
-  } else {
-    console.warn('⚠️ prev-product 요소를 찾을 수 없음.');
   }
 
-  // 정보 버튼 클릭 이벤트 - 이벤트 위임 사용 (문서 전체에 이벤트 리스너 추가)
-  // 이전 리스너 제거
   document.removeEventListener('click', handleInfoButtonClick);
-  // 새 리스너 추가 (document.body 대신 document에 직접 추가)
-  document.addEventListener('click', handleInfoButtonClick);
 
-  console.log('🔄 정보 버튼 클릭 이벤트 리스너 설정됨');
+  document.addEventListener('click', handleInfoButtonClick);
 }
 
 // prev-product 마우스 진입 핸들러
 function handlePrevProductMouseEnter() {
-  console.log('🖼️ [이미지 호버] prev-product 확대');
   gsap.to(this, { scale: 1.4, duration: 0.3, ease: 'power2.out' });
 }
 
 // prev-product 마우스 이탈 핸들러
 function handlePrevProductMouseLeave() {
-  console.log('🔄 [이미지 호버 종료] prev-product 원래 크기로 복귀');
   gsap.to(this, { scale: 1, duration: 0.3, ease: 'power2.out' });
 }
 
-// 정보 버튼 클릭 핸들러 - 디버그 로그 추가
 function handleInfoButtonClick(e) {
-  e.stopPropagation(); // 🚀 클릭 이벤트가 상위 요소로 전달되지 않도록 방지
-  console.log('👆 클릭 감지됨', e.target);
+  e.stopPropagation();
 
-  // 클릭된 요소나 그 부모가 info-btn 클래스를 가지고 있는지 확인
-  const infoBtn = e.target.closest('.info-btn');
+  const infoBtn = e.target.closest('.home-info-btn');
 
   if (infoBtn) {
-    console.log('🟢 [클릭 감지됨] 버튼 클릭 이벤트 발생', infoBtn);
-
     const infoId = infoBtn.getAttribute('data-info');
     if (!infoId) {
-      console.error('❌ [오류] 버튼에 data-info 속성이 없습니다.');
       return;
     }
 
     const infoBox = document.getElementById(infoId);
-    console.log(`🔘 [버튼 클릭] 버튼 데이터 정보: ${infoId}, 찾은 info-box ID: ${infoBox ? infoBox.id : '❌ 없음'}`);
 
     if (!infoBox) {
-      console.error(`❌ [오류] ID가 ${infoId}인 info-box를 찾을 수 없습니다.`);
       return;
     }
 
@@ -546,21 +497,17 @@ function handleInfoButtonClick(e) {
   }
 }
 
-// 정보 박스 열기
 function openInfoBox(infoBox) {
   console.log(`🟢 [정보 박스 열기] ${infoBox.id} 박스 열기`);
 
-  // 다른 모든 박스 닫기
-  document.querySelectorAll('.info-box').forEach((box) => {
+  document.querySelectorAll('.home-info-box').forEach((box) => {
     if (box !== infoBox && box.classList.contains('show')) {
       closeInfoBox(box);
     }
   });
 
-  // 표시 전에 display 속성 설정
   infoBox.style.display = 'block';
 
-  // 약간의 지연 후 애니메이션 적용 (브라우저 렌더링 동기화 문제 방지)
   setTimeout(() => {
     infoBox.classList.add('show');
     gsap.fromTo(infoBox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
@@ -568,7 +515,6 @@ function openInfoBox(infoBox) {
   }, 10);
 }
 
-// 정보 박스 닫기
 function closeInfoBox(infoBox) {
   console.log(`❌ [정보 박스 닫기] ${infoBox.id} 박스 닫기`);
   gsap.to(infoBox, {

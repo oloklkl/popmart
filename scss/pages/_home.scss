@@ -1,6 +1,5 @@
 @import '../base/include.scss';
 
-
 #myPageDrawer {
   display: none;
 }
@@ -140,6 +139,7 @@
     }
   }
 }
+
 // home grid
 .section02 {
   border-radius: 1000px 1000px 0 0;
@@ -176,22 +176,19 @@
   .homeGrid-wrapper-inner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    // grid-gap: 15px;
     padding: 10px;
     max-width: 900px;
     margin: 0 auto;
   }
 
   .homeGrid-item {
-    pointer-events: auto !important;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: auto;
     padding: 10px;
-    // border: 1px solid #ddd;
-    // border-radius: 10px;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -205,7 +202,7 @@
       pointer-events: auto;
     }
     div {
-      text-align: center;
+      text-align: start;
       h3 {
         font-size: 14px;
         margin: 0;
@@ -217,6 +214,41 @@
         margin: 0;
       }
     }
+  }
+}
+
+.caution-banner {
+  width: 100%;
+  background-color: #ffd600;
+  overflow: hidden;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+}
+
+.caution-track {
+  white-space: nowrap;
+  display: inline-block;
+  padding-left: 100%;
+  animation: slideCaution 10s linear infinite;
+}
+
+.caution-track span {
+  font-family: $font-family-point;
+  font-size: 6rem;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+@keyframes slideCaution {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 
@@ -245,7 +277,7 @@
       transition: transform 0.3s ease;
     }
 
-    .info-btn {
+    .home-info-btn {
       position: absolute;
       width: 40px;
       height: 40px;
@@ -289,7 +321,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     color: white;
-    z-index: 2;
+    z-index: 0;
 
     // 글리치 공통 스타일
     &.glitch {
@@ -322,7 +354,6 @@
   }
 }
 
-// 🔁 애니메이션 정의
 @keyframes glitch-skew {
   0% {
     transform: skew(0deg);
@@ -381,9 +412,8 @@
   }
 }
 
-// 호버효과
 .circle-cursor {
-  pointer-events: none !important;
+  pointer-events: none;
   position: fixed;
   width: 200px;
   height: 200px;
@@ -401,72 +431,67 @@
   overflow: visible;
 }
 .black-bg:hover .circle-cursor {
-  mix-blend-mode: normal; /* 블렌드 모드 해제 */
-  background: white; /* 밝은 색으로 변경 */
+  mix-blend-mode: normal;
+  background: white;
 }
 .prev-product-container:hover .prev-product {
   transform: scale(1.7);
 }
-.info-btn:hover {
+.home-info-btn:hover {
   background: rgba(255, 255, 255, 1);
 }
 
-.info-box {
+.home-info-box {
   position: absolute;
   top: 0;
-  // left: 0;
   left: 100%;
   transform: translateY(-50%, -50%);
   background: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 15px;
   border-radius: 10px;
-  // visibility: hidden; /* 기본적으로 숨김 */
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3 ease-in-out;
   z-index: 10;
 }
 
 .info-wrapper {
-  position: relative; /* 🔥 relative를 적용할 새로운 부모 요소 */
+  position: relative;
   width: 100%;
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  .info-box {
+  .home-info-box {
     width: 400px;
     transform: translate(-50%, -50%);
     position: absolute;
-    /* ✅ 수정 */
     background: rgba(0, 0, 0, 0.5);
-
     color: white;
     padding: 20px;
     border-radius: 10px;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease-in-out; /* ✅ transform 속성 수정 */
-    // z-index: 9999;
-    visibility: hidden; /* 기본적으로 숨김 */
+    transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+    visibility: hidden;
     p {
       line-height: 170%;
     }
   }
 
-  .info-box.show {
+  .home-info-box.show {
     left: 100%;
     transform: translate(-50%, -50%);
     border: 2px solid rgba(255, 255, 255, 1);
-    visibility: visible; /* 🔹 visibility 속성 추가 */
+    visibility: visible;
     opacity: 1;
   }
 
-  #info1 {
-    top: 55%; /* 부모 기준 중앙 정렬 */
+  #home-info1 {
+    top: 55%;
     left: -5%;
   }
-  #info2 {
-    top: 90%; /* 부모 기준 중앙 정렬 */
+  #home-info2 {
+    top: 90%;
     left: 112%;
   }
 }
@@ -491,7 +516,7 @@
 
   .slide {
     flex: 0 0 auto;
-    width: 200px; /* 원하는 이미지 너비 */
+    width: 200px;
   }
 
   .slide img {
@@ -503,14 +528,14 @@
   position: fixed;
   bottom: -100px;
   left: -600px;
-  background-color: rgba(0, 0, 0, 0.5); /* ✅ 반투명 블랙 배경 */
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-family: 'NanumSquareNeo', sans-serif;
   width: 400px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  z-index: 10000;
+  z-index: 100000;
   p {
     line-height: 180%;
     font-size: 1.3rem;
@@ -518,7 +543,7 @@
 }
 
 .home-artist-header {
-  background-color: #000; /* ✅ 완전 블랙 */
+  background-color: #000;
   color: #fff;
   padding: 14px 18px;
   font-weight: bold;
@@ -534,13 +559,13 @@
 }
 
 .home-artist-info.open .home-artist-content {
-  max-height: 300px; /* 충분한 높이 */
+  max-height: 300px;
   padding: 14px 18px;
 }
 
 .artist-profile-img {
   position: fixed;
-  left: -1000px; /* 시작 위치: 화면 왼쪽 밖 */
+  left: -1000px;
   bottom: -100px;
   width: 180px;
   height: auto;
@@ -550,7 +575,6 @@
   border-radius: 12px;
 }
 
-/* 아코디언 열릴 때 이미지 나타나도록 제어 */
 .artist-profile-img.show {
   left: -190px;
   opacity: 1;
@@ -564,8 +588,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* prev-product보다 뒤에 */
-  pointer-events: none; /* 호버 감지는 JS에서 따로 처리 */
+  z-index: 1;
+  pointer-events: none;
 }
 
 .background-character {
@@ -574,3 +598,95 @@
   opacity: 0.5;
   transition: transform 0.3s ease;
 }
+
+// -----------------------homeGnb style
+
+.gnb-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background: red;
+  border-radius: 50%;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.gnb-toggle-btn:hover {
+  background: red;
+}
+
+.gnb-toggle-btn span {
+  display: block;
+  position: absolute;
+  width: 35px;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.3s;
+  transform-origin: center center;
+}
+
+.gnb-toggle-btn span:nth-child(1) {
+  top: 26px;
+}
+.gnb-toggle-btn span:nth-child(2) {
+  top: 38px;
+}
+.gnb-toggle-btn span:nth-child(3) {
+  top: 50px;
+}
+
+.gnb-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('/assets/images/home/GNB.png') no-repeat center center / cover;
+  color: #fff;
+  z-index: 9999;
+  transform: translateY(-100%);
+  transition: none;
+  pointer-events: none;
+  opacity: 0;
+}
+.gnb-menu.active {
+  top: 0;
+}
+.gnb-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+.gnb-menu li {
+  margin: 30px 0;
+}
+.gnb-menu a {
+  font-family: $font-family-point;
+  font-size: 8rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #fff;
+  text-decoration: line-through;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+}
+
+.gnb-menu a:hover {
+  color: #ffec40;
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .gnb-menu a {
+    font-size: 1.5rem;
+  }
+}
+//

@@ -73,6 +73,11 @@
                 <div class="homeGrid-wrapper-inner"></div>
               </div>
             </div>
+            <div class="caution-banner">
+              <div class="caution-track">
+                <span>Wanna see more? Wanna see more? Wanna see more? Wanna see more? Wanna see more?</span>
+              </div>
+            </div>
           </section>
           <section class="section03">
             <div class="prev-wrap">
@@ -86,13 +91,12 @@
                     alt=""
                     class="prev-product"
                   />
-                  <!-- 🔹 정보 버튼 1 -->
-                  <button class="info-btn" data-info="info1" style="top: 20%; left: 30%">+</button>
-                  <!-- 🔹 정보 버튼 2 -->
-                  <button class="info-btn" data-info="info2" style="top: 60%; left: 70%">+</button>
-                  <!-- 🔹 정보 박스 -->
 
-                  <div class="info-box" id="info1">
+                  <button class="home-info-btn" data-info="home-info1" style="top: 20%; left: 30%">+</button>
+
+                  <button class="home-info-btn" data-info="home-info2" style="top: 60%; left: 70%">+</button>
+
+                  <div class="home-info-box" id="home-info1">
                     <p>아주 캄캄하고 끝없이 펼쳐진 우주에서 여유롭게 비행하는 누군가를 발견했다면</p>
                     <br />
                     <p>그건 아마 스컬판다 일 거예요</p>
@@ -101,7 +105,7 @@
                     <br />
                     <p>어디로 튈지 모르는 아주 자유로운 존재라고 할 수 있겠네요</p>
                   </div>
-                  <div class="info-box" id="info2">
+                  <div class="home-info-box" id="home-info2">
                     <p>가끔은 수줍은 소녀의 모습으로,</p>
                     <br />
                     <p>또 어느 날은 세상을 삼켜 먹을 만큼 카리스마 있는 모습으로 끝없이 변신하는 스컬판다</p>
@@ -121,7 +125,7 @@
                     </p>
                   </div>
                 </div>
-                <!-- ✅ 프로필 이미지 (초기에는 왼쪽 밖에 위치) -->
+
                 <img src="/assets/images/home/skullpanda.png" alt="skullpanda profile" class="artist-profile-img" />
               </div>
             </div>
@@ -130,15 +134,113 @@
       </div>
       <section id="section04">
         <div class="slider-container">
-          <div class="slider-track">
-            <!-- 여기에 JS로 이미지 슬라이드 생성 -->
-          </div>
+          <div class="slider-track"></div>
         </div>
       </section>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/js/mainPage/homeScript.js"></script>
-    <!-- <script src="/js/mainPage/homeSwiperScript.js"></script> -->
+
+    <script>
+      fetch('/page/mainPage/homeGnb.html')
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML('afterbegin', html);
+
+          const gnbToggleBtn = document.getElementById('gnbToggleBtn');
+          const gnbMenu = document.getElementById('gnbMenu');
+
+          const topBar = gnbToggleBtn.querySelector('span:nth-child(1)');
+          const midBar = gnbToggleBtn.querySelector('span:nth-child(2)');
+          const botBar = gnbToggleBtn.querySelector('span:nth-child(3)');
+          let gnbOpen = false;
+
+          // 초기 스타일 세팅
+          gsap.set(gnbMenu, {
+            y: '-100%',
+            autoAlpha: 0,
+            pointerEvents: 'none',
+          });
+
+          gnbToggleBtn.addEventListener('click', () => {
+            if (!gnbOpen) {
+              gsap.to(gnbMenu, {
+                y: '0%',
+                autoAlpha: 1,
+                duration: 0.6,
+                ease: 'power3.out',
+                onStart: () => {
+                  gnbMenu.style.pointerEvents = 'auto';
+                },
+              });
+
+              // 햄버거 → X
+              gsap.to(topBar, {
+                rotate: 45,
+                y: 12,
+                scaleX: 1.2,
+                transformOrigin: 'center',
+                duration: 0.25,
+                ease: 'back.out(2)',
+              });
+              gsap.to(midBar, {
+                autoAlpha: 0,
+                scaleX: 0.8,
+                duration: 0.2,
+                ease: 'power2.in',
+              });
+              gsap.to(botBar, {
+                rotate: -45,
+                y: -12,
+                scaleX: 1.2,
+                transformOrigin: 'center',
+                duration: 0.25,
+                ease: 'back.out(2)',
+              });
+            } else {
+              gsap.to(gnbMenu, {
+                y: '-100%',
+                autoAlpha: 0,
+                duration: 0.5,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                  gnbMenu.style.pointerEvents = 'none';
+                },
+              });
+
+              // X → 햄버거 복귀
+              gsap.to(topBar, {
+                rotate: 0,
+                y: 0,
+                scaleX: 1,
+                duration: 0.3,
+                ease: 'power2.out',
+              });
+              gsap.to(midBar, {
+                autoAlpha: 1,
+                scaleX: 1,
+                duration: 0.2,
+                ease: 'power2.out',
+                delay: 0.1,
+              });
+              gsap.to(botBar, {
+                rotate: 0,
+                y: 0,
+                scaleX: 1,
+                duration: 0.3,
+                ease: 'power2.out',
+              });
+              gsap.fromTo(
+                gnbToggleBtn,
+                { scale: 1 },
+                { scale: 1.1, yoyo: true, repeat: 1, duration: 0.2, ease: 'power1.inOut' }
+              );
+            }
+
+            gnbOpen = !gnbOpen;
+          });
+        })
+        .catch((err) => console.error('GNB 로드 실패:', err));
+    </script>
   </body>
 </html>
