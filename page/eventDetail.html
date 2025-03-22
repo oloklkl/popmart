@@ -69,14 +69,18 @@
             </div>
             <div class="text_area">
               피치 라이엇 <br />러시 아워 시리즈 마그넷
-              <span class="text_area_label"> Peacgh Riot Rush Hour Series Fridge Magnet </span>
+              <span class="text_area_label">
+                Peacgh Riot Rush Hour Series Fridge Magnet
+              </span>
             </div>
           </div>
           <div class="event_detail_third">
             <div class="text_area">
               몰리의 데일리 룩 시리즈<br />
               에어팟 프로 케이스
-              <span class="text_area_label"> Peacgh Riot Rush Hour Series Fridge Magnet </span>
+              <span class="text_area_label">
+                Peacgh Riot Rush Hour Series Fridge Magnet
+              </span>
             </div>
             <div class="image_area">
               <img
@@ -93,7 +97,9 @@
             <div class="text_area">
               몰리의 데일리 룩 시리즈<br />
               카드홀더
-              <span class="text_area_label"> Peacgh Riot Rush Hour Series Fridge Magnet </span>
+              <span class="text_area_label">
+                Peacgh Riot Rush Hour Series Fridge Magnet
+              </span>
             </div>
           </div>
         </div>
@@ -102,16 +108,28 @@
             <div class="notice_release">
               <span class="notice_release_title">발매 시간 안내</span>
               <ul class="notice_release_list">
-                <li class="notice_release_item1">2025년 2월 21일 (금) <br />오전 10시 발매</li>
-                <li class="notice_release_item2">메가 로얄 몰리 모네 수련 1000%<br />2월 21일 오후7시 발매</li>
+                <li class="notice_release_item1">
+                  2025년 2월 21일 (금) <br />오전 10시 발매
+                </li>
+                <li class="notice_release_item2">
+                  메가 로얄 몰리 모네 수련 1000%<br />2월 21일 오후7시 발매
+                </li>
               </ul>
             </div>
             <div class="notice_guide">
               <span class="notice_guide_title">주문 관련 안내</span>
               <ul class="notice_guide_list">
-                <li class="notice_guide_item1">1인당 (ID당) 구매 가능 수량만 주문 가능</li>
-                <li class="notice_guide_item2">구매 한정 수량 초과 구매 시 안내 없이 전체 주문 자동 취소됩니다.</li>
-                <li class="notice_guide_item3">카드, 휴대폰, 적립금 결제 이용 가능 / 무통장 입금 결제 이용 불가</li>
+                <li class="notice_guide_item1">
+                  1인당 (ID당) 구매 가능 수량만 주문 가능
+                </li>
+                <li class="notice_guide_item2">
+                  구매 한정 수량 초과 구매 시 안내 없이 전체 주문 자동
+                  취소됩니다.
+                </li>
+                <li class="notice_guide_item3">
+                  카드, 휴대폰, 적립금 결제 이용 가능 / 무통장 입금 결제 이용
+                  불가
+                </li>
               </ul>
             </div>
             <div class="notice_amount">
@@ -131,4 +149,14 @@
     <script src="/js/scriptLoader.js" defer></script>
   </body>
   <script type="module" src="../js/eventDetail.js"></script>
+  <script src="/js/common/cursor.js"></script>
+  <script>
+    fetch("/common/cartButton.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.body.insertAdjacentHTML("beforeend", data);
+      })
+      .catch((error) => console.error("Error loading cartButton.html:", error));
+  </script>
+  <script type="module" src="/js/common/cartButton.js"></script>
 </html>
