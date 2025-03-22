@@ -1,33 +1,25 @@
 @import "../base/include";
 
 #modal-overlay {
-  display: none;
+  display: none; /* 기본적으로 숨김 */
   position: fixed;
   top: 0;
-  right: -100%;
+  left: 0; /* 화면 왼쪽에 고정 */
   width: 100%;
   height: 100%;
-  background-color: rgb(18, 22, 25, 0.5);
+  background-color: rgba(18, 22, 25, 0.5); /* 반투명 어두운 배경 */
   z-index: 1;
   opacity: 0;
-  transition: right 0.5s ease, opacity 0.5s ease;
+  transition: opacity 0.5s ease; /* 부드러운 fade-in 효과 */
 }
 
 #modal-overlay.open {
-  right: 0;
+  display: block; /* 'open' 클래스가 있을 때 모달을 보이게 함 */
   opacity: 1;
 }
 
-#search-box.open {
-  display: block !important;
-  transform: translateX(0);
-  @include mobileMore {
-    transform: translateX(-20px); // mobile에서만 적용
-  }
-}
-
 #search-box {
-  display: none; // 기본적으로 숨김
+  display: none; /* 기본적으로 숨김 */
   position: fixed;
   top: 0;
   right: 0;
@@ -40,9 +32,13 @@
   transition: transform 0.5s ease;
   transform: translateX(100%);
 
+  &.open {
+    display: block !important;
+    transform: translateX(0);
+  }
+
   @include mobileMore {
     top: 50px;
-    right: -100%;
     max-width: 465px;
     height: 500px;
     padding: 30px;
