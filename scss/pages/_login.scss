@@ -1,4 +1,8 @@
 @import '../base/include';
+#login-body {
+  padding-top: 100px;
+}
+
 .login-container {
   width: 100%;
   height: 100vh;
@@ -212,8 +216,7 @@
   font-size: 14px;
   font-weight: bold;
   color: $point;
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out,
-    visibility 0s 0.4s;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, visibility 0s 0.4s;
   @include mobileMore {
     font-size: 16px;
   }
