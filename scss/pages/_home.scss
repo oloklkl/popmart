@@ -503,7 +503,7 @@
   padding: 20px 20px;
   background: #000;
   text-align: center;
-  z-index: 15;
+  z-index: 10;
   .slider-container {
     overflow: hidden;
     width: 100%;
@@ -609,7 +609,7 @@
   height: 80px;
   background: red;
   border-radius: 50%;
-  z-index: 100000;
+  z-index: 10007;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -7,7 +7,12 @@
 //     margin: 0 auto;
 //     padding: 0;
 // }
-
+#productList-body {
+  padding-top: 100px;
+}
+#productDetail-body {
+  padding-top: 100px;
+}
 .product-inner {
   position: relative;
   width: 100%;
@@ -25,11 +30,17 @@
 
 // productList.html 시작
 .product-list-section {
+  width: 100vw;
+  height: 1800px;
   .content-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: flex-start;
     gap: 40px;
     padding: 50px;
+    position: absolute;
+    top: 0;
+    left: -5%;
 
     @include tablet {
       flex-direction: column;
@@ -39,6 +50,9 @@
       flex-direction: column;
     }
     .brand-container {
+      // position: fixed;
+      top: 0;
+      left: 10%;
       .brand-list {
         display: flex;
         flex-direction: column;
@@ -64,6 +78,7 @@
           width: 270px;
           height: 85px;
           font-size: 20px;
+          font-weight: 800;
           text-align: center;
           line-height: 85px;
           background-size: cover;
@@ -148,6 +163,7 @@
           width: 270px;
           height: 85px;
           font-size: 20px;
+          font-weight: 800;
           text-align: center;
           line-height: 85px;
           background-size: cover;
@@ -196,7 +212,7 @@
     .grid-wrapper {
       display: flex;
       flex-direction: column;
-      width: 80%;
+      width: 100%;
       box-sizing: border-box;
 
       @include tablet {
@@ -237,13 +253,14 @@
         }
       }
       .grid-container {
-        width: 100%;
+        width: 110%;
+        height: 50%;
         margin: 0 auto;
         position: relative;
 
         .grid-wrapper-inner {
           display: grid;
-          grid-template-columns: repeat(3, 1fr); // 3열 레이아웃
+          grid-template-columns: repeat(4, 1fr); // 3열 레이아웃
           gap: 20px;
 
           @include mobile {
@@ -288,7 +305,7 @@
 
               .grid-item-title {
                 font-size: 1.7rem;
-                font-weight: $font-bold;
+                font-weight: 700;
                 margin: 0 0 10px;
 
                 @include mobile {
