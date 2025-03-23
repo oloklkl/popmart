@@ -1,5 +1,13 @@
-// ✅ 헤더 스타일 구성
+@import '../base/include'; // ✅ 헤더 스타일 구성
 .header-inner {
+  .logo {
+    @include mobile {
+      display: none;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,6 +31,12 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    @include mobile {
+      display: none;
+    }
+    // @include tablet {
+    //   display: none;
+    // }
 
     ul {
       display: flex;
@@ -64,23 +78,59 @@
 
         &:nth-child(1)::after {
           background-image: url('https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true');
+          @include mobile {
+            display: none;
+          }
+          @include tablet {
+            display: none;
+          }
         }
         &:nth-child(2)::after {
           background-image: url('https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking22.png?raw=true');
+          @include mobile {
+            display: none;
+          }
+          @include tablet {
+            display: none;
+          }
         }
         &:nth-child(3)::after {
           background-image: url('https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking66.png');
+          @include mobile {
+            display: none;
+          }
+          @include tablet {
+            display: none;
+          }
           width: 130px;
         }
         &:nth-child(4)::after {
           background-image: url('https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking55.png');
+          @include mobile {
+            display: none;
+          }
+          @include tablet {
+            display: none;
+          }
         }
         &:nth-child(5)::after {
           background-image: url('https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true');
+          @include mobile {
+            display: none;
+          }
+          @include tablet {
+            display: none;
+          }
           width: 120px;
         }
         &:nth-child(6)::after {
           background-image: url('https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking77.png');
+          @include mobile {
+            display: none;
+          }
+          @include tablet {
+            display: none;
+          }
         }
       }
     }
@@ -110,6 +160,12 @@
   background-size: cover;
   background-position: center;
   pointer-events: none;
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: none;
+  }
 }
 
 .header-inner::before {

@@ -547,12 +547,13 @@
     left: 50%;
     width: 100vw;
     height: 1800px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 50%, black 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(0, 0, 0, 0.8) 20%);
     transform: translateX(-50%);
     z-index: -100;
   }
   .info_area_inner {
-    margin-top: 320px;
+    margin-top: 450px;
+    margin-bottom: 450px;
   }
 
   .notice_release,

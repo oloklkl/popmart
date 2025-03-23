@@ -1,8 +1,11 @@
+// popStoryScript.js
 import { popStoryItems, addPopStoryItems } from './popStoryItems.js';
+
+// 전체 아이템 통합
+const allItems = [...popStoryItems, ...addPopStoryItems];
 
 document.addEventListener('DOMContentLoaded', () => {
   const itemId = parseInt(new URLSearchParams(window.location.search).get('id')) || 1;
-  const allItems = [...popStoryItems, ...addPopStoryItems];
   const item = allItems.find((i) => i.id === itemId);
   const container = document.querySelector('.popStory-container');
 
@@ -84,7 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prevItem) {
     document.querySelector('.prev-label').textContent = prevItem.title || 'PREV';
     document.querySelector('.prev-item').addEventListener('click', () => {
-      window.location.href = `/popStory.html?id=${prevItem.id}`;
+      gsap.to('.popStory-container', {
+        opacity: 0,
+        y: 50,
+        duration: 0.5,
+        onComplete: () => {
+          window.location.href = `/page/popStory.html?id=${prevItem.id}`;
+        },
+      });
     });
   } else {
     document.querySelector('.prev-item').style.opacity = '0.3';
@@ -94,7 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (nextItem) {
     document.querySelector('.next-label').textContent = nextItem.title || 'NEXT';
     document.querySelector('.next-item').addEventListener('click', () => {
-      window.location.href = `/popStory.html?id=${nextItem.id}`;
+      gsap.to('.popStory-container', {
+        opacity: 0,
+        y: 50,
+        duration: 0.5,
+        onComplete: () => {
+          window.location.href = `/page/popStory.html?id=${nextItem.id}`;
+        },
+      });
     });
   } else {
     document.querySelector('.next-item').style.opacity = '0.3';
@@ -123,4 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
     tagBox.classList.toggle('show');
     gsap.to(tagBox, { autoAlpha: tagBox.classList.contains('show') ? 1 : 0, duration: 0.4 });
   });
+
+  // 모바일 UX 개선: 터치 기반 토글 & 부드러운 스크롤
+  const touchAreas = document.querySelectorAll('.toggle-description-btn-1, .toggle-description-btn-2, .toggle-tag-btn');
+  touchAreas.forEach((btn) => {
+    btn.style.touchAction = 'manipulation';
+  });
+
+  // 모바일 스크롤 위치 초기화
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
