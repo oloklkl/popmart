@@ -677,7 +677,7 @@ table {
   width: 100%;
   background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point.png?raw=true"), url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point2.png?raw=true");
   background-repeat: no-repeat, no-repeat;
-  background-position: -100px top, -400px top;
+  background-position: -120px top, -350px top;
 }
 
 .header-wrap {
@@ -742,22 +742,52 @@ table {
   position: relative;
   gap: 3vw;
 }
+.header-inner nav ul li:nth-of-type(1) .menu-link.active::after {
+  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true");
+}
+.header-inner nav ul li:nth-of-type(2) .menu-link.active::after {
+  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking22.png?raw=true");
+}
+.header-inner nav ul li:nth-of-type(3) .menu-link.active::after {
+  background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking66.png");
+  width: 130px;
+}
+.header-inner nav ul li:nth-of-type(4) .menu-link.active::after {
+  background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking55.png");
+}
+.header-inner nav ul li:nth-of-type(5) .menu-link.active::after {
+  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true");
+  width: 120px;
+}
+.header-inner nav ul li:nth-of-type(6) .menu-link.active::after {
+  background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking77.png");
+}
 .header-inner nav ul li {
   position: relative;
   text-align: center;
   min-width: 98px;
   min-height: 45px;
+  z-index: 0;
 }
-.header-inner nav ul li a {
+.header-inner nav ul li .menu-link {
   text-decoration: none;
   position: relative;
   z-index: 2;
   display: inline-block;
   padding: 10px 0;
   color: #000;
+  min-width: 98px;
+  min-height: 45px;
 }
-.header-inner nav ul li::after {
+.header-inner nav ul li .menu-link:hover {
+  font-weight: bold;
+}
+.header-inner nav ul li .menu-link.active {
+  font-weight: bold;
+}
+.header-inner nav ul li .menu-link::after {
   content: "";
+  display: block;
   position: absolute;
   top: 0;
   left: 50%;
@@ -767,96 +797,25 @@ table {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 1;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
-.header-inner nav ul li:nth-child(1)::after {
-  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking1.png?raw=true");
-}
-@media (max-width: 599px) {
-  .header-inner nav ul li:nth-child(1)::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner nav ul li:nth-child(1)::after {
-    display: none;
-  }
-}
-.header-inner nav ul li:nth-child(2)::after {
-  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking22.png?raw=true");
-}
-@media (max-width: 599px) {
-  .header-inner nav ul li:nth-child(2)::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner nav ul li:nth-child(2)::after {
-    display: none;
-  }
-}
-.header-inner nav ul li:nth-child(3)::after {
-  background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking66.png");
-  width: 130px;
-}
-@media (max-width: 599px) {
-  .header-inner nav ul li:nth-child(3)::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner nav ul li:nth-child(3)::after {
-    display: none;
-  }
-}
-.header-inner nav ul li:nth-child(4)::after {
-  background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking55.png");
-}
-@media (max-width: 599px) {
-  .header-inner nav ul li:nth-child(4)::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner nav ul li:nth-child(4)::after {
-    display: none;
-  }
-}
-.header-inner nav ul li:nth-child(5)::after {
-  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/gnb/bgMasking5.png?raw=true");
-  width: 120px;
-}
-@media (max-width: 599px) {
-  .header-inner nav ul li:nth-child(5)::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner nav ul li:nth-child(5)::after {
-    display: none;
-  }
-}
-.header-inner nav ul li:nth-child(6)::after {
-  background-image: url("https://raw.githubusercontent.com/hyeonky/dp-static/36f5d200504c3fadf98b220bf2fdca3393a835d5/popmart/gnb/bgMasking77.png");
-}
-@media (max-width: 599px) {
-  .header-inner nav ul li:nth-child(6)::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner nav ul li:nth-child(6)::after {
-    display: none;
-  }
+.header-inner nav ul li .menu-link.active::after {
+  opacity: 1;
 }
 .header-inner__icons {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
-.header-inner__icons img {
-  height: 35px;
-  width: 35px;
+.header-inner__icons button img {
+  width: 24px;
+  transition: transform 0.3s ease;
+}
+.header-inner__icons button img:hover {
+  transform: scale(1.2);
 }
 
 .footer {
@@ -2619,9 +2578,8 @@ table {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding: 20px;
+  width: 100%;
   height: 100vh;
-  gap: 70px;
   flex-wrap: wrap;
 }
 @media (max-width: 1023px) {
@@ -2635,8 +2593,8 @@ table {
   width: 100%;
   max-width: 1000px;
   height: auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
+  margin: 0;
   overflow: visible;
   /* 네비게이션 버튼 위치 조정 */
 }
@@ -2826,17 +2784,18 @@ table {
 .product-slider-section .product-info .product-details .quantity-control span {
   width: 60px;
   height: 40px;
-  border: 2px solid #000;
-  color: #777777;
+  border: 1px solid #000;
   border-radius: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
 .product-slider-section .product-info .product-details .quantity-control button {
   width: 40px;
   padding: 5px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 13px;
   background-color: #fff;
   cursor: pointer;
@@ -2844,7 +2803,6 @@ table {
 .product-slider-section .product-info .product-details .quantity-control .minus,
 .product-slider-section .product-info .product-details .quantity-control .plus {
   color: #000;
-  font-weight: 700;
   font-size: 2rem;
 }
 .product-slider-section .product-info .product-details .shipping-info {
@@ -3340,8 +3298,6 @@ table {
 
 .product-btn {
   /* Top 버튼 */
-  /* 장바구니 버튼 */
-  /* 토글 버튼 */
 }
 .product-btn .top-btn {
   position: fixed;
@@ -3368,66 +3324,6 @@ table {
 @media (max-width: 599px) {
   .product-btn .top-btn {
     right: 145px;
-    width: 70px;
-    height: 70px;
-  }
-}
-.product-btn .cart-btn {
-  position: fixed;
-  bottom: 150px; /* Top 버튼 위에 위치 */
-  right: 15px;
-  width: 115px;
-  height: 115px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: none; /* 기본적으로 숨김 */
-  z-index: 100;
-}
-.product-btn .cart-btn:hover {
-  background: none;
-  transform: scale(1.1);
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .product-btn .cart-btn {
-    width: 85px;
-    height: 85px;
-  }
-}
-@media (max-width: 599px) {
-  .product-btn .cart-btn {
-    bottom: 110px;
-    right: 140px;
-    width: 65px;
-    height: 65px;
-  }
-}
-.product-btn .toggle-btn {
-  position: fixed;
-  bottom: 20px; /* Top 버튼 위에 위치 */
-  right: 150px;
-  width: 110px;
-  height: 110px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: none; /* 기본적으로 숨김 */
-  z-index: 100;
-}
-.product-btn .toggle-btn:hover {
-  background: none;
-  transform: scale(1.1);
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .product-btn .toggle-btn {
-    right: 130px;
-    width: 90px;
-    height: 90px;
-  }
-}
-@media (max-width: 599px) {
-  .product-btn .toggle-btn {
-    right: 220px;
     width: 70px;
     height: 70px;
   }
@@ -4341,14 +4237,31 @@ table {
 /* **** scroll ****/
 /* **** form mixin ****/
 #cart-body {
-  padding-top: 100px;
   height: 2800px;
 }
 
 .cart-container {
-  padding: 2rem;
-  max-width: 1200px;
+  position: relative;
+  width: 100%;
+  max-width: 1520px;
   margin: 0 auto;
+  padding: 0;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .cart-container {
+    padding: 0 48px;
+  }
+}
+@media (max-width: 599px) {
+  .cart-container {
+    padding: 0 36px;
+  }
+}
+
+#select-all-text {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
 }
 
 .cart-title {
@@ -4427,10 +4340,24 @@ table {
   gap: 0.5rem;
   flex: 1;
 }
+.cart-item .item-quantity .quantity-btn {
+  width: 40px;
+  padding: 5px;
+  color: #000;
+  font-size: 2rem;
+  border: 1px solid #000;
+  border-radius: 13px;
+  background-color: #fff;
+}
 .cart-item .item-quantity .quantity-input {
   text-align: center;
   width: 40px;
-  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 13px;
+  background-color: #fff;
 }
 .cart-item .item-total {
   margin-top: 50px;
@@ -4440,8 +4367,12 @@ table {
   justify-content: flex-end;
   gap: 4rem;
   margin-top: 1rem;
+  border-top: 1px solid #d8d8d8;
 }
-.cart-item .action-wrapper .action-btn {
+.cart-item .action-wrapper .action-buttons {
+  padding: 10px 0;
+}
+.cart-item .action-wrapper .action-buttons .action-btn {
   padding: 14px 18px;
   border-radius: 18px;
   border: 3px solid black;
@@ -4449,7 +4380,7 @@ table {
   font-weight: 600;
   cursor: pointer;
 }
-.cart-item .action-wrapper .action-btn.delete {
+.cart-item .action-wrapper .action-buttons .action-btn.delete {
   background: #ff8282;
   color: black;
 }
@@ -6026,10 +5957,6 @@ table {
 /* **** text attr ****/
 /* **** scroll ****/
 /* **** form mixin ****/
-#login-body {
-  padding-top: 100px;
-}
-
 .login-container {
   width: 100%;
   height: 100vh;
@@ -6576,10 +6503,6 @@ table {
 /* **** text attr ****/
 /* **** scroll ****/
 /* **** form mixin ****/
-#register-body {
-  padding-top: 150px;
-}
-
 .container {
   width: 100%;
   height: 100%;

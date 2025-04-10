@@ -1,232 +1,229 @@
 @import '../base/include';
-#login-body {
-  padding-top: 100px;
-}
 
 .login-container {
-  width: 100%;
-  height: 100vh;
-  background: #ffba4a;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  @include mobileMore {
-    padding: 80px;
-  }
+    width: 100%;
+    height: 100vh;
+    background: #ffba4a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    @include mobileMore {
+        padding: 80px;
+    }
 }
 .login-inner {
-  padding-bottom: 100px;
+    padding-bottom: 100px;
 }
 .loginLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    width: 100%;
 }
 
 .loginWrap {
-  width: 100%;
-  max-width: 504px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
+    width: 100%;
+    max-width: 504px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
 }
 .formContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 .inputBox {
-  display: flex;
-  width: 100%;
-  height: 50px;
-  border-radius: 16px;
-  border: 3px solid black;
-  text-align: left;
-  padding-left: 15px;
-  font-size: 14px;
-  @include mobileMore {
-    height: 55px;
-    font-size: 16px;
-  }
+    display: flex;
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    border: 3px solid black;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 14px;
+    @include mobileMore {
+        height: 55px;
+        font-size: 16px;
+    }
 }
 
 // checkBox style
 .checkbox {
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  font-size: 12px;
-  gap: 16px;
-  @include mobileMore {
-    font-size: 16px;
-  }
-  label {
     display: flex;
     align-items: center;
-    user-select: none;
+    padding-left: 5px;
+    font-size: 12px;
+    gap: 16px;
     @include mobileMore {
-      gap: 5px;
+        font-size: 16px;
     }
-  }
-  .check {
-    display: none;
-  }
-  .custom-checkbox {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 3px solid #555;
-    background: $white;
-    border-radius: 3px;
-    margin-right: 5px;
-    vertical-align: middle;
-    position: relative;
-    @include mobileMore {
-      width: 20px;
-      height: 20px;
+    label {
+        display: flex;
+        align-items: center;
+        user-select: none;
+        @include mobileMore {
+            gap: 5px;
+        }
     }
-  }
+    .check {
+        display: none;
+    }
+    .custom-checkbox {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 3px solid #555;
+        background: $white;
+        border-radius: 3px;
+        margin-right: 5px;
+        vertical-align: middle;
+        position: relative;
+        @include mobileMore {
+            width: 20px;
+            height: 20px;
+        }
+    }
 
-  // 체크되었을 때 스타일
-  .check:checked + .custom-checkbox {
-    background-color: #ff4e4e;
-    border-color: $point;
+    // 체크되었을 때 스타일
+    .check:checked + .custom-checkbox {
+        background-color: #ff4e4e;
+        border-color: $point;
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 9px;
-      height: 9px;
-      background-color: $point;
-      transform: translate(-50%, -50%);
-      border-radius: 3px;
-      @include mobileMore {
-        width: 10px;
-        height: 10px;
-      }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 9px;
+            height: 9px;
+            background-color: $point;
+            transform: translate(-50%, -50%);
+            border-radius: 3px;
+            @include mobileMore {
+                width: 10px;
+                height: 10px;
+            }
+        }
     }
-  }
 }
 
 .loginBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  background: black;
-  color: #fff;
-  border-radius: 16px;
-  border: 3px solid black;
-  text-align: center;
-  cursor: pointer;
-  font-size: 18px;
-  @include mobileMore {
-    height: 55px;
-    font-size: 20px;
-  }
-  &:hover {
-    background: #333;
-  }
-}
-
-.login-options {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-.findInfo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: $black;
-  gap: 10px;
-  a {
-    font-size: 14px;
-    text-decoration: none;
-    color: $black;
-    @include mobileMore {
-      font-size: 16px;
-    }
-  }
-  .middle-dot::before {
-    content: '·';
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: #121619;
-  }
+    width: 100%;
+    height: 50px;
+    background: black;
+    color: #fff;
+    border-radius: 16px;
+    border: 3px solid black;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    @include mobileMore {
+        height: 55px;
+        font-size: 20px;
+    }
+    &:hover {
+        background: #333;
+    }
+}
+
+.login-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+.findInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $black;
+    gap: 10px;
+    a {
+        font-size: 14px;
+        text-decoration: none;
+        color: $black;
+        @include mobileMore {
+            font-size: 16px;
+        }
+    }
+    .middle-dot::before {
+        content: '·';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: #121619;
+    }
 }
 .snsBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  @include mobileMore {
-    gap: 34px;
-  }
-  a {
-    position: relative;
-    text-decoration: none;
-    img {
-      width: 60px;
-      @include mobileMore {
-        width: 70px;
-      }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    @include mobileMore {
+        gap: 34px;
     }
-  }
+    a {
+        position: relative;
+        text-decoration: none;
+        img {
+            width: 60px;
+            @include mobileMore {
+                width: 70px;
+            }
+        }
+    }
 }
 .kakaoP {
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  transform: translate(-10%, 1209%);
-  background: white;
-  font-size: 8px;
-  padding: 5px;
-  border-radius: 17px;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-10%, 1209%);
+    background: white;
+    font-size: 8px;
+    padding: 5px;
+    border-radius: 17px;
 }
 .testId {
-  padding-top: 20px;
-  color: #666;
-  font-size: 14px;
-  text-align: left;
+    padding-top: 20px;
+    color: #666;
+    font-size: 14px;
+    text-align: left;
 }
 
 // 오류 메세지
 .error-message {
-  display: block;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  font-size: 14px;
-  font-weight: bold;
-  color: $point;
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, visibility 0s 0.4s;
-  @include mobileMore {
-    font-size: 16px;
-  }
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    font-size: 14px;
+    font-weight: bold;
+    color: $point;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, visibility 0s 0.4s;
+    @include mobileMore {
+        font-size: 16px;
+    }
 }
 
 // 오류 메세지 등장
 .error-message.visible {
-  visibility: visible;
-  opacity: 1;
-  padding-left: 10px;
-  transform: translateY(3px);
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0s;
+    visibility: visible;
+    opacity: 1;
+    padding-left: 10px;
+    transform: translateY(3px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0s;
 }
