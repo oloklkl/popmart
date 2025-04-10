@@ -675,9 +675,10 @@ table {
 /* **** form mixin ****/
 .header-bg {
   width: 100%;
+  height: 110px;
   background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point.png?raw=true"), url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point2.png?raw=true");
   background-repeat: no-repeat, no-repeat;
-  background-position: -120px top, -350px top;
+  background-position: -160px top, -400px top;
 }
 
 .header-wrap {
@@ -706,10 +707,15 @@ table {
   justify-content: space-between;
   padding: 24px 0;
   width: 100%;
+  height: 110px;
   top: 0;
   left: 0;
   z-index: 1;
   box-sizing: border-box;
+}
+.header-inner .logo {
+  width: 200px;
+  height: 60px;
 }
 @media (max-width: 599px) {
   .header-inner .logo {
