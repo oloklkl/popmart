@@ -9,24 +9,26 @@
             /></a>
             <nav class="header-inner__nav">
                 <ul>
-                    <li><a href="/page/productPage/productList.html">NEW</a></li>
-                    <li><a href="/page/productPage/productList.html">BEST</a></li>
-                    <li><a href="/page/productPage/productList.html">COLLECTION</a></li>
-                    <li><a href="/page/event.html">NOTICE</a></li>
-                    <li><a href="/page/popStoryList.html">POP STORY</a></li>
+                    <li><a class="menu-link" href="/page/productPage/productList.html?type=new">NEW</a></li>
+                    <li><a class="menu-link" href="/page/productPage/productList.html?type=best">BEST</a></li>
+                    <li>
+                        <a class="menu-link" href="/page/productPage/productList.html?type=collection">COLLECTION</a>
+                    </li>
+                    <li><a class="menu-link" href="/page/event.html">NOTICE</a></li>
+                    <li><a class="menu-link" href="/page/popStoryList.html">POP STORY</a></li>
                 </ul>
             </nav>
             <div class="header-inner__icons">
-                <button class="search-icon" onclick="toggleSearch()">
+                <button class="search-btn" onclick="toggleSearch()">
                     <img
+                        class="search-icon"
                         src="https://raw.githubusercontent.com/hyeonky/dp-static/458548acc9f4394aa0511e7891ad7b6a4255a14c/popmart/btnIcon/search.svg"
                         alt="검색 아이콘"
-                        id="search-btn"
                     />
                 </button>
-                <button class="user-icon" onclick="toggleUserMenu()">
+                <button class="user-btn" onclick="toggleUserMenu()">
                     <img
-                        id="user-icon"
+                        class="user-icon"
                         src="https://raw.githubusercontent.com/hyeonky/dp-static/83aa2d0c73e1f68ba707e88e7c9d1caf09953f6d/popmart/btnIcon/user.svg"
                         alt="마이페이지"
                     />
@@ -220,6 +222,15 @@
         </div>
     </div>
 </div>
+
 <script src="/js/searchDrawerScript.js"></script>
 <script src="/js/myPageDrawerScript.js"></script>
-<link rel="stylesheet" href="/css/styles.css" />
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        if (typeof window.callbackAfterHeaderLoad === 'function') {
+            window.callbackAfterHeaderLoad();
+        }
+    });
+</script>
+<link rel="stylesheet" href="/css/output/styles.css" />
