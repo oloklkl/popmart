@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/output/styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <title>popStoryList페이지</title>
-  </head>
-  <body id="popstoryList-body">
-    <div id="header"></div>
-    <main>
-      <div class="popStoryListContainer">
-        <div class="popStoryList-inner">
-          <div class="popStoryListTit">
-            <h3>POPMART</h3>
-            <h2>POP STORY</h2>
-          </div>
-          <div class="popStoryCont">
-            <div class="popStoryListGrid">
-              <div class="popStoryGridItem" data-bg="" style="display: none">
-                <div class="textarea">
-                  <h3></h3>
-                  <p></p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/output/styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+        <title>popStoryList페이지</title>
+    </head>
+    <body id="popstoryList-body">
+        <div id="header"></div>
+        <main>
+            <div class="popStoryListContainer">
+                <div class="popStoryList-inner">
+                    <div class="popStoryListTit">
+                        <h3>POPMART</h3>
+                        <h2>POP STORY</h2>
+                    </div>
+                    <div class="popStoryCont">
+                        <div class="popStoryListGrid">
+                            <div class="popStoryGridItem" data-bg="" style="display: none">
+                                <div class="textarea">
+                                    <h3></h3>
+                                    <p></p>
+                                </div>
+                                <img src="" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="popStoryListMoreBtn">더보기</button>
                 </div>
-                <img src="" alt="" />
-              </div>
             </div>
-          </div>
-          <button class="popStoryListMoreBtn">더보기</button>
-        </div>
-      </div>
-    </main>
-    <div id="footer"></div>
-    <script type="module" src="../js/popStoryListScript.js"></script>
-    <script src="/js/scriptLoader.js" defer></script>
-    <script src="/js/common/cursor.js"></script>
-    <script>
-      fetch('/common/cartButton.html')
-        .then((response) => response.text())
-        .then((data) => {
-          document.body.insertAdjacentHTML('beforeend', data);
-        })
-        .catch((error) => console.error('Error loading cartButton.html:', error));
-    </script>
-    <script type="module" src="/js/common/cartButton.js"></script>
-  </body>
+        </main>
+        <div id="footer"></div>
+        <script type="module" src="../js/popStoryListScript.js"></script>
+        <script src="/js/scriptLoader.js" defer></script>
+        <script src="/js/common/cursor.js"></script>
+        <script>
+            fetch('/common/cartButton.html')
+                .then((response) => response.text())
+                .then((data) => {
+                    document.body.insertAdjacentHTML('beforeend', data);
+                })
+                .catch((error) => console.error('Error loading cartButton.html:', error));
+        </script>
+        <script type="module" src="/js/common/cartButton.js"></script>
+    </body>
 </html>
