@@ -11,9 +11,6 @@
 //   background-color: $bg-color;
 // }
 @import '../base/include';
-#popstory-body {
-    padding-top: 65px;
-}
 
 .background-effect {
     position: absolute;
@@ -44,7 +41,7 @@
 
 .popstory-inner {
     width: 100vw;
-    margin: 50px auto;
+    margin: 0 auto;
     height: 100vh;
     padding: 20px;
     display: flex;
