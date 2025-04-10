@@ -323,12 +323,7 @@
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
-                margin: 30px 0;
-
-                .prev-button,
-                .next-button {
-                    font-weight: $font-bold;
-                }
+                margin: 30px 0 80px;
 
                 .prev-button,
                 .next-button,
@@ -349,6 +344,11 @@
                         color: $white;
                         pointer-events: none; // 활성화된 버튼은 클릭 불가
                     }
+                }
+                .prev-button,
+                .next-button {
+                    width: auto;
+                    height: auto;
                 }
             }
         }

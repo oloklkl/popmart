@@ -2587,11 +2587,7 @@ table {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 30px 0;
-}
-.product-list-section .content-wrapper .grid-wrapper .pagination-controls .prev-button,
-.product-list-section .content-wrapper .grid-wrapper .pagination-controls .next-button {
-  font-weight: 700;
+  margin: 30px 0 80px;
 }
 .product-list-section .content-wrapper .grid-wrapper .pagination-controls .prev-button,
 .product-list-section .content-wrapper .grid-wrapper .pagination-controls .next-button,
@@ -2614,6 +2610,11 @@ table {
   font-size: 3rem;
   color: #fff;
   pointer-events: none;
+}
+.product-list-section .content-wrapper .grid-wrapper .pagination-controls .prev-button,
+.product-list-section .content-wrapper .grid-wrapper .pagination-controls .next-button {
+  width: auto;
+  height: auto;
 }
 
 /* productDetail.html 시작*/
@@ -4886,7 +4887,7 @@ table {
   padding-top: 140px;
   padding-left: 90px;
   padding-right: 90px;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -5715,22 +5716,22 @@ table {
 
 #pagination {
   display: flex;
-  gap: 5px;
   justify-content: center;
-  margin-top: 15px;
-  margin-bottom: 60px;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0 80px;
 }
 #pagination .page-btn {
-  font-size: 16px;
-  padding: 10px 15px;
+  width: 50px;
+  height: 50px;
+  font-size: 2.4rem;
 }
 #pagination .active {
   background-color: #ff6c6c;
-  border-radius: 30px;
-  padding: 15px;
-}
-#pagination .arrow-btn {
-  margin-left: 5px;
+  border-radius: 100%;
+  font-size: 3rem;
+  color: #fff;
+  pointer-events: none;
 }
 #pagination .arrow-btn {
   margin-left: 5px;
