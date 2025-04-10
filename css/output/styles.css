@@ -4243,7 +4243,8 @@ table {
 /* **** scroll ****/
 /* **** form mixin ****/
 #cart-body {
-  height: 2800px;
+  height: auto;
+  padding-bottom: 80px;
 }
 
 .cart-container {
