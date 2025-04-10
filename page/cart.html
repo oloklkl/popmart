@@ -1,124 +1,164 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>장바구니</title>
-    <link rel="stylesheet" href="/css/output/styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  </head>
-  <body id="cart-body">
-    <div id="header"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>장바구니</title>
+        <link rel="stylesheet" href="/css/output/styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    </head>
+    <body id="cart-body">
+        <div id="header"></div>
 
-    <!-- 장바구니 컨테이너 -->
-    <div class="cart-container">
-      <!-- CART 헤더 & 전체선택 -->
-      <div class="cart-title">
-        <span>CART</span>
-        <div class="cart-select-all">
-          <div class="checkbox-wrapper">
-            <input type="checkbox" id="select-all" class="checkbox-input" />
-            <label for="select-all" class="checkbox-label">
-              <!-- 체크됨 -->
-              <svg class="checkbox-svg checked-svg" width="24" height="24" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="4" fill="white" stroke="#E02121" stroke-width="2" />
-                <rect x="7" y="7" width="10" height="10" rx="2" fill="#E02121" />
-              </svg>
+        <!-- 장바구니 컨테이너 -->
+        <div class="cart-container">
+            <!-- CART 헤더 & 전체선택 -->
+            <div class="cart-title">
+                <span>CART</span>
+                <div class="cart-select-all">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="select-all" class="checkbox-input" />
+                        <label for="select-all" class="checkbox-label">
+                            <!-- 체크됨 -->
+                            <svg class="checkbox-svg checked-svg" width="24" height="24" viewBox="0 0 24 24">
+                                <rect
+                                    x="2"
+                                    y="2"
+                                    width="20"
+                                    height="20"
+                                    rx="4"
+                                    fill="white"
+                                    stroke="#E02121"
+                                    stroke-width="2"
+                                />
+                                <rect x="7" y="7" width="10" height="10" rx="2" fill="#E02121" />
+                            </svg>
 
-              <!-- 체크 안됨 -->
-              <svg class="checkbox-svg unchecked-svg" width="24" height="24" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="4" fill="white" stroke="#888" stroke-width="1.5" />
-              </svg>
+                            <!-- 체크 안됨 -->
+                            <svg class="checkbox-svg unchecked-svg" width="24" height="24" viewBox="0 0 24 24">
+                                <rect
+                                    x="2"
+                                    y="2"
+                                    width="20"
+                                    height="20"
+                                    rx="4"
+                                    fill="white"
+                                    stroke="#888"
+                                    stroke-width="1.5"
+                                />
+                            </svg>
 
-              <span id="select-all-text">전체선택</span>
-            </label>
-          </div>
+                            <span id="select-all-text">전체선택</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 장바구니 상품 영역 -->
+            <div class="cart-items">
+                <!-- 반복적으로 생성될 상품 아이템 (예시 하나만 유지) -->
+                <div class="cart-item">
+                    <div class="cart-item-main">
+                        <div class="item-checkbox">
+                            <input type="checkbox" id="checkbox1" class="checkbox-input item-checkbox-input" checked />
+                            <label for="checkbox1" class="checkbox-label">
+                                <!-- 체크됨 -->
+                                <svg class="checkbox-svg checked-svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <rect
+                                        x="2"
+                                        y="2"
+                                        width="20"
+                                        height="20"
+                                        rx="4"
+                                        fill="white"
+                                        stroke="#E02121"
+                                        stroke-width="2"
+                                    />
+                                    <rect x="7" y="7" width="10" height="10" rx="2" fill="#E02121" />
+                                </svg>
+
+                                <!-- 체크 안됨 -->
+                                <svg class="checkbox-svg unchecked-svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <rect
+                                        x="2"
+                                        y="2"
+                                        width="20"
+                                        height="20"
+                                        rx="4"
+                                        fill="white"
+                                        stroke="#888"
+                                        stroke-width="1.5"
+                                    />
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="item-image">
+                            <img
+                                class="cart-image"
+                                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail8.png?raw=true"
+                                alt="피노젤리 탄생석 시리즈"
+                            />
+                        </div>
+                        <div class="item-info">
+                            <div class="item-name">피노젤리 탄생석 시리즈</div>
+                            <div class="item-category">배송: [무료] / 기본배송</div>
+                            <div class="item-price">15,000 원</div>
+                        </div>
+                        <div class="item-quantity">
+                            <button type="button" class="quantity-btn minus-btn">-</button>
+                            <div class="quantity-input-container" data-value="1">
+                                <input type="text" value="1" class="quantity-input" />
+                            </div>
+                            <button type="button" class="quantity-btn plus-btn">+</button>
+                        </div>
+                        <div class="item-total">합계: 15,000 원</div>
+                    </div>
+                    <div class="action-wrapper">
+                        <div class="action-buttons">
+                            <button type="button" class="action-btn">삭제하기</button>
+                            <button type="button" class="action-btn delete">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 선택된 상품 썸네일 및 요약 -->
+            <div class="cart-selected-items">
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>결제 예정금액</span><span class="summary-value">60,000 원</span>
+                    </div>
+                    <div class="summary-row"><span>총 상품금액</span><span class="summary-value">60,000 원</span></div>
+                    <div class="summary-row"><span>총 배송비</span><span>0 원</span></div>
+                </div>
+
+                <div class="selected-bottom">
+                    <div class="selected-thumbnails">
+                        <!-- 썸네일 img 추가됨 -->
+                    </div>
+                    <div class="selected-right">
+                        <div class="selected-count"><span>3</span></div>
+                        <div class="selected-actions">
+                            <button>선택상품 주문</button>
+                            <button class="delete">전체상품 주문</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- 장바구니 상품 영역 -->
-      <div class="cart-items">
-        <!-- 반복적으로 생성될 상품 아이템 (예시 하나만 유지) -->
-        <div class="cart-item">
-          <div class="cart-item-main">
-            <div class="item-checkbox">
-              <input type="checkbox" id="checkbox1" class="checkbox-input item-checkbox-input" checked />
-              <label for="checkbox1" class="checkbox-label">
-                <!-- 체크됨 -->
-                <svg class="checkbox-svg checked-svg" width="24" height="24" viewBox="0 0 24 24">
-                  <rect x="2" y="2" width="20" height="20" rx="4" fill="white" stroke="#E02121" stroke-width="2" />
-                  <rect x="7" y="7" width="10" height="10" rx="2" fill="#E02121" />
-                </svg>
+        <!-- 스크립트 연결 -->
 
-                <!-- 체크 안됨 -->
-                <svg class="checkbox-svg unchecked-svg" width="24" height="24" viewBox="0 0 24 24">
-                  <rect x="2" y="2" width="20" height="20" rx="4" fill="white" stroke="#888" stroke-width="1.5" />
-                </svg>
-              </label>
-            </div>
-            <div class="item-image">
-              <img
-                class="cart-image"
-                src="https://github.com/hyeonky/dp-static/blob/main/popmart/thumbnail/thumbnail8.png?raw=true"
-                alt="피노젤리 탄생석 시리즈"
-              />
-            </div>
-            <div class="item-info">
-              <div class="item-name">피노젤리 탄생석 시리즈</div>
-              <div class="item-category">배송: [무료] / 기본배송</div>
-              <div class="item-price">15,000 원</div>
-            </div>
-            <div class="item-quantity">
-              <button type="button" class="quantity-btn minus-btn">-</button>
-              <div class="quantity-input-container" data-value="1">
-                <input type="text" value="1" class="quantity-input" />
-              </div>
-              <button type="button" class="quantity-btn plus-btn">+</button>
-            </div>
-            <div class="item-total">합계: 15,000 원</div>
-          </div>
-          <div class="action-wrapper">
-            <div class="action-buttons">
-              <button type="button" class="action-btn">삭제하기</button>
-              <button type="button" class="action-btn delete">주문하기</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 선택된 상품 썸네일 및 요약 -->
-      <div class="cart-selected-items">
-        <div class="order-summary">
-          <div class="summary-row"><span>결제 예정금액</span><span class="summary-value">60,000 원</span></div>
-          <div class="summary-row"><span>총 상품금액</span><span class="summary-value">60,000 원</span></div>
-          <div class="summary-row"><span>총 배송비</span><span>0 원</span></div>
-        </div>
-
-        <div class="selected-bottom">
-          <div class="selected-thumbnails">
-            <!-- 썸네일 img 추가됨 -->
-          </div>
-          <div class="selected-right">
-            <div class="selected-count"><span>3</span></div>
-            <div class="selected-actions">
-              <button>선택상품 주문</button>
-              <button class="delete">전체상품 주문</button>
-            </div>
-          </div>
-        </div>
-      </div>
-   
-
-    <!-- 스크립트 연결 -->
-    <script>
-      fetch('/common/cartButton.html')
-        .then((response) => response.text())
-        .then((data) => {
-          document.body.insertAdjacentHTML('beforeend', data);
-        })
-        .catch((error) => console.error('Error loading cartButton.html:', error));
-    </script>
-    <script type="module" src="/js/cart.js"></script>
-    <script src="/js/scriptLoader.js" defer></script>
-  </body>
+        <script type="module" src="/js/cart.js"></script>
+        <script src="/js/scriptLoader.js" defer></script>
+        <script>
+            fetch('/common/cartButton.html')
+                .then((response) => response.text())
+                .then((data) => {
+                    document.body.insertAdjacentHTML('beforeend', data);
+                })
+                .catch((error) => console.error('Error loading cartButton.html:', error));
+        </script>
+        <script type="module" src="/js/common/cartButton.js"></script>
+    </body>
 </html>
