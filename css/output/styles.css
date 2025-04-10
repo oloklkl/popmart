@@ -673,18 +673,42 @@ table {
 /* **** text attr ****/
 /* **** scroll ****/
 /* **** form mixin ****/
+.header-bg {
+  width: 100%;
+  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point.png?raw=true"), url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point2.png?raw=true");
+  background-repeat: no-repeat, no-repeat;
+  background-position: -100px top, -400px top;
+}
+
+.header-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1520px;
+  margin: 0 auto;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .header-wrap {
+    padding: 1.6rem 48px;
+    background-size: contain;
+  }
+}
+@media (max-width: 599px) {
+  .header-wrap {
+    padding: 1.2rem 36px;
+    background-size: 1200px auto;
+  }
+}
+
 .header-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 90px;
+  padding: 24px 0;
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
   box-sizing: border-box;
 }
 @media (max-width: 599px) {
@@ -833,42 +857,6 @@ table {
 .header-inner__icons img {
   height: 35px;
   width: 35px;
-}
-
-.header-inner::before,
-.header-inner::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  pointer-events: none;
-}
-@media (max-width: 599px) {
-  .header-inner::before,
-  .header-inner::after {
-    display: none;
-  }
-}
-@media (min-width: 600px) and (max-width: 1023px) {
-  .header-inner::before,
-  .header-inner::after {
-    display: none;
-  }
-}
-
-.header-inner::before {
-  left: 0;
-  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point.png?raw=true");
-  z-index: -2;
-}
-
-.header-inner::after {
-  right: 0;
-  background-image: url("https://github.com/hyeonky/dp-static/blob/main/popmart/header/header-point2.png?raw=true");
-  z-index: -1;
 }
 
 .footer {
@@ -2314,7 +2302,7 @@ table {
   gap: 20px;
   margin-bottom: 40px;
   margin-right: 60px;
-  margin-top: 200px;
+  margin-top: 260px;
 }
 @media (min-width: 600px) and (max-width: 1023px) {
   .product-list-section .content-wrapper .brand-container .brand-list {
@@ -2490,7 +2478,7 @@ table {
 }
 @media (min-width: 1920px) {
   .product-list-section .content-wrapper .grid-wrapper .grid-header h2:nth-of-type(1) {
-    margin-top: 100px;
+    margin-top: 80px;
   }
 }
 .product-list-section .content-wrapper .grid-wrapper .grid-header h2:nth-of-type(2) {
@@ -2596,6 +2584,13 @@ table {
   height: 50px;
   font-size: 2.4rem;
 }
+@media (max-width: 599px) {
+  .product-list-section .content-wrapper .grid-wrapper .pagination-controls .prev-button,
+  .product-list-section .content-wrapper .grid-wrapper .pagination-controls .next-button,
+  .product-list-section .content-wrapper .grid-wrapper .pagination-controls .page-number {
+    font-size: 2rem;
+  }
+}
 .product-list-section .content-wrapper .grid-wrapper .pagination-controls .prev-button:hover,
 .product-list-section .content-wrapper .grid-wrapper .pagination-controls .next-button:hover,
 .product-list-section .content-wrapper .grid-wrapper .pagination-controls .page-number:hover {
@@ -2638,7 +2633,7 @@ table {
 .product-slider-section .product-slider {
   position: relative;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   height: auto;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -7222,10 +7217,6 @@ table {
 /* **** text attr ****/
 /* **** scroll ****/
 /* **** form mixin ****/
-#popstoryList-body {
-  padding-top: 100px;
-}
-
 .popStoryListContainer {
   position: relative;
   width: 100%;
@@ -7268,6 +7259,7 @@ table {
 .popStoryListTit h3 {
   font-weight: bold;
   font-size: 18px;
+  margin-top: 80px;
 }
 @media (min-width: 600px) and (max-width: 1023px) {
   .popStoryListTit h3 {
@@ -7284,6 +7276,7 @@ table {
   font-size: 6.4rem;
   letter-spacing: 2px;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 @media (min-width: 600px) and (max-width: 1023px) {
   .popStoryListTit h2 {
