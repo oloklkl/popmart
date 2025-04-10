@@ -11,15 +11,14 @@
 .product-inner {
     position: relative;
     width: 100%;
-    max-width: calc(100% - 200px);
+    max-width: $grid;
     margin: 0 auto;
     padding: 0;
-
     @include tablet {
-        max-width: calc(100% - $p-tablet);
+        padding: 0 $p-tablet;
     }
     @include mobile {
-        max-width: calc(100% - $p-mobile);
+        padding: 0 $p-mobile;
     }
 }
 
@@ -29,7 +28,6 @@
         display: flex;
         justify-content: center;
         gap: 40px;
-        padding: 50px;
 
         @include tablet {
             flex-direction: column;
@@ -325,7 +323,7 @@
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
-                margin-top: 20px;
+                margin: 30px 0;
 
                 .prev-button,
                 .next-button {
