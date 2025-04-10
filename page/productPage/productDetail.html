@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>POPMART - Product Detail</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="/css/output/styles.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+        <link rel="stylesheet" href="/POPMART/css/output/styles.css" />
     </head>
 
     <body id="productDetail-body">
@@ -126,23 +125,6 @@
                 </section>
             </div>
         </main>
-        <!-- <div class="product-btn"> -->
-        <!-- Top 버튼 -->
-        <!-- <button class="top-btn">
-                <img
-                    src="https://github.com/hyeonky/dp-static/blob/main/popmart/btnIcon/topBtnIcon.png?raw=true"
-                    alt="Top 버튼"
-                />
-            </button> -->
-
-        <!-- 장바구니 버튼 -->
-        <!-- <button class="cart-btn">
-        <img
-          src="https://github.com/hyeonky/dp-static/blob/main/popmart/btnIcon/cartBtnIcon.png?raw=true"
-          alt="장바구니 버튼"
-        />
-      </button> -->
-
         <!-- 토글 버튼 -->
         <!-- <button class="toggle-btn">
                 <img
@@ -152,20 +134,51 @@
             </button> -->
         <!-- </div> -->
         <div id="footer"></div>
-        <script>
-            fetch('/common/cartButton.html')
-                .then((response) => response.text())
-                .then((data) => {
-                    document.body.insertAdjacentHTML('beforeend', data);
-                })
-                .catch((error) => console.error('Error loading cartButton.html:', error));
-        </script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <!-- 이 라인 추가 -->
+        <script src="/js/common/cursor.js"></script>
         <script type="module" src="/js/productPage/productDetailSwiper.js"></script>
         <script type="module" src="/js/productPage/productDetailScript.js"></script>
         <script src="/js/scriptLoader.js"></script>
-        <script src="/js/common/cursor.js"></script>
+        <script type="module" src="/js/common/cartButton.js"></script>
+
+        <script>
+            // header와 footer를 불러온 후 필요한 이벤트 등록
+            Promise.all([
+                fetch('/common/header.html')
+                    .then((res) => res.text())
+                    .then((html) => {
+                        document.getElementById('header').innerHTML = html;
+                    }),
+                fetch('/common/footer.html')
+                    .then((res) => res.text())
+                    .then((html) => {
+                        document.getElementById('footer').innerHTML = html;
+                    }),
+                fetch('/common/cartButton.html')
+                    .then((res) => res.text())
+                    .then((html) => {
+                        document.body.insertAdjacentHTML('beforeend', html);
+                    }),
+            ])
+                .then(() => {
+                    // ✅ 헤더, 푸터, 버튼 모두 삽입된 이후 실행
+                    console.log(
+                        'Components loaded. initScrollToTop exists:',
+                        typeof window.initScrollToTop === 'function'
+                    );
+                    if (typeof window.callbackAfterHeaderLoad === 'function') {
+                        window.callbackAfterHeaderLoad();
+                    }
+                    if (typeof window.initScrollToTop === 'function') {
+                        window.initScrollToTop();
+                    } else {
+                        console.warn('initScrollToTop function not found!');
+                    }
+                })
+                .catch((error) => console.error('Error loading components:', error));
+        </script>
     </body>
 </html>
