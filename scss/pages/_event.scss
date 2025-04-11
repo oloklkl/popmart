@@ -1,12 +1,17 @@
 @import '../base/include';
 
 .event-main {
-    padding-top: 140px; // header 높이만큼 여백 확보
-    padding-left: 90px;
-    padding-right: 90px;
-    padding-bottom: 30px;
-    max-width: 1280px;
+    // padding-top: 140px; // header 높이만큼 여백 확보
+    // padding-left: 90px;
+    // padding-right: 90px;
+    // padding-bottom: 30px;
+    // max-width: 1280px;
+    // margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: $grid;
     margin: 0 auto;
+    padding: 80px 0 30px;
 }
 
 .event-title {
@@ -38,8 +43,8 @@
     width: 100%;
     max-width: $grid;
     margin: 0 auto;
-    padding-left: 90px;
-    padding-right: 90px;
+    padding: 0;
+
     .title {
         font-size: 64px;
         margin-top: 108px;
@@ -318,6 +323,7 @@
         @include mobile {
             margin-top: -13px;
         }
+
         position: relative;
         width: 100%;
         height: auto;
