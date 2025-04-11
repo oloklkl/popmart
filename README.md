@@ -48,13 +48,14 @@
 
 ## 📸 주요 화면
 
-| 메인 페이지 | 상품 리스트 |
-|-------------|-------------|
-| ![meta-img](https://github.com/user-attachments/assets/1397c005-a5ca-4443-8c1b-40866c98e754) | ![screenshot (10)](https://github.com/user-attachments/assets/83027894-33df-4a54-9a40-5fc546bcacb1)|
 
-| 상품 상세 | 장바구니 |
+| 메인 페이지 | 장바구니 |
 |-------------|-------------|
-| ![screenshot](https://github.com/user-attachments/assets/db1ab285-9593-4794-b85f-9314d7ed6d63) | ![screenshot (13)](https://github.com/user-attachments/assets/6ea17462-09e5-4b57-a17e-87ad8a589fed) |
+| ![meta-img](https://github.com/user-attachments/assets/1397c005-a5ca-4443-8c1b-40866c98e754) |![screenshot (13)](https://github.com/user-attachments/assets/6ea17462-09e5-4b57-a17e-87ad8a589fed)|
+
+| 상품 리스트 | 상품 상세 |
+|-------------|-------------|
+| ![screenshot (10)](https://github.com/user-attachments/assets/83027894-33df-4a54-9a40-5fc546bcacb1) | ![screenshot](https://github.com/user-attachments/assets/db1ab285-9593-4794-b85f-9314d7ed6d63) |
 
 | PopstoryList | Popstory |
 |-------------|-------------|
@@ -64,6 +65,9 @@
 |-------------|-------------|
 |![screenshot (11)](https://github.com/user-attachments/assets/6a4dcaef-679c-4067-a549-c3c56070eef1) | ![screenshot (9)](https://github.com/user-attachments/assets/083cece5-0405-4afd-b665-a74cb2e8ad0d) |
 
+| 로그인 | 회원가입 |
+|-------------|-------------|
+|![screenshot (4)](https://github.com/user-attachments/assets/0d90310d-28c1-4ed4-94ca-23d5ddb2b035) |![screenshot (5)](https://github.com/user-attachments/assets/7a2c4320-32e9-4d64-912f-4f6257d07084)|
 
 <br/>
 
