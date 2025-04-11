@@ -48,13 +48,22 @@
 
 ## 📸 주요 화면
 
-| 메인 페이지 | 상품 리스트 | 상품 상세 | 장바구니 |
-|-------------|-------------|------------|
-| ![main](https://i.ibb.co/WBkyNTh/main.jpg) | ![list](https://i.ibb.co/f98Kh7y/list.jpg) | ![detail](https://i.ibb.co/6FR1j6V/detail.jpg) |
+| 메인 페이지 | 상품 리스트 |
+|-------------|-------------|
+| ![main](https://i.ibb.co/WBkyNTh/main.jpg) | ![list](https://i.ibb.co/f98Kh7y/list.jpg) |
 
-| PopstoryList | Popstory | Event | EventDetail |
-|-------------|-------------|-------------|
-| ![notice](https://i.ibb.co/G7wVgTh/notice.jpg) | ![mypage](https://i.ibb.co/5T9Tx6p/mypage.jpg) | ![cart](https://i.ibb.co/qCkmpRV/cart.jpg) |
+| 상품 상세 | 장바구니 |
+|-------------|-------------|
+| ![detail](https://i.ibb.co/6FR1j6V/detail.jpg) | ![cart](https://i.ibb.co/qCkmpRV/cart.jpg) |
+
+| PopstoryList | Popstory |
+|-------------|-------------|
+| ![notice](https://i.ibb.co/G7wVgTh/notice.jpg) | ![mypage](https://i.ibb.co/5T9Tx6p/mypage.jpg) |
+
+| Event | EventDetail |
+|-------------|-------------|
+| ![event](https://i.ibb.co/Y3JpkPb/event.jpg) | ![event-detail](https://i.ibb.co/JqD9BCg/eventdetail.jpg) |
+
 
 <br/>
 
