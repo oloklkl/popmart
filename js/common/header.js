@@ -102,22 +102,17 @@ window.login = login;
 window.logout = logout;
 
 // header.js
+const currentURL = window.location.pathname + window.location.search;
 
-window.callbackAfterHeaderLoad = function () {
-    const currentPath = window.location.pathname;
-    const currentSearch = window.location.search;
-    const currentURL = currentPath + currentSearch;
+document.querySelectorAll('.menu-link').forEach((link) => {
+    const linkURL = new URL(link.href);
+    const linkHref = linkURL.pathname + linkURL.search;
 
-    const menuLinks = document.querySelectorAll('.menu-link');
-
-    menuLinks.forEach((link) => {
-        const linkURL = new URL(link.href);
-        const linkPath = linkURL.pathname;
-        const linkSearch = linkURL.search;
-        const fullLinkURL = linkPath + linkSearch;
-
-        if (decodeURIComponent(fullLinkURL) === decodeURIComponent(currentURL)) {
-            link.classList.add('active');
-        }
-    });
-};
+    // NOTICE 페이지는 search 없이 비교해도 일치하게 하기
+    if (currentURL === linkHref || currentURL === linkURL.pathname) {
+        link.classList.add('active');
+        console.log('🎯 active 먹음!', linkHref);
+    } else {
+        console.log('비교 대상:', linkHref);
+    }
+});
