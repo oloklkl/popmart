@@ -48,11 +48,11 @@
 
 ## 📸 주요 화면
 
-| 메인 페이지 | 상품 리스트 | 상품 상세 |
+| 메인 페이지 | 상품 리스트 | 상품 상세 | 장바구니 |
 |-------------|-------------|------------|
 | ![main](https://i.ibb.co/WBkyNTh/main.jpg) | ![list](https://i.ibb.co/f98Kh7y/list.jpg) | ![detail](https://i.ibb.co/6FR1j6V/detail.jpg) |
 
-| 공지사항 | 마이페이지 | 장바구니 |
+| PopstoryList | Popstory | Event | EventDetail |
 |-------------|-------------|-------------|
 | ![notice](https://i.ibb.co/G7wVgTh/notice.jpg) | ![mypage](https://i.ibb.co/5T9Tx6p/mypage.jpg) | ![cart](https://i.ibb.co/qCkmpRV/cart.jpg) |
 
