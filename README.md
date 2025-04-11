@@ -50,22 +50,23 @@
 
 | 메인 페이지 | 상품 리스트 |
 |-------------|-------------|
-| ![main](https://i.ibb.co/WBkyNTh/main.jpg) | ![list](https://i.ibb.co/f98Kh7y/list.jpg) |
+| ![meta-img](https://github.com/user-attachments/assets/1397c005-a5ca-4443-8c1b-40866c98e754) | ![screenshot (10)](https://github.com/user-attachments/assets/83027894-33df-4a54-9a40-5fc546bcacb1)|
 
 | 상품 상세 | 장바구니 |
 |-------------|-------------|
-| ![detail](https://i.ibb.co/6FR1j6V/detail.jpg) | ![cart](https://i.ibb.co/qCkmpRV/cart.jpg) |
+| ![screenshot](https://github.com/user-attachments/assets/db1ab285-9593-4794-b85f-9314d7ed6d63) | ![screenshot (13)](https://github.com/user-attachments/assets/6ea17462-09e5-4b57-a17e-87ad8a589fed) |
 
 | PopstoryList | Popstory |
 |-------------|-------------|
-| ![notice](https://i.ibb.co/G7wVgTh/notice.jpg) | ![mypage](https://i.ibb.co/5T9Tx6p/mypage.jpg) |
+|![screenshot (12)](https://github.com/user-attachments/assets/b7715237-7a80-4ddc-98a4-0a7d6f654471) |![screenshot (8)](https://github.com/user-attachments/assets/ccc179d5-1183-4dd9-b1c3-3863367e4695)|
 
 | Event | EventDetail |
 |-------------|-------------|
-| ![event](https://i.ibb.co/Y3JpkPb/event.jpg) | ![event-detail](https://i.ibb.co/JqD9BCg/eventdetail.jpg) |
+|![screenshot (11)](https://github.com/user-attachments/assets/6a4dcaef-679c-4067-a549-c3c56070eef1) | ![screenshot (9)](https://github.com/user-attachments/assets/083cece5-0405-4afd-b665-a74cb2e8ad0d) |
 
 
 <br/>
+
 
 ## 📝 프로젝트 회고
 
