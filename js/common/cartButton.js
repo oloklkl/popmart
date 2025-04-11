@@ -45,7 +45,20 @@ window.initScrollToTop = function () {
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🌟 DOM 로드 완료! 버튼 이벤트 등록 시작');
-    initCartButtons();
+
+    // 버튼이 로드될 때까지 주기적으로 확인
+    const checkExist = setInterval(() => {
+        const cartButton = document.querySelector('.cart-btn');
+        const scrollUpButton = document.querySelector('.scroll-up-btn');
+
+        if (cartButton && scrollUpButton) {
+            clearInterval(checkExist);
+            console.log('✅ 버튼 요소들 모두 찾음! 이벤트 등록 시작');
+            initCartButtons();
+        } else {
+            console.log('🔍 버튼 기다리는 중...');
+        }
+    }, 100); // 100ms마다 확인
 });
 
 window.addEventListener('popstate', initCartButtons);
