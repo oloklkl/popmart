@@ -1,5 +1,6 @@
 # POPMART Renewal
 
+ ![meta-img](https://github.com/user-attachments/assets/1397c005-a5ca-4443-8c1b-40866c98e754) 
 트렌디하고 키치한 무드로 재해석한 팝마트 리뉴얼 팀 프로젝트입니다.  
 제품 소개부터 인터랙션, 애니메이션 등 시각적 요소에 집중하여 브랜드의 개성을 표현했습니다.
 
