@@ -33,6 +33,26 @@
 
 <br/>
 
+## 💌 Open Graph
+
+![bokjak](https://github.com/user-attachments/assets/7ebf3c3b-e956-4b3b-926d-2f2ba8e692ef)
+
+- meta tags를 통해 Facebook, twitter, linkedin, discord, kakao talk 등 링크를 전달 했을 때 링크에 대한 정보를 볼 수 있도록 구현
+  
+```html
+<!-- index.html -->
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="조성주 • POPMART" />
+<meta property="og:description" content="팀 프로젝트" />
+<meta
+            property="og:image"
+            content="https://github.com/hyeonky/dp-static/blob/main/popmart/meta/meta-img.png?raw=true"
+        />
+```
+---
+
+
 ## 👩‍💻 팀원 구성
 
 | 이름 | 역할 |
